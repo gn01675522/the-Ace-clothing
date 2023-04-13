@@ -1,0 +1,5 @@
+export const USER_ACTION_TYPES = {
+  SIGN_IN_START: "user/SIGN_IN_START",
+  SIGN_IN_SUCCESS: "user/SIGN_IN_SUCCESS",
+  SIGN_IN_FAILED: "user/SIGN_IN_FAILED",
+};
