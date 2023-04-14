@@ -1,8 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 const selectUserReducer = (state) => state.user;
+//* 選取 rootReducer 上的 user reducer
 
-export const selectUserLoginIsSuccess= createSelector(
+export const selectUserLoginIsSuccess = createSelector(
   [selectUserReducer],
   (user) => user.isSuccess
 );

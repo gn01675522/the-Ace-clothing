@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -21,6 +21,7 @@ const Login = () => {
   const isSuccess = useSelector(selectUserLoginIsSuccess);
   const isLoading = useSelector(selectUserLoginIsLoading);
   const message = useSelector(selectUserLoginMessage);
+  // 透過 selector 取得目前 user redux 資訊
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,9 +34,12 @@ const Login = () => {
   };
   // 點選登入後，使用 redux 來登入
 
-  if (isSuccess) {
-    navigate("/admin/products");
-  }
+  useEffect(() => {
+    if (isSuccess === true) {
+      navigate("/admin/products");
+    }
+  }, [isSuccess, navigate]);
+
   // 如果 user 登入成功，那麼就轉址去 products
 
   return (

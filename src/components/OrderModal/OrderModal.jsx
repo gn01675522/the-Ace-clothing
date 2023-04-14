@@ -1,10 +1,8 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import {
-  MessageContext,
-  handleSuccessMessage,
-  handleErrorMessage,
-} from "../../store/messageStore";
+
+import { setHandleMessage } from "../../store/message/message.actions";
 
 const OrderModal = ({ closeProductModal, getOrders, tempOrder }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +11,7 @@ const OrderModal = ({ closeProductModal, getOrders, tempOrder }) => {
     status: 0,
     ...tempOrder,
   });
-  const [, dispatch] = useContext(MessageContext);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTempData({
@@ -42,13 +40,13 @@ const OrderModal = ({ closeProductModal, getOrders, tempOrder }) => {
         },
       });
       console.log(res);
-      handleSuccessMessage(dispatch, res);
+      dispatch(setHandleMessage("success", res));
       setIsLoading(false);
       getOrders();
     } catch (error) {
       console.log(error);
       setIsLoading(false);
-      handleErrorMessage(dispatch, error);
+      dispatch(setHandleMessage("error", error));
     }
   };
 

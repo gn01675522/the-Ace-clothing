@@ -1,9 +1,14 @@
-import { useContext } from "react";
-import { MessageContext } from "../../store/messageStore";
+import { useSelector } from "react-redux";
+import {
+  selectMessageType,
+  selectMessageTitle,
+  selectMessageText,
+} from "../../store/message/message.selector";
 
 const Message = () => {
-  // const [message, setMessage] = useState({});
-  const [message] = useContext(MessageContext);
+  const type = useSelector(selectMessageType);
+  const title = useSelector(selectMessageTitle);
+  const text = useSelector(selectMessageText);
 
   return (
     <>
@@ -11,26 +16,24 @@ const Message = () => {
         className="toast-container position-fixed"
         style={{ top: "64px", right: "15px" }}
       >
-        {message.title && (
-          <div
-            className="toast show"
-            role="alert"
-            aria-live="assertive"
-            aria-atomic="true"
-            data-delay="3000"
-          >
-            <div className={`toast-header text-white bg-${message.type}`}>
-              <strong className="me-auto">{message.title}</strong>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="toast"
-                aria-label="Close"
-              />
-            </div>
-            <div className="toast-body">{message.text}</div>
+        <div
+          className="toast show"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          data-delay="3000"
+        >
+          <div className={`toast-header text-white bg-${type}`}>
+            <strong className="me-auto">{title}</strong>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            />
           </div>
-        )}
+          <div className="toast-body">{text}</div>
+        </div>
       </div>
     </>
   );
