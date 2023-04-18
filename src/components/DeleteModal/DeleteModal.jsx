@@ -1,5 +1,3 @@
-import ModalPortal from "../Modal/ModalPortal.component";
-
 const DeleteModal = ({ close, text, handleDelete, id }) => {
   return (
     <div

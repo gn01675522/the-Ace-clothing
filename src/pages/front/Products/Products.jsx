@@ -1,33 +1,34 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Pagination from "../../../components/Pagination/Pagination";
 import Loading from "../../../components/Loading/Loading";
 
-const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [pagination, setPagination] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.actions";
+import {
+  selectUserProduct,
+  selectUserProductPagination,
+  selectUserProductIsLoading,
+} from "../../../store/userProduct/userProduct.selector";
 
-  const getProducts = async (page = 1) => {
-    setIsLoading(true);
-    const productRes = await axios.get(
-      `/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`
-    );
-    console.log(productRes);
-    setProducts(productRes.data.products);
-    setPagination(productRes.data.pagination);
-    setIsLoading(false);
+const Products = () => {
+  const dispatch = useDispatch();
+  const products = useSelector(selectUserProduct);
+  const pagination = useSelector(selectUserProductPagination);
+  const isLoading = useSelector(selectUserProductIsLoading);
+
+  const changePage = (page) => {
+    dispatch(fetchUserProductAsync(page));
   };
 
   useEffect(() => {
-    getProducts(1);
+    dispatch(fetchUserProductAsync());
   }, []);
 
   return (
     <div className="container mt-md-5 mt-3 mb-7">
-      <Loading isLoading={isLoading} />
+      {isLoading && <Loading />}
       <div className="row">
         {products.map((product) => {
           return (
@@ -52,7 +53,7 @@ const Products = () => {
         })}
       </div>
       <nav className="d-flex justify-content-center">
-        <Pagination pagination={pagination} changePage={getProducts} />
+        <Pagination pagination={pagination} changePage={changePage} />
       </nav>
     </div>
   );

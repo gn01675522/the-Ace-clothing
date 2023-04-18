@@ -44,7 +44,7 @@ const Login = () => {
 
   return (
     <div className="container py-5">
-      {isLoading && <Loading isLoading="true" />}
+      {isLoading && <Loading />}
       <div className="row justify-content-center">
         <div className="col-md-6">
           <h2>登入帳號</h2>

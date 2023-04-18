@@ -16,3 +16,8 @@ export const selectAdminCouponsIsLoading = createSelector(
   [selectAdminCouponsReducer],
   (adminCoupons) => adminCoupons.isLoading
 );
+
+export const selectAdminCouponsIsModalOpen = createSelector(
+  [selectAdminCouponsReducer],
+  (adminCoupons) => adminCoupons.isModalOpen
+);

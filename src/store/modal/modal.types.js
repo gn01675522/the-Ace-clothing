@@ -1,4 +1,0 @@
-export const MODAL_ACTION_TYPES = {
-  SET_MODAL_OPEN: "modal/SET_MODAL_OPEN",
-  SET_MODAL_CONTENT: "modal/SET_MODAL_CONTENT",
-};

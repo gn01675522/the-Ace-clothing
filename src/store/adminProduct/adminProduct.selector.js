@@ -17,7 +17,7 @@ export const selectAdminProductPagination = createSelector(
   (adminProduct) => adminProduct.pagination
 );
 
-export const selectAdminProductDeleteState = createSelector(
+export const selectAdminProductIsModalOpen = createSelector(
   [selectAdminProductReducer],
-  (adminProduct) => adminProduct.deleteState
+  (adminProduct) => adminProduct.isModalOpen
 );

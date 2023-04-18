@@ -7,10 +7,15 @@ import DeleteModal from "../../../components/DeleteModal/DeleteModal";
 import Pagination from "../../../components/Pagination/Pagination";
 import { Modal } from "bootstrap";
 
-import { fetchAdminProductAsync } from "../../../store/adminProduct/adminProduct.actions";
+import {
+  fetchAdminProductAsync,
+  deleteAdminProductAsync,
+  setAdminProductModalOpen,
+} from "../../../store/adminProduct/adminProduct.actions";
 import {
   selectAdminProducts,
   selectAdminProductPagination,
+  selectAdminProductIsLoading,
 } from "../../../store/adminProduct/adminProduct.selector";
 
 const AdminProducts = () => {
@@ -22,6 +27,7 @@ const AdminProducts = () => {
   const deleteModal = useRef(null);
   const products = useSelector(selectAdminProducts);
   const pagination = useSelector(selectAdminProductPagination);
+  const isDeleteModalOpen = useSelector(selectAdminProductIsLoading);
 
   useEffect(() => {
     productModal.current = new Modal("#productModal", {
@@ -39,13 +45,19 @@ const AdminProducts = () => {
   };
   //* 透過 api 取得切換頁面後的產品資料
 
+  // const deleteProduct = (id) => {
+  //   dispatch(deleteAdminProductAsync(id));
+  //   dispatch(setAdminProductModalOpen(false));
+  // };
+
   const deleteProduct = async (id) => {
     try {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${id}`
       );
+      console.log("inside AdminProducts", res.data);
       if (res.data.success) {
-        // getProducts();
+        dispatch(fetchAdminProductAsync());
         deleteModal.current.hide();
       }
       console.log(res);
@@ -69,6 +81,7 @@ const AdminProducts = () => {
 
   const openDeleteModal = (product) => {
     setTempProduct(product);
+    // dispatch(setAdminProductModalOpen());
     deleteModal.current.show();
   };
   //* 打開刪除 modal

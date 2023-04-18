@@ -2,13 +2,13 @@ import { USER_ACTION_TYPES } from "./user.types";
 
 const { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILED } = USER_ACTION_TYPES;
 
-const LOGIN_INITIAL_STATE = {
+const INITIAL_STATE = {
   isSuccess: false,
   message: "",
   isLoading: false,
 };
 
-export const userReducer = (state = LOGIN_INITIAL_STATE, action = {}) => {
+export const userReducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload } = action;
 
   switch (type) {

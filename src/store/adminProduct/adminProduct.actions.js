@@ -10,6 +10,7 @@ const {
   DELETE_ADMIN_PRODUCT_START,
   DELETE_ADMIN_PRODUCT_SUCCESS,
   DELETE_ADMIN_PRODUCT_FAILED,
+  SET_ADMIN_PRODUCT_IS_OPEN,
 } = ADMIN_PRODUCT_ACTION_TYPES;
 
 export const fetchAdminProductStart = () =>
@@ -30,6 +31,9 @@ export const deleteAdminProductSuccess = (res) =>
 export const deleteAdminProductFailed = (error) =>
   createAction(DELETE_ADMIN_PRODUCT_FAILED, error);
 
+export const setAdminProductModalOpen = (bool) =>
+  createAction(SET_ADMIN_PRODUCT_IS_OPEN, bool);
+
 export const fetchAdminProductAsync = (page = 1) => {
   return async (dispatch) => {
     dispatch(fetchAdminProductStart());
@@ -43,6 +47,9 @@ export const fetchAdminProductAsync = (page = 1) => {
           pagination: res.data.pagination,
         })
       );
+      if (res.data.success) {
+        dispatch(setAdminProductModalOpen(false));
+      }
       console.log(res.data);
     } catch (error) {
       dispatch(fetchAdminProductFailed(error));

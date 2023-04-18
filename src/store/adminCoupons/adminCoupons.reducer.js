@@ -4,6 +4,7 @@ const {
   FETCH_ADMIN_COUPONS_START,
   FETCH_ADMIN_COUPONS_SUCCESS,
   FETCH_ADMIN_COUPONS_FAILED,
+  SET_ADMIN_PRODUCT_IS_OPEN,
 } = ADMIN_COUPONS_ACTION_TYPES;
 
 const INITIAL_STATE = {
@@ -27,6 +28,8 @@ export const adminCouponsReducer = (state = INITIAL_STATE, action = {}) => {
       };
     case FETCH_ADMIN_COUPONS_FAILED:
       return { ...state, error: payload, isLoading: false };
+    case SET_ADMIN_PRODUCT_IS_OPEN:
+      return { ...state, isModalOpen: payload };
     default:
       return state;
   }
