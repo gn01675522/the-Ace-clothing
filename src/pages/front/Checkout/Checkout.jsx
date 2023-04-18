@@ -1,10 +1,13 @@
-import { Link, useOutletContext, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Input } from "../../../components/FormElements/FormElements";
 
+import { selectCartItems } from "../../../store/cart/cart.selector";
+
 const Checkout = () => {
-  const { cartData } = useOutletContext();
+  const cartItems = useSelector(selectCartItems);
   const {
     register,
     handleSubmit,
@@ -111,7 +114,7 @@ const Checkout = () => {
           <div className="col-md-4">
             <div className="border p-4 mb-4">
               <h4 className="mb-4">選購餐點</h4>
-              {cartData?.carts?.map((item) => {
+              {cartItems?.carts?.map((item) => {
                 return (
                   <div className="d-flex" key={item.id}>
                     <img
@@ -141,7 +144,7 @@ const Checkout = () => {
               })}
               <div className="d-flex justify-content-between mt-4">
                 <p className="mb-0 h4 fw-bold">Total</p>
-                <p className="mb-0 h4 fw-bold">NT$ {cartData.final_total}</p>
+                <p className="mb-0 h4 fw-bold">NT$ {cartItems.final_total}</p>
               </div>
             </div>
           </div>

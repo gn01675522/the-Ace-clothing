@@ -1,6 +1,4 @@
-import { useEffect, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
 import AdminProducts from "./pages/admin/AdminProducts/AdminProducts";

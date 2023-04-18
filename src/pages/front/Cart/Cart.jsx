@@ -1,17 +1,22 @@
 import { useState } from "react";
-import { useOutletContext, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
+import { selectCartItems } from "../../../store/cart/cart.selector";
+
 const Cart = () => {
-  const { cartData, getCart } = useOutletContext();
   const [loadingItems, setLoadingItems] = useState([]);
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
 
   const removeCartItem = async (id) => {
     try {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${id}`
       );
-      getCart();
+      dispatch(fetchCartItemsAsync());
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +35,7 @@ const Cart = () => {
       setLoadingItems(
         loadingItems.filter((loadingObject) => loadingObject !== item.id)
       );
-      getCart();
+      dispatch(fetchCartItemsAsync());
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +51,7 @@ const Cart = () => {
           <div className="d-flex justify-content-between">
             <h2 className="mt-2">您的購物車項目</h2>
           </div>
-          {cartData?.carts?.map((item) => {
+          {cartItems?.carts?.map((item) => {
             return (
               <div className="d-flex mt-4 bg-light" key={item.id}>
                 <img
@@ -97,7 +102,7 @@ const Cart = () => {
           })}
           <div className="d-flex justify-content-between mt-4">
             <p className="mb-0 h4 fw-bold">總金額</p>
-            <p className="mb-0 h4 fw-bold">NT${cartData.final_total}</p>
+            <p className="mb-0 h4 fw-bold">NT${cartItems.final_total}</p>
           </div>
           <NavLink
             to="/checkout"

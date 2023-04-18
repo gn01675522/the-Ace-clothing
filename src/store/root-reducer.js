@@ -4,10 +4,12 @@ import { userReducer } from "./user/user.reducer";
 import { adminProductReducer } from "./adminProduct/adminProduct.reducer";
 import { adminCouponsReducer } from "./adminCoupons/adminCoupons.reducer";
 import { adminOrdersReducer } from "./adminOrders/adminOrders.reducer";
+import { cartReducer } from "./cart/cart.reducer";
 import { modalReducer } from "./modal/modal.reducer";
 
 export const rootReducer = combineReducers({
   user: userReducer,
+  cart: cartReducer,
   modal: modalReducer,
   message: messageReducer,
   adminProduct: adminProductReducer,

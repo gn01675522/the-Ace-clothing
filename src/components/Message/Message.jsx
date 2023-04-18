@@ -1,14 +1,9 @@
 import { useSelector } from "react-redux";
-import {
-  selectMessageType,
-  selectMessageTitle,
-  selectMessageText,
-} from "../../store/message/message.selector";
+import { selectMessage } from "../../store/message/message.selector";
 
 const Message = () => {
-  const type = useSelector(selectMessageType);
-  const title = useSelector(selectMessageTitle);
-  const text = useSelector(selectMessageText);
+  const message = useSelector(selectMessage);
+  const { type, title, text } = message;
 
   return (
     <>

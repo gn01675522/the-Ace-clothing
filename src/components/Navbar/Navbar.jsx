@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const NavBar = ({ cartData }) => {
+import { selectCartItems } from "../../store/cart/cart.selector";
+
+const NavBar = () => {
+  const cartItems = useSelector(selectCartItems);
+
   return (
     <div className="bg-white sticky-top">
       <div className="container">
@@ -14,7 +19,7 @@ const NavBar = ({ cartData }) => {
               top: "50%",
             }}
           >
-            卡斯柏的日式餐點
+            the One
           </NavLink>
           <button
             className="navbar-toggler"
@@ -43,7 +48,7 @@ const NavBar = ({ cartData }) => {
             <NavLink className="nav-link position-relative" to="/cart">
               <i className="bi bi-bag-fill"></i>
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                {cartData?.carts?.length}
+                {cartItems?.carts?.length}
               </span>
             </NavLink>
           </div>

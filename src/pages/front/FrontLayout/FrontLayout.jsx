@@ -1,32 +1,22 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Outlet, Link } from "react-router-dom";
-
-import axios from "axios";
 
 import NavBar from "../../../components/Navbar/Navbar";
 
-const FrontLayout = () => {
-  const [cartData, setCartData] = useState({});
+import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
 
-  const getCart = async () => {
-    try {
-      const res = await axios.get(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/cart`
-      );
-      setCartData(res.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const FrontLayout = () => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getCart();
+    dispatch(fetchCartItemsAsync());
   }, []);
 
   return (
     <>
-      <NavBar cartData={cartData} />
-      <Outlet context={{ getCart, cartData }} />
+      <NavBar />
+      <Outlet />
       <div className="bg-dark">
         <div className="container">
           <div className="d-flex align-items-center justify-content-between text-white py-4">

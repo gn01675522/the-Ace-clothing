@@ -1,13 +1,25 @@
 import { useState, useEffect } from "react";
-import { useParams, useOutletContext } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+
+import { setHandleMessage } from "../../../store/message/message.actions";
+import { selectHasMessage } from "../../../store/message/message.selector";
+import Message from "../../../components/Message/Message";
+
+import {
+  fetchCartItemsAsync,
+  setAddItemToCartAsync,
+} from "../../../store/cart/cart.actions";
+import { selectCartIsLoading } from "../../../store/cart/cart.selector";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState([]);
   const [cartQuantity, setCartQuantity] = useState(1);
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
-  const { getCart } = useOutletContext();
+  const dispatch = useDispatch();
+  const hasMessage = useSelector(selectHasMessage);
+  const isLoading = useSelector(selectCartIsLoading);
 
   const { imageUrl, imagesUrl, title, price, content, description } = product;
 
@@ -26,19 +38,9 @@ const ProductDetail = () => {
         qty: cartQuantity,
       },
     };
-    setIsLoading(true);
-    try {
-      const res = await axios.post(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/cart`,
-        data
-      );
-      console.log(res);
-      getCart();
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
+    dispatch(setAddItemToCartAsync(data));
+    dispatch(fetchCartItemsAsync());
+    // dispatch(setHandleMessage("success", res));
   };
 
   useEffect(() => {
@@ -47,6 +49,7 @@ const ProductDetail = () => {
 
   return (
     <div className="container">
+      {hasMessage && <Message />}
       <div
         style={{
           minHeight: "400px",
@@ -78,7 +81,7 @@ const ProductDetail = () => {
                 data-bs-target="#collapseOne"
               >
                 <div className="d-flex justify-content-between align-items-center pe-1">
-                  <h4 className="mb-0">Lorem ipsum</h4>
+                  <h4 className="mb-0">測試區塊1</h4>
                   <i className="fas fa-minus"></i>
                 </div>
               </div>
@@ -99,7 +102,7 @@ const ProductDetail = () => {
                 data-bs-target="#collapseTwo"
               >
                 <div className="d-flex justify-content-between align-items-center pe-1">
-                  <h4 className="mb-0">Lorem ipsum</h4>
+                  <h4 className="mb-0">測試區塊2</h4>
                   <i className="fas fa-plus"></i>
                 </div>
               </div>
@@ -109,12 +112,7 @@ const ProductDetail = () => {
                 aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample"
               >
-                <div className="card-body pb-5">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea
-                </div>
+                <div className="card-body pb-5">區塊 2 內容</div>
               </div>
             </div>
             <div className="card border-0">
@@ -125,7 +123,7 @@ const ProductDetail = () => {
                 data-bs-target="#collapseThree"
               >
                 <div className="d-flex justify-content-between align-items-center pe-1">
-                  <h4 className="mb-0">Lorem ipsum</h4>
+                  <h4 className="mb-0">測試區塊3</h4>
                   <i className="fas fa-plus"></i>
                 </div>
               </div>
@@ -135,12 +133,7 @@ const ProductDetail = () => {
                 aria-labelledby="headingThree"
                 data-bs-parent="#accordionExample"
               >
-                <div className="card-body pb-5">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea
-                </div>
+                <div className="card-body pb-5">區塊 3 內容</div>
               </div>
             </div>
           </div>

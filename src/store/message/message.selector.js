@@ -8,17 +8,7 @@ export const selectHasMessage = createSelector(
   (message) => message.hasMessage
 );
 
-export const selectMessageType = createSelector(
+export const selectMessage = createSelector(
   [selectMessageReducer],
-  (message) => message.type
-);
-
-export const selectMessageTitle = createSelector(
-  [selectMessageReducer],
-  (message) => message.title
-);
-
-export const selectMessageText = createSelector(
-  [selectMessageReducer],
-  (message) => message.text
+  (message) => message.message
 );
