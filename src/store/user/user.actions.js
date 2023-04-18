@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { createAction } from "../../utils/reducer.utils";
+import { createAction } from "../../utils/reducer/reducer.utils";
 import { USER_ACTION_TYPES } from "./user.types";
 
 const { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILED } = USER_ACTION_TYPES;

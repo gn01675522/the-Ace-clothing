@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
-const CouponModal = ({ closeModal, getCoupons, type, tempCoupon }) => {
+import { fetchAdminCouponsAsync } from "../../store/adminCoupons/adminCoupons.actions";
+
+const CouponModal = ({ closeModal, type, tempCoupon }) => {
   const [tempData, setTempData] = useState({
     title: "",
     is_enabled: 1,
@@ -11,6 +14,8 @@ const CouponModal = ({ closeModal, getCoupons, type, tempCoupon }) => {
   });
 
   const [date, setDate] = useState(new Date());
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (type === "create") {
@@ -56,7 +61,7 @@ const CouponModal = ({ closeModal, getCoupons, type, tempCoupon }) => {
       });
       console.log(res);
       closeModal();
-      getCoupons();
+      dispatch(fetchAdminCouponsAsync());
     } catch (error) {
       console.log(error);
     }

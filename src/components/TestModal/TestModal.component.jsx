@@ -1,14 +1,9 @@
 import ModalPortal from "../Modal/ModalPortal.component";
 
-const DeleteModal = ({ close, text, handleDelete, id }) => {
+//* 測試用，複製 DeleteModal
+const TestModal = ({ close, text, handleDelete, id }) => {
   return (
-    <div
-      className="modal fade"
-      tabIndex="-1"
-      id="deleteModal"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <ModalPortal>
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header bg-danger">
@@ -37,8 +32,8 @@ const DeleteModal = ({ close, text, handleDelete, id }) => {
           </div>
         </div>
       </div>
-    </div>
+    </ModalPortal>
   );
 };
 
-export default DeleteModal;
+export default TestModal;

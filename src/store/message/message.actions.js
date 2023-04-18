@@ -1,5 +1,5 @@
+import { createAction } from "../../utils/reducer/reducer.utils";
 import { MESSAGE_ACTION_TYPES } from "./message.types";
-import { createAction } from "../../utils/reducer.utils";
 
 const { POST_MESSAGE, CLEAR_MESSAGE } = MESSAGE_ACTION_TYPES;
 

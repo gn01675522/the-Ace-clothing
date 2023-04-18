@@ -1,17 +1,22 @@
 import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Modal } from "bootstrap";
 
 import CouponModal from "../../../components/CouponModal/CouponModal";
 import DeleteModal from "../../../components/DeleteModal/DeleteModal";
 import Pagination from "../../../components/Pagination/Pagination";
+import { fetchAdminCouponsAsync } from "../../../store/adminCoupons/adminCoupons.actions";
+import { selectAdminCoupons } from "../../../store/adminCoupons/adminCoupons.selector";
+import { selectAdminCouponsPagination } from "../../../store/adminCoupons/adminCoupons.selector";
 
 const AdminCoupons = () => {
-  const [coupons, setCoupons] = useState([]);
-  const [pagination, setPagination] = useState({});
-  // type: 決定 modal 展開的用途
   const [type, setType] = useState("create"); // edit
+  // type: 決定 modal 展開的用途
   const [tempCoupon, setTempCoupon] = useState({});
+  const dispatch = useDispatch();
+  const coupons = useSelector(selectAdminCoupons);
+  const pagination = useSelector(selectAdminCouponsPagination);
 
   const couponModal = useRef(null);
   const deleteModal = useRef(null);
@@ -23,23 +28,17 @@ const AdminCoupons = () => {
     deleteModal.current = new Modal("#deleteModal", {
       backdrop: "static",
     });
-
-    getCoupons();
+    dispatch(fetchAdminCouponsAsync());
   }, []);
-
-  const getCoupons = async (page = 1) => {
-    const res = await axios.get(
-      `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupons?page=${page}`
-    );
-    console.log(res);
-    setCoupons(res.data.coupons);
-    setPagination(res.data.pagination);
-  };
 
   const openCouponModal = (type, item) => {
     setType(type);
     setTempCoupon(item);
     couponModal.current.show();
+  };
+
+  const changePage = (page) => {
+    dispatch(fetchAdminCouponsAsync(page));
   };
 
   const closeModal = () => {
@@ -61,7 +60,7 @@ const AdminCoupons = () => {
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon/${id}`
       );
       if (res.data.success) {
-        getCoupons();
+        dispatch(fetchAdminCouponsAsync());
         deleteModal.current.hide();
       }
       console.log(res);
@@ -74,7 +73,6 @@ const AdminCoupons = () => {
     <div className="p-3">
       <CouponModal
         closeModal={closeModal}
-        getCoupons={getCoupons}
         tempCoupon={tempCoupon}
         type={type}
       />
@@ -136,7 +134,7 @@ const AdminCoupons = () => {
           })}
         </tbody>
       </table>
-      <Pagination pagination={pagination} changePage={getCoupons} />
+      <Pagination pagination={pagination} changePage={changePage} />
     </div>
   );
 };

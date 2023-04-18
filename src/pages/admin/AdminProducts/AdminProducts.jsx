@@ -1,19 +1,23 @@
 import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+
 import ProductModal from "../../../components/ProductModal/ProductModal";
 import DeleteModal from "../../../components/DeleteModal/DeleteModal";
 import Pagination from "../../../components/Pagination/Pagination";
 import { Modal } from "bootstrap";
 
-const AdminProducts = () => {
-  const [products, setProducts] = useState([]);
-  const [pagination, setPagination] = useState({});
-  // type: 決定 modal 展開的用途
-  const [type, setType] = useState("create"); // edit
-  const [tempProduct, setTempProduct] = useState({});
+import { fetchAdminProductAsync } from "../../../store/adminProduct/adminProduct.actions";
+import { selectAdminProducts } from "../../../store/adminProduct/adminProduct.selector";
 
+const AdminProducts = () => {
+  const [type, setType] = useState("create");
+  // type: 決定 modal 展開的用途
+  const [tempProduct, setTempProduct] = useState({});
+  const dispatch = useDispatch();
   const productModal = useRef(null);
   const deleteModal = useRef(null);
+  const products = useSelector(selectAdminProducts);
 
   useEffect(() => {
     productModal.current = new Modal("#productModal", {
@@ -22,37 +26,14 @@ const AdminProducts = () => {
     deleteModal.current = new Modal("#deleteModal", {
       backdrop: "static",
     });
-
-    getProducts();
+    dispatch(fetchAdminProductAsync());
   }, []);
+  //* 設定 modal 背景為不可動，以及於 mounted 的時候 fetch 資料
 
-  const getProducts = async (page = 1) => {
-    const productRes = await axios.get(
-      `/v2/api/${process.env.REACT_APP_API_PATH}/admin/products?page=${page}`
-    );
-    console.log(productRes);
-    setProducts(productRes.data.products);
-    setPagination(productRes.data.pagination);
+  const changePage = (page) => {
+    dispatch(fetchAdminProductAsync(page));
   };
-
-  const openProductModal = (type, product) => {
-    setType(type);
-    setTempProduct(product);
-    productModal.current.show();
-  };
-
-  const closeProductModal = () => {
-    productModal.current.hide();
-  };
-
-  const openDeleteModal = (product) => {
-    setTempProduct(product);
-    deleteModal.current.show();
-  };
-
-  const closeDeleteModal = () => {
-    deleteModal.current.hide();
-  };
+  //* 透過 api 取得切換頁面後的產品資料
 
   const deleteProduct = async (id) => {
     try {
@@ -60,7 +41,7 @@ const AdminProducts = () => {
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${id}`
       );
       if (res.data.success) {
-        getProducts();
+        // getProducts();
         deleteModal.current.hide();
       }
       console.log(res);
@@ -68,12 +49,36 @@ const AdminProducts = () => {
       console.log(error);
     }
   };
+  //* 透過 api 刪除產品資料
+
+  const openProductModal = (type, product) => {
+    setType(type);
+    setTempProduct(product);
+    productModal.current.show();
+  };
+  //* 開啟編輯 modal
+
+  const closeProductModal = () => {
+    productModal.current.hide();
+  };
+  //* 關閉編輯 modal
+
+  const openDeleteModal = (product) => {
+    setTempProduct(product);
+    deleteModal.current.show();
+  };
+  //* 打開刪除 modal
+
+  const closeDeleteModal = () => {
+    deleteModal.current.hide();
+  };
+  //* 關閉刪除 modal
 
   return (
     <div className="p-3">
       <ProductModal
         closeProductModal={closeProductModal}
-        getProducts={getProducts}
+        getProducts={products}
         tempProduct={tempProduct}
         type={type}
       />
@@ -133,7 +138,7 @@ const AdminProducts = () => {
           })}
         </tbody>
       </table>
-      <Pagination pagination={pagination} changePage={getProducts} />
+      <Pagination changePage={changePage} />
     </div>
   );
 };
