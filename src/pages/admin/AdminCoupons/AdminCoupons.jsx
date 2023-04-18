@@ -7,8 +7,10 @@ import CouponModal from "../../../components/CouponModal/CouponModal";
 import DeleteModal from "../../../components/DeleteModal/DeleteModal";
 import Pagination from "../../../components/Pagination/Pagination";
 import { fetchAdminCouponsAsync } from "../../../store/adminCoupons/adminCoupons.actions";
-import { selectAdminCoupons } from "../../../store/adminCoupons/adminCoupons.selector";
-import { selectAdminCouponsPagination } from "../../../store/adminCoupons/adminCoupons.selector";
+import {
+  selectAdminCoupons,
+  selectAdminCouponsPagination,
+} from "../../../store/adminCoupons/adminCoupons.selector";
 
 const AdminCoupons = () => {
   const [type, setType] = useState("create"); // edit

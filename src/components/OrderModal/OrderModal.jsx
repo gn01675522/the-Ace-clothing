@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { setHandleMessage } from "../../store/message/message.actions";
+import { fetchAdminOrdersAsync } from "../../store/adminOrders/adminOrders.actions";
 
-const OrderModal = ({ closeProductModal, getOrders, tempOrder }) => {
+const OrderModal = ({ closeProductModal, tempOrder }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [tempData, setTempData] = useState({
     is_paid: "",
@@ -42,7 +43,7 @@ const OrderModal = ({ closeProductModal, getOrders, tempOrder }) => {
       console.log(res);
       dispatch(setHandleMessage("success", res));
       setIsLoading(false);
-      getOrders();
+      dispatch(fetchAdminOrdersAsync());
     } catch (error) {
       console.log(error);
       setIsLoading(false);

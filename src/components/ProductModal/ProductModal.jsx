@@ -3,13 +3,9 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { setHandleMessage } from "../../store/message/message.actions";
+import { fetchAdminProductAsync } from "../../store/adminProduct/adminProduct.actions";
 
-const ProductModal = ({
-  closeProductModal,
-  getProducts,
-  type,
-  tempProduct,
-}) => {
+const ProductModal = ({ closeProductModal, type, tempProduct }) => {
   const [tempData, setTempData] = useState({
     title: "",
     category: "",
@@ -66,7 +62,7 @@ const ProductModal = ({
       });
       dispatch(setHandleMessage("success", res));
       closeProductModal();
-      getProducts();
+      dispatch(fetchAdminProductAsync());
     } catch (error) {
       dispatch(setHandleMessage("error", error));
       console.log(error);

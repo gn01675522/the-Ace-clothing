@@ -8,7 +8,10 @@ import Pagination from "../../../components/Pagination/Pagination";
 import { Modal } from "bootstrap";
 
 import { fetchAdminProductAsync } from "../../../store/adminProduct/adminProduct.actions";
-import { selectAdminProducts } from "../../../store/adminProduct/adminProduct.selector";
+import {
+  selectAdminProducts,
+  selectAdminProductPagination,
+} from "../../../store/adminProduct/adminProduct.selector";
 
 const AdminProducts = () => {
   const [type, setType] = useState("create");
@@ -18,6 +21,7 @@ const AdminProducts = () => {
   const productModal = useRef(null);
   const deleteModal = useRef(null);
   const products = useSelector(selectAdminProducts);
+  const pagination = useSelector(selectAdminProductPagination);
 
   useEffect(() => {
     productModal.current = new Modal("#productModal", {
@@ -78,7 +82,6 @@ const AdminProducts = () => {
     <div className="p-3">
       <ProductModal
         closeProductModal={closeProductModal}
-        getProducts={products}
         tempProduct={tempProduct}
         type={type}
       />
@@ -138,7 +141,7 @@ const AdminProducts = () => {
           })}
         </tbody>
       </table>
-      <Pagination changePage={changePage} />
+      <Pagination changePage={changePage} pagination={pagination} />
     </div>
   );
 };

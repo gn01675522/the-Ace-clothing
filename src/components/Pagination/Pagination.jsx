@@ -1,8 +1,4 @@
-import { useSelector } from "react-redux";
-import { selectAdminProductPagination } from "../../store/adminProduct/adminProduct.selector";
-
-const Pagination = ({ changePage }) => {
-  const pagination = useSelector(selectAdminProductPagination);
+const Pagination = ({ changePage, pagination }) => {
   const { has_pre, has_next, current_page, total_pages } = pagination;
 
   return (

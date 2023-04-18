@@ -1,34 +1,35 @@
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "bootstrap";
 
 import OrderModal from "../../../components/OrderModal/OrderModal";
 import Pagination from "../../../components/Pagination/Pagination";
 
-const AdminOrders = () => {
-  const [orders, setOrders] = useState([]);
-  const [pagination, setPagination] = useState({});
-  // type: 決定 modal 展開的用途
-  const [type, setType] = useState("create"); // edit
-  const [tempOrder, setTempOrder] = useState({});
+import { fetchAdminOrdersAsync } from "../../../store/adminOrders/adminOrders.actions";
+import {
+  selectAdminOrders,
+  selectAdminOrdersPagination,
+} from "../../../store/adminOrders/adminOrders.selector";
 
+const AdminOrders = () => {
+  const [type, setType] = useState("create"); // edit
+  // type: 決定 modal 展開的用途
+  const [tempOrder, setTempOrder] = useState({});
+  const dispatch = useDispatch();
   const orderModal = useRef(null);
+
+  const orders = useSelector(selectAdminOrders);
+  const pagination = useSelector(selectAdminOrdersPagination);
 
   useEffect(() => {
     orderModal.current = new Modal("#orderModal", {
       backdrop: "static",
     });
-
-    getOrders();
+    dispatch(fetchAdminOrdersAsync());
   }, []);
 
-  const getOrders = async (page = 1) => {
-    const res = await axios.get(
-      `/v2/api/${process.env.REACT_APP_API_PATH}/admin/orders?page=${page}`
-    );
-    console.log(res);
-    setOrders(res.data.orders);
-    setPagination(res.data.pagination);
+  const changePage = (page) => {
+    dispatch(fetchAdminOrdersAsync(page));
   };
 
   const openOrderModal = (order) => {
@@ -44,7 +45,6 @@ const AdminOrders = () => {
     <div className="p-3">
       <OrderModal
         closeProductModal={closeOrderModal}
-        getOrders={getOrders}
         tempOrder={tempOrder}
       />
       <h3>訂單列表</h3>
@@ -101,7 +101,7 @@ const AdminOrders = () => {
           })}
         </tbody>
       </table>
-      <Pagination pagination={pagination} changePage={getOrders} />
+      <Pagination pagination={pagination} changePage={changePage} />
     </div>
   );
 };
