@@ -6,9 +6,12 @@ const {
   FETCH_CART_ITEMS_START,
   FETCH_CART_ITEMS_SUCCESS,
   FETCH_CART_ITEMS_FAILED,
-  ADD_CART_ITEMS_START,
-  ADD_CART_ITEMS_SUCCESS,
-  ADD_CART_ITEMS_FAILED,
+  SET_CART_ITEMS_START,
+  SET_CART_ITEMS_SUCCESS,
+  SET_CART_ITEMS_FAILED,
+  SET_CART_ITEMS_UPDATE_START,
+  SET_CART_ITEMS_UPDATE_SUCCESS,
+  SET_CART_ITEMS_UPDATE_FAILED,
 } = CART_ACTION_TYPES;
 
 export const fetchCartItemsStart = () => createAction(FETCH_CART_ITEMS_START);
@@ -18,13 +21,23 @@ export const fetchCartItemsSuccess = (data) =>
 
 export const fetchCartItemsFailed = (error) =>
   createAction(FETCH_CART_ITEMS_FAILED, error);
+//* 以上為 擷取 api 資料
 
-export const addCartItemStart = () => createAction(ADD_CART_ITEMS_START);
+export const setCartItemStart = () => createAction(SET_CART_ITEMS_START);
 
-export const addCartItemSuccess = () => createAction(ADD_CART_ITEMS_SUCCESS);
+export const setCartItemSuccess = () => createAction(SET_CART_ITEMS_SUCCESS);
 
-export const addCartItemFailed = (error) =>
-  createAction(ADD_CART_ITEMS_FAILED, error);
+export const setCartItemFailed = (error) =>
+  createAction(SET_CART_ITEMS_FAILED, error);
+
+export const setUpdateCartItemStart = (data) =>
+  createAction(SET_CART_ITEMS_UPDATE_START, data);
+
+export const setUpdateCartItemSuccess = () =>
+  createAction(SET_CART_ITEMS_UPDATE_SUCCESS);
+
+export const setUpdateCartItemFailed = (error) =>
+  createAction(SET_CART_ITEMS_UPDATE_FAILED, error);
 
 export const fetchCartItemsAsync = () => {
   return async (dispatch) => {
@@ -42,18 +55,50 @@ export const fetchCartItemsAsync = () => {
 
 export const setAddItemToCartAsync = (data) => {
   return async (dispatch) => {
-    dispatch(addCartItemStart());
+    dispatch(setCartItemStart());
     try {
       const res = await axios.post(
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart`,
         data
       );
       console.log(res);
-      dispatch(addCartItemSuccess());
+      dispatch(setCartItemSuccess());
     } catch (error) {
-      dispatch(addCartItemFailed(error));
+      dispatch(setCartItemFailed(error));
     }
   };
 };
 
-export const setRemoveItemToCartAsync = () => {};
+export const setRemoveItemToCartAsync = (id) => {
+  return async (dispatch) => {
+    dispatch(setCartItemStart());
+    try {
+      const res = await axios.delete(
+        `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${id}`
+      );
+      dispatch(setCartItemSuccess());
+      dispatch(fetchCartItemsAsync());
+    } catch (error) {
+      dispatch(setCartItemFailed(error));
+    }
+  };
+};
+
+export const setUpdateCartItemAsync = (item, quantity, loadingItems) => {
+  return async (dispatch) => {
+    const data = {
+      data: { product_id: item.product_id, qty: quantity },
+    };
+    dispatch(setUpdateCartItemStart([...loadingItems, item.id]));
+    try {
+      const res = await axios.put(
+        `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${item.id}`,
+        data
+      );
+      dispatch(setUpdateCartItemSuccess());
+      dispatch(fetchCartItemsAsync());
+    } catch (error) {
+      dispatch(setUpdateCartItemFailed(error));
+    }
+  };
+};

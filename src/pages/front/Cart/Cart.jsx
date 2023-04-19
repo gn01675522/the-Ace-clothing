@@ -1,45 +1,29 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
 
-import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
-import { selectCartItems } from "../../../store/cart/cart.selector";
+import {
+  setRemoveItemToCartAsync,
+  setUpdateCartItemAsync,
+} from "../../../store/cart/cart.actions";
+import {
+  selectCartItems,
+  selectCartLoadingItems,
+} from "../../../store/cart/cart.selector";
 
 const Cart = () => {
-  const [loadingItems, setLoadingItems] = useState([]);
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+  const loadingItems = useSelector(selectCartLoadingItems);
 
-  const removeCartItem = async (id) => {
-    try {
-      const res = await axios.delete(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${id}`
-      );
-      dispatch(fetchCartItemsAsync());
-    } catch (error) {
-      console.log(error);
-    }
+  const removeCartItem = (id) => {
+    dispatch(setRemoveItemToCartAsync(id));
   };
+  //* 移除購物車單項物件
 
-  const updateCartItem = async (item, quantity) => {
-    const data = {
-      data: { product_id: item.product_id, qty: quantity },
-    };
-    setLoadingItems([...loadingItems, item.id]);
-    try {
-      const res = await axios.put(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${item.id}`,
-        data
-      );
-      setLoadingItems(
-        loadingItems.filter((loadingObject) => loadingObject !== item.id)
-      );
-      dispatch(fetchCartItemsAsync());
-    } catch (error) {
-      console.log(error);
-    }
+  const updateCartItem = (item, quantity) => {
+    dispatch(setUpdateCartItemAsync(item, quantity, loadingItems));
   };
+  //* 透過下拉式選單選擇數量
 
   return (
     <div className="container">
@@ -81,6 +65,7 @@ const Cart = () => {
                         className="form-select"
                         value={item.qty}
                         disabled={loadingItems.includes(item.id)}
+                        // disabled={isLoading}
                         onChange={(e) => {
                           updateCartItem(item, e.target.value * 1);
                         }}
