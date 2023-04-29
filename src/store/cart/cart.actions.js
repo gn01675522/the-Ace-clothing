@@ -39,6 +39,9 @@ export const setUpdateCartItemSuccess = () =>
 export const setUpdateCartItemFailed = (error) =>
   createAction(SET_CART_ITEMS_UPDATE_FAILED, error);
 
+//******************************** Sync **********************************************/
+//******************************** Async **********************************************/
+
 export const fetchCartItemsAsync = () => {
   return async (dispatch) => {
     dispatch(fetchCartItemsStart());
@@ -48,7 +51,7 @@ export const fetchCartItemsAsync = () => {
       );
       dispatch(fetchCartItemsSuccess(res.data.data));
     } catch (error) {
-      dispatch(fetchCartItemsFailed(error));
+      dispatch(fetchCartItemsFailed(error.response.data));
     }
   };
 };
@@ -64,7 +67,7 @@ export const setAddItemToCartAsync = (data) => {
       dispatch(setCartItemSuccess());
       dispatch(fetchCartItemsAsync());
     } catch (error) {
-      dispatch(setCartItemFailed(error));
+      dispatch(setCartItemFailed(error.response.data));
     }
   };
 };
@@ -79,7 +82,7 @@ export const setRemoveItemToCartAsync = (id) => {
       dispatch(setCartItemSuccess());
       dispatch(fetchCartItemsAsync());
     } catch (error) {
-      dispatch(setCartItemFailed(error));
+      dispatch(setCartItemFailed(error.response.data));
     }
   };
 };
@@ -98,7 +101,7 @@ export const setUpdateCartItemAsync = (item, quantity, loadingItems) => {
       dispatch(setUpdateCartItemSuccess());
       dispatch(fetchCartItemsAsync());
     } catch (error) {
-      dispatch(setUpdateCartItemFailed(error));
+      dispatch(setUpdateCartItemFailed(error.response.data));
     }
   };
 };

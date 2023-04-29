@@ -16,6 +16,14 @@ const {
   SET_ADMIN_PRODUCT_TEMP_DATA,
 } = ADMIN_PRODUCT_ACTION_TYPES;
 
+const cleanedDataHelper = (formData) => {
+  const cleanImagesArray = formData.imagesUrl.filter((url) => url !== "");
+  const cleanedData = { ...formData, imagesUrl: cleanImagesArray };
+  return cleanedData;
+};
+//******************************** Helper **********************************************/
+//******************************** Sync **********************************************/
+
 export const fetchAdminProductStart = () =>
   createAction(FETCH_ADMIN_PRODUCT_START);
 
@@ -55,11 +63,8 @@ export const fetchAdminProductAsync = (page = 1) => {
           pagination: res.data.pagination,
         })
       );
-      if (res.data.success) {
-        dispatch(setAdminProductModalOpen(false));
-      }
     } catch (error) {
-      dispatch(fetchAdminProductFailed(error));
+      dispatch(fetchAdminProductFailed(error.response.data));
     }
   };
 };
@@ -77,7 +82,7 @@ export const deleteAdminProductAsync = (id) => {
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setAdminProductFailed(error));
+      dispatch(setAdminProductFailed(error.response.data));
       dispatch(setHandleMessage("error", error));
     }
   };
@@ -85,13 +90,14 @@ export const deleteAdminProductAsync = (id) => {
 //* 刪除 products data action
 
 export const updateAdminProductAsync = (id, data) => {
+  const newFormData = cleanedDataHelper(data);
   return async (dispatch) => {
     dispatch(setAdminProductStart());
     try {
       const res = await axios.put(
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${id}`,
         {
-          data,
+          data: newFormData,
         }
       );
       dispatch(setAdminProductSuccess());
@@ -99,7 +105,7 @@ export const updateAdminProductAsync = (id, data) => {
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setAdminProductFailed(error));
+      dispatch(setAdminProductFailed(error.response.data));
       dispatch(setHandleMessage("error", error));
     }
   };
@@ -107,13 +113,14 @@ export const updateAdminProductAsync = (id, data) => {
 //* 更新 products data action
 
 export const createAdminProductAsync = (data) => {
+  const newFormData = cleanedDataHelper(data);
   return async (dispatch) => {
     dispatch(setAdminProductStart());
     try {
       const res = await axios.post(
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`,
         {
-          data,
+          data: newFormData,
         }
       );
       dispatch(setAdminProductSuccess());
@@ -121,7 +128,7 @@ export const createAdminProductAsync = (data) => {
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setAdminProductFailed(error));
+      dispatch(setAdminProductFailed(error.response.data));
       dispatch(setHandleMessage("error", error));
     }
   };

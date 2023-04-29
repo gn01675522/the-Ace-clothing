@@ -12,7 +12,3 @@ export const selectUserOrderId = createSelector(
   (userOrder) => userOrder.orderId
 );
 
-export const selectUserOrderActionState = createSelector(
-  [selectUserOrderReducer],
-  (userOrder) => userOrder.actionState
-);

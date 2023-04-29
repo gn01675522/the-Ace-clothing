@@ -27,6 +27,7 @@ export const adminOrdersReducer = (state = INITIAL_STATE, action = {}) => {
     case FETCH_ADMIN_ORDERS_START:
     case SET_ADMIN_ORDERS_START:
       return { ...state, isLoading: true };
+
     case FETCH_ADMIN_ORDERS_SUCCESS:
       return {
         ...state,
@@ -34,15 +35,22 @@ export const adminOrdersReducer = (state = INITIAL_STATE, action = {}) => {
         pagination: payload.pagination,
         isLoading: false,
       };
+
+    case FETCH_ADMIN_ORDERS_FAILED:
+      return { ...state, isLoading: false, error: payload };
+
     case SET_ADMIN_ORDERS_SUCCESS:
       return { ...state, isModalOpen: false, isLoading: false };
-    case FETCH_ADMIN_ORDERS_FAILED:
+
     case SET_ADMIN_ORDERS_FAILED:
       return { ...state, error: payload, isLoading: false, isModalOpen: false };
+
     case SET_ADMIN_ORDERS_MODAL_OPEN:
       return { ...state, isModalOpen: payload };
+
     case SET_ADMIN_ORDERS_TEMP_DATA:
       return { ...state, tempData: payload };
+
     default:
       return state;
   }

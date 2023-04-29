@@ -22,10 +22,12 @@ const INITIAL_STATE = {
 
 export const adminCouponsReducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload } = action;
+
   switch (type) {
     case FETCH_ADMIN_COUPONS_START:
     case SET_ADMIN_COUPONS_START:
       return { ...state, isLoading: true };
+
     case FETCH_ADMIN_COUPONS_SUCCESS:
       return {
         ...state,
@@ -33,16 +35,22 @@ export const adminCouponsReducer = (state = INITIAL_STATE, action = {}) => {
         pagination: payload.pagination,
         isLoading: false,
       };
+
+    case FETCH_ADMIN_COUPONS_FAILED:
+      return { ...state, isLoading: false, error: payload };
+
     case SET_ADMIN_COUPONS_SUCCESS:
       return { ...state, isLoading: false, isModalOpen: false };
-    case FETCH_ADMIN_COUPONS_FAILED:
-      return { ...state, error: payload, isLoading: false };
+
     case SET_ADMIN_COUPONS_FAILED:
-      return { ...state, error: payload, isModalOpen: false, isLoading: false };
+      return { ...state, isLoading: false, error: payload };
+
     case SET_ADMIN_COUPONS_IS_OPEN:
       return { ...state, isModalOpen: payload };
+
     case SET_ADMIN_COUPONS_TEMP_DATA:
       return { ...state, tempData: payload };
+
     default:
       return state;
   }

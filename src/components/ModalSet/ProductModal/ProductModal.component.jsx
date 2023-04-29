@@ -80,12 +80,10 @@ const ProductModal = ({ createOrEdit }) => {
   //* 針對每個 input 在新增內容時放入 formData
 
   const onSubmitHandler = () => {
-    const cleanImagesArray = formData.imagesUrl.filter((url) => url !== "");
-    const cleanedData = { ...formData, imagesUrl: cleanImagesArray };
     if (createOrEdit === "create") {
-      dispatch(createAdminProductAsync(cleanedData));
+      dispatch(createAdminProductAsync(formData));
     } else {
-      dispatch(updateAdminProductAsync(cleanedData.id, cleanedData));
+      dispatch(updateAdminProductAsync(formData.id, formData));
     }
   };
   //* 按下儲存鍵後提交資料

@@ -5,7 +5,6 @@ const { SET_USER_ORDER_START, SET_USER_ORDER_SUCCESS, SET_USER_ORDER_FAILED } =
 
 const INITIAL_STATE = {
   orderId: null,
-  actionSate: null,
   error: null,
   isLoading: false,
 };
@@ -15,16 +14,18 @@ export const userOrderReducer = (state = INITIAL_STATE, action = {}) => {
 
   switch (type) {
     case SET_USER_ORDER_START:
-      return { ...state, actionState: "start", isLoading: true };
+      return { ...state, isLoading: true };
+
     case SET_USER_ORDER_SUCCESS:
       return {
         ...state,
         orderId: payload,
-        actionState: "success",
         isLoading: false,
       };
+
     case SET_USER_ORDER_FAILED:
-      return { ...state, actionState: "error", isLoading: false };
+      return { ...state, isLoading: false };
+
     default:
       return state;
   }

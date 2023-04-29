@@ -57,12 +57,10 @@ const CouponModal = ({ createOrEdit }) => {
   };
 
   const onSubmitHandler = () => {
-    const time = date.getTime();
-    const submitFormData = { ...formData, due_date: time };
     if (createOrEdit === "create") {
-      dispatch(createAdminCouponAsync(submitFormData));
+      dispatch(createAdminCouponAsync(formData, date));
     } else {
-      dispatch(updateAdminCouponAsync(submitFormData));
+      dispatch(updateAdminCouponAsync(formData, date));
     }
   };
 

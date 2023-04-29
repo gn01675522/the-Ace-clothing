@@ -56,10 +56,11 @@ export const fetchAdminOrdersAsync = (page = 1) => {
         })
       );
     } catch (error) {
-      dispatch(fetchAdminOrdersFailed());
+      dispatch(fetchAdminOrdersFailed(error.response.data));
     }
   };
 };
+//* 擷取 admin orders api 中的資料
 
 export const updateAdminOrdersAsync = (data) => {
   return async (dispatch) => {
@@ -76,8 +77,9 @@ export const updateAdminOrdersAsync = (data) => {
       dispatch(fetchAdminOrdersAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setAdminOrdersFailed(error));
+      dispatch(setAdminOrdersFailed(error.response.data));
       dispatch(setHandleMessage("error", error));
     }
   };
 };
+//* 更新 admin orders api 中的資料

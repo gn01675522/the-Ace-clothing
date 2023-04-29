@@ -14,14 +14,17 @@ export const userReducer = (state = INITIAL_STATE, action = {}) => {
   switch (type) {
     case LOG_IN_START:
       return { ...state, isLoading: true };
+
     case LOG_IN_SUCCESS:
       return { ...state, isSuccess: payload, isLoading: false };
+
     case LOG_IN_FAILED:
       return {
         ...state,
         message: payload,
         isLoading: false,
       };
+
     default:
       return state;
   }

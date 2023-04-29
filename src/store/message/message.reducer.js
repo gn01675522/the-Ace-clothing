@@ -14,8 +14,10 @@ export const messageReducer = (state = INITIAL_STATE, action = {}) => {
   switch (type) {
     case POST_MESSAGE:
       return { hasMessage: true, message: payload };
+
     case CLEAR_MESSAGE:
       return { ...INITIAL_STATE };
+
     default:
       return state;
   }

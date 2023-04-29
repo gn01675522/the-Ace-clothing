@@ -30,6 +30,7 @@ export const adminProductReducer = (state = INITIAL_STATE, action = {}) => {
     case FETCH_ADMIN_PRODUCT_START:
     case SET_ADMIN_PRODUCT_START:
       return { ...state, isLoading: true };
+
     case FETCH_ADMIN_PRODUCT_SUCCESS:
       return {
         ...state,
@@ -37,25 +38,22 @@ export const adminProductReducer = (state = INITIAL_STATE, action = {}) => {
         pagination: payload.pagination,
         isLoading: false,
       };
-    case SET_ADMIN_PRODUCT_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        isModalOpen: false,
-      };
+
     case FETCH_ADMIN_PRODUCT_FAILED:
       return { ...state, isLoading: false, error: payload };
+
+    case SET_ADMIN_PRODUCT_SUCCESS:
+      return { ...state, isLoading: false, isModalOpen: false };
+
     case SET_ADMIN_PRODUCT_FAILED:
-      return {
-        ...state,
-        isLoading: false,
-        isModalOpen: false,
-        error: payload,
-      };
+      return { ...state, isLoading: false, error: payload };
+
     case SET_ADMIN_PRODUCT_TEMP_DATA:
       return { ...state, tempData: payload };
+
     case SET_ADMIN_PRODUCT_IS_OPEN:
       return { ...state, isModalOpen: payload };
+
     default:
       return state;
   }

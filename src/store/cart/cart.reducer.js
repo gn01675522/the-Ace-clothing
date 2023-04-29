@@ -36,6 +36,7 @@ export const cartReducer = (state = INITIAL_STATE, action = {}) => {
     case SET_CART_ITEMS_UPDATE_SUCCESS:
       return { ...state, loadingItems: [], isLoading: false };
     //* 之所以 loadingItems 會使用空陣列是因為原先的防呆方法會在快速調整兩個商品的時候造成其中一個商品 select 被永久 disabled
+
     case SET_CART_ITEMS_SUCCESS:
       return { ...state, isLoading: false };
 

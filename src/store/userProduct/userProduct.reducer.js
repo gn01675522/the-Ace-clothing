@@ -9,8 +9,8 @@ const {
 const INITIAL_STATE = {
   products: [],
   pagination: {},
-  error: null,
   isLoading: false,
+  error: null,
 };
 
 export const userProductReducer = (state = INITIAL_STATE, action = {}) => {
@@ -19,6 +19,7 @@ export const userProductReducer = (state = INITIAL_STATE, action = {}) => {
   switch (type) {
     case FETCH_USER_PRODUCT_START:
       return { ...state, isLoading: true };
+
     case FETCH_USER_PRODUCT_SUCCESS:
       return {
         ...state,
@@ -26,8 +27,10 @@ export const userProductReducer = (state = INITIAL_STATE, action = {}) => {
         pagination: payload.pagination,
         isLoading: false,
       };
+
     case FETCH_USER_PRODUCT_FAILED:
-      return { ...state, error: payload, isLoading: false };
+      return { ...state, isLoading: false, error: payload };
+
     default:
       return state;
   }

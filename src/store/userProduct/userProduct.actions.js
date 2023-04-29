@@ -17,6 +17,9 @@ export const fetchUserProductSuccess = (data) =>
 export const fetchUserProductFailed = (error) =>
   createAction(FETCH_USER_PRODUCT_FAILED, error);
 
+//******************************** Sync **********************************************/
+//******************************** Async **********************************************/
+
 export const fetchUserProductAsync = (page = 1) => {
   return async (dispatch) => {
     dispatch(fetchUserProductStart());
@@ -31,7 +34,7 @@ export const fetchUserProductAsync = (page = 1) => {
         })
       );
     } catch (error) {
-      dispatch(fetchUserProductFailed(error));
+      dispatch(fetchUserProductFailed(error.response.data));
     }
   };
 };

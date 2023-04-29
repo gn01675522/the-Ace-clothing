@@ -11,6 +11,9 @@ export const setUserLoginSuccess = (data) => createAction(LOG_IN_SUCCESS, data);
 
 export const setUserLoginFailed = (error) => createAction(LOG_IN_FAILED, error);
 
+//******************************** Sync **********************************************/
+//******************************** Async **********************************************/
+
 export const setCurrentUserAsync = (data) => {
   return async (dispatch) => {
     dispatch(setUserLoginStart());

@@ -13,6 +13,9 @@ export const setUserOrderSuccess = (data) =>
 export const setUserOrderFailed = (error) =>
   createAction(SET_USER_ORDER_FAILED, error);
 
+//******************************** Sync **********************************************/
+//******************************** Async **********************************************/
+
 export const setPostUserOrderAsync = (data) => {
   const { name, email, tel, address } = data;
   const form = {
@@ -29,7 +32,7 @@ export const setPostUserOrderAsync = (data) => {
       );
       dispatch(setUserOrderSuccess(res.data.orderId));
     } catch (error) {
-      dispatch(setUserOrderFailed(error));
+      dispatch(setUserOrderFailed(error.response.data));
     }
   };
 };
