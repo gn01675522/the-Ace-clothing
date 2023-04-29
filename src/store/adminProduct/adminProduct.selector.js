@@ -17,7 +17,22 @@ export const selectAdminProductPagination = createSelector(
   (adminProduct) => adminProduct.pagination
 );
 
+export const selectAdminProductActionState = createSelector(
+  [selectAdminProductReducer],
+  (adminProduct) => adminProduct.actionState
+);
+
+export const selectAdminProductTempData = createSelector(
+  [selectAdminProductReducer],
+  (adminProduct) => adminProduct.tempData
+);
+
 export const selectAdminProductIsModalOpen = createSelector(
   [selectAdminProductReducer],
   (adminProduct) => adminProduct.isModalOpen
+);
+
+export const selectAdminProductMessage = createSelector(
+  [selectAdminProductReducer],
+  (adminProduct) => adminProduct.message
 );

@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
-import AdminProducts from "./pages/admin/AdminProducts/AdminProducts";
-import AdminCoupons from "./pages/admin/AdminCoupons/AdminCoupons";
+import AdminProducts from "./pages/admin/AdminProducts/AdminProducts.component";
+import AdminCoupons from "./pages/admin/AdminCoupons/AdminCoupons.component";
 import AdminOrders from "./pages/admin/AdminOrders/AdminOrders";
 import FrontLayout from "./pages/front/FrontLayout/FrontLayout";
 import Home from "./pages/front/Home/Home";

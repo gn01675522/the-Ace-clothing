@@ -24,10 +24,8 @@ export const setErrorMessage = (error) =>
 export const setHandleMessage = (type, res) => {
   return (dispatch) => {
     if (type === "success") {
-      console.log("inside message action", res);
       dispatch(setSuccessMessage(res));
     } else if (type === "error") {
-      console.log("inside message action", res);
       dispatch(setErrorMessage(res));
     }
     setTimeout(() => {

@@ -1,93 +1,108 @@
+//* parent component：
+//* 1. ModalPortal.component.jsx
+
+//* 專門提供新增及更新後台產品使用，對應 redux 為 adminProduct
+
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-import { setHandleMessage } from "../../store/message/message.actions";
-import { fetchAdminProductAsync } from "../../store/adminProduct/adminProduct.actions";
+import {
+  updateAdminProductAsync,
+  createAdminProductAsync,
+  setAdminProductModalOpen,
+} from "../../../store/adminProduct/adminProduct.actions";
 
-const ProductModal = ({ closeProductModal, type, tempProduct }) => {
-  const [tempData, setTempData] = useState({
-    title: "",
-    category: "",
-    origin_price: 0,
-    price: 0,
-    unit: "",
-    description: "",
-    content: "",
-    is_enabled: 0,
-    imageUrl: "",
-  });
+import { selectAdminProductTempData } from "../../../store/adminProduct/adminProduct.selector";
+
+const defaultFormData = {
+  title: "",
+  category: "",
+  origin_price: 0,
+  price: 0,
+  unit: "",
+  description: "",
+  content: "",
+  is_enabled: 0,
+  imageUrl: "",
+  imagesUrl: [],
+};
+
+const ProductModal = ({ createOrEdit }) => {
+  const [formData, setFormData] = useState(defaultFormData);
   const dispatch = useDispatch();
+  const tempData = useSelector(selectAdminProductTempData);
 
   useEffect(() => {
-    if (type === "create") {
-      setTempData({
-        title: "",
-        category: "",
-        origin_price: 0,
-        price: 0,
-        unit: "",
-        description: "",
-        content: "",
-        is_enabled: 0,
-        imageUrl: "",
-      });
-    } else if (type === "edit") {
-      setTempData(tempProduct);
+    switch (createOrEdit) {
+      case "create":
+        setFormData(defaultFormData);
+        break;
+      case "edit":
+        if (tempData.imagesUrl) {
+          setFormData(tempData);
+        } else {
+          setFormData({ ...tempData, imagesUrl: [] });
+        }
+        break;
+      default:
+        throw new Error(`invalid input ${createOrEdit}`);
     }
-    console.log(type, tempProduct);
-  }, [type, tempProduct]);
+  }, [createOrEdit, tempData]);
+  //* 根據 type 開啟相對應 modal，並放入相對應資料
 
-  const handleChange = (e) => {
+  const onCloseModal = () => {
+    dispatch(setAdminProductModalOpen(false));
+  };
+  //* 關閉 modal 功能
+
+  const onAddInput = () => {
+    setFormData({
+      ...formData,
+      imagesUrl: [...formData.imagesUrl, ""],
+    });
+  };
+  //* 增加新增 imagesUrl 的 input
+
+  const onChangeHandler = (e, i) => {
     const { value, name } = e.target;
     if (["price", "origin_price"].includes(name)) {
-      setTempData({ ...tempData, [name]: Number(value) });
+      setFormData({ ...formData, [name]: Number(value) });
     } else if (name === "is_enabled") {
-      setTempData({ ...tempData, [name]: +e.target.checked });
+      setFormData({ ...formData, [name]: +e.target.checked });
+    } else if (name.startsWith("imagesUrl")) {
+      const newImages = [...formData.imagesUrl];
+      newImages[i] = value;
+      setFormData({ ...formData, imagesUrl: newImages });
     } else {
-      setTempData({ ...tempData, [name]: value });
+      setFormData({ ...formData, [name]: value });
     }
   };
+  //* 針對每個 input 在新增內容時放入 formData
 
-  const submit = async () => {
-    try {
-      let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`;
-      let method = "post";
-      if (type === "edit") {
-        api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${tempProduct.id}`;
-        method = "put";
-      }
-      const res = await axios[method](api, {
-        data: tempData,
-      });
-      dispatch(setHandleMessage("success", res));
-      closeProductModal();
-      dispatch(fetchAdminProductAsync());
-    } catch (error) {
-      dispatch(setHandleMessage("error", error));
-      console.log(error);
+  const onSubmitHandler = () => {
+    const cleanImagesArray = formData.imagesUrl.filter((url) => url !== "");
+    const cleanedData = { ...formData, imagesUrl: cleanImagesArray };
+    if (createOrEdit === "create") {
+      dispatch(createAdminProductAsync(cleanedData));
+    } else {
+      dispatch(updateAdminProductAsync(cleanedData.id, cleanedData));
     }
   };
+  //* 按下儲存鍵後提交資料
 
   return (
-    <div
-      className="modal fade"
-      tabIndex="-1"
-      id="productModal"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <>
       <div className="modal-dialog modal-lg">
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              {type === "create" ? "建立新商品" : `${tempData.title}`}
+              {createOrEdit === "create" ? "建立新商品" : `${formData.title}`}
             </h1>
             <button
               type="button"
               className="btn-close"
               aria-label="Close"
-              onClick={closeProductModal}
+              onClick={onCloseModal}
             />
           </div>
           <div className="modal-body">
@@ -95,26 +110,48 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
               <div className="col-sm-4">
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="image">
-                    輸入圖片網址
+                    主要圖片
                     <input
                       type="text"
                       name="imageUrl"
                       id="image"
                       placeholder="請輸入圖片連結"
                       className="form-control"
+                      onChange={onChangeHandler}
+                      value={formData.imageUrl}
                     />
                   </label>
                 </div>
+
                 <div className="form-group mb-2">
-                  <label className="w-100" htmlFor="customFile">
-                    或 上傳圖片
-                    <input
-                      type="file"
-                      id="customFile"
-                      className="form-control"
-                    />
-                  </label>
+                  <h6 className="w-100">
+                    次要圖片，可多張
+                    {formData.imagesUrl.map((url, i) => {
+                      return (
+                        <label className="w-100" htmlFor={`images${i}`} key={i}>
+                          圖片 - {i}
+                          <input
+                            type="text"
+                            name={`imagesUrl${i}`}
+                            id={`images${i}`}
+                            placeholder="請輸入圖片連結"
+                            className="form-control"
+                            onChange={(e) => onChangeHandler(e, i)}
+                            value={url}
+                          />
+                        </label>
+                      );
+                    })}
+                  </h6>
                 </div>
+
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={onAddInput}
+                >
+                  新增圖片
+                </button>
                 <img src="" alt="" className="img-fluid" />
               </div>
               <div className="col-sm-8">
@@ -127,8 +164,8 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
                       name="title"
                       placeholder="請輸入標題"
                       className="form-control"
-                      onChange={handleChange}
-                      value={tempData.title}
+                      onChange={onChangeHandler}
+                      value={formData.title}
                     />
                   </label>
                 </div>
@@ -142,8 +179,8 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
                         name="category"
                         placeholder="請輸入分類"
                         className="form-control"
-                        onChange={handleChange}
-                        value={tempData.category}
+                        onChange={onChangeHandler}
+                        value={formData.category}
                       />
                     </label>
                   </div>
@@ -156,8 +193,8 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
                         name="unit"
                         placeholder="請輸入單位"
                         className="form-control"
-                        onChange={handleChange}
-                        value={tempData.unit}
+                        onChange={onChangeHandler}
+                        value={formData.unit}
                       />
                     </label>
                   </div>
@@ -172,8 +209,8 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
                         name="origin_price"
                         placeholder="請輸入原價"
                         className="form-control"
-                        onChange={handleChange}
-                        value={tempData.origin_price}
+                        onChange={onChangeHandler}
+                        value={formData.origin_price}
                       />
                     </label>
                   </div>
@@ -186,8 +223,8 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
                         name="price"
                         placeholder="請輸入售價"
                         className="form-control"
-                        onChange={handleChange}
-                        value={tempData.price}
+                        onChange={onChangeHandler}
+                        value={formData.price}
                       />
                     </label>
                   </div>
@@ -202,8 +239,8 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
                       name="description"
                       placeholder="請輸入產品描述"
                       className="form-control"
-                      onChange={handleChange}
-                      value={tempData.description}
+                      onChange={onChangeHandler}
+                      value={formData.description}
                     />
                   </label>
                 </div>
@@ -216,8 +253,8 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
                       name="content"
                       placeholder="請輸入產品說明內容"
                       className="form-control"
-                      onChange={handleChange}
-                      value={tempData.content}
+                      onChange={onChangeHandler}
+                      value={formData.content}
                     />
                   </label>
                 </div>
@@ -234,8 +271,8 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
                         name="is_enabled"
                         placeholder="請輸入產品說明內容"
                         className="form-check-input"
-                        onChange={handleChange}
-                        checked={!!tempData.is_enabled}
+                        onChange={onChangeHandler}
+                        checked={!!formData.is_enabled}
                       />
                     </label>
                   </div>
@@ -247,17 +284,21 @@ const ProductModal = ({ closeProductModal, type, tempProduct }) => {
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={closeProductModal}
+              onClick={onCloseModal}
             >
               關閉
             </button>
-            <button type="button" className="btn btn-primary" onClick={submit}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={onSubmitHandler}
+            >
               儲存
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

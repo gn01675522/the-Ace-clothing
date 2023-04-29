@@ -61,8 +61,8 @@ export const setAddItemToCartAsync = (data) => {
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart`,
         data
       );
-      console.log(res);
       dispatch(setCartItemSuccess());
+      dispatch(fetchCartItemsAsync());
     } catch (error) {
       dispatch(setCartItemFailed(error));
     }

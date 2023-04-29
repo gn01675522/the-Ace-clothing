@@ -21,3 +21,8 @@ export const selectAdminCouponsIsModalOpen = createSelector(
   [selectAdminCouponsReducer],
   (adminCoupons) => adminCoupons.isModalOpen
 );
+
+export const selectAdminCouponsTempData = createSelector(
+  [selectAdminCouponsReducer],
+  (adminCoupons) => adminCoupons.tempData
+);

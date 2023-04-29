@@ -1,89 +1,68 @@
-import { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { Modal } from "bootstrap";
+//* parent component：
+//* 1. App.js
 
-import CouponModal from "../../../components/CouponModal/CouponModal";
-import DeleteModal from "../../../components/DeleteModal/DeleteModal";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import Pagination from "../../../components/Pagination/Pagination";
-import { fetchAdminCouponsAsync } from "../../../store/adminCoupons/adminCoupons.actions";
+import ModalPortal, {
+  MODAL_TYPE,
+} from "../../../components/ModalSet/ModalPortal.component";
+import { DELETE_MODAL_TYPE } from "../../../components/ModalSet/DeleteModal/DeleteModal.component";
+
 import {
+  fetchAdminCouponsAsync,
+  setAdminCouponsOpen,
+  setAdminCouponsTempData,
+} from "../../../store/adminCoupons/adminCoupons.actions";
+
+import {
+  selectAdminCouponsIsModalOpen,
   selectAdminCoupons,
   selectAdminCouponsPagination,
 } from "../../../store/adminCoupons/adminCoupons.selector";
 
 const AdminCoupons = () => {
-  const [type, setType] = useState("create"); // edit
+  const [createOrEdit, setCreateOrEdit] = useState("create"); // edit
   // type: 決定 modal 展開的用途
-  const [tempCoupon, setTempCoupon] = useState({});
+  const [openWhichModal, setOpenWhichModal] = useState("");
+  const [dataType, setDataType] = useState("");
   const dispatch = useDispatch();
   const coupons = useSelector(selectAdminCoupons);
   const pagination = useSelector(selectAdminCouponsPagination);
-
-  const couponModal = useRef(null);
-  const deleteModal = useRef(null);
+  const isModalOpen = useSelector(selectAdminCouponsIsModalOpen);
 
   useEffect(() => {
-    couponModal.current = new Modal("#productModal", {
-      backdrop: "static",
-    });
-    deleteModal.current = new Modal("#deleteModal", {
-      backdrop: "static",
-    });
     dispatch(fetchAdminCouponsAsync());
   }, []);
 
-  const openCouponModal = (type, item) => {
-    setType(type);
-    setTempCoupon(item);
-    couponModal.current.show();
-  };
-
-  const changePage = (page) => {
+  const onChangePageHandler = (page) => {
     dispatch(fetchAdminCouponsAsync(page));
   };
 
-  const closeModal = () => {
-    couponModal.current.hide();
+  const openCouponModal = (type, product) => {
+    setCreateOrEdit(type);
+    setOpenWhichModal(MODAL_TYPE.coupon);
+    dispatch(setAdminCouponsTempData(product));
+    dispatch(setAdminCouponsOpen(true));
   };
 
-  const openDeleteModal = (product) => {
-    setTempCoupon(product);
-    deleteModal.current.show();
-  };
-
-  const closeDeleteModal = () => {
-    deleteModal.current.hide();
-  };
-
-  const deleteCoupon = async (id) => {
-    try {
-      const res = await axios.delete(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon/${id}`
-      );
-      if (res.data.success) {
-        dispatch(fetchAdminCouponsAsync());
-        deleteModal.current.hide();
-      }
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
+  const onOpenDeleteModalHandler = (product) => {
+    setOpenWhichModal(MODAL_TYPE.delete);
+    setDataType(DELETE_MODAL_TYPE.adminCoupon);
+    dispatch(setAdminCouponsTempData(product));
+    dispatch(setAdminCouponsOpen(true));
   };
 
   return (
     <div className="p-3">
-      <CouponModal
-        closeModal={closeModal}
-        tempCoupon={tempCoupon}
-        type={type}
-      />
-      <DeleteModal
-        close={closeDeleteModal}
-        text={tempCoupon.title}
-        handleDelete={deleteCoupon}
-        id={tempCoupon.id}
-      />
+      {isModalOpen && (
+        <ModalPortal
+          openWhichModal={openWhichModal}
+          dataType={dataType}
+          createOrEdit={createOrEdit}
+        />
+      )}
       <h3>優惠券列表</h3>
       <hr />
       <div className="text-end">
@@ -126,7 +105,7 @@ const AdminCoupons = () => {
                   <button
                     type="button"
                     className="btn btn-outline-danger btn-sm ms-2"
-                    onClick={() => openDeleteModal(product)}
+                    onClick={() => onOpenDeleteModalHandler(product)}
                   >
                     刪除
                   </button>
@@ -136,7 +115,7 @@ const AdminCoupons = () => {
           })}
         </tbody>
       </table>
-      <Pagination pagination={pagination} changePage={changePage} />
+      <Pagination pagination={pagination} onChangePage={onChangePageHandler} />
     </div>
   );
 };

@@ -1,3 +1,7 @@
+// parent component：
+// 1. Dashboard.component.jsx
+// 2. ProductDetail.component.jsx
+
 import { useSelector } from "react-redux";
 import { selectMessage } from "../../store/message/message.selector";
 

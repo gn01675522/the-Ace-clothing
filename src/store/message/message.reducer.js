@@ -1,3 +1,4 @@
+// adminProduct redux
 import { MESSAGE_ACTION_TYPES } from "./message.types";
 
 const { POST_MESSAGE, CLEAR_MESSAGE } = MESSAGE_ACTION_TYPES;

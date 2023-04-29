@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-import { setHandleMessage } from "../../store/message/message.actions";
-import { fetchAdminOrdersAsync } from "../../store/adminOrders/adminOrders.actions";
+import {
+  setAdminOrdersIsModalOpen,
+  updateAdminOrdersAsync,
+} from "../../../store/adminOrders/adminOrders.actions";
+import {
+  selectAdminOrdersTempData,
+  selectAdminOrdersIsLoading,
+} from "../../../store/adminOrders/adminOrders.selector";
 
-const OrderModal = ({ closeProductModal, tempOrder }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [tempData, setTempData] = useState({
+const OrderModal = () => {
+  const tempOrder = useSelector(selectAdminOrdersTempData);
+  const isLoading = useSelector(selectAdminOrdersIsLoading);
+  const [formData, setFormData] = useState({
     is_paid: "",
     status: 0,
     ...tempOrder,
@@ -15,61 +21,43 @@ const OrderModal = ({ closeProductModal, tempOrder }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTempData({
+    setFormData({
       ...tempOrder,
       is_paid: tempOrder.is_paid,
       status: tempOrder.status,
     });
   }, [tempOrder]);
 
+  const onCloseModalHandler = () => {
+    dispatch(setAdminOrdersIsModalOpen(false));
+  };
+
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
     if (["is_paid"].includes(name)) {
-      setTempData((preState) => ({ ...preState, [name]: checked }));
+      setFormData((preState) => ({ ...preState, [name]: checked }));
     } else {
-      setTempData((preState) => ({ ...preState, [name]: value }));
+      setFormData((preState) => ({ ...preState, [name]: value }));
     }
   };
 
-  const submit = async () => {
-    setIsLoading(true);
-    try {
-      let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${tempOrder.id}`;
-      const res = await axios.put(api, {
-        data: {
-          ...tempData,
-        },
-      });
-      console.log(res);
-      dispatch(setHandleMessage("success", res));
-      setIsLoading(false);
-      dispatch(fetchAdminOrdersAsync());
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-      dispatch(setHandleMessage("error", error));
-    }
+  const submit = () => {
+    dispatch(updateAdminOrdersAsync(formData));
   };
 
   return (
-    <div
-      className="modal fade"
-      tabIndex="-1"
-      id="orderModal"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <>
       <div className="modal-dialog modal-lg">
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              {`編輯 ${tempData.id}`}
+              {`編輯 ${formData.id}`}
             </h1>
             <button
               type="button"
               className="btn-close"
               aria-label="Close"
-              onClick={closeProductModal}
+              onClick={onCloseModalHandler}
             />
           </div>
           <div className="modal-body">
@@ -155,11 +143,11 @@ const OrderModal = ({ closeProductModal, tempOrder }) => {
                     type="checkbox"
                     name="is_paid"
                     id="is_paid"
-                    checked={!!tempData.is_paid}
+                    checked={!!formData.is_paid}
                     onChange={handleChange}
                     disabled={isLoading}
                   />
-                  付款狀態 ({tempData.is_paid ? "已付款" : "未付款"})
+                  付款狀態 ({formData.is_paid ? "已付款" : "未付款"})
                 </label>
               </div>
               <div className="mb-4">
@@ -169,7 +157,7 @@ const OrderModal = ({ closeProductModal, tempOrder }) => {
                 <select
                   className="form-select"
                   name="status"
-                  value={tempData.status}
+                  value={formData.status}
                   onChange={handleChange}
                   disabled={isLoading}
                 >
@@ -185,7 +173,7 @@ const OrderModal = ({ closeProductModal, tempOrder }) => {
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={closeProductModal}
+              onClick={onCloseModalHandler}
             >
               關閉
             </button>
@@ -195,7 +183,7 @@ const OrderModal = ({ closeProductModal, tempOrder }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

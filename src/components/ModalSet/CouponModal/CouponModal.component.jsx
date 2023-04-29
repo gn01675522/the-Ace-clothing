@@ -1,91 +1,86 @@
+//* parent component：
+//* 1. ModalPortal.component.jsx
+
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-import { fetchAdminCouponsAsync } from "../../store/adminCoupons/adminCoupons.actions";
+import { selectAdminCouponsTempData } from "../../../store/adminCoupons/adminCoupons.selector";
+import { setAdminCouponsOpen } from "../../../store/adminCoupons/adminCoupons.actions";
 
-const CouponModal = ({ closeModal, type, tempCoupon }) => {
-  const [tempData, setTempData] = useState({
-    title: "",
-    is_enabled: 1,
-    percent: 80,
-    due_date: 1555459200,
-    code: "testCode",
-  });
+import {
+  createAdminCouponAsync,
+  updateAdminCouponAsync,
+} from "../../../store/adminCoupons/adminCoupons.actions";
 
+const defaultFormData = {
+  title: "",
+  is_enabled: 1,
+  percent: 80,
+  due_date: 1555459200,
+  code: "testCode",
+};
+
+const CouponModal = ({ createOrEdit }) => {
+  const [formData, setFormData] = useState(defaultFormData);
   const [date, setDate] = useState(new Date());
-
   const dispatch = useDispatch();
+  const tempCoupon = useSelector(selectAdminCouponsTempData);
 
   useEffect(() => {
-    if (type === "create") {
-      setTempData({
-        title: "",
-        is_enabled: 1,
-        percent: 80,
-        due_date: 1555459200,
-        code: "testCode",
-      });
-      setDate(new Date());
-    } else if (type === "edit") {
-      setTempData(tempCoupon);
-      setDate(new Date(tempCoupon.due_date));
+    switch (createOrEdit) {
+      case "create":
+        setFormData(defaultFormData);
+        setDate(new Date());
+        break;
+      case "edit":
+        setFormData(tempCoupon);
+        setDate(new Date(tempCoupon.due_date));
+        break;
+      default:
+        throw new Error(`invalid input ${createOrEdit}`);
     }
-    console.log(type, tempCoupon);
-  }, [type, tempCoupon]);
+  }, [createOrEdit, tempCoupon]);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
     if (name === "percent") {
-      setTempData({ ...tempData, [name]: Number(value) });
+      setFormData({ ...formData, [name]: Number(value) });
     } else if (name === "is_enabled") {
-      setTempData({ ...tempData, [name]: +e.target.checked });
+      setFormData({ ...formData, [name]: +e.target.checked });
     } else {
-      setTempData({ ...tempData, [name]: value });
+      setFormData({ ...formData, [name]: value });
     }
   };
 
-  const submit = async () => {
-    try {
-      let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon`;
-      let method = "post";
-      if (type === "edit") {
-        api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon/${tempCoupon.id}`;
-        method = "put";
-      }
-      const res = await axios[method](api, {
-        data: {
-          ...tempData,
-          due_date: date.getTime(), // 轉換成 unix timestamp
-        },
-      });
-      console.log(res);
-      closeModal();
-      dispatch(fetchAdminCouponsAsync());
-    } catch (error) {
-      console.log(error);
+  const onCloseModalHandler = () => {
+    dispatch(setAdminCouponsOpen(false));
+  };
+
+  const onSubmitHandler = () => {
+    const time = date.getTime();
+    const submitFormData = { ...formData, due_date: time };
+    if (createOrEdit === "create") {
+      dispatch(createAdminCouponAsync(submitFormData));
+    } else {
+      dispatch(updateAdminCouponAsync(submitFormData));
     }
   };
 
   return (
-    <div
-      className="modal fade"
-      tabIndex="-1"
-      id="productModal"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <>
       <div className="modal-dialog modal-lg">
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              {type === "create" ? "建立新優惠券" : `編輯 ${tempData.title}`}
+              {createOrEdit === "create"
+                ? "建立新優惠券"
+                : `編輯 ${formData.title}`}
             </h1>
             <button
               type="button"
               className="btn-close"
               aria-label="Close"
-              onClick={closeModal}
+              onClick={onCloseModalHandler}
             />
           </div>
           <div className="modal-body">
@@ -98,7 +93,7 @@ const CouponModal = ({ closeModal, type, tempCoupon }) => {
                   placeholder="請輸入標題"
                   name="title"
                   className="form-control mt-1"
-                  value={tempData.title}
+                  value={formData.title}
                   onChange={handleChange}
                 />
               </label>
@@ -113,7 +108,7 @@ const CouponModal = ({ closeModal, type, tempCoupon }) => {
                     id="percent"
                     placeholder="請輸入折扣（%）"
                     className="form-control mt-1"
-                    value={tempData.percent}
+                    value={formData.percent}
                     onChange={handleChange}
                   />
                 </label>
@@ -150,7 +145,7 @@ const CouponModal = ({ closeModal, type, tempCoupon }) => {
                     name="code"
                     placeholder="請輸入優惠碼"
                     className="form-control mt-1"
-                    value={tempData.code}
+                    value={formData.code}
                     onChange={handleChange}
                   />
                 </label>
@@ -162,7 +157,7 @@ const CouponModal = ({ closeModal, type, tempCoupon }) => {
                 type="checkbox"
                 id="is_enabled"
                 name="is_enabled"
-                checked={!!tempData.is_enabled}
+                checked={!!formData.is_enabled}
                 onChange={handleChange}
               />
               是否啟用
@@ -172,17 +167,21 @@ const CouponModal = ({ closeModal, type, tempCoupon }) => {
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={closeModal}
+              onClick={onCloseModalHandler}
             >
               關閉
             </button>
-            <button type="button" className="btn btn-primary" onClick={submit}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={onSubmitHandler}
+            >
               儲存
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

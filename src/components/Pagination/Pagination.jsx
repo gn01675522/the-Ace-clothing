@@ -1,4 +1,4 @@
-const Pagination = ({ changePage, pagination }) => {
+const Pagination = ({ onChangePage, pagination }) => {
   const { has_pre, has_next, current_page, total_pages } = pagination;
 
   return (
@@ -11,7 +11,7 @@ const Pagination = ({ changePage, pagination }) => {
             className={`page-link ${has_pre ? "" : "disabled"}`}
             onClick={(e) => {
               e.preventDefault();
-              changePage(current_page - 1);
+              onChangePage(current_page - 1);
             }}
           >
             <span aria-hidden="true">&laquo;</span>
@@ -25,7 +25,7 @@ const Pagination = ({ changePage, pagination }) => {
               href="/"
               onClick={(e) => {
                 e.preventDefault();
-                changePage(i + 1);
+                onChangePage(i + 1);
               }}
             >
               {i + 1}
@@ -37,7 +37,7 @@ const Pagination = ({ changePage, pagination }) => {
             className={`page-link ${has_next ? "" : "disabled"}`}
             onClick={(e) => {
               e.preventDefault();
-              changePage(current_page + 1);
+              onChangePage(current_page + 1);
             }}
             href="/"
             aria-label="Next"

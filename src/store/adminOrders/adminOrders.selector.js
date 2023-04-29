@@ -16,3 +16,13 @@ export const selectAdminOrdersIsLoading = createSelector(
   [selectAdminOrdersReducer],
   (adminOrders) => adminOrders.isLoading
 );
+
+export const selectAdminOrdersIsModalOpen = createSelector(
+  [selectAdminOrdersReducer],
+  (adminOrders) => adminOrders.isModalOpen
+);
+
+export const selectAdminOrdersTempData = createSelector(
+  [selectAdminOrdersReducer],
+  (adminOrders) => adminOrders.tempData
+);

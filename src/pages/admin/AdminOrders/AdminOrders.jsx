@@ -1,52 +1,46 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal } from "bootstrap";
 
-import OrderModal from "../../../components/OrderModal/OrderModal";
 import Pagination from "../../../components/Pagination/Pagination";
+import ModalPortal, {
+  MODAL_TYPE,
+} from "../../../components/ModalSet/ModalPortal.component";
 
-import { fetchAdminOrdersAsync } from "../../../store/adminOrders/adminOrders.actions";
+import {
+  fetchAdminOrdersAsync,
+  setAdminOrdersIsModalOpen,
+  setAdminOrdersTempData,
+} from "../../../store/adminOrders/adminOrders.actions";
 import {
   selectAdminOrders,
   selectAdminOrdersPagination,
+  selectAdminOrdersIsModalOpen,
 } from "../../../store/adminOrders/adminOrders.selector";
 
 const AdminOrders = () => {
-  const [type, setType] = useState("create"); // edit
-  // type: 決定 modal 展開的用途
-  const [tempOrder, setTempOrder] = useState({});
+  const [openWhichModal, setOpenWhichModal] = useState("");
   const dispatch = useDispatch();
-  const orderModal = useRef(null);
-
   const orders = useSelector(selectAdminOrders);
   const pagination = useSelector(selectAdminOrdersPagination);
+  const isModalOpen = useSelector(selectAdminOrdersIsModalOpen);
 
   useEffect(() => {
-    orderModal.current = new Modal("#orderModal", {
-      backdrop: "static",
-    });
     dispatch(fetchAdminOrdersAsync());
   }, []);
 
-  const changePage = (page) => {
+  const onChangePageHandler = (page) => {
     dispatch(fetchAdminOrdersAsync(page));
   };
 
-  const openOrderModal = (order) => {
-    setTempOrder(order);
-    orderModal.current.show();
-  };
-  const closeOrderModal = () => {
-    setTempOrder({});
-    orderModal.current.hide();
+  const onOpenModalHandler = (order) => {
+    setOpenWhichModal(MODAL_TYPE.order);
+    dispatch(setAdminOrdersTempData(order));
+    dispatch(setAdminOrdersIsModalOpen(true));
   };
 
   return (
     <div className="p-3">
-      <OrderModal
-        closeProductModal={closeOrderModal}
-        tempOrder={tempOrder}
-      />
+      {isModalOpen && <ModalPortal openWhichModal={openWhichModal} />}
       <h3>訂單列表</h3>
       <hr />
       <table className="table">
@@ -90,7 +84,7 @@ const AdminOrders = () => {
                     type="button"
                     className="btn btn-primary btn-sm"
                     onClick={() => {
-                      openOrderModal(order);
+                      onOpenModalHandler(order);
                     }}
                   >
                     查看
@@ -101,7 +95,7 @@ const AdminOrders = () => {
           })}
         </tbody>
       </table>
-      <Pagination pagination={pagination} changePage={changePage} />
+      <Pagination pagination={pagination} onChangePage={onChangePageHandler} />
     </div>
   );
 };

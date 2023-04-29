@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Input } from "../../../components/FormElements/FormElements";
 
 import { selectCartItems } from "../../../store/cart/cart.selector";
+import { selectUserOrderId } from "../../../store/userOrder/userOrder.selector";
+import { setPostUserOrderAsync } from "../../../store/userOrder/userOrder.actions";
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
@@ -14,26 +15,20 @@ const Checkout = () => {
     formState: { errors },
   } = useForm({ mode: "onTouched" });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const orderId = useSelector(selectUserOrderId);
 
   const onSubmit = async (data) => {
-    const { name, email, tel, address } = data;
-    const form = {
-      data: {
-        user: {
-          name,
-          email,
-          tel,
-          address,
-        },
-      },
-    };
-    const res = await axios.post(
-      `/v2/api/${process.env.REACT_APP_API_PATH}/order`,
-      form
-    );
-    console.log(res);
-    navigate(`/success/${res.data.orderId}`);
+    dispatch(setPostUserOrderAsync(data));
+    navigate(`/success/${orderId}`);
   };
+
+  // useEffect(() => {
+  //   if (actionState === "success") {
+  //     navigate(`/success/${orderId}`);
+  //   }
+  // }, [actionState]);
 
   return (
     <div className="bg-light pt-5 pb-7">

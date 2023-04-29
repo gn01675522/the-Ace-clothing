@@ -5,6 +5,7 @@ import { adminProductReducer } from "./adminProduct/adminProduct.reducer";
 import { adminCouponsReducer } from "./adminCoupons/adminCoupons.reducer";
 import { adminOrdersReducer } from "./adminOrders/adminOrders.reducer";
 import { userProductReducer } from "./userProduct/userProduct.reducer";
+import { userOrderReducer } from "./userOrder/userOrder.reducer";
 import { cartReducer } from "./cart/cart.reducer";
 
 export const rootReducer = combineReducers({
@@ -15,4 +16,5 @@ export const rootReducer = combineReducers({
   adminCoupons: adminCouponsReducer,
   adminOrders: adminOrdersReducer,
   userProduct: userProductReducer,
+  userOrder: userOrderReducer,
 });
