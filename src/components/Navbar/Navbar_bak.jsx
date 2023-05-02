@@ -19,7 +19,7 @@ const NavBar = () => {
               top: "50%",
             }}
           >
-            the One
+            the Ace
           </NavLink>
           <button
             className="navbar-toggler"

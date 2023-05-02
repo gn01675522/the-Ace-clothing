@@ -8,7 +8,10 @@ import { store } from "./store/store";
 
 import App from "./App";
 
-import "./stylesheets/all.scss";
+import "./stylesheets/_reset.scss";
+import "./stylesheets/main.scss";
+
+// import "./stylesheets/all.scss";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;

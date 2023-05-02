@@ -1,6 +1,9 @@
 import axios from "axios";
 import { createAction } from "../../utils/reducer/reducer.utils";
+
 import { CART_ACTION_TYPES } from "./cart.types";
+
+import { setHandleMessage } from "../message/message.actions";
 
 const {
   FETCH_CART_ITEMS_START,
@@ -21,7 +24,6 @@ export const fetchCartItemsSuccess = (data) =>
 
 export const fetchCartItemsFailed = (error) =>
   createAction(FETCH_CART_ITEMS_FAILED, error);
-//* 以上為 擷取 api 資料
 
 export const setCartItemStart = () => createAction(SET_CART_ITEMS_START);
 
@@ -65,9 +67,11 @@ export const setAddItemToCartAsync = (data) => {
         data
       );
       dispatch(setCartItemSuccess());
+      dispatch(setHandleMessage("success", res));
       dispatch(fetchCartItemsAsync());
     } catch (error) {
       dispatch(setCartItemFailed(error.response.data));
+      setHandleMessage("error", error);
     }
   };
 };
@@ -80,9 +84,11 @@ export const setRemoveItemToCartAsync = (id) => {
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${id}`
       );
       dispatch(setCartItemSuccess());
+      dispatch(setHandleMessage("success", res));
       dispatch(fetchCartItemsAsync());
     } catch (error) {
       dispatch(setCartItemFailed(error.response.data));
+      setHandleMessage("error", error);
     }
   };
 };
@@ -99,9 +105,11 @@ export const setUpdateCartItemAsync = (item, quantity, loadingItems) => {
         data
       );
       dispatch(setUpdateCartItemSuccess());
+      dispatch(setHandleMessage("success", res));
       dispatch(fetchCartItemsAsync());
     } catch (error) {
       dispatch(setUpdateCartItemFailed(error.response.data));
+      setHandleMessage("error", error);
     }
   };
 };

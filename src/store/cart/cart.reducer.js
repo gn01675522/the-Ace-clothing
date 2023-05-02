@@ -27,11 +27,11 @@ export const cartReducer = (state = INITIAL_STATE, action = {}) => {
     case SET_CART_ITEMS_START:
       return { ...state, isLoading: true };
 
-    case SET_CART_ITEMS_UPDATE_START:
-      return { ...state, loadingItems: payload, isLoading: true };
-
     case FETCH_CART_ITEMS_SUCCESS:
       return { ...state, cartItems: payload, isLoading: false };
+
+    case SET_CART_ITEMS_UPDATE_START:
+      return { ...state, loadingItems: payload, isLoading: true };
 
     case SET_CART_ITEMS_UPDATE_SUCCESS:
       return { ...state, loadingItems: [], isLoading: false };

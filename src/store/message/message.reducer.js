@@ -1,4 +1,6 @@
-// adminProduct redux
+//* 與此交互之 redux：
+//* 1. adminProduct
+
 import { MESSAGE_ACTION_TYPES } from "./message.types";
 
 const { POST_MESSAGE, CLEAR_MESSAGE } = MESSAGE_ACTION_TYPES;

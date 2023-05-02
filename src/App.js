@@ -11,11 +11,13 @@ import ProductDetail from "./pages/front/ProductDetail/ProductDetail";
 import Cart from "./pages/front/Cart/Cart";
 import Checkout from "./pages/front/Checkout/Checkout";
 import Success from "./pages/front/Success/Success";
+import NavBar from "./components/Navbar/Navbar.component";
 
 const App = () => {
   return (
     <div className="App">
       <Routes>
+        <Route path="testRoute" element={<NavBar />}></Route>
         <Route path="/" element={<FrontLayout />}>
           <Route path="" element={<Home />} />
           <Route path="products" element={<Products />} />
