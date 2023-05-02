@@ -6,11 +6,10 @@ import { ReactComponent as AceLogo } from "../../assets/ace.svg";
 import CartIcon from "../CartIcon/CartIcon.component";
 
 const navOption = [
-  { title: "產品列表(暫時)", link: "/products" },
-  { title: "男裝", link: "test2" },
+  { title: "男裝", link: "/products" },
   { title: "女裝", link: "test1" },
-  { title: "配件", link: "test3" },
-  { title: "飾品", link: "test4" },
+  { title: "配件", link: "test2" },
+  { title: "飾品", link: "test3" },
 ];
 
 const NavBar = () => {
@@ -53,7 +52,9 @@ const NavBar = () => {
         <NavLink to="/" aria-label="home page">
           <AceLogo className="navbar__logo" />
         </NavLink>
-        <CartIcon />
+        <div className="navbar__function">
+          <CartIcon />
+        </div>
       </nav>
       <div className="block" />
     </>

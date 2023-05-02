@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import "./Home.styles.scss"
 
 const Home = () => {
   return (
     <>
-      <div className="container">
+      <div className="home">
         <div className="row flex-md-row-reverse flex-column">
           <div className="col-md-6">
             <img

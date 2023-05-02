@@ -5,7 +5,7 @@ import AdminProducts from "./pages/admin/AdminProducts/AdminProducts.component";
 import AdminCoupons from "./pages/admin/AdminCoupons/AdminCoupons.component";
 import AdminOrders from "./pages/admin/AdminOrders/AdminOrders";
 import FrontLayout from "./pages/front/FrontLayout/FrontLayout";
-import Home from "./pages/front/Home/Home";
+import Home from "./pages/front/Home/Home.component";
 import Products from "./pages/front/Products/Products";
 import ProductDetail from "./pages/front/ProductDetail/ProductDetail";
 import Cart from "./pages/front/Cart/Cart";

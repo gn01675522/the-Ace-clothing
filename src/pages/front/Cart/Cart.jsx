@@ -40,7 +40,7 @@ const Cart = () => {
           <div className="d-flex justify-content-between">
             <h2 className="mt-2">您的購物車項目</h2>
           </div>
-          {cartItems?.carts.length > 0 ? (
+          {cartItems?.carts?.length > 0 ? (
             cartItems?.carts?.map((item) => {
               return (
                 <div className="d-flex mt-4 bg-light" key={item.id}>
