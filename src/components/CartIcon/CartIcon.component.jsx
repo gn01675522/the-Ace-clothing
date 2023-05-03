@@ -7,7 +7,7 @@ import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CartIcon = () => {
   const cartItems = useSelector(selectCartItems);
-  console.log("inside CartIcon", cartItems?.carts?.length);
+
   return (
     <NavLink className="cart-icon" to="/cart">
       <CartLogo className="cart-icon__logo" />

@@ -6,7 +6,7 @@ const Indicator = ({ imgCount, imgNum, onChangeImg }) => {
       {[...new Array(imgCount)].map((_, i) => (
         <div
           className={`indicator__dots ${
-            i === imgNum ? "indicator__dots-active" : ""
+            i === imgNum ? "indicator__dots--active" : ""
           }`}
           key={i}
           onClick={() => onChangeImg(i)}

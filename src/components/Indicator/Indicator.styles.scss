@@ -14,11 +14,11 @@
     height: 10px;
     border-radius: 50%;
     opacity: 0.6;
-    background: #f1f1f1;
-    outline: 1px solid #f1f1f1;
+    background: $color-primary-other;
+    outline: 1px solid $color-primary-other;
     cursor: pointer;
   }
-  &__dots-active {
-    background: #272727;
+  &__dots--active {
+    background: $color-secondary-bg;
   }
 }

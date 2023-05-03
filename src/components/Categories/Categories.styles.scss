@@ -1,0 +1,13 @@
+@import "../../stylesheets/variables";
+
+.categories {
+  display: grid;
+  width: 100%;
+  grid-template-rows: repeat(3, 200px);
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem 1rem;
+  @media screen and (min-width: 768px) {
+    grid-template-rows: repeat(2, 200px);
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

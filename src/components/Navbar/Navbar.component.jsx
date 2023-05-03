@@ -30,7 +30,7 @@ const NavBar = () => {
           onChange={onListOpen}
         />
         <label className="navbar__burger" htmlFor="trigger">
-          <div className="navbar__burgerLine" />
+          <div className="navbar__burger-line" />
         </label>
         <div
           className={`navbar__list navbar__list-${
@@ -41,7 +41,7 @@ const NavBar = () => {
             <NavLink
               key={option.title}
               to={option.link}
-              className="navbar__listLink"
+              className="navbar__list-link"
               aria-label={option.title}
               onClick={onListOpen}
             >

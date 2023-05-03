@@ -2,6 +2,8 @@
 
 .home {
   background-color: $color-primary-bg;
-  padding: 1rem 2rem;
-  margin-bottom: 1rem;
+  padding: 1rem 0;
+  @media screen and (min-width: 768px) {
+    padding: 1rem 2rem;
+  }
 }

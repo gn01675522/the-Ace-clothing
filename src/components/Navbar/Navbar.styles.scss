@@ -22,13 +22,13 @@
     opacity: 1;
     transform: scale(1, 1);
   }
-  &__trigger:checked ~ &__burger &__burgerLine::before {
+  &__trigger:checked ~ &__burger &__burger-line::before {
     transform: rotate(45deg);
   }
-  &__trigger:checked ~ &__burger &__burgerLine {
+  &__trigger:checked ~ &__burger &__burger-line {
     background: transparent;
   }
-  &__trigger:checked ~ &__burger &__burgerLine::after {
+  &__trigger:checked ~ &__burger &__burger-line::after {
     transform: rotate(-45deg);
   }
 
@@ -56,7 +56,7 @@
   transition: all 0.5s ease-in-out;
   border-radius: 8px;
 
-  &Line {
+  &-line {
     width: 24px;
     height: 2px;
     background: $color-secondary-bg;
@@ -103,7 +103,7 @@
   -moz-box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.25);
 
-  &Link {
+  &-link {
     width: 100%;
     color: $color-secondary-bg;
     font-family: $font-primary;
