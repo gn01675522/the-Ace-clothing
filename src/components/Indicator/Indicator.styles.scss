@@ -1,0 +1,24 @@
+@import "../../stylesheets//variables";
+
+.indicator {
+  display: grid;
+  position: absolute;
+  grid-template-columns: 12px;
+  grid-template-rows: repeat(auto);
+  gap: 8px;
+  bottom: 10px;
+  right: 10px;
+
+  &__dots {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.6;
+    background: #f1f1f1;
+    outline: 1px solid #f1f1f1;
+    cursor: pointer;
+  }
+  &__dots-active {
+    background: #272727;
+  }
+}

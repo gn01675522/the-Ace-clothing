@@ -1,13 +1,42 @@
 import { Link } from "react-router-dom";
-import "./Home.styles.scss";
-
-import Banner from "../../../components/Banner/Banner.component";
 
 const Home = () => {
   return (
     <>
-      <div className="home">
-        <Banner />
+      <div className="container">
+        <div className="row flex-md-row-reverse flex-column">
+          <div className="col-md-6">
+            <img
+              src="https://images.unsplash.com/photo-1526038335545-4b96864eaee7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80
+    alt="
+              className="img-fluid"
+              alt="..."
+            />
+          </div>
+          <div className="col-md-6 d-flex flex-column justify-content-center mt-md-0 mt-3">
+            <h2 className="fw-bold">Lorem ipsum dolor sit</h2>
+            <h5 className="font-weight-normal text-muted mt-2">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor
+            </h5>
+            <div className="input-group mb-0 mt-4">
+              <input
+                type="text"
+                className="form-control rounded-0"
+                placeholder=""
+              />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-dark rounded-0"
+                  type="button"
+                  id="search"
+                >
+                  Lorem ipsum
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="row mt-5">
           <div className="col-md-6 mt-md-4">
             <div className="card border-0 mb-4 position-relative position-relative">

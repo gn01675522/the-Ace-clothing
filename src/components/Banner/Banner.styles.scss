@@ -1,0 +1,13 @@
+@import "../../stylesheets/variables";
+
+.banner {
+  position: relative;
+  &__image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: 40% 50%;
+    background-size: cover;
+  }
+}

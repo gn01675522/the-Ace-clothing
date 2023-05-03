@@ -1,7 +1,6 @@
 @import "../../stylesheets/variables";
 
 .navbar {
-  outline: 1px solid red;
   display: flex;
   position: fixed;
   width: 100%;
@@ -127,8 +126,11 @@
 
 .navbar__function {
   display: flex;
-  width: 100%;
-  justify-content: end;
+  width: min-content;
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    justify-content: end;
+  }
 }
 
 .block {
