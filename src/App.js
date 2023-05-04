@@ -6,18 +6,17 @@ import AdminCoupons from "./pages/admin/AdminCoupons/AdminCoupons.component";
 import AdminOrders from "./pages/admin/AdminOrders/AdminOrders";
 import FrontLayout from "./pages/front/FrontLayout/FrontLayout";
 import Home from "./pages/front/Home/Home.component";
-import Products from "./pages/front/Products/Products";
+import Products from "./pages/front/Products/Products.component";
 import ProductDetail from "./pages/front/ProductDetail/ProductDetail";
 import Cart from "./pages/front/Cart/Cart";
 import Checkout from "./pages/front/Checkout/Checkout";
 import Success from "./pages/front/Success/Success";
-import Categories from "./components/Categories/Categories.component";
 
 const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="testRoute" element={<Categories />}></Route>
+        <Route path="testRoute" element={<Products />}></Route>
         <Route path="/" element={<FrontLayout />}>
           <Route path="" element={<Home />} />
           <Route path="products" element={<Products />} />

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import Pagination from "../../../components/Pagination/Pagination";
+import Pagination from "../../../components/Pagination/Pagination.component";
 import Loading from "../../../components/Loading/Loading";
 
 import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.actions";

@@ -22,14 +22,14 @@
     opacity: 1;
     transform: scale(1, 1);
   }
-  &__trigger:checked ~ &__burger &__burger-line::before {
-    transform: rotate(45deg);
-  }
   &__trigger:checked ~ &__burger &__burger-line {
     background: transparent;
-  }
-  &__trigger:checked ~ &__burger &__burger-line::after {
-    transform: rotate(-45deg);
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
   }
 
   &__logo {
@@ -38,7 +38,7 @@
     height: 40px;
     align-items: center;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
@@ -81,7 +81,7 @@
       transform: translateY(8px);
     }
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     display: none;
   }
 }
@@ -105,10 +105,9 @@
 
   &-link {
     width: 100%;
-    color: $color-secondary-bg;
     font-family: $font-primary;
-    color: $color-primary-text;
     font-weight: bold;
+    color: $color-primary-text;
     text-decoration: none;
     text-align: center;
     transition: 0.3s ease-out;
@@ -117,7 +116,7 @@
       background: $color-secondary-bg;
     }
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     all: unset;
     display: flex;
     width: 100%;
@@ -127,7 +126,8 @@
 .navbar__function {
   display: flex;
   width: min-content;
-  @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: 1024px) {
     width: 100%;
     justify-content: end;
   }

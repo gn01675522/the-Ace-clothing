@@ -1,8 +1,22 @@
 @import "../../../stylesheets/variables";
 
 .home {
-  background-color: $color-primary-bg;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   padding: 1rem 0;
+  background-color: $color-primary-bg;
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  &__title {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: $font-primary;
+  }
   @media screen and (min-width: 768px) {
     padding: 1rem 2rem;
   }

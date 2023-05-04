@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Pagination from "../../../components/Pagination/Pagination";
+import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
 } from "../../../components/ModalSet/ModalPortal.component";

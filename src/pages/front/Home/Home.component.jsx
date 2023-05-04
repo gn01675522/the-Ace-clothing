@@ -8,7 +8,22 @@ const Home = () => {
     <>
       <div className="home">
         <Banner />
-        <Categories />
+        <div className="home__categories">
+          <h1 className="home__title">SHOP NOW</h1>
+          <Categories />
+        </div>
+        <div>
+          <h1 className="home__title">HOT</h1>
+        </div>
+        <div>
+          <h1 className="home__title">HOT</h1>
+        </div>
+        <div>
+          <h1 className="home__title">HOT</h1>
+        </div>
+        <div>
+          <h1 className="home__title">HOT</h1>
+        </div>
       </div>
     </>
   );

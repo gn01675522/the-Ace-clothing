@@ -8,8 +8,9 @@ import CartIcon from "../CartIcon/CartIcon.component";
 const navOption = [
   { title: "Men", link: "/products" },
   { title: "Women", link: "test1" },
-  { title: "Acessories", link: "test2" },
-  { title: "Outwear", link: "test3" },
+  { title: "Shoes", link: "test2" },
+  { title: "Hats", link: "test3" },
+  { title: "Acessories", link: "test4" },
 ];
 
 const NavBar = () => {
