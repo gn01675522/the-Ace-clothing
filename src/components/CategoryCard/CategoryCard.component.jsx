@@ -9,7 +9,6 @@ const CategoryCard = ({ category, index }) => {
       <img src={url} alt="" className="category-card__img" />
       <div className="category-card__content">
         <h2 className="category-card__content-title">{title}</h2>
-        {/*<p>Shop Now</p>*/}
       </div>
     </NavLink>
   );

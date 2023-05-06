@@ -6,11 +6,11 @@ import { ReactComponent as AceLogo } from "../../assets/ace.svg";
 import CartIcon from "../CartIcon/CartIcon.component";
 
 const navOption = [
-  { title: "Men", link: "/products" },
-  { title: "Women", link: "test1" },
-  { title: "Shoes", link: "test2" },
-  { title: "Hats", link: "test3" },
-  { title: "Acessories", link: "test4" },
+  { title: "Men", link: "/products/mens" },
+  { title: "Women", link: "/products/womens" },
+  { title: "Shoes", link: "/products/shoes" },
+  { title: "Hats", link: "/products/hats" },
+  { title: "Acessories", link: "/products/acessories" },
 ];
 
 const NavBar = () => {

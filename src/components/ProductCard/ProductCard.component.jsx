@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import "./ProductCard.styles.scss";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, urlParam }) => {
   return (
     <Link
-      to={`/product/${product.id}`}
+      to={`/products/${urlParam}/${product.id}`}
       className="products-card"
       key={product.id}
     >

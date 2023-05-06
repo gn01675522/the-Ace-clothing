@@ -7,7 +7,7 @@ import AdminOrders from "./pages/admin/AdminOrders/AdminOrders";
 import FrontLayout from "./pages/front/FrontLayout/FrontLayout";
 import Home from "./pages/front/Home/Home.component";
 import Products from "./pages/front/Products/Products.component";
-import ProductDetail from "./pages/front/ProductDetail/ProductDetail";
+import ProductDetail from "./pages/front/ProductDetail/ProductDetail.component";
 import Cart from "./pages/front/Cart/Cart";
 import Checkout from "./pages/front/Checkout/Checkout";
 import Success from "./pages/front/Success/Success";
@@ -19,8 +19,8 @@ const App = () => {
         <Route path="testRoute" element={<Products />}></Route>
         <Route path="/" element={<FrontLayout />}>
           <Route path="" element={<Home />} />
-          <Route path="products" element={<Products />} />
-          <Route path="product/:id" element={<ProductDetail />} />
+          <Route path="products/:category" element={<Products />} />
+          <Route path="products/:category/:id" element={<ProductDetail />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="success/:orderId" element={<Success />} />
