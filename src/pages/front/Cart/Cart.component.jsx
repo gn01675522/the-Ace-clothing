@@ -16,7 +16,9 @@ const Cart = () => {
     <div className="cart">
       {hasMessage && <Message />}
       <div className="cart__content">
-        <h1 className="cart__content-title">My Cart</h1>
+        <h1 className="cart__content-title">
+          購物車({cartItems?.carts?.length})
+        </h1>
         {cartItems?.carts?.length > 0 ? (
           cartItems?.carts?.map((item) => {
             return <CartItem item={item} key={item.id} />;
@@ -27,26 +29,33 @@ const Cart = () => {
       </div>
 
       <div className="cart__info">
-        <div
-          className="col-md-6 bg-white py-5"
-          style={{ minHeight: "calc(100vh - 56px - 76px)" }}
-        >
-          <div className="d-flex justify-content-between mt-4">
-            <p className="mb-0 h4 fw-bold">總金額</p>
-            <p className="mb-0 h4 fw-bold">NT${cartItems.final_total}</p>
+        <div className="cart__info-price">
+          <div className="cart__info-price-items">
+            <span>小計</span>
+            <span>NT${cartItems.final_total}</span>
           </div>
+          <div className="cart__info-price-items">
+            <span>運費</span>
+            <span>NT$免費</span>
+          </div>
+          <div className="cart__info-price-items">
+            <span>總計</span>
+            <span>NT${cartItems.final_total}</span>
+          </div>
+        </div>
+
+        <div className="cart__info-checkout">
           {cartItems ? (
-            <NavLink
-              to="/checkout"
-              className="btn btn-dark w-100 mt-4 rounded-0 py-3"
-            >
-              確認商品正確
-            </NavLink>
+            <>
+              <NavLink to="/checkout" className="cart__info-checkout-link">
+                前往付款
+              </NavLink>
+              <NavLink to="/" className="cart__info-checkout-goShop">
+                繼續購物
+              </NavLink>
+            </>
           ) : (
-            <NavLink
-              to="/products"
-              className="btn btn-dark w-100 mt-4 rounded-0 py-3"
-            >
+            <NavLink to="/" className="cart__info-backShop">
               去購物吧
             </NavLink>
           )}

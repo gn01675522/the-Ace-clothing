@@ -18,7 +18,6 @@ const CartItem = ({ item }) => {
   const clotheCategory = translateGenderToChinese(category).concat(
     translateCategoryToChinese(category)
   );
-  console.log(item);
 
   const removeCartItem = () => {
     dispatch(setRemoveItemToCartAsync(itemId));
