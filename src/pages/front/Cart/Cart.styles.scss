@@ -8,6 +8,7 @@
   text-align: center;
   @media screen and (min-width: 768px) {
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -20,14 +21,17 @@
     font-size: 1rem;
     font-weight: lighter;
   }
+  @media screen and (min-width: 768px) {
+    width: 70%;
+  }
 }
 
 .cart__info {
   display: flex;
+  height: min-content;
   flex-direction: column;
   gap: 2rem;
   padding-bottom: 1.5rem;
-
   &-price {
     display: flex;
     flex-direction: column;
@@ -63,5 +67,9 @@
   }
   &-backShop {
     width: 100%;
+  }
+  @media screen and (min-width: 768px) {
+    width: 30%;
+    margin-top: 2rem;
   }
 }

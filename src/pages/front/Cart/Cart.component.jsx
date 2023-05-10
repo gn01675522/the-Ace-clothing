@@ -4,6 +4,7 @@ import "./Cart.styles.scss";
 
 import Message from "../../../components/Message/Message";
 import CartItem from "../../../components/CartItem/CartItem.component";
+import Categories from "../../../components/Categories/Categories.component";
 
 import { selectCartItems } from "../../../store/cart/cart.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
@@ -17,14 +18,18 @@ const Cart = () => {
       {hasMessage && <Message />}
       <div className="cart__content">
         <h1 className="cart__content-title">
-          購物車({cartItems?.carts?.length})
+          {cartItems?.carts?.length > 0
+            ? `購物車(${cartItems?.carts?.length})`
+            : "您的購物車內沒有商品，去購物吧！"}
         </h1>
         {cartItems?.carts?.length > 0 ? (
           cartItems?.carts?.map((item) => {
             return <CartItem item={item} key={item.id} />;
           })
         ) : (
-          <h5>您的購物車沒有商品</h5>
+          <>
+            <Categories />
+          </>
         )}
       </div>
 
@@ -45,7 +50,7 @@ const Cart = () => {
         </div>
 
         <div className="cart__info-checkout">
-          {cartItems ? (
+          {cartItems.carts.length !== 0 && (
             <>
               <NavLink to="/checkout" className="cart__info-checkout-link">
                 前往付款
@@ -54,10 +59,6 @@ const Cart = () => {
                 繼續購物
               </NavLink>
             </>
-          ) : (
-            <NavLink to="/" className="cart__info-backShop">
-              去購物吧
-            </NavLink>
           )}
         </div>
       </div>
@@ -66,3 +67,9 @@ const Cart = () => {
 };
 
 export default Cart;
+
+// : (
+//   <NavLink to="/" className="cart__info-backShop">
+//     去購物吧
+//   </NavLink>
+// )
