@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import "./Cart.styles.scss";
 
 import Message from "../../../components/Message/Message";
 
@@ -30,7 +31,7 @@ const Cart = () => {
   //* 透過下拉式選單選擇數量
 
   return (
-    <div className="container">
+    <div className="cart">
       {hasMessage && <Message />}
       <div className="row justify-content-center">
         <div
@@ -38,7 +39,7 @@ const Cart = () => {
           style={{ minHeight: "calc(100vh - 56px - 76px)" }}
         >
           <div className="d-flex justify-content-between">
-            <h2 className="mt-2">您的購物車項目</h2>
+            <h2 className="mt-2">Your Cart</h2>
           </div>
           {cartItems?.carts?.length > 0 ? (
             cartItems?.carts?.map((item) => {
