@@ -27,9 +27,7 @@ const Cart = () => {
             return <CartItem item={item} key={item.id} />;
           })
         ) : (
-          <>
-            <Categories />
-          </>
+          <Categories />
         )}
       </div>
 
@@ -68,8 +66,4 @@ const Cart = () => {
 
 export default Cart;
 
-// : (
-//   <NavLink to="/" className="cart__info-backShop">
-//     去購物吧
-//   </NavLink>
-// )
+// todo 需要針對運費做細節處理

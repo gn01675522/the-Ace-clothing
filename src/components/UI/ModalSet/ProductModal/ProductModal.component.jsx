@@ -10,9 +10,9 @@ import {
   updateAdminProductAsync,
   createAdminProductAsync,
   setAdminProductModalOpen,
-} from "../../../store/adminProduct/adminProduct.actions";
+} from "../../../../store/adminProduct/adminProduct.actions";
 
-import { selectAdminProductTempData } from "../../../store/adminProduct/adminProduct.selector";
+import { selectAdminProductTempData } from "../../../../store/adminProduct/adminProduct.selector";
 
 const defaultFormData = {
   title: "",

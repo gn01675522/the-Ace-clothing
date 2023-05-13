@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setAdminProductModalOpen,
   deleteAdminProductAsync,
-} from "../../../store/adminProduct/adminProduct.actions";
-import { selectAdminProductTempData } from "../../../store/adminProduct/adminProduct.selector";
+} from "../../../../store/adminProduct/adminProduct.actions";
+import { selectAdminProductTempData } from "../../../../store/adminProduct/adminProduct.selector";
 
 import {
   setAdminCouponsOpen,
   deleteAdminCouponsAsync,
-} from "../../../store/adminCoupons/adminCoupons.actions";
-import { selectAdminCouponsTempData } from "../../../store/adminCoupons/adminCoupons.selector";
+} from "../../../../store/adminCoupons/adminCoupons.actions";
+import { selectAdminCouponsTempData } from "../../../../store/adminCoupons/adminCoupons.selector";
 
 export const DELETE_MODAL_TYPE = {
   adminProduct: "adminProduct",

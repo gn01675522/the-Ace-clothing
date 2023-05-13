@@ -10,6 +10,7 @@ import {
   translateGenderToChinese,
   translateCategoryToChinese,
 } from "../../utils/component/component.utils";
+
 const CartItem = ({ item }) => {
   const { id: itemId, qty, final_total } = item;
   const { category, title, imageUrl } = item.product;

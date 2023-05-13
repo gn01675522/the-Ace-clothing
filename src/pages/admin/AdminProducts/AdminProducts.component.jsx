@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
-} from "../../../components/ModalSet/ModalPortal.component";
-import { DELETE_MODAL_TYPE } from "../../../components/ModalSet/DeleteModal/DeleteModal.component";
+} from "../../../components/UI/ModalSet/ModalPortal.component";
+import { DELETE_MODAL_TYPE } from "../../../components/UI/ModalSet/DeleteModal/DeleteModal.component";
 
 import {
   fetchAdminProductAsync,

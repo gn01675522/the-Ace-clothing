@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setAdminOrdersIsModalOpen,
   updateAdminOrdersAsync,
-} from "../../../store/adminOrders/adminOrders.actions";
+} from "../../../../store/adminOrders/adminOrders.actions";
 import {
   selectAdminOrdersTempData,
   selectAdminOrdersIsLoading,
-} from "../../../store/adminOrders/adminOrders.selector";
+} from "../../../../store/adminOrders/adminOrders.selector";
 
 const OrderModal = () => {
   const tempOrder = useSelector(selectAdminOrdersTempData);

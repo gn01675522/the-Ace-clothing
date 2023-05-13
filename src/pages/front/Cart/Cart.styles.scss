@@ -6,6 +6,7 @@
   padding: 2rem;
   gap: 1rem;
   text-align: center;
+  background-color: #f6f5f3;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
@@ -32,12 +33,14 @@
   flex-direction: column;
   gap: 2rem;
   padding-bottom: 1.5rem;
+  
   &-price {
     display: flex;
     flex-direction: column;
     padding: 10px;
     gap: 10px;
     border: 1px solid #eae8e4;
+    background-color: white;
     -webkit-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
     -moz-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
     box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);

@@ -9,7 +9,7 @@ import Home from "./pages/front/Home/Home.component";
 import Products from "./pages/front/Products/Products.component";
 import ProductDetail from "./pages/front/ProductDetail/ProductDetail.component";
 import Cart from "./pages/front/Cart/Cart.component";
-import Checkout from "./pages/front/Checkout/Checkout";
+import Checkout from "./pages/front/Checkout/Checkout.component";
 import Success from "./pages/front/Success/Success";
 
 const App = () => {

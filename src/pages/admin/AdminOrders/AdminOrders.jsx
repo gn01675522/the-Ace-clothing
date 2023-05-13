@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
-} from "../../../components/ModalSet/ModalPortal.component";
+} from "../../../components/UI/ModalSet/ModalPortal.component";
 
 import {
   fetchAdminOrdersAsync,

@@ -1,0 +1,18 @@
+@import "../../../stylesheets/variables";
+
+.input__label {
+  display: flex;
+  gap: 10px;
+  &--invalid-feedback {
+    color: red;
+  }
+}
+
+.input__entry {
+  width: 100%;
+  height: 3rem;
+  outline: 1px solid black;
+  &--invalid {
+    outline: 2px solid firebrick;
+  }
+}
