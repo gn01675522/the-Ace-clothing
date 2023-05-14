@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -19,7 +20,6 @@ const formContent = [
 ];
 
 const Checkout = () => {
-  const cartItems = useSelector(selectCartItems);
   const {
     register,
     handleSubmit,
@@ -28,14 +28,18 @@ const Checkout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const cartItems = useSelector(selectCartItems);
   const orderId = useSelector(selectUserOrderId);
-  console.log("inside Checkout", orderId);
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     dispatch(setPostUserOrderAsync(data));
-    console.log(orderId);
-    navigate(`/success/${orderId}`);
   };
+
+  useEffect(() => {
+    if (orderId !== null) {
+      navigate(`/success/${orderId}`);
+    }
+  }, [orderId]);
 
   return (
     <div className="checkout">

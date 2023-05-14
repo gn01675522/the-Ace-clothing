@@ -16,3 +16,8 @@ export const selectCartLoadingItems = createSelector(
   [selectCartReducer],
   (cart) => cart.loadingItems
 );
+
+export const selectCartItemsQuantity = createSelector(
+  [selectCartItems],
+  (cartItems) => cartItems?.carts?.length
+);

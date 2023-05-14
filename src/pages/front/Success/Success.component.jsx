@@ -1,30 +1,34 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 
 import "./Success.styles.scss";
 
 import OrderCard from "../../../components/OrderCard/OrderCard.component";
 import SummaryCard from "../../../components/SummaryCard/SummaryCard.component";
 
+import {
+  selectUserOrderProducts,
+  selectUserOrderTotalPrice,
+} from "../../../store/userOrder/userOrder.selector";
+
+import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
+import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.actions";
+import { setClearUserOrderState } from "../../../store/userOrder/userOrder.actions";
+
 const Success = () => {
   const { orderId } = useParams();
-  const [orderData, setOrderData] = useState({});
-  const products = Object.values(orderData?.products || {});
-  const totalPrice = products.reduce(
-    (total, productPrice) => total + productPrice.final_total,
-    0
-  );
+  const dispatch = useDispatch();
+  const products = useSelector(selectUserOrderProducts);
+  const totalPrice = useSelector(selectUserOrderTotalPrice);
 
-  const getCart = async (orderId) => {
-    const res = await axios.get(
-      `/v2/api/${process.env.REACT_APP_API_PATH}/order/${orderId}`
-    );
-    setOrderData(res.data.order);
+  const clearOrderState = () => {
+    dispatch(setClearUserOrderState());
   };
 
   useEffect(() => {
-    getCart(orderId);
+    dispatch(fetchCartItemsAsync());
+    dispatch(fetchUserOrderDataAsync(orderId));
   }, [orderId]);
 
   return (
@@ -39,7 +43,11 @@ const Success = () => {
         <h2 className="success__order-detail-title">詳細資訊</h2>
         <SummaryCard total={totalPrice} />
         <div className="success__actions">
-          <Link to="/" className="success__actions-home">
+          <Link
+            to="/"
+            className="success__actions-home"
+            onClick={clearOrderState}
+          >
             返回首頁
           </Link>
         </div>

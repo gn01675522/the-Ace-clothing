@@ -3,15 +3,15 @@ import { useSelector } from "react-redux";
 import "./CartIcon.styles.scss";
 
 import { ReactComponent as CartLogo } from "../../assets/cart.svg";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import { selectCartItemsQuantity } from "../../store/cart/cart.selector";
 
 const CartIcon = () => {
-  const cartItems = useSelector(selectCartItems);
+  const quantity = useSelector(selectCartItemsQuantity);
 
   return (
     <NavLink className="cart-icon" to="/cart">
       <CartLogo className="cart-icon__logo" />
-      <span className="cart-icon__count">{cartItems?.carts?.length}</span>
+      <span className="cart-icon__count">{quantity}</span>
     </NavLink>
   );
 };
