@@ -10,7 +10,7 @@ import Products from "./pages/front/Products/Products.component";
 import ProductDetail from "./pages/front/ProductDetail/ProductDetail.component";
 import Cart from "./pages/front/Cart/Cart.component";
 import Checkout from "./pages/front/Checkout/Checkout.component";
-import Success from "./pages/front/Success/Success";
+import Success from "./pages/front/Success/Success.component";
 
 const App = () => {
   return (

@@ -8,25 +8,28 @@
   flex-direction: column;
   gap: 2rem;
   background-color: #f6f5f3;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .checkout__form {
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 1rem;
-  background-color: white;
   &-title {
     padding-top: 1rem;
     font-size: 1.5rem;
     font-weight: lighter;
     text-align: center;
+    margin-bottom: 1rem;
   }
   &-group {
     display: flex;
     padding: 1rem;
     flex-direction: column;
     gap: 1rem;
+    background-color: white;
   }
   &-item {
     display: flex;
@@ -49,53 +52,4 @@
   }
 }
 
-.checkout__cart {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  gap: 1rem;
-  &-title {
-    font-size: 1.5rem;
-    font-weight: lighter;
-  }
-  &-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-  &-item {
-    display: flex;
-    width: 100%;
-    padding: 1rem;
-    gap: 10px;
-    background-color: white;
-    &-img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
-    &-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  }
-  &-summary {
-    display: flex;
-    width: 100%;
-    padding: 1rem;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: white;
-    &-subtotal,
-    &-shipping,
-    &-total {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-}
+

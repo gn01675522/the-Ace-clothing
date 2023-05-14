@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+import OrderCard from "../../../components/OrderCard/OrderCard.component";
+import SummaryCard from "../../../components/SummaryCard/SummaryCard.component";
 import Input from "../../../components/UI/Input/Input.component";
 
 import "./Checkout.styles.scss";
@@ -27,9 +29,11 @@ const Checkout = () => {
   const dispatch = useDispatch();
 
   const orderId = useSelector(selectUserOrderId);
+  console.log("inside Checkout", orderId);
 
   const onSubmit = async (data) => {
     dispatch(setPostUserOrderAsync(data));
+    console.log(orderId);
     navigate(`/success/${orderId}`);
   };
 
@@ -58,47 +62,8 @@ const Checkout = () => {
           </button>
         </div>
       </form>
-
-      <div className="checkout__cart">
-        <h2 className="checkout__cart-title">訂單商品</h2>
-        <div className="checkout__cart-content">
-          {cartItems?.carts?.map((item) => {
-            return (
-              <div className="checkout__cart-item" key={item.id}>
-                <img
-                  src={item.product.imageUrl}
-                  alt=""
-                  className="checkout__cart-item-img"
-                />
-                <div className="checkout__cart-item-info">
-                  <div className="d-flex justify-content-between fw-bold">
-                    <p className="mb-0">
-                      {item.product.title}x{item.qty}
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between">
-                    <p className="mb-0">NT$ {item.final_total}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-          <div className="checkout__cart-summary">
-            <div className="checkout__cart-summary-subtotal">
-              <span>小計</span>
-              <span>NT${cartItems.final_total}</span>
-            </div>
-            <div className="checkout__cart-summary-shipping">
-              <span>運費</span>
-              <span>NT$免費</span>
-            </div>
-            <div className="checkout__cart-summary-total">
-              <span>總金額</span>
-              <span>NT${cartItems.final_total}</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <OrderCard products={cartItems?.carts} />
+      <SummaryCard total={cartItems?.final_total} />
     </div>
   );
 };

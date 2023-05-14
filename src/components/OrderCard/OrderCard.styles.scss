@@ -1,0 +1,40 @@
+@import "../../stylesheets/variables";
+
+.order-card {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  &__title {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    padding-top: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  &__item {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    gap: 10px;
+    background-color: white;
+    &-img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

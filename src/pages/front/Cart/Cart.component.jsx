@@ -48,7 +48,7 @@ const Cart = () => {
         </div>
 
         <div className="cart__info-checkout">
-          {cartItems.carts.length !== 0 && (
+          {cartItems?.carts?.length !== 0 && (
             <>
               <NavLink to="/checkout" className="cart__info-checkout-link">
                 前往付款
