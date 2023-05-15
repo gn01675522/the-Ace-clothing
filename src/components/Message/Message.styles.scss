@@ -1,0 +1,53 @@
+@import "../../stylesheets/variables";
+
+.message {
+  display: flex;
+  position: fixed;
+  width: 250px;
+  height: 120px;
+  flex-direction: column;
+  top: 80px;
+  right: 30px;
+  border-radius: 8px;
+  &__header {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 5px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    &--success {
+      background-color: #dcdcdc;
+      color: black;
+    }
+    &--error {
+      background-color: #ff1493;
+    }
+  }
+  &__body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    &-content {
+      width: 100%;
+      height: min-content;
+    }
+    &-button {
+      outline: 1px solid black;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background-color: white;
+    }
+  }
+}

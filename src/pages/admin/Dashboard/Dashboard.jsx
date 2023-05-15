@@ -3,7 +3,7 @@ import { Outlet, useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-import Message from "../../../components/Message/Message";
+import Message from "../../../components/Message/Message.component";
 
 import { selectHasMessage } from "../../../store/message/message.selector";
 

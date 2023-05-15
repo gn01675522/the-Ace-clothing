@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./Cart.styles.scss";
 
-import Message from "../../../components/Message/Message";
+import Message from "../../../components/Message/Message.component";
 import CartItem from "../../../components/CartItem/CartItem.component";
 import Categories from "../../../components/Categories/Categories.component";
 

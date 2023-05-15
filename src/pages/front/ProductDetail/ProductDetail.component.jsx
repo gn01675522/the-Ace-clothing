@@ -5,7 +5,7 @@ import axios from "axios";
 import "./ProductDetail.styles.scss";
 
 import { selectHasMessage } from "../../../store/message/message.selector";
-import Message from "../../../components/Message/Message";
+import Message from "../../../components/Message/Message.component";
 
 import { setAddItemToCartAsync } from "../../../store/cart/cart.actions";
 import { selectCartIsLoading } from "../../../store/cart/cart.selector";

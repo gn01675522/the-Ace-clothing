@@ -38,3 +38,21 @@ export const fetchUserProductAsync = (page = 1) => {
     }
   };
 };
+
+export const fetchUserProductAsyncTest = () => {
+  return async (dispatch) => {
+    dispatch(fetchUserProductStart());
+    try {
+      const res = await axios.get(
+        `/v2/api/${process.env.REACT_APP_API_PATH}/products/all`
+      );
+      dispatch(
+        fetchUserProductSuccess({
+          products: res.data.products,
+        })
+      );
+    } catch (error) {
+      dispatch(fetchUserProductFailed(error.response.data));
+    }
+  };
+};
