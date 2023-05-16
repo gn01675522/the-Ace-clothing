@@ -1,7 +1,9 @@
-import { useEffect } from "react";
-import { Outlet, useNavigate, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Outlet, useNavigate, Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+
+import "./Dashboard.styles.scss";
 
 import Message from "../../../components/Message/Message.component";
 
@@ -14,6 +16,7 @@ const DASHBOARD_OPTIONS = [
 ];
 
 const Dashboard = () => {
+  const [isListOpen, setIsListOpen] = useState(false);
   const navigate = useNavigate();
   const hasMessage = useSelector(selectHasMessage);
 
@@ -31,6 +34,11 @@ const Dashboard = () => {
     navigate("/login");
   };
   //* 登出功能
+
+  const onOpenList = () => {
+    setIsListOpen(!isListOpen);
+    console.log(isListOpen);
+  };
 
   useEffect(() => {
     if (!token) {
@@ -50,56 +58,51 @@ const Dashboard = () => {
   return (
     <>
       {hasMessage && <Message />}
-      <nav className="navbar navbar-expand-lg bg-dark">
-        <div className="container-fluid">
-          <p className="text-white mb-0">the One 後台管理系統</p>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div
-            className="collapse navbar-collapse justify-content-end"
-            id="navbarNav"
-          >
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-light"
-                  onClick={logout}
-                >
-                  登出
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <input
+        className="dashboard__trigger"
+        type="checkbox"
+        id="dashboard-trigger"
+        checked={isListOpen ? true : false}
+        onChange={onOpenList}
+      />
+      <nav className="dashboard-header">
+        <label className="dashboard-header__burger" htmlFor="dashboard-trigger">
+          <div className="dashboard-header__burger-line" />
+        </label>
+        <NavLink className="dashboard-header__title" to="/admin/products">
+          the Ace 後台管理系統
+        </NavLink>
+        <button
+          type="button"
+          className="dashboard-header__logout"
+          onClick={logout}
+        >
+          登出
+        </button>
       </nav>
-      <div className="d-flex" style={{ minHeight: "calc(100vh - 56px)" }}>
-        <div className="bg-light" style={{ width: "200px" }}>
-          <ul className="list-group list-group-flush">
+      <div className="dashboard-header__blocker" />
+
+      <div className="dashboard-main">
+        <div className="dashboard-main__navbar">
+          <div className="dashboard-main__navbar-list">
             {DASHBOARD_OPTIONS.map((option) => {
               return (
-                <Link
+                <NavLink
                   key={option.id}
-                  className="list-group-item list-group-item-action py-3"
+                  className="dashboard-main__navbar-list-link"
                   to={`/admin/${option.route}`}
+                  onClick={onOpenList}
                 >
-                  <i className="bi bi-cup-fill me-2" />
                   {option.title}
-                </Link>
+                </NavLink>
               );
             })}
-          </ul>
+          </div>
         </div>
-        <div className="w-100">{token && <Outlet />}</div>
+        <div className="dashboard-main__content">
+          <span>test</span>
+          {token && <Outlet />}
+        </div>
       </div>
     </>
   );

@@ -22,7 +22,6 @@ const Message = () => {
           <div className="message__body-content">
             <span>{text}</span>
           </div>
-          <button className="message__body-button">關閉</button>
         </div>
       </div>
     </>

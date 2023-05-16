@@ -1,0 +1,161 @@
+@import "../../../stylesheets/variables";
+
+.dashboard-header {
+  outline: 1px solid red;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  padding: 0 2rem;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  &__logout {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+  @media screen and (min-width: 768px) {
+  }
+}
+.dashboard-header__blocker {
+  width: 100%;
+  height: 60px;
+}
+
+.dashboard__trigger {
+  display: none;
+  &:checked ~ .dashboard-main .dashboard-main__navbar {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  &:checked
+    ~ .dashboard-header
+    .dashboard-header__burger
+    .dashboard-header__burger-line {
+    background: transparent;
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+//* 漢堡觸發器
+
+.dashboard-header__burger {
+  display: flex;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  border-radius: 8px;
+
+  &-line {
+    width: 24px;
+    height: 2px;
+    background: $color-secondary-bg;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+    transition: all 0.5s ease-in-out;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      background: $color-secondary-bg;
+      border-radius: inherit;
+      box-shadow: inherit;
+      transition: inherit;
+    }
+    &::before {
+      transform: translateY(-8px);
+    }
+    &::after {
+      transform: translateY(8px);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+}
+//* 漢堡符號
+
+.dashboard-main {
+  background-color: red;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  &__navbar {
+    outline: 1px solid black;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: min-content;
+    flex-direction: column;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 0.3s ease-out 0.15s, opacity 0.3s ease-out 0.15s;
+    &-list {
+      outline: 1px solid red;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+
+      &-link {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        font-weight: bold;
+        background-color: white;
+        color: black;
+        transition: 0.3s ease-out;
+        &:hover {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+  }
+  &__content {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: olive;
+  }
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    &__navbar {
+      outline: 1px solid green;
+      width: 150px;
+      height: calc(100vh - 60px);
+      justify-content: center;
+      background-color: white;
+      transform: unset;
+      &-list {
+        height: 100%;
+      }
+    }
+    &__content {
+      width: 100%;
+      background-color: olive;
+    }
+  }
+}

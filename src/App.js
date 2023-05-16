@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import Dashboard from "./pages/admin/Dashboard/Dashboard";
+import Dashboard from "./pages/admin/Dashboard/Dashboard.component";
 import AdminProducts from "./pages/admin/AdminProducts/AdminProducts.component";
 import AdminCoupons from "./pages/admin/AdminCoupons/AdminCoupons.component";
 import AdminOrders from "./pages/admin/AdminOrders/AdminOrders";
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="testRoute" element={<Products />}></Route>
+        <Route path="testRoute" element={<Dashboard />}></Route>
         <Route path="/" element={<FrontLayout />}>
           <Route path="" element={<Home />} />
           <Route path="products/:category" element={<Products />} />

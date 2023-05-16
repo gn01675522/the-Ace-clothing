@@ -16,7 +16,7 @@ const navOption = [
 const NavBar = () => {
   const [isListOpen, setIsListOpen] = useState(false);
 
-  const onListOpen = () => {
+  const onOpenList = () => {
     setIsListOpen(!isListOpen);
   };
 
@@ -26,25 +26,21 @@ const NavBar = () => {
         <input
           className="navbar__trigger"
           type="checkbox"
-          id="trigger"
+          id="nav-trigger"
           checked={isListOpen ? true : false}
-          onChange={onListOpen}
+          onChange={onOpenList}
         />
-        <label className="navbar__burger" htmlFor="trigger">
+        <label className="navbar__burger" htmlFor="nav-trigger">
           <div className="navbar__burger-line" />
         </label>
-        <div
-          className={`navbar__list navbar__list-${
-            isListOpen ? "open" : "close"
-          }`}
-        >
+        <div className="navbar__list">
           {navOption.map((option) => (
             <NavLink
               key={option.title}
               to={option.link}
               className="navbar__list-link"
               aria-label={option.title}
-              onClick={onListOpen}
+              onClick={onOpenList}
             >
               {option.title}
             </NavLink>
@@ -53,7 +49,7 @@ const NavBar = () => {
         <NavLink to="/" aria-label="home page">
           <AceLogo className="navbar__logo" />
         </NavLink>
-        <div className="navbar__function">
+        <div className="navbar__actions">
           <CartIcon />
         </div>
       </nav>
