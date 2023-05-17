@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet, useNavigate, Link, NavLink } from "react-router-dom";
+import { Outlet, useNavigate, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -27,13 +27,13 @@ const Dashboard = () => {
   //* 擷取瀏覽器 token
 
   axios.defaults.headers.common["Authorization"] = token;
-  //* axios 預設 headers 必須夾帶 Auth token
+  //* axios 預設 headers 必須夾帶 Auth token 以便驗證
 
   const logout = () => {
     document.cookie = `hexToken=;`;
     navigate("/login");
   };
-  //* 登出功能
+  //* 登出功能，設定 hexToken 為空值
 
   const onOpenList = () => {
     setIsListOpen(!isListOpen);

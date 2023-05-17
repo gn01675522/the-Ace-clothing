@@ -1,29 +1,44 @@
 @import "../../stylesheets/variables";
 
 .pagination {
-  outline: 1px solid red;
   display: flex;
   width: min-content;
-  height: 30px;
-  gap: 8px;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  -webkit-box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.25);
+  // -webkit-box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.25);
+  // -moz-box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.25);
+  // box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.25);
 
   &__btn {
-    background: #f1f1f1f1;
-    border: 1px solid #272727;
-    border-radius: 8px;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: 900;
+    cursor: pointer;
   }
   &__list {
     display: flex;
-    gap: 8px;
+    gap: 1rem;
   }
-  &__item-btn--active {
-    background: #272727;
-    color: white;
-    border: 1px solid #272727;
+  &__item {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    &-btn {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      &:hover,
+      &--active {
+        background-color: #272727;
+        color: white;
+        border-radius: 8px;
+      }
+    }
   }
 }

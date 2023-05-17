@@ -10,6 +10,7 @@ import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
 } from "../../../components/UI/ModalSet/ModalPortal.component";
+import AdminProductsTable from "../../../components/AdminProductsTable/AdminProductsTable.component";
 import { DELETE_MODAL_TYPE } from "../../../components/UI/ModalSet/DeleteModal/DeleteModal.component";
 
 import {
@@ -77,45 +78,12 @@ const AdminProducts = () => {
           建立新商品
         </button>
       </div>
-      <table className="admin-products__table">
-        <thead className="admin-products__table-header">
-          <tr className="admin-products__table-header-row">
-            <th scope="col">分類</th>
-            <th scope="col">名稱</th>
-            <th scope="col">售價</th>
-            <th scope="col">啟用狀態</th>
-            <th scope="col">編輯</th>
-          </tr>
-        </thead>
-        <tbody className="admin-products__table-body">
-          {products.map((product) => {
-            return (
-              <tr key={product.id} className="admin-products__table-body-row">
-                <td>{product.category}</td>
-                <td>{product.title}</td>
-                <td>{product.price}</td>
-                <td>{product.is_enabled === 1 ? "啟用" : "未啟用"}</td>
-                <td className="admin-products__table-body-actions">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={() => onOpenProductModal("edit", product)}
-                  >
-                    編輯
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-danger btn-sm ms-2"
-                    onClick={() => onOpenProductDeleteModal(product)}
-                  >
-                    刪除
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <AdminProductsTable
+        products={products}
+        onEdit={onOpenProductModal}
+        onDelete={onOpenProductDeleteModal}
+      />
+
       <Pagination onChangePage={onChangePage} pagination={pagination} />
     </div>
   );

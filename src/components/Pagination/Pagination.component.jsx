@@ -14,19 +14,9 @@ const Pagination = ({ onChangePage, pagination }) => {
         }}
         disabled={has_pre ? false : true}
       >
-        <span aria-hidden="true">Prev</span>
+        <span aria-hidden="true">＜</span>
       </button>
-      <button
-        className="pagination__btn pagination__btn-next"
-        onClick={(e) => {
-          e.preventDefault();
-          onChangePage(current_page + 1);
-        }}
-        aria-label="Next"
-        disabled={has_next ? false : true}
-      >
-        <span aria-hidden="true">Next</span>
-      </button>
+
       <ul className="pagination__list">
         {[...new Array(total_pages)].map((_, i) => (
           <li className="pagination__item" key={`${i}_page`}>
@@ -45,6 +35,17 @@ const Pagination = ({ onChangePage, pagination }) => {
           </li>
         ))}
       </ul>
+      <button
+        className="pagination__btn pagination__btn-next"
+        onClick={(e) => {
+          e.preventDefault();
+          onChangePage(current_page + 1);
+        }}
+        aria-label="Next"
+        disabled={has_next ? false : true}
+      >
+        <span aria-hidden="true">＞</span>
+      </button>
     </nav>
   );
 };
