@@ -4,6 +4,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import "./AdminProducts.styles.scss";
+
 import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
@@ -57,7 +59,7 @@ const AdminProducts = () => {
   //* 打開刪除 modal
 
   return (
-    <div className="p-3">
+    <div className="admin-products">
       {isModalOpen && (
         <ModalPortal
           createOrEdit={createOrEdit}
@@ -65,20 +67,19 @@ const AdminProducts = () => {
           dataType={dataType}
         />
       )}
-      <h3>產品列表</h3>
-      <hr />
-      <div className="text-end">
+      <h3 className="admin-products__title">產品列表</h3>
+      <div className="admin-products__actions">
         <button
           type="button"
-          className="btn btn-primary btn-sm"
+          className="admin-products__actions-add"
           onClick={() => onOpenProductModal("create")}
         >
           建立新商品
         </button>
       </div>
-      <table className="table">
-        <thead>
-          <tr>
+      <table className="admin-products__table">
+        <thead className="admin-products__table-header">
+          <tr className="admin-products__table-header-row">
             <th scope="col">分類</th>
             <th scope="col">名稱</th>
             <th scope="col">售價</th>
@@ -86,15 +87,15 @@ const AdminProducts = () => {
             <th scope="col">編輯</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="admin-products__table-body">
           {products.map((product) => {
             return (
-              <tr key={product.id}>
+              <tr key={product.id} className="admin-products__table-body-row">
                 <td>{product.category}</td>
                 <td>{product.title}</td>
                 <td>{product.price}</td>
                 <td>{product.is_enabled === 1 ? "啟用" : "未啟用"}</td>
-                <td>
+                <td className="admin-products__table-body-actions">
                   <button
                     type="button"
                     className="btn btn-primary btn-sm"

@@ -99,10 +99,7 @@ const Dashboard = () => {
             })}
           </div>
         </div>
-        <div className="dashboard-main__content">
-          <span>test</span>
-          {token && <Outlet />}
-        </div>
+        <div className="dashboard-main__content">{token && <Outlet />}</div>
       </div>
     </>
   );
