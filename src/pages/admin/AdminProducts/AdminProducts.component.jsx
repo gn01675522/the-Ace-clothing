@@ -10,7 +10,10 @@ import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
 } from "../../../components/UI/ModalSet/ModalPortal.component";
-import AdminProductsTable from "../../../components/AdminProductsTable/AdminProductsTable.component";
+
+import AdminTable, {
+  ADMIN_TABLE_TYPE,
+} from "../../../components/AdminTable/AdminTable.component";
 import { DELETE_MODAL_TYPE } from "../../../components/UI/ModalSet/DeleteModal/DeleteModal.component";
 
 import {
@@ -26,8 +29,12 @@ import {
 
 const AdminProducts = () => {
   const [createOrEdit, setCreateOrEdit] = useState("create");
+  //* modal 視窗選項：建立新商品，或是編輯商品。 edit or create
   const [openWhichModal, setOpenWhichModal] = useState("");
+  //* modal 類型選項：products ? coupons ? orders ?
   const [dataType, setDataType] = useState("");
+  //* 刪除 modal 選項：products ? coupons ? orders ?
+
   const dispatch = useDispatch();
   const products = useSelector(selectAdminProducts);
   const pagination = useSelector(selectAdminProductPagination);
@@ -36,7 +43,7 @@ const AdminProducts = () => {
   useEffect(() => {
     dispatch(fetchAdminProductAsync());
   }, []);
-  //* 設定 modal 背景為不可動，以及於 mounted 的時候 fetch 資料
+  //* 設定 mounted 的時候 fetch 資料
 
   const onChangePage = (page) => {
     dispatch(fetchAdminProductAsync(page));
@@ -49,7 +56,7 @@ const AdminProducts = () => {
     dispatch(setAdminProductTempData(product));
     dispatch(setAdminProductModalOpen(true));
   };
-  //* 開啟編輯 modal
+  //* 開啟編輯商品或是新增商品 modal
 
   const onOpenProductDeleteModal = (product) => {
     setOpenWhichModal(MODAL_TYPE.delete);
@@ -78,8 +85,9 @@ const AdminProducts = () => {
           建立新商品
         </button>
       </div>
-      <AdminProductsTable
-        products={products}
+      <AdminTable
+        type={ADMIN_TABLE_TYPE.products}
+        items={products}
         onEdit={onOpenProductModal}
         onDelete={onOpenProductDeleteModal}
       />

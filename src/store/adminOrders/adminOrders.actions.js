@@ -83,3 +83,25 @@ export const updateAdminOrdersAsync = (data) => {
   };
 };
 //* 更新 admin orders api 中的資料
+
+export const deleteAdminOrdersAsync = (data) => {
+  return async (dispatch) => {
+    dispatch(setAdminOrdersStart());
+    try {
+      const res = await axios.delete(
+        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${data.id}`,
+        {
+          data,
+        }
+      );
+      dispatch(setAdminOrdersSuccess());
+      dispatch(setHandleMessage("success", res));
+      dispatch(fetchAdminOrdersAsync());
+      //* 刪除完畢後重新 fetch 產品列表
+    } catch (error) {
+      dispatch(setAdminOrdersFailed(error.response.data));
+      dispatch(setHandleMessage("error", error));
+    }
+  };
+};
+//* 刪除 admin orders api 中的資料

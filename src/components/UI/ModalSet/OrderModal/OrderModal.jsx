@@ -19,6 +19,7 @@ const OrderModal = () => {
     ...tempOrder,
   });
   const dispatch = useDispatch();
+  console.log("inside OrderModal", tempOrder);
 
   useEffect(() => {
     setFormData({

@@ -3,7 +3,7 @@ import Login from "./pages/Login/Login";
 import Dashboard from "./pages/admin/Dashboard/Dashboard.component";
 import AdminProducts from "./pages/admin/AdminProducts/AdminProducts.component";
 import AdminCoupons from "./pages/admin/AdminCoupons/AdminCoupons.component";
-import AdminOrders from "./pages/admin/AdminOrders/AdminOrders";
+import AdminOrders from "./pages/admin/AdminOrders/AdminOrders.component";
 import FrontLayout from "./pages/front/FrontLayout/FrontLayout";
 import Home from "./pages/front/Home/Home.component";
 import Products from "./pages/front/Products/Products.component";

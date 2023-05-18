@@ -9,6 +9,12 @@ import {
 import { selectAdminProductTempData } from "../../../../store/adminProduct/adminProduct.selector";
 
 import {
+  setAdminOrdersIsModalOpen,
+  deleteAdminOrdersAsync,
+} from "../../../../store/adminOrders/adminOrders.actions";
+import { selectAdminOrdersTempData } from "../../../../store/adminOrders/adminOrders.selector";
+
+import {
   setAdminCouponsOpen,
   deleteAdminCouponsAsync,
 } from "../../../../store/adminCoupons/adminCoupons.actions";
@@ -33,9 +39,9 @@ const deleteForWhat = (type) =>
       deleteItem: selectAdminCouponsTempData,
     },
     [DELETE_MODAL_TYPE.adminOrder]: {
-      isModalOpen: "",
-      deleteAction: "",
-      deleteItem: "",
+      isModalOpen: setAdminOrdersIsModalOpen,
+      deleteAction: deleteAdminOrdersAsync,
+      deleteItem: selectAdminOrdersTempData,
     },
   }[type]);
 //* 因有非常多情境可使用此 Modal，故無單一對應之 redux
@@ -47,6 +53,7 @@ const DeleteModal = ({ dataType }) => {
   const deleteDataAction = deleteForWhat(dataType).deleteAction;
   const deleteItem = useSelector(deleteForWhat(dataType).deleteItem);
   const { id, title } = deleteItem;
+  console.log("inside DeleteModal", deleteItem);
 
   const onCloseModalHandler = () => {
     dispatch(isModalOpen(false));
@@ -71,7 +78,9 @@ const DeleteModal = ({ dataType }) => {
               onClick={onCloseModalHandler}
             />
           </div>
-          <div className="modal-body">刪除 {title}</div>
+          <div className="modal-body">
+            刪除 {dataType === "adminOrder" ? id : title}
+          </div>
           <div className="modal-footer">
             <button
               type="button"

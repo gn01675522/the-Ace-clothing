@@ -4,10 +4,15 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import "./AdminCoupons.styles.scss";
+
 import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
 } from "../../../components/UI/ModalSet/ModalPortal.component";
+import AdminTable, {
+  ADMIN_TABLE_TYPE,
+} from "../../../components/AdminTable/AdminTable.component";
 
 import { DELETE_MODAL_TYPE } from "../../../components/UI/ModalSet/DeleteModal/DeleteModal.component";
 
@@ -24,7 +29,7 @@ import {
 } from "../../../store/adminCoupons/adminCoupons.selector";
 
 const AdminCoupons = () => {
-  const [createOrEdit, setCreateOrEdit] = useState("create"); // edit
+  const [createOrEdit, setCreateOrEdit] = useState("create");
   // type: 決定 modal 展開的用途
   const [openWhichModal, setOpenWhichModal] = useState("");
   const [dataType, setDataType] = useState("");
@@ -48,7 +53,7 @@ const AdminCoupons = () => {
     dispatch(setAdminCouponsOpen(true));
   };
 
-  const onOpenDeleteModalHandler = (product) => {
+  const onOpenDeleteModal = (product) => {
     setOpenWhichModal(MODAL_TYPE.delete);
     setDataType(DELETE_MODAL_TYPE.adminCoupon);
     dispatch(setAdminCouponsTempData(product));
@@ -75,47 +80,12 @@ const AdminCoupons = () => {
           建立新優惠券
         </button>
       </div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">標題</th>
-            <th scope="col">折扣</th>
-            <th scope="col">到期日</th>
-            <th scope="col">優惠碼</th>
-            <th scope="col">啟用狀態</th>
-            <th scope="col">編輯</th>
-          </tr>
-        </thead>
-        <tbody>
-          {coupons.map((product) => {
-            return (
-              <tr key={product.id}>
-                <td>{product.title}</td>
-                <td>{product.percent}</td>
-                <td>{new Date(product.due_date).toDateString()}</td>
-                <td>{product.code}</td>
-                <td>{product.is_enabled === 1 ? "啟用" : "未啟用"}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={() => openCouponModal("edit", product)}
-                  >
-                    編輯
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-danger btn-sm ms-2"
-                    onClick={() => onOpenDeleteModalHandler(product)}
-                  >
-                    刪除
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <AdminTable
+        type={ADMIN_TABLE_TYPE.coupons}
+        items={coupons}
+        onEdit={openCouponModal}
+        onDelete={onOpenDeleteModal}
+      />
       <Pagination pagination={pagination} onChangePage={onChangePageHandler} />
     </div>
   );
