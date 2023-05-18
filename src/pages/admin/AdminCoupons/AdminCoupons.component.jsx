@@ -61,7 +61,7 @@ const AdminCoupons = () => {
   };
 
   return (
-    <div className="p-3">
+    <div className="admin-coupons">
       {isModalOpen && (
         <ModalPortal
           openWhichModal={openWhichModal}
@@ -69,12 +69,11 @@ const AdminCoupons = () => {
           createOrEdit={createOrEdit}
         />
       )}
-      <h3>優惠券列表</h3>
-      <hr />
-      <div className="text-end">
+      <h3 className="admin-coupons__title">優惠券列表</h3>
+      <div className="admin-coupons__actions">
         <button
           type="button"
-          className="btn btn-primary btn-sm"
+          className="admin-coupons__actions-add"
           onClick={() => openCouponModal("create", {})}
         >
           建立新優惠券

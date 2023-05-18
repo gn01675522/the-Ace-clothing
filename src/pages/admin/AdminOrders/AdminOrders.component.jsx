@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import "./AdminOrders.styles.scss";
+
 import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
@@ -38,7 +40,7 @@ const AdminOrders = () => {
   const onChangePageHandler = (page) => {
     dispatch(fetchAdminOrdersAsync(page));
   };
-
+  // todo 需要重新思考 modal 開啟方式，感覺目前的方法使用起來不太方便
   const onOpenOrdersModal = (_, order) => {
     console.log("modal trigger", order);
     setOpenWhichModal(MODAL_TYPE.order);
@@ -55,12 +57,11 @@ const AdminOrders = () => {
   //* 打開刪除 modal
 
   return (
-    <div className="p-3">
+    <div className="admin-orders">
       {isModalOpen && (
         <ModalPortal openWhichModal={openWhichModal} dataType={dataType} />
       )}
-      <h3>訂單列表</h3>
-      <hr />
+      <h3 className="admin-orders__title">訂單列表</h3>
       <AdminTable
         type={ADMIN_TABLE_TYPE.orders}
         items={orders}

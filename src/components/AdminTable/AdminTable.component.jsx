@@ -6,7 +6,7 @@ export const ADMIN_TABLE_TYPE = {
   orders: "orders",
 };
 
-const tableSwitch = (type, items) =>
+const tableSwitch = (type) =>
   ({
     [ADMIN_TABLE_TYPE.products]: {
       headers: ["分類", "名稱", "售價", "啟用狀態", "編輯"],
