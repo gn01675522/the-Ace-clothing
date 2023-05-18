@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./pages/Login/Login";
+import Login from "./pages/Login/Login.component";
 import Dashboard from "./pages/admin/Dashboard/Dashboard.component";
 import AdminProducts from "./pages/admin/AdminProducts/AdminProducts.component";
 import AdminCoupons from "./pages/admin/AdminCoupons/AdminCoupons.component";
 import AdminOrders from "./pages/admin/AdminOrders/AdminOrders.component";
-import FrontLayout from "./pages/front/FrontLayout/FrontLayout";
+import FrontLayout from "./pages/front/FrontLayout/FrontLayout.component";
 import Home from "./pages/front/Home/Home.component";
 import Products from "./pages/front/Products/Products.component";
 import ProductDetail from "./pages/front/ProductDetail/ProductDetail.component";
