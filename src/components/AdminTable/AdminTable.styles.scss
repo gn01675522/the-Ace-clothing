@@ -2,7 +2,7 @@
 
 .admin-table {
   width: 100%;
-  height: 100%;
+  height: min-content;
   &__header {
     outline: 1px solid purple;
     width: 100%;

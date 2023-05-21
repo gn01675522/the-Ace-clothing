@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Login.styles.scss";
 
 import { ReactComponent as AceLogo } from "../../assets/ace.svg";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../components/Loading/Loading.component";
 
 import { setCurrentUserAsync } from "../../store/user/user.actions";
 import {

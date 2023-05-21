@@ -9,12 +9,12 @@ import "./AdminProducts.styles.scss";
 import Pagination from "../../../components/Pagination/Pagination.component";
 import ModalPortal, {
   MODAL_TYPE,
-} from "../../../components/UI/ModalSet/ModalPortal.component";
+} from "../../../components/ModalSet/ModalPortal.component";
 
 import AdminTable, {
   ADMIN_TABLE_TYPE,
 } from "../../../components/AdminTable/AdminTable.component";
-import { DELETE_MODAL_TYPE } from "../../../components/UI/ModalSet/DeleteModal/DeleteModal.component";
+import { DELETE_MODAL_TYPE } from "../../../components/ModalSet/DeleteModal/DeleteModal.component";
 
 import {
   fetchAdminProductAsync,

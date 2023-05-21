@@ -1,0 +1,214 @@
+@import "../../../stylesheets/variables";
+.product-modal {
+  height: 100%;
+  &__header {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    &-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    &-close {
+      width: 40px;
+      height: 100%;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-check {
+      display: flex;
+      width: 100%;
+      height: 40px;
+      font-weight: bold;
+      justify-content: space-between;
+      align-items: center;
+      zoom: 120%;
+      border-bottom: 1px solid black;
+    }
+  }
+  &__footer {
+    display: flex;
+    width: 100%;
+    height: min-content;
+    padding: 1rem 0 0 0;
+    gap: 1rem;
+    &-close,
+    &-save {
+      width: 100%;
+      height: 35px;
+      background-color: black;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
+
+.product-modal__body-upper {
+  display: flex;
+  width: 100%;
+  padding: 0 0 1rem 0;
+  margin-top: 1rem;
+  border-bottom: 1px solid black;
+  gap: 5px;
+  &-left {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    gap: 1rem;
+
+    &-img {
+      outline: 1px solid black;
+      width: 100%;
+      height: 350px;
+    }
+    &-label {
+      font-weight: bold;
+    }
+    &-alt {
+      outline: 1px solid black;
+      width: 100%;
+      height: 300px;
+    }
+    &-input {
+      height: 40px;
+    }
+  }
+  &-right {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+    &-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      &-label {
+        font-weight: bold;
+      }
+      &-input {
+        height: 40px;
+      }
+    }
+  }
+}
+
+.product-modal__body-middle {
+  display: flex;
+  width: 100%;
+  padding: 0 0 1rem 0;
+  margin-top: 1rem;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid black;
+  &-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    &-label {
+      font-weight: bold;
+    }
+    &-textarea {
+      resize: none;
+      height: 100px;
+    }
+  }
+}
+
+.product-modal__body-lower {
+  display: flex;
+  width: 100%;
+  height: min-content;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0 0 1rem 0;
+  gap: 1rem;
+  border-bottom: 1px solid black;
+
+  &-trigger {
+    display: none;
+  }
+
+  &-trigger:checked ~ &-content {
+    display: flex;
+  }
+  //todo 看能不能加上動畫
+
+  &-trigger:checked ~ &-toggle &-triangle {
+    transform: rotate(180deg);
+  }
+
+  &-toggle {
+    outline: 1px solid red;
+    display: flex;
+    width: 100%;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+  }
+  &-triangle {
+    border-style: solid;
+    border-width: 12px 8px 0 8px;
+    border-color: black transparent transparent transparent;
+  }
+
+  &-title {
+    font-weight: bold;
+  }
+  &-content {
+    display: none;
+    width: 100%;
+    gap: 5px;
+    flex-wrap: wrap;
+    &-item {
+      display: flex;
+      width: calc(50% - 2.5px);
+      flex-direction: column;
+      gap: 1rem;
+      &-img,
+      &-alt {
+        outline: 1px solid black;
+        width: 100%;
+        height: 300px;
+      }
+      &-input {
+        height: 40px;
+      }
+      &-label {
+        display: flex;
+        line-height: 30px;
+        justify-content: space-between;
+      }
+      &-remove {
+        width: 60px;
+        height: 30px;
+        padding: 0 10px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+  &-add {
+    width: 100%;
+    height: 30px;
+    padding: 0 5px;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+}

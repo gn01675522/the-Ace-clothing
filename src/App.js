@@ -16,7 +16,6 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="testRoute" element={<Dashboard />}></Route>
         <Route path="/" element={<FrontLayout />}>
           <Route path="" element={<Home />} />
           <Route path="products/:category" element={<Products />} />

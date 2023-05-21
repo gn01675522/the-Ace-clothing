@@ -4,13 +4,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectAdminCouponsTempData } from "../../../../store/adminCoupons/adminCoupons.selector";
-import { setAdminCouponsOpen } from "../../../../store/adminCoupons/adminCoupons.actions";
+import { selectAdminCouponsTempData } from "../../../store/adminCoupons/adminCoupons.selector";
+import { setAdminCouponsOpen } from "../../../store/adminCoupons/adminCoupons.actions";
 
 import {
   createAdminCouponAsync,
   updateAdminCouponAsync,
-} from "../../../../store/adminCoupons/adminCoupons.actions";
+} from "../../../store/adminCoupons/adminCoupons.actions";
 
 const defaultFormData = {
   title: "",

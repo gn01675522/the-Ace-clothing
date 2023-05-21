@@ -2,23 +2,27 @@
 //* 1. ModalPortal.component.jsx
 
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   setAdminProductModalOpen,
   deleteAdminProductAsync,
-} from "../../../../store/adminProduct/adminProduct.actions";
-import { selectAdminProductTempData } from "../../../../store/adminProduct/adminProduct.selector";
+} from "../../../store/adminProduct/adminProduct.actions";
+
+import { selectAdminProductTempData } from "../../../store/adminProduct/adminProduct.selector";
 
 import {
   setAdminOrdersIsModalOpen,
   deleteAdminOrdersAsync,
-} from "../../../../store/adminOrders/adminOrders.actions";
-import { selectAdminOrdersTempData } from "../../../../store/adminOrders/adminOrders.selector";
+} from "../../../store/adminOrders/adminOrders.actions";
+
+import { selectAdminOrdersTempData } from "../../../store/adminOrders/adminOrders.selector";
 
 import {
   setAdminCouponsOpen,
   deleteAdminCouponsAsync,
-} from "../../../../store/adminCoupons/adminCoupons.actions";
-import { selectAdminCouponsTempData } from "../../../../store/adminCoupons/adminCoupons.selector";
+} from "../../../store/adminCoupons/adminCoupons.actions";
+
+import { selectAdminCouponsTempData } from "../../../store/adminCoupons/adminCoupons.selector";
 
 export const DELETE_MODAL_TYPE = {
   adminProduct: "adminProduct",

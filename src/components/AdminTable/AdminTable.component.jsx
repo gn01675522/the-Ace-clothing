@@ -26,8 +26,6 @@ const AdminTable = ({ type, items, onEdit, onDelete }) => {
   const headers = tableSwitch(type).headers;
   const productInfo = tableSwitch(type).items;
 
-  console.log(items);
-
   return (
     <table className="admin-table">
       <thead className="admin-table__header">

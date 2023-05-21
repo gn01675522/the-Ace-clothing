@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Products.styles.scss";
 
 import Pagination from "../../../components/Pagination/Pagination.component";
-import Loading from "../../../components/Loading/Loading";
+import Loading from "../../../components/Loading/Loading.component";
 import ProductCard from "../../../components/ProductCard/ProductCard.component";
 
 import {
