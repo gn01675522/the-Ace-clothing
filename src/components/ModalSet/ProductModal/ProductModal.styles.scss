@@ -1,6 +1,5 @@
 @import "../../../stylesheets/variables";
 .product-modal {
-  height: 100%;
   &__header {
     display: flex;
     width: 100%;
@@ -29,10 +28,10 @@
       display: flex;
       width: 100%;
       height: 40px;
+      font-size: 1.3rem;
       font-weight: bold;
       justify-content: space-between;
       align-items: center;
-      zoom: 120%;
       border-bottom: 1px solid black;
     }
   }
