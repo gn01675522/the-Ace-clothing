@@ -4,7 +4,7 @@ import ModalBackdrop from "./ModalBackdrop/ModalBackdrop.component";
 import ProductModal from "./ProductModal/ProductModal.component";
 import DeleteModal from "./DeleteModal/DeleteModal.component";
 import CouponModal from "./CouponModal/CouponModal.component";
-import OrderModal from "./OrderModal/OrderModal";
+import OrderModal from "./OrderModal/OrderModal.component";
 
 const portalElement = document.getElementById("overlays");
 
