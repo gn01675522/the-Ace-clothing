@@ -4,7 +4,7 @@ const selectAdminProductReducer = (state) => state.adminProduct;
 
 export const selectAdminProducts = createSelector(
   [selectAdminProductReducer],
-  (adminProduct) => adminProduct.products
+  (adminProduct) => Object.values(adminProduct.products)
 );
 
 export const selectAdminProductIsLoading = createSelector(
@@ -35,4 +35,37 @@ export const selectAdminProductIsModalOpen = createSelector(
 export const selectAdminProductMessage = createSelector(
   [selectAdminProductReducer],
   (adminProduct) => adminProduct.message
+);
+
+//* *************************************************************** */
+export const selectAdminMensProducts = createSelector(
+  [selectAdminProducts],
+  (products) =>
+    products.filter((product) => product.category.split("-")[0] === "mens")
+);
+
+export const selectAdminWomensProducts = createSelector(
+  [selectAdminProducts],
+  (products) =>
+    products.filter((product) => product.category.split("-")[0] === "womens")
+);
+
+export const selectAdminHatsProducts = createSelector(
+  [selectAdminProducts],
+  (products) =>
+    products.filter((product) => product.category.split("-")[0] === "hats")
+);
+
+export const selectAdminShoesProducts = createSelector(
+  [selectAdminProducts],
+  (products) =>
+    products.filter((product) => product.category.split("-")[0] === "shoes")
+);
+
+export const selectAdminAcessoriesProducts = createSelector(
+  [selectAdminProducts],
+  (products) =>
+    products.filter(
+      (product) => product.category.split("-")[0] === "accessories"
+    )
 );

@@ -106,7 +106,6 @@
   height: 100%;
   flex-direction: column;
   &__navbar {
-    outline: 1px solid black;
     display: flex;
     position: absolute;
     width: 100%;
@@ -134,11 +133,16 @@
           color: white;
         }
       }
+      .active {
+        background-color: black;
+        color: white;
+      }
     }
   }
   &__content {
     width: 100%;
     height: calc(100vh - 60px);
+    padding: 1rem 2rem;
   }
   @media screen and (min-width: 1024px) {
     flex-direction: row;

@@ -11,6 +11,7 @@ import ProductDetail from "./pages/front/ProductDetail/ProductDetail.component";
 import Cart from "./pages/front/Cart/Cart.component";
 import Checkout from "./pages/front/Checkout/Checkout.component";
 import Success from "./pages/front/Success/Success.component";
+import Categories from "./components/Categories/Categories.component";
 
 const App = () => {
   return (
@@ -26,7 +27,8 @@ const App = () => {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Dashboard />}>
-          <Route path="products" element={<AdminProducts />} />
+          <Route path="products" element={<Categories />} />
+          <Route path="products/:category" element={<AdminProducts />} />
           <Route path="coupons" element={<AdminCoupons />} />
           <Route path="orders" element={<AdminOrders />} />
         </Route>

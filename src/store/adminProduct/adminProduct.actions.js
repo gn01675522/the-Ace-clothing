@@ -50,17 +50,37 @@ export const setAdminProductModalOpen = (bool) =>
 //******************************** Sync **********************************************/
 //******************************** Async **********************************************/
 
-export const fetchAdminProductAsync = (page = 1) => {
+// export const fetchAdminProductAsync = (page = 1) => {
+//   return async (dispatch) => {
+//     dispatch(fetchAdminProductStart());
+//     try {
+//       const res = await axios.get(
+//         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/products?page=${page}`
+//       );
+//       dispatch(
+//         fetchAdminProductSuccess({
+//           products: res.data.products,
+//           pagination: res.data.pagination,
+//         })
+//       );
+//     } catch (error) {
+//       dispatch(fetchAdminProductFailed(error.response.data));
+//     }
+//   };
+// };
+// //* 取得 product data action
+
+export const fetchAdminProductAsync = () => {
   return async (dispatch) => {
     dispatch(fetchAdminProductStart());
     try {
       const res = await axios.get(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/products?page=${page}`
+        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`
       );
+      console.log(res.data.products);
       dispatch(
         fetchAdminProductSuccess({
           products: res.data.products,
-          pagination: res.data.pagination,
         })
       );
     } catch (error) {

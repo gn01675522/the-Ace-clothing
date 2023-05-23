@@ -2,6 +2,7 @@
 //* 1. App.js
 
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./AdminProducts.styles.scss";
@@ -16,16 +17,43 @@ import AdminTable, {
 } from "../../../components/AdminTable/AdminTable.component";
 import { DELETE_MODAL_TYPE } from "../../../components/ModalSet/DeleteModal/DeleteModal.component";
 
+import Loading from "../../../components/Loading/Loading.component";
+
 import {
   fetchAdminProductAsync,
   setAdminProductTempData,
   setAdminProductModalOpen,
 } from "../../../store/adminProduct/adminProduct.actions";
 import {
-  selectAdminProducts,
-  selectAdminProductPagination,
   selectAdminProductIsModalOpen,
+  selectAdminProductIsLoading,
+  selectAdminProducts,
+  selectAdminMensProducts,
+  selectAdminWomensProducts,
+  selectAdminHatsProducts,
+  selectAdminShoesProducts,
+  selectAdminAcessoriesProducts,
 } from "../../../store/adminProduct/adminProduct.selector";
+
+const CATEGORY = {
+  all: "all",
+  mens: "mens",
+  womens: "womens",
+  hats: "hats",
+  shoes: "shoes",
+  acessories: "acessories",
+};
+
+const categoryData = (category) =>
+  ({
+    [CATEGORY.all]: selectAdminProducts,
+    [CATEGORY.mens]: selectAdminMensProducts,
+    [CATEGORY.womens]: selectAdminWomensProducts,
+    [CATEGORY.hats]: selectAdminHatsProducts,
+    [CATEGORY.shoes]: selectAdminShoesProducts,
+    [CATEGORY.acessories]: selectAdminAcessoriesProducts,
+  }[category]);
+//* 根據傳入 category 來決定 return 哪個 selector
 
 const AdminProducts = () => {
   const [createOrEdit, setCreateOrEdit] = useState("create");
@@ -34,11 +62,23 @@ const AdminProducts = () => {
   //* modal 類型選項：products ? coupons ? orders ?
   const [dataType, setDataType] = useState("");
   //* 刪除 modal 選項：products ? coupons ? orders ?
-
+  const [currentPage, setCurrentPage] = useState(1);
+  //* 目前頁面的 state
+  const isLoading = useSelector(selectAdminProductIsLoading);
   const dispatch = useDispatch();
-  const products = useSelector(selectAdminProducts);
-  const pagination = useSelector(selectAdminProductPagination);
+
+  const { category } = useParams();
+
+  const products = useSelector(categoryData(category));
+  //* 根據 params 來決定要 selector 哪種資料
   const isModalOpen = useSelector(selectAdminProductIsModalOpen);
+  const pageCount = Math.ceil(products.length / 10);
+  //* 根據產品數量來決定頁數
+  const productsOnPage = products.slice(
+    currentPage === 1 ? 0 : (currentPage - 1) * 10,
+    currentPage * 10
+  );
+  //* 根據目前哪一頁來決定來決定要顯示哪筆產品，10 筆資料一頁
 
   useEffect(() => {
     dispatch(fetchAdminProductAsync());
@@ -46,7 +86,7 @@ const AdminProducts = () => {
   //* 設定 mounted 的時候 fetch 資料
 
   const onChangePage = (page) => {
-    dispatch(fetchAdminProductAsync(page));
+    setCurrentPage(page);
   };
   //* 透過 api 取得切換頁面後的產品資料
 
@@ -68,6 +108,7 @@ const AdminProducts = () => {
 
   return (
     <div className="admin-products">
+      {isLoading && <Loading />}
       {isModalOpen && (
         <ModalPortal
           createOrEdit={createOrEdit}
@@ -75,7 +116,9 @@ const AdminProducts = () => {
           dataType={dataType}
         />
       )}
-      <h3 className="admin-products__title">產品列表</h3>
+      <h3 className="admin-products__title">
+        產品列表-{category.toUpperCase()}
+      </h3>
       <div className="admin-products__actions">
         <button
           type="button"
@@ -87,12 +130,16 @@ const AdminProducts = () => {
       </div>
       <AdminTable
         type={ADMIN_TABLE_TYPE.products}
-        items={products}
+        items={productsOnPage}
         onEdit={onOpenProductModal}
         onDelete={onOpenProductDeleteModal}
       />
 
-      <Pagination onChangePage={onChangePage} pagination={pagination} />
+      <Pagination
+        onChangePage={onChangePage}
+        pageCount={pageCount}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

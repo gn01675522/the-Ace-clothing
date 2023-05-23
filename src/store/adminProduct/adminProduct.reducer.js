@@ -16,7 +16,6 @@ const {
 
 const INITIAL_STATE = {
   products: [],
-  pagination: {},
   tempData: {},
   isModalOpen: false,
   isLoading: false,
@@ -32,12 +31,7 @@ export const adminProductReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, isLoading: true };
 
     case FETCH_ADMIN_PRODUCT_SUCCESS:
-      return {
-        ...state,
-        products: payload.products,
-        pagination: payload.pagination,
-        isLoading: false,
-      };
+      return { ...state, products: payload.products, isLoading: false };
 
     case FETCH_ADMIN_PRODUCT_FAILED:
       return { ...state, isLoading: false, error: payload };
