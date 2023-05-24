@@ -20,26 +20,7 @@ export const fetchUserProductFailed = (error) =>
 //******************************** Sync **********************************************/
 //******************************** Async **********************************************/
 
-export const fetchUserProductAsync = (page = 1) => {
-  return async (dispatch) => {
-    dispatch(fetchUserProductStart());
-    try {
-      const res = await axios.get(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`
-      );
-      dispatch(
-        fetchUserProductSuccess({
-          products: res.data.products,
-          pagination: res.data.pagination,
-        })
-      );
-    } catch (error) {
-      dispatch(fetchUserProductFailed(error.response.data));
-    }
-  };
-};
-
-export const fetchUserProductAsyncTest = () => {
+export const fetchUserProductAsync = () => {
   return async (dispatch) => {
     dispatch(fetchUserProductStart());
     try {

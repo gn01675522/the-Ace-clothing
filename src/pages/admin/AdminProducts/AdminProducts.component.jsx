@@ -74,7 +74,7 @@ const AdminProducts = () => {
   const isModalOpen = useSelector(selectAdminProductIsModalOpen);
   const pageCount = Math.ceil(products.length / 10);
   //* 根據產品數量來決定頁數
-  const productsOnPage = products.slice(
+  const productsInPage = products.slice(
     currentPage === 1 ? 0 : (currentPage - 1) * 10,
     currentPage * 10
   );
@@ -130,7 +130,7 @@ const AdminProducts = () => {
       </div>
       <AdminTable
         type={ADMIN_TABLE_TYPE.products}
-        items={productsOnPage}
+        items={productsInPage}
         onEdit={onOpenProductModal}
         onDelete={onOpenProductDeleteModal}
       />
