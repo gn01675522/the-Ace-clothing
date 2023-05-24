@@ -37,6 +37,7 @@ const AdminCoupons = () => {
   const coupons = useSelector(selectAdminCoupons);
   const pagination = useSelector(selectAdminCouponsPagination);
   const isModalOpen = useSelector(selectAdminCouponsIsModalOpen);
+  const { total_pages, current_page } = pagination;
 
   useEffect(() => {
     dispatch(fetchAdminCouponsAsync());
@@ -85,7 +86,11 @@ const AdminCoupons = () => {
         onEdit={openCouponModal}
         onDelete={onOpenDeleteModal}
       />
-      <Pagination pagination={pagination} onChangePage={onChangePageHandler} />
+      <Pagination
+        currentPage={current_page}
+        onChangePage={onChangePageHandler}
+        pageCount={total_pages}
+      />
     </div>
   );
 };

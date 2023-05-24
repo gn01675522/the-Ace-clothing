@@ -32,6 +32,7 @@ const AdminOrders = () => {
   const orders = useSelector(selectAdminOrders);
   const pagination = useSelector(selectAdminOrdersPagination);
   const isModalOpen = useSelector(selectAdminOrdersIsModalOpen);
+  const { total_pages, current_page } = pagination;
 
   useEffect(() => {
     dispatch(fetchAdminOrdersAsync());
@@ -69,7 +70,11 @@ const AdminOrders = () => {
         onDelete={onOpenOrdersDeleteModal}
       />
 
-      <Pagination pagination={pagination} onChangePage={onChangePageHandler} />
+      <Pagination
+        currentPage={current_page}
+        onChangePage={onChangePageHandler}
+        pageCount={total_pages}
+      />
     </div>
   );
 };
