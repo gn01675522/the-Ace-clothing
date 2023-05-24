@@ -1,7 +1,7 @@
 import "./Categories.styles.scss";
 import CategoryCard from "../CategoryCard/CategoryCard.component";
 
-import { IMAGES_URL } from "../../data/imagesUrl";
+import { IMAGES_URL } from "../../data/imagesUrl.data";
 
 const categories = IMAGES_URL.categories;
 

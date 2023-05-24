@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import "./Banner.styles.scss";
-import { IMAGES_URL } from "../../data/imagesUrl";
+
 import Indicator from "../Indicator/Indicator.component";
+import { IMAGES_URL } from "../../data/imagesUrl.data";
 
 const bannerImages = IMAGES_URL.banner;
 

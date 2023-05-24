@@ -53,23 +53,13 @@ const Products = () => {
   );
   const pageCount = Math.ceil(products.length / 12);
 
-  console.log("inside PRODUCTS", products);
-
   const changePage = (page) => {
     setCurrentPage(page);
   };
 
-  // const test = async () => {
-  //   const res = await axios.get(
-  //     `/v2/api/${process.env.REACT_APP_API_PATH}/products/all`
-  //   );
-  //   console.log(res);
-  // };
-
   useEffect(() => {
     dispatch(fetchUserProductAsync());
   }, []);
-  //todo 暫時先停下，目前已完成分類邏輯，實際畫面顯現及 redux 部分還待修改
 
   return (
     <div className="products">

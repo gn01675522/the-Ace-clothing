@@ -4,6 +4,7 @@
 //* 專門提供新增及更新後台產品使用，對應 redux 為 adminProduct
 
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./ProductModal.styles.scss";
@@ -38,11 +39,13 @@ const ProductModal = ({ createOrEdit }) => {
   const [formData, setFormData] = useState(defaultFormData);
   const dispatch = useDispatch();
   const tempData = useSelector(selectAdminProductTempData);
+  const { category } = useParams();
+  console.log(category);
 
   useEffect(() => {
     switch (createOrEdit) {
       case "create":
-        setFormData(defaultFormData);
+        setFormData({ ...defaultFormData, category: `${category}-` });
         break;
       case "edit":
         if (tempData.imagesUrl) {

@@ -14,12 +14,6 @@ export const selectUserProductIsLoading = createSelector(
 );
 //* 與 api 交互時的 loading 狀態
 
-// export const selectUserProductPagination = createSelector(
-//   [selectUserProducts],
-//   (products) => Math.ceil(products.length / 12)
-// );
-//* 根據產品數量除以 12 來決定分頁器數量 (全部商品)
-
 //* ******************************************* */
 export const selectUserMensProducts = createSelector(
   [selectUserProducts],
