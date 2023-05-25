@@ -10,11 +10,11 @@ const tableSwitch = (type) =>
   ({
     [ADMIN_TABLE_TYPE.products]: {
       headers: ["分類", "名稱", "售價", "啟用狀態", "編輯"],
-      items: ["category", "title", "price", "is_enable"],
+      items: ["category", "title", "price", "is_enabled"],
     },
     [ADMIN_TABLE_TYPE.coupons]: {
       headers: ["優惠碼", "折扣", "到期日", "啟用狀態", "編輯"],
-      items: ["code", "percent", "due_date", "is_enable"],
+      items: ["code", "percent", "due_date", "is_enabled"],
     },
     [ADMIN_TABLE_TYPE.orders]: {
       headers: ["訂單 ID", "用戶信箱", "訂單金額", "付款狀態", "編輯"],

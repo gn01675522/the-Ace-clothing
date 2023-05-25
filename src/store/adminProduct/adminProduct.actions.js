@@ -49,27 +49,6 @@ export const setAdminProductModalOpen = (bool) =>
 
 //******************************** Sync **********************************************/
 //******************************** Async **********************************************/
-
-// export const fetchAdminProductAsync = (page = 1) => {
-//   return async (dispatch) => {
-//     dispatch(fetchAdminProductStart());
-//     try {
-//       const res = await axios.get(
-//         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/products?page=${page}`
-//       );
-//       dispatch(
-//         fetchAdminProductSuccess({
-//           products: res.data.products,
-//           pagination: res.data.pagination,
-//         })
-//       );
-//     } catch (error) {
-//       dispatch(fetchAdminProductFailed(error.response.data));
-//     }
-//   };
-// };
-// //* 取得 product data action
-
 export const fetchAdminProductAsync = () => {
   return async (dispatch) => {
     dispatch(fetchAdminProductStart());
@@ -102,8 +81,8 @@ export const deleteAdminProductAsync = (id) => {
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setAdminProductFailed(error.response.data));
       dispatch(setHandleMessage("error", error));
+      dispatch(setAdminProductFailed(error.response.data));
     }
   };
 };
@@ -125,8 +104,8 @@ export const updateAdminProductAsync = (id, data) => {
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setAdminProductFailed(error.response.data));
       dispatch(setHandleMessage("error", error));
+      dispatch(setAdminProductFailed(error.response.data));
     }
   };
 };
@@ -144,12 +123,13 @@ export const createAdminProductAsync = (data) => {
         }
       );
       dispatch(setAdminProductSuccess());
+      console.log(res);
       dispatch(setHandleMessage("success", res));
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setAdminProductFailed(error.response.data));
       dispatch(setHandleMessage("error", error));
+      dispatch(setAdminProductFailed(error.response.data));
     }
   };
 };

@@ -3,6 +3,8 @@
 
 import { useDispatch, useSelector } from "react-redux";
 
+import "./DeleteModal.styles.scss";
+
 import {
   setAdminProductModalOpen,
   deleteAdminProductAsync,
@@ -57,7 +59,6 @@ const DeleteModal = ({ dataType }) => {
   const deleteDataAction = deleteForWhat(dataType).deleteAction;
   const deleteItem = useSelector(deleteForWhat(dataType).deleteItem);
   const { id, title } = deleteItem;
-  console.log("inside DeleteModal", deleteItem);
 
   const onCloseModalHandler = () => {
     dispatch(isModalOpen(false));
@@ -68,42 +69,38 @@ const DeleteModal = ({ dataType }) => {
   };
 
   return (
-    <>
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header bg-danger">
-            <h1 className="modal-title text-white fs-5" id="exampleModalLabel">
-              刪除確認
-            </h1>
-            <button
-              type="button"
-              className="btn-close"
-              aria-label="Close"
-              onClick={onCloseModalHandler}
-            />
-          </div>
-          <div className="modal-body">
-            刪除 {dataType === "adminOrder" ? id : title}
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={onCloseModalHandler}
-            >
-              取消
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={() => onDeleteHandler(id)}
-            >
-              確認刪除
-            </button>
-          </div>
-        </div>
+    <div className="delete-modal">
+      <div className="delete-modal__header">
+        <h1 className="delete-modal__header-title">刪除確認</h1>
+        <button
+          type="button"
+          className="delete-modal__header-close"
+          aria-label="Close"
+          onClick={onCloseModalHandler}
+        >
+          X
+        </button>
       </div>
-    </>
+      <div className="delete-modal__body">
+        確定刪除 {dataType === "adminOrder" ? id : title}？
+      </div>
+      <div className="delete-modal__footer">
+        <button
+          type="button"
+          className="delete-modal__footer-close"
+          onClick={onCloseModalHandler}
+        >
+          取消
+        </button>
+        <button
+          type="button"
+          className="delete-modal__footer-confirm"
+          onClick={() => onDeleteHandler(id)}
+        >
+          確認刪除
+        </button>
+      </div>
+    </div>
   );
 };
 

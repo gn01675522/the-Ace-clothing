@@ -37,10 +37,10 @@ const defaultFormData = {
 
 const ProductModal = ({ createOrEdit }) => {
   const [formData, setFormData] = useState(defaultFormData);
+  const [isToggleOpen, setIsToggleOpen] = useState(false);
   const dispatch = useDispatch();
   const tempData = useSelector(selectAdminProductTempData);
   const { category } = useParams();
-  console.log(category);
 
   useEffect(() => {
     switch (createOrEdit) {
@@ -57,7 +57,7 @@ const ProductModal = ({ createOrEdit }) => {
       default:
         throw new Error(`invalid input ${createOrEdit}`);
     }
-  }, [createOrEdit, tempData]);
+  }, [createOrEdit, tempData, category]);
   //* 根據 type 開啟相對應 modal，並放入相對應資料
 
   const onCloseModal = () => {
@@ -70,6 +70,9 @@ const ProductModal = ({ createOrEdit }) => {
       ...formData,
       imagesUrl: [...formData.imagesUrl, ""],
     });
+    if (isToggleOpen === false) {
+      setIsToggleOpen(true);
+    }
   };
   //* 增加新增 imagesUrl 的 input
 
@@ -81,7 +84,6 @@ const ProductModal = ({ createOrEdit }) => {
 
   const onChangeHandler = (e, i) => {
     const { value, name } = e.target;
-    console.log(name, value);
     if (["price", "origin_price"].includes(name)) {
       setFormData({ ...formData, [name]: Number(value) });
     } else if (name === "is_enabled") {
@@ -95,6 +97,10 @@ const ProductModal = ({ createOrEdit }) => {
     }
   };
   //* 針對每個 input 在新增內容時放入 formData
+
+  const onOpenToggle = () => {
+    setIsToggleOpen(!isToggleOpen);
+  };
 
   const onSubmitHandler = () => {
     if (createOrEdit === "create") {
@@ -230,6 +236,8 @@ const ProductModal = ({ createOrEdit }) => {
               id="trigger-check"
               type="checkbox"
               className="product-modal__body-lower-trigger"
+              checked={isToggleOpen}
+              onChange={onOpenToggle}
             />
             <label
               className="product-modal__body-lower-toggle"
