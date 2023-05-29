@@ -2,16 +2,14 @@ import { useState, useEffect } from "react";
 import "./Banner.styles.scss";
 
 import Indicator from "../Indicator/Indicator.component";
-import { IMAGES_URL } from "../../data/imagesUrl.data";
-
-const bannerImages = IMAGES_URL.banner;
+import { BANNER_DATA } from "./Banner.data";
 
 const Banner = () => {
   const [imgNum, setImgNum] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (imgNum === bannerImages.length - 1) {
+      if (imgNum === BANNER_DATA.length - 1) {
         setImgNum(0);
       } else {
         setImgNum(imgNum + 1);
@@ -28,9 +26,9 @@ const Banner = () => {
 
   return (
     <div className="banner">
-      <img className="banner__image" src={bannerImages[imgNum]} alt="" />
+      <img className="banner__image" src={BANNER_DATA[imgNum]} alt="" />
       <Indicator
-        imgCount={bannerImages.length}
+        imgCount={BANNER_DATA.length}
         imgNum={imgNum}
         onChangeImg={onChangeImg}
       />

@@ -10,7 +10,7 @@ const navOption = [
   { title: "Women", link: "/products/womens" },
   { title: "Shoes", link: "/products/shoes" },
   { title: "Hats", link: "/products/hats" },
-  { title: "Acessories", link: "/products/acessories" },
+  { title: "Accessories", link: "/products/accessories" },
 ];
 
 const NavBar = () => {

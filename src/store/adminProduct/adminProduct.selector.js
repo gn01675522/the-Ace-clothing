@@ -64,11 +64,11 @@ export const selectAdminShoesProducts = createSelector(
 );
 //* 就取出的完整產品資料將 shoes 分類出來
 
-export const selectAdminAcessoriesProducts = createSelector(
+export const selectAdminAccessoriesProducts = createSelector(
   [selectAdminProducts],
   (products) =>
     products.filter(
       (product) => product.category.split("-")[0] === "accessories"
     )
 );
-//* 就取出的完整產品資料將 acessories 分類出來
+//* 就取出的完整產品資料將 accessories 分類出來

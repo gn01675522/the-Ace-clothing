@@ -32,7 +32,7 @@ import {
   selectAdminWomensProducts,
   selectAdminHatsProducts,
   selectAdminShoesProducts,
-  selectAdminAcessoriesProducts,
+  selectAdminAccessoriesProducts,
 } from "../../../store/adminProduct/adminProduct.selector";
 
 const CATEGORY = {
@@ -41,7 +41,7 @@ const CATEGORY = {
   womens: "womens",
   hats: "hats",
   shoes: "shoes",
-  acessories: "acessories",
+  accessories: "accessories",
 };
 
 const categoryData = (category) =>
@@ -51,7 +51,7 @@ const categoryData = (category) =>
     [CATEGORY.womens]: selectAdminWomensProducts,
     [CATEGORY.hats]: selectAdminHatsProducts,
     [CATEGORY.shoes]: selectAdminShoesProducts,
-    [CATEGORY.acessories]: selectAdminAcessoriesProducts,
+    [CATEGORY.accessories]: selectAdminAccessoriesProducts,
   }[category]);
 //* 根據傳入 category 來決定 return 哪個 selector
 

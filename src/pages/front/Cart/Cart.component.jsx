@@ -30,7 +30,6 @@ const Cart = () => {
           <Categories />
         )}
       </div>
-
       <div className="cart__info">
         <div className="cart__info-price">
           <div className="cart__info-price-items">

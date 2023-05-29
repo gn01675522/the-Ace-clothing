@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import "./Products.styles.scss";
@@ -16,7 +17,7 @@ import {
   selectUserWomensProducts,
   selectUserHatsProducts,
   selectUserShoesProducts,
-  selectUserAcessoriesProducts,
+  selectUserAccessoriesProducts,
 } from "../../../store/userProduct/userProduct.selector";
 
 const CATEGORY = {
@@ -25,7 +26,7 @@ const CATEGORY = {
   womens: "womens",
   hats: "hats",
   shoes: "shoes",
-  acessories: "acessories",
+  accessories: "accessories",
 };
 
 const categoryData = (category) =>
@@ -35,7 +36,7 @@ const categoryData = (category) =>
     [CATEGORY.womens]: selectUserWomensProducts,
     [CATEGORY.hats]: selectUserHatsProducts,
     [CATEGORY.shoes]: selectUserShoesProducts,
-    [CATEGORY.acessories]: selectUserAcessoriesProducts,
+    [CATEGORY.accessories]: selectUserAccessoriesProducts,
   }[category]);
 //* 根據傳入 category 來決定 return 哪個 selector
 
@@ -44,6 +45,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const { category } = useParams();
   const isLoading = useSelector(selectUserProductIsLoading);
+  const test = useNavigate()
 
   const products = useSelector(categoryData(category));
 
@@ -65,6 +67,7 @@ const Products = () => {
     <div className="products">
       {isLoading && <Loading />}
       <h1 className="products__title">{category}</h1>
+      <div className="products__gg">gg</div>
       <div className="products__content">
         {productsInPage.map((product, i) => {
           return <ProductCard product={product} key={i} urlParam={category} />;

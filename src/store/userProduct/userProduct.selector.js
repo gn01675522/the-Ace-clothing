@@ -4,7 +4,8 @@ const selectUserProductReducer = (state) => state.userProduct;
 
 export const selectUserProducts = createSelector(
   [selectUserProductReducer],
-  (userProduct) => userProduct.products
+  (userProduct) =>
+    userProduct.products.sort((a, b) => a.category.localeCompare(b.category))
 );
 //* 取得全部產品
 
@@ -42,11 +43,11 @@ export const selectUserShoesProducts = createSelector(
 );
 //* 將產品列表裡面的帽子商品取出
 
-export const selectUserAcessoriesProducts = createSelector(
+export const selectUserAccessoriesProducts = createSelector(
   [selectUserProducts],
   (products) =>
     products.filter(
-      (product) => product.category.split("-")[0] === "acessories"
+      (product) => product.category.split("-")[0] === "accessories"
     )
 );
 //* 將產品列表裡面的飾品商品取出

@@ -66,8 +66,10 @@ const Checkout = () => {
           </button>
         </div>
       </form>
-      <OrderCard products={cartItems?.carts} />
-      <SummaryCard total={cartItems?.final_total} />
+      <div className="checkout__info">
+        <OrderCard products={cartItems?.carts} />
+        <SummaryCard total={cartItems?.final_total} />
+      </div>
     </div>
   );
 };
