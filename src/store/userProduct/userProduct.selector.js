@@ -5,7 +5,9 @@ const selectUserProductReducer = (state) => state.userProduct;
 export const selectUserProducts = createSelector(
   [selectUserProductReducer],
   (userProduct) =>
-    userProduct.products.sort((a, b) => a.category.localeCompare(b.category))
+    [...userProduct.products].sort((a, b) =>
+      a.category.localeCompare(b.category)
+    )
 );
 //* 取得全部產品
 

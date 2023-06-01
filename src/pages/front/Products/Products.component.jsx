@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -45,7 +45,6 @@ const Products = () => {
   const dispatch = useDispatch();
   const { category } = useParams();
   const isLoading = useSelector(selectUserProductIsLoading);
-  const test = useNavigate()
 
   const products = useSelector(categoryData(category));
 

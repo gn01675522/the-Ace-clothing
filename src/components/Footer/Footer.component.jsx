@@ -4,7 +4,6 @@ import "./Footer.styles.scss";
 import { ReactComponent as Facebook } from "../../assets/facebook.svg";
 import { ReactComponent as Line } from "../../assets/line.svg";
 import { ReactComponent as Instagram } from "../../assets/instagram.svg";
-import { ReactComponent as Ace } from "../../assets/ace.svg";
 
 import { FOOTER_DATA } from "./footer.data";
 
