@@ -22,7 +22,7 @@ const symbol = (type) =>
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <p className="footer__copyright">
         © 本網站為個人練習作品，無作任何商業用途使用。
       </p>
@@ -59,7 +59,7 @@ const Footer = () => {
           </ul>
         ))}
       </div>
-    </div>
+    </footer>
   );
 };
 

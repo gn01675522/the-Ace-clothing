@@ -1,0 +1,61 @@
+@import "../../../stylesheets/variables";
+
+.split-banner {
+  display: flex;
+  width: 100%;
+  height: min-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__left {
+    display: flex;
+    width: 100%;
+    padding: 2rem 3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    color: black;
+    &-title {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    &-sentence {
+      width: 100%;
+      line-height: 1.5rem;
+    }
+    &-btn {
+      padding: 5px;
+      background-color: white;
+      opacity: 0.6;
+      font-weight: bold;
+      color: black;
+      cursor: pointer;
+    }
+  }
+  &__right {
+    width: 100%;
+    height: 100%;
+    &-img {
+      width: 100%;
+      height: 700px;
+      object-fit: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    &__men {
+      flex-direction: row-reverse;
+    }
+    &-left,
+    &-right {
+      width: 50%;
+    }
+    &-left-sentence {
+      width: 36vh;
+    }
+  }
+}

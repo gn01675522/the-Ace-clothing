@@ -28,11 +28,9 @@
     }
     &-items {
       font-size: 1rem;
-      &-link {
+      span {
         display: flex;
         align-items: center;
-      }
-      span {
         color: black;
         &:hover {
           color: gray;

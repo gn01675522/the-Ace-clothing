@@ -3,11 +3,11 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
   padding: 1rem 0;
   background-color: $color-primary-bg;
-
-  &__topic {
+  text-align: center;
+  &__session {
     display: flex;
     flex-direction: column;
     gap: 1rem;

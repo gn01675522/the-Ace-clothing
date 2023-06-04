@@ -5,14 +5,28 @@ import "./ScrollList.styles.scss";
 import ScrollItem from "../ScrollItem/ScrollItem.component";
 
 import { fetchUserProductAsync } from "../../store/userProduct/userProduct.actions";
-import { selectUserMensProducts } from "../../store/userProduct/userProduct.selector";
+import {
+  selectUserMensProducts,
+  selectUserWomensProducts,
+} from "../../store/userProduct/userProduct.selector";
 
-const ScrollList = () => {
+export const SCROLL_TYPE = {
+  newArrival: "newArrival",
+  hot: "hot",
+};
+
+const scrollList = (type) =>
+  ({
+    [SCROLL_TYPE.newArrival]: selectUserMensProducts,
+    [SCROLL_TYPE.hot]: selectUserWomensProducts,
+  }[type]);
+
+const ScrollList = ({ type }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startDistance, setStartDistance] = useState(null);
   const [draggingProgress, setDraggingProgress] = useState(false);
   const dispatch = useDispatch();
-  const products = useSelector(selectUserMensProducts);
+  const products = useSelector(scrollList(type));
   const contentRef = useRef();
   let keepTrigger = null;
 
@@ -45,12 +59,10 @@ const ScrollList = () => {
   const onDragHandler = (e) => {
     if (!isDragging) return;
     setDraggingProgress(true);
-    const dragDistance =
-      window.innerWidth < 768 ? 5 : window.innerWidth < 1024 ? 10 : 30;
     const distance = startDistance - e.clientX;
     const container = contentRef.current;
     container.scrollBy({
-      left: distance > 0 ? dragDistance : -dragDistance,
+      left: distance,
       behavior: "auto",
     });
 

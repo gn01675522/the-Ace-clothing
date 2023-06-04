@@ -9,7 +9,11 @@
   background-color: #f6f5f3;
   @media screen and (min-width: 768px) {
     flex-direction: row;
+    gap: 4rem;
     justify-content: space-between;
+  }
+  @media screen and (min-width: 1024px) {
+    gap: 8rem;
   }
 }
 
@@ -33,7 +37,7 @@
   flex-direction: column;
   gap: 2rem;
   padding-bottom: 1.5rem;
-  
+
   &-price {
     display: flex;
     flex-direction: column;
