@@ -4,7 +4,7 @@ import "./ScrollItem.styles.scss";
 const ScrollItem = ({ product, urlParam,isDragging }) => {
   return (
     <Link
-      to={`/products/${urlParam}/${product.id}`}
+      to={`/${urlParam}/${product.id}`}
       className={`scroll-item scroll-item${isDragging? "--dragging":""}`}
       draggable="false"
     >

@@ -3,7 +3,6 @@
 .scroll-item {
   width: 230px;
   height: 350px;
-  user-select: none;
   &--dragging {
     pointer-events: none;
   }

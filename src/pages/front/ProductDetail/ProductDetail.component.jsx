@@ -1,25 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./ProductDetail.styles.scss";
 
-import { selectHasMessage } from "../../../store/message/message.selector";
 import Message from "../../../components/Message/Message.component";
 
+import { selectHasMessage } from "../../../store/message/message.selector";
 import { setAddItemToCartAsync } from "../../../store/cart/cart.actions";
 import { selectCartIsLoading } from "../../../store/cart/cart.selector";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState([]);
+  const [imgWidth, setImgWidth] = useState(0);
   const [cartQuantity, setCartQuantity] = useState(1);
   const { id } = useParams();
   const dispatch = useDispatch();
   const hasMessage = useSelector(selectHasMessage);
   const isLoading = useSelector(selectCartIsLoading);
-
-  const { imageUrl, imagesUrl, title, price, num, content, description } =
-    product;
 
   const getProduct = async (id) => {
     const productRes = await axios.get(
@@ -28,7 +26,42 @@ const ProductDetail = () => {
     setProduct(productRes.data.product);
   };
 
-  const addToCart = async () => {
+  useEffect(() => {
+    getProduct(id);
+  }, [id]);
+
+  const { imageUrl, imagesUrl, title, price, content, description } = product;
+
+  const imgPreviewRef = useRef();
+  const imgContainerRef = useRef();
+
+  useEffect(() => {
+    const detectResize = () => {
+      const imgInitialWidth = imgContainerRef.current.clientWidth;
+      if (imgInitialWidth) {
+        setImgWidth(imgInitialWidth);
+      }
+    };
+    detectResize();
+
+    window.addEventListener("resize", detectResize);
+    return () => {
+      window.removeEventListener("resize", detectResize);
+    };
+  }, []);
+  //* 防止組件剛掛載 product 並無法馬上取得資料時錯誤的問題；
+  //* 以及解決 imgWidth 只會抓取第一次組件 mount 時的寬度，而不會隨著螢幕尺寸改變
+
+  const pictureSet = [imageUrl, ...(Array.isArray(imagesUrl) ? imagesUrl : [])];
+  //* 直接將主圖片以及次要圖片組合成一個陣列，方便後續渲染 jsx
+
+  const onChangeImg = (type) => {
+    const previewContainer = imgPreviewRef.current;
+    previewContainer.scrollLeft += type === "prev" ? -imgWidth : imgWidth;
+  };
+  //* 以 ul 為目標，如果按鈕回傳的為 prev，那麼就減少 imgWidth，讓圖片由右往左，反之。
+
+  const addToCart = () => {
     const data = {
       data: {
         product_id: id,
@@ -36,24 +69,56 @@ const ProductDetail = () => {
       },
     };
     dispatch(setAddItemToCartAsync(data));
-    // dispatch(setHandleMessage("success", res));
   };
-
-  useEffect(() => {
-    getProduct(id);
-  }, [id]);
 
   return (
     <div className="product-detail">
       {hasMessage && <Message />}
       <div className="product-detail__sale">
-        <img src={imageUrl} alt="" className="product-detail__sale-img" />
+        <div className="product-detail__sale-wrapper">
+          <ul className="product-detail__sale-preview" ref={imgPreviewRef}>
+            {pictureSet?.map((img, i) => (
+              <li
+                className="product-detail__sale-preview-item"
+                ref={imgContainerRef}
+                key={i}
+              >
+                <img src={img} alt="" />
+              </li>
+            ))}
+          </ul>
+          <button
+            type="button"
+            className="product-detail__sale-wrapper-prev"
+            onClick={() => onChangeImg("prev")}
+          />
+          <button
+            type="button"
+            className="product-detail__sale-wrapper-next"
+            onClick={() => onChangeImg("next")}
+          />
+        </div>
+
         <div className="product-detail__sale-info">
           <div className="product-detail__sale-info-content">
+            <h3 div className="product-detail__sale-info-content-subtitle">
+              the Ace Clothing
+            </h3>
             <h1 className="product-detail__sale-info-content-title">{title}</h1>
             <span className="product-detail__sale-info-content-price">
               NT${price}
             </span>
+          </div>
+          <div className="product-detail__description">
+            <div className="product-detail__description-content">{content}</div>
+            <h2 className="product-detail__description-title">詳細資料</h2>
+            <ul className="product-detail__description-info">
+              {description?.split("-").map((item, i) => (
+                <li key={i} className="product-detail__description-info-item">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="product-detail__sale-function">
             <div className="product-detail__sale-function-quantity">

@@ -66,7 +66,6 @@ const Products = () => {
     <div className="products">
       {isLoading && <Loading />}
       <h1 className="products__title">{category}</h1>
-      <div className="products__gg">gg</div>
       <div className="products__content">
         {productsInPage.map((product, i) => {
           return <ProductCard product={product} key={i} urlParam={category} />;

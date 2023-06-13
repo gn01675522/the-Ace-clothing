@@ -35,40 +35,25 @@ export const selectAdminProductError = createSelector(
 );
 //* 取出 error 訊息
 
+const classifyAdminProducts = (category) =>
+  createSelector([selectAdminProducts], (products) =>
+    products.filter((product) => product.category.split("-")[0] === category)
+  );
+//* 將全部的產品依據傳入值分類
+
 //* ****************************** 以下為業務邏輯 ********************************* */
-export const selectAdminMensProducts = createSelector(
-  [selectAdminProducts],
-  (products) =>
-    products.filter((product) => product.category.split("-")[0] === "mens")
-);
+export const selectAdminMensProducts = classifyAdminProducts("mens");
 //* 就取出的完整產品資料將 mens 分類出來
 
-export const selectAdminWomensProducts = createSelector(
-  [selectAdminProducts],
-  (products) =>
-    products.filter((product) => product.category.split("-")[0] === "womens")
-);
+export const selectAdminWomensProducts = classifyAdminProducts("womens");
 //* 就取出的完整產品資料將 womens 分類出來
 
-export const selectAdminHatsProducts = createSelector(
-  [selectAdminProducts],
-  (products) =>
-    products.filter((product) => product.category.split("-")[0] === "hats")
-);
+export const selectAdminHatsProducts = classifyAdminProducts("hats");
 //* 就取出的完整產品資料將 hats 分類出來
 
-export const selectAdminShoesProducts = createSelector(
-  [selectAdminProducts],
-  (products) =>
-    products.filter((product) => product.category.split("-")[0] === "shoes")
-);
+export const selectAdminShoesProducts = classifyAdminProducts("shoes");
 //* 就取出的完整產品資料將 shoes 分類出來
 
-export const selectAdminAccessoriesProducts = createSelector(
-  [selectAdminProducts],
-  (products) =>
-    products.filter(
-      (product) => product.category.split("-")[0] === "accessories"
-    )
-);
+export const selectAdminAccessoriesProducts =
+  classifyAdminProducts("accessories");
 //* 就取出的完整產品資料將 accessories 分類出來

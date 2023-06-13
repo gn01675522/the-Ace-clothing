@@ -10,7 +10,7 @@ import "./ProductCard.styles.scss";
 
 const ProductCard = ({ product, urlParam }) => {
   return (
-    <Link to={`/products/${urlParam}/${product.id}`} className="products-card">
+    <Link to={`/${urlParam}/${product.id}`} className="products-card">
       <div className="products-card__preview">
         <img src={product.imageUrl} className="products-card__img" alt="..." />
       </div>

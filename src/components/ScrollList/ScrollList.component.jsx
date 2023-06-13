@@ -52,14 +52,15 @@ const ScrollList = ({ type }) => {
   //* 清空 setTimeout 及 keepTrigger
 
   const onCheckIsDrag = (e) => {
-    setStartDistance(e.clientX);
+    setStartDistance(e.pageX);
     setIsDragging(true);
   };
 
   const onDragHandler = (e) => {
     if (!isDragging) return;
+    e.preventDefault();
     setDraggingProgress(true);
-    const distance = startDistance - e.clientX;
+    const distance = startDistance - e.pageX;
     const container = contentRef.current;
     container.scrollBy({
       left: distance,

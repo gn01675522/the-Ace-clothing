@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Banner.styles.scss";
 
-import Indicator from "../Indicator/Indicator.component";
+import Indicator from "../UI/Indicator/Indicator.component";
 import { BANNER_DATA } from "./banner.data";
 
 const Banner = () => {
