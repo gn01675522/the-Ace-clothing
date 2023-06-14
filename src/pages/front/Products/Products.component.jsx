@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -48,10 +49,13 @@ const Products = () => {
 
   const products = useSelector(categoryData(category));
 
-  const productsInPage = products.slice(
-    currentPage === 1 ? 0 : (currentPage - 1) * 12,
-    currentPage * 12
-  );
+  const productsInPage = useMemo(() => {
+    return products.slice(
+      currentPage === 1 ? 0 : (currentPage - 1) * 12,
+      currentPage * 12
+    );
+  }, [products, currentPage]);
+
   const pageCount = Math.ceil(products.length / 12);
 
   const changePage = (page) => {
@@ -62,13 +66,24 @@ const Products = () => {
     dispatch(fetchUserProductAsync());
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [category]);
+  //* 若路由有改變則重新設定 setCurrentPage，不然切換路由時，currentPage 不會重置
+
   return (
     <div className="products">
       {isLoading && <Loading />}
       <h1 className="products__title">{category}</h1>
       <div className="products__content">
-        {productsInPage.map((product, i) => {
-          return <ProductCard product={product} key={i} urlParam={category} />;
+        {productsInPage.map((product) => {
+          return (
+            <ProductCard
+              product={product}
+              key={product.id}
+              urlParam={category}
+            />
+          );
         })}
       </div>
       <nav className="d-flex justify-content-center">
