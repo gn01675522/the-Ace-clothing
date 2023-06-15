@@ -20,14 +20,14 @@ const ProductDetail = () => {
   const isLoading = useSelector(selectCartIsLoading);
   const product = useSelector(selectUserSingleProduct);
 
-  useEffect(() => {
-    dispatch(fetchUserSingleProductAsync(id));
-  }, [id, dispatch]);
-
   const { imageUrl, imagesUrl, title, price, content, description } = product;
 
   const imgPreviewRef = useRef();
   const imgContainerRef = useRef();
+
+  useEffect(() => {
+    dispatch(fetchUserSingleProductAsync(id));
+  }, [id, dispatch]);
 
   useEffect(() => {
     const detectResize = () => {

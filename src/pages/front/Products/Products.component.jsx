@@ -10,7 +10,10 @@ import Pagination from "../../../components/Pagination/Pagination.component";
 import Loading from "../../../components/Loading/Loading.component";
 import ProductCard from "../../../components/ProductCard/ProductCard.component";
 
-import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.actions";
+import {
+  fetchUserProductAsync,
+  clearUserProduct,
+} from "../../../store/userProduct/userProduct.actions";
 import {
   selectUserProductIsLoading,
   selectUserProducts,
@@ -49,6 +52,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchUserProductAsync());
+    return () => dispatch(clearUserProduct());
   }, [dispatch]);
 
   const products = useSelector(categoryData(category));

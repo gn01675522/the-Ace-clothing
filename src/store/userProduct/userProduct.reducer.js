@@ -7,6 +7,7 @@ const {
   FETCH_USER_SINGLE_PRODUCT_START,
   FETCH_USER_SINGLE_PRODUCT_SUCCESS,
   FETCH_USER_SINGLE_PRODUCT_FAILED,
+  CLEAR_USER_PRODUCT,
 } = USER_PRODUCT_ACTION_TYPES;
 
 const INITIAL_STATE = {
@@ -42,6 +43,9 @@ export const userProductReducer = (state = INITIAL_STATE, action = {}) => {
     case FETCH_USER_PRODUCT_FAILED:
     case FETCH_USER_SINGLE_PRODUCT_FAILED:
       return { ...state, isLoading: false, error: payload };
+
+    case CLEAR_USER_PRODUCT:
+      return { ...state, products: [], product: {} };
 
     default:
       return state;

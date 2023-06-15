@@ -9,6 +9,7 @@ const {
   FETCH_USER_SINGLE_PRODUCT_START,
   FETCH_USER_SINGLE_PRODUCT_SUCCESS,
   FETCH_USER_SINGLE_PRODUCT_FAILED,
+  CLEAR_USER_PRODUCT,
 } = USER_PRODUCT_ACTION_TYPES;
 
 export const fetchUserProductStart = () =>
@@ -28,6 +29,8 @@ export const fetchUserSingleProductSuccess = (data) =>
 
 export const fetchUserSingleProductFailed = (error) =>
   createAction(FETCH_USER_SINGLE_PRODUCT_FAILED, error);
+
+export const clearUserProduct = () => createAction(CLEAR_USER_PRODUCT);
 
 //******************************** Sync **********************************************/
 //******************************** Async **********************************************/
