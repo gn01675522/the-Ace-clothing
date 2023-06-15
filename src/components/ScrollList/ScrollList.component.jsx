@@ -30,6 +30,10 @@ const ScrollList = ({ type }) => {
   const contentRef = useRef();
   let keepTrigger = null;
 
+  useEffect(() => {
+    dispatch(fetchUserProductAsync());
+  }, [dispatch]);
+
   const onScrollHandler = (type) => {
     const delay = 5;
     const container = contentRef.current;
@@ -74,10 +78,6 @@ const ScrollList = ({ type }) => {
     setIsDragging(false);
     setDraggingProgress(false);
   };
-
-  useEffect(() => {
-    dispatch(fetchUserProductAsync());
-  }, []);
 
   return (
     <div className="scroll-list">

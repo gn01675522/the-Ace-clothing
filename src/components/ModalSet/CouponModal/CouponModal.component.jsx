@@ -30,8 +30,6 @@ const CouponModal = ({ createOrEdit }) => {
   const dispatch = useDispatch();
   const tempCoupon = useSelector(selectAdminCouponsTempData);
 
-  console.log("inside couponmodal", tempCoupon);
-
   useEffect(() => {
     switch (createOrEdit) {
       case "create":

@@ -10,6 +10,7 @@ import SummaryCard from "../../../components/SummaryCard/SummaryCard.component";
 import {
   selectUserOrderProducts,
   selectUserOrderTotalPrice,
+  selectUserOrderData,
 } from "../../../store/userOrder/userOrder.selector";
 
 import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
@@ -21,6 +22,7 @@ const Success = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectUserOrderProducts);
   const totalPrice = useSelector(selectUserOrderTotalPrice);
+  const userData = useSelector(selectUserOrderData);
 
   const clearOrderState = () => {
     dispatch(setClearUserOrderState());
@@ -29,19 +31,13 @@ const Success = () => {
   useEffect(() => {
     dispatch(fetchCartItemsAsync());
     dispatch(fetchUserOrderDataAsync(orderId));
-  }, [orderId]);
+  }, [orderId, dispatch]);
 
   return (
     <div className="success">
-      <div className="success__order-content">
-        <h1 className="success__order-content-title">訂購完成</h1>
-        <p className="success__order-content-sentence">Wise choice！</p>
-        <OrderCard products={products} />
-      </div>
-
       <div className="success__order-detail">
-        <h2 className="success__order-detail-title">詳細資訊</h2>
-        <SummaryCard total={totalPrice} />
+        <h1 className="success__order-detail-title">訂購完成</h1>
+        <SummaryCard total={totalPrice} userData={userData} />
         <div className="success__actions">
           <Link
             to="/"
@@ -51,6 +47,10 @@ const Success = () => {
             返回首頁
           </Link>
         </div>
+      </div>
+
+      <div className="success__order-content">
+        <OrderCard products={products} />
       </div>
     </div>
   );

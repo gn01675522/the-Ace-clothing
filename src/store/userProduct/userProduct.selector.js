@@ -9,14 +9,13 @@ export const selectUserProducts = createSelector(
       a.category.localeCompare(b.category)
     )
 );
-//* 取得全部產品
+//* 取出全部產品資料
 
-export const selectUserProduct = (id) => createSelector(
-  [selectUserProducts],
-  (userProduct) =>
-    userProduct.products.filter((product) => (product.id === id))
+export const selectUserSingleProduct = createSelector(
+  [selectUserProductReducer],
+  (userProduct) => userProduct.product
 );
-//* 取得全部產品
+//*取出單筆產品資料 (已於 action 處透過 id 來向 api 索取)
 
 export const selectUserProductIsLoading = createSelector(
   [selectUserProductReducer],
@@ -28,6 +27,7 @@ const classifyUserProducts = (category) =>
   createSelector([selectUserProducts], (products) =>
     products.filter((product) => product.category.split("-")[0] === category)
   );
+//* 針對 api 產品資料裡 category 來做出拆分的工廠函式
 
 //* ****************************** 以下為業務邏輯 ********************************* */
 export const selectUserMensProducts = classifyUserProducts("mens");

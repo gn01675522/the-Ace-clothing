@@ -1,34 +1,28 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import "./ProductDetail.styles.scss";
 
 import Message from "../../../components/Message/Message.component";
 
+import { fetchUserSingleProductAsync } from "../../../store/userProduct/userProduct.actions";
+import { selectUserSingleProduct } from "../../../store/userProduct/userProduct.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
 import { setAddItemToCartAsync } from "../../../store/cart/cart.actions";
 import { selectCartIsLoading } from "../../../store/cart/cart.selector";
 
 const ProductDetail = () => {
-  const [product, setProduct] = useState([]);
   const [imgWidth, setImgWidth] = useState(0);
   const [cartQuantity, setCartQuantity] = useState(1);
   const { id } = useParams();
   const dispatch = useDispatch();
   const hasMessage = useSelector(selectHasMessage);
   const isLoading = useSelector(selectCartIsLoading);
-
-  const getProduct = async (id) => {
-    const productRes = await axios.get(
-      `/v2/api/${process.env.REACT_APP_API_PATH}/product/${id}`
-    );
-    setProduct(productRes.data.product);
-  };
+  const product = useSelector(selectUserSingleProduct);
 
   useEffect(() => {
-    getProduct(id);
-  }, [id]);
+    dispatch(fetchUserSingleProductAsync(id));
+  }, [id, dispatch]);
 
   const { imageUrl, imagesUrl, title, price, content, description } = product;
 
@@ -42,18 +36,20 @@ const ProductDetail = () => {
         setImgWidth(imgInitialWidth);
       }
     };
+    //* 偵測螢幕寬度，並儲存起來
     detectResize();
 
     window.addEventListener("resize", detectResize);
     return () => {
       window.removeEventListener("resize", detectResize);
+      //* cleanup 函式
     };
   }, []);
-  //* 防止組件剛掛載 product 並無法馬上取得資料時錯誤的問題；
-  //* 以及解決 imgWidth 只會抓取第一次組件 mount 時的寬度，而不會隨著螢幕尺寸改變
+  //* 防止組件剛掛載 product 並無法馬上取得資料導致 DOM 抓不到的問題；
+  //* 以及解決 imgWidth 只會抓取第一次組件 mount 時的寬度，而不會隨著螢幕尺寸改變的問題
 
   const pictureSet = [imageUrl, ...(Array.isArray(imagesUrl) ? imagesUrl : [])];
-  //* 直接將主圖片以及次要圖片組合成一個陣列，方便後續渲染 jsx
+  //* 直接將主圖片以及次要圖片組合成一個陣列，方便後續渲染 jsx；如果 imagesUrl 沒有圖片的話，就改成空陣列
 
   const onChangeImg = (type) => {
     const previewContainer = imgPreviewRef.current;
@@ -101,7 +97,7 @@ const ProductDetail = () => {
 
         <div className="product-detail__sale-info">
           <div className="product-detail__sale-info-content">
-            <h3 div className="product-detail__sale-info-content-subtitle">
+            <h3 className="product-detail__sale-info-content-subtitle">
               the Ace Clothing
             </h3>
             <h1 className="product-detail__sale-info-content-title">{title}</h1>
@@ -113,8 +109,11 @@ const ProductDetail = () => {
             <div className="product-detail__description-content">{content}</div>
             <h2 className="product-detail__description-title">詳細資料</h2>
             <ul className="product-detail__description-info">
-              {description?.split("-").map((item, i) => (
-                <li key={i} className="product-detail__description-info-item">
+              {description?.split("-").map((item) => (
+                <li
+                  key={item}
+                  className="product-detail__description-info-item"
+                >
                   {item}
                 </li>
               ))}

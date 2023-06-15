@@ -47,6 +47,10 @@ const Products = () => {
   const { category } = useParams();
   const isLoading = useSelector(selectUserProductIsLoading);
 
+  useEffect(() => {
+    dispatch(fetchUserProductAsync());
+  }, [dispatch]);
+
   const products = useSelector(categoryData(category));
 
   const productsInPage = useMemo(() => {
@@ -61,10 +65,6 @@ const Products = () => {
   const changePage = (page) => {
     setCurrentPage(page);
   };
-
-  useEffect(() => {
-    dispatch(fetchUserProductAsync());
-  }, []);
 
   useEffect(() => {
     setCurrentPage(1);

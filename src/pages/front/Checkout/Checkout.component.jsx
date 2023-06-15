@@ -39,7 +39,7 @@ const Checkout = () => {
     if (orderId !== null) {
       navigate(`/success/${orderId}`);
     }
-  }, [orderId]);
+  }, [orderId, navigate]);
 
   return (
     <div className="checkout">

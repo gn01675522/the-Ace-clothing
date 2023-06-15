@@ -1,4 +1,4 @@
-export const INPUT_TYPE = {
+export const INPUT_CATEGORY = {
   email: "email",
   name: "name",
   tel: "tel",
@@ -7,24 +7,29 @@ export const INPUT_TYPE = {
 
 export const inputRules = (category) =>
   ({
-    [INPUT_TYPE.email]: {
+    [INPUT_CATEGORY.email]: {
       required: "Email 為必填",
       pattern: {
         value: /^\S+@\S+$/i,
         message: "Email 格式不正確",
       },
     },
-    [INPUT_TYPE.name]: {
+    [INPUT_CATEGORY.name]: {
       required: "使用者名稱為必填",
       maxLength: {
         value: 10,
         message: "使用者名稱長度不超過 10",
       },
     },
-    [INPUT_TYPE.tel]: {
+    [INPUT_CATEGORY.tel]: {
       required: "電話為必填",
-      minLength: { value: 6, message: "電話不少於 6 碼" },
-      maxLength: { value: 12, message: "電話不超過 12 碼" },
+      validate: (value) => {
+        const regex = /^\d{8,12}$/;
+        if (!regex.test(value)) {
+          return "請輸入8位以上12位以下數字(e.g. 027777777)";
+        }
+        return true;
+      },
     },
-    [INPUT_TYPE.address]: { required: "地址為必填" },
+    [INPUT_CATEGORY.address]: { required: "地址為必填" },
   }[category]);

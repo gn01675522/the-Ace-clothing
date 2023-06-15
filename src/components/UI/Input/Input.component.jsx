@@ -1,5 +1,5 @@
 import "./Input.styles.scss";
-import { inputRules } from "./InputRules";
+import { inputRules } from "./Input.rules.js";
 
 const Input = ({ id, config, register, errors }) => {
   const { type, labelText } = config;
@@ -10,7 +10,9 @@ const Input = ({ id, config, register, errors }) => {
       <label htmlFor={id} className="input__label">
         {labelText}
         {errors[id] && (
-          <div className="input__label--invalid-feedback">*{errors[id]?.message}</div>
+          <div className="input__label--invalid-feedback">
+            *{errors[id]?.message}
+          </div>
         )}
       </label>
       <input

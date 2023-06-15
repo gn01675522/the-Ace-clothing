@@ -56,7 +56,6 @@ export const fetchAdminProductAsync = () => {
       const res = await axios.get(
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`
       );
-      console.log(res.data.products);
       dispatch(
         fetchAdminProductSuccess({
           products: res.data.products,
@@ -123,7 +122,6 @@ export const createAdminProductAsync = (data) => {
         }
       );
       dispatch(setAdminProductSuccess());
-      console.log(res);
       dispatch(setHandleMessage("success", res));
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表

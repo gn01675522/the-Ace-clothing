@@ -37,7 +37,6 @@ const Dashboard = () => {
 
   const onOpenList = () => {
     setIsListOpen(!isListOpen);
-    console.log(isListOpen);
   };
 
   useEffect(() => {

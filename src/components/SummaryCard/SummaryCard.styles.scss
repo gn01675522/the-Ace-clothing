@@ -7,9 +7,14 @@
   flex-direction: column;
   gap: 1rem;
   background-color: white;
-  &__subtotal,
-  &__shipping,
-  &__total {
+  &__title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  &__item {
     display: flex;
     justify-content: space-between;
   }
