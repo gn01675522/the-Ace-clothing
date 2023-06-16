@@ -12,7 +12,7 @@ const FrontLayout = () => {
 
   useEffect(() => {
     dispatch(fetchCartItemsAsync());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

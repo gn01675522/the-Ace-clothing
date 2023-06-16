@@ -82,7 +82,7 @@ const AdminProducts = () => {
 
   useEffect(() => {
     dispatch(fetchAdminProductAsync());
-  }, []);
+  }, [dispatch]);
   //* 設定 mounted 的時候 fetch 資料
 
   const onChangePage = (page) => {

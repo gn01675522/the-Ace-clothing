@@ -4,7 +4,7 @@ import "./FullWidthBanner.styles.scss";
 import { SESSION_CONTENT_DATA } from "../session.data.js";
 
 const FullWidthBanner = ({ type }) => {
-  const data = SESSION_CONTENT_DATA.new[type];
+  const data = SESSION_CONTENT_DATA.fullWidthBanner[type];
   const { title, sentence, img, link } = data;
 
   return (

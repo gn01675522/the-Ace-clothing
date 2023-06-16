@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Banner.styles.scss";
 
 import Indicator from "../UI/Indicator/Indicator.component";
-import { BANNER_DATA } from "./banner.data";
+import { BANNER_DATA } from "./Banner.data.js";
 
 const Banner = () => {
   const [imgNum, setImgNum] = useState(0);

@@ -4,7 +4,7 @@ import "./SplitBanner.styles.scss";
 import { SESSION_CONTENT_DATA } from "../session.data";
 
 const SplitBanner = ({ type }) => {
-  const data = SESSION_CONTENT_DATA[type];
+  const data = SESSION_CONTENT_DATA.splitBanner[type];
   const { title, sentence, img, link } = data;
   const btnContent = `GO ${type.toUpperCase()}'s' SHOP`;
 

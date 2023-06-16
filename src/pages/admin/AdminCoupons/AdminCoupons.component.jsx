@@ -41,7 +41,7 @@ const AdminCoupons = () => {
 
   useEffect(() => {
     dispatch(fetchAdminCouponsAsync());
-  }, []);
+  }, [dispatch]);
 
   const onChangePageHandler = (page) => {
     dispatch(fetchAdminCouponsAsync(page));
