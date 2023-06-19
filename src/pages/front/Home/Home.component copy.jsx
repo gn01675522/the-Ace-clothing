@@ -10,51 +10,61 @@ import SplitBanner from "../../../components/Session/SplitBanner/SplitBanner.com
 import { SCROLL_TYPE } from "../../../components/ScrollList/ScrollList.component";
 
 const Home = () => {
-  console.log("Home render fire");
   const [firstBannerDetect, setFirstBannerDetect] = useState(false);
   const [thirdBannerDetect, setThirdBannerDetect] = useState(false);
-  const scrollDetectParentRef = useRef(null)
   const firstBannerRef = useRef(null);
   const thirdBannerRef = useRef(null);
 
+  const handleScroll = useCallback(() => {
+    const windowHeight = window.innerHeight;
+    const windowTopPosition = window.scrollY;
+    const windowBottomPosition = windowTopPosition + windowHeight;
+
+    const firstBannerHeight = firstBannerRef.current.offsetHeight;
+    const thirdBannerHeight = thirdBannerRef.current.offsetHeight;
+
+    const firstBannerTopPosition = firstBannerRef.current.offsetTop;
+    const thirdBannerTopPosition = thirdBannerRef.current.offsetTop;
+
+    const firstBannerBottomPosition =
+      firstBannerTopPosition + firstBannerHeight;
+    const thirdBannerBottomPosition =
+      thirdBannerTopPosition + thirdBannerHeight;
+
+    if (
+      firstBannerTopPosition <= windowBottomPosition &&
+      firstBannerBottomPosition >= windowTopPosition
+    ) {
+      if (!firstBannerDetect) {
+        console.log("test");
+        setFirstBannerDetect(true);
+      } else {
+        setFirstBannerDetect(false);
+      }
+    }
+    if (
+      thirdBannerTopPosition <= windowBottomPosition &&
+      thirdBannerBottomPosition >= windowTopPosition
+    ) {
+      if (!thirdBannerDetect) {
+        console.log("test second");
+        setThirdBannerDetect(true);
+      } else {
+        setThirdBannerDetect(false);
+      }
+    }
+  }, [firstBannerDetect, thirdBannerDetect]);
+
   useEffect(() => {
-    const firstBanner = firstBannerRef.current;
-    const thirdBanner = thirdBannerRef.current;
-
-    const firstBannerDetector = new IntersectionObserver(
-      ([entry]) => setFirstBannerDetect(entry.isIntersecting),
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-    const thirdBannerDetect = new IntersectionObserver(
-      ([entry]) => setThirdBannerDetect(entry.isIntersecting),
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-
-    if (firstBanner) {
-      firstBannerDetector.observe(firstBanner);
-    }
-    if (thirdBanner) {
-      thirdBannerDetect.observe(thirdBanner);
-    }
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      if (firstBanner) {
-        firstBannerDetector.unobserve(firstBanner);
-      }
-      if (thirdBanner) {
-        thirdBannerDetect.unobserve(thirdBanner);
-      }
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <>
-      <div className="home" ref={scrollDetectParentRef}>
+      <div className="home">
         <Banner />
         <div className="home__session">
           <h1 className="home__session-title">SHOP NOW</h1>

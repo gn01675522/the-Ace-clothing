@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.styles.scss";
 
@@ -19,6 +19,20 @@ const NavBar = () => {
   const onOpenList = () => {
     setIsListOpen(!isListOpen);
   };
+
+  const isMobileWidth = () => {
+    if (window.innerWidth > 768) {
+      setIsListOpen(false);
+    }
+  };
+  //* 解決螢幕寬度小於 768px 時開啟 navlist 後，切換到大於 768 後 isListOpen 還是 true 的狀態
+
+  useEffect(() => {
+    window.addEventListener("resize", isMobileWidth);
+    return () => {
+      window.removeEventListener("resize", isMobileWidth);
+    };
+  }, []);
 
   return (
     <>
