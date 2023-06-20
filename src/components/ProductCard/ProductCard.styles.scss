@@ -3,22 +3,49 @@
 .products-card {
   width: 100%;
   height: min-content;
+  padding: 10px;
   font-family: $font-primary;
   color: $color-primary-text;
   text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    -webkit-box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.25);
+  }
   &:hover > &__preview > &__img {
     transform: scale(1.1);
     transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
   }
-  &:hover > &__info > &__info-title {
-    font-size: 23px;
+  &:hover > &__preview > &__function {
+    display: unset;
+    opacity: 0.8;
+    z-index: 10;
   }
 
   &__preview {
-    outline: 2px solid #272727;
+    position: relative;
     width: 100%;
     height: 400px;
     overflow: hidden;
+    outline: 2px solid #272727;
+  }
+  &__function {
+    position: absolute;
+    display: none;
+    width: 200px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.6;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
   }
   &__img {
     width: 100%;
@@ -34,8 +61,7 @@
     height: 50px;
     flex-direction: column;
     margin-top: 10px;
-    text-align: center;
-    justify-content: space-between;
+    text-align: start;
     &-title,
     &-price {
       font-size: 20px;

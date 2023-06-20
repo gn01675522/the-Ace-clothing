@@ -31,7 +31,7 @@ const CartIcon = () => {
   return (
     <NavLink className="cart-icon" to="/cart">
       <CartLogo className={btnClasses} />
-      <span className="cart-icon__count">{quantity}</span>
+      {quantity !== 0 && <div className="cart-icon__count">{quantity}</div>}
     </NavLink>
   );
 };

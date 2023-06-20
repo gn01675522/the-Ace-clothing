@@ -72,25 +72,25 @@
     }
     &__left {
       opacity: 0;
-      &-inView--active {
+      &--active {
         opacity: 1;
         transition: opacity 3s ease-out;
       }
     }
     &__right {
       overflow: hidden;
-      &-img {
-        transform: translateX(100%);
-        opacity: 0;
-      }
       &-img-men {
         transform: translateX(-100%);
         opacity: 0;
       }
-      &-inView--active {
-        transform: translateX(0);
-        opacity: 1;
-        transition: transform 1.5s ease-in-out, opacity 1.5s ease-out;
+      &-img {
+        transform: translateX(100%);
+        opacity: 0;
+        &--active {
+          transform: translateX(0);
+          opacity: 1;
+          transition: transform 1.5s ease-in-out, opacity 1.5s ease-out;
+        }
       }
     }
 

@@ -12,7 +12,7 @@ const SplitBanner = ({ type, inView }) => {
     <div className={`split-banner split-banner${type === "men" ? "-men" : ""}`}>
       <div
         className={`split-banner__left ${
-          inView ? "split-banner__left-inView--active" : ""
+          inView ? "split-banner__left--active" : ""
         }`}
       >
         <h2 className="split-banner__left-title">{title}</h2>
@@ -26,7 +26,7 @@ const SplitBanner = ({ type, inView }) => {
           <img
             className={`split-banner__right-img${
               type === "men" ? "-men" : ""
-            } ${inView ? "split-banner__right-inView--active" : ""}`}
+            } ${inView ? "split-banner__right-img--active" : ""}`}
             src={img}
             alt=""
           />

@@ -9,6 +9,7 @@ import "./Products.styles.scss";
 import Pagination from "../../../components/Pagination/Pagination.component";
 import Loading from "../../../components/Loading/Loading.component";
 import ProductCard from "../../../components/ProductCard/ProductCard.component";
+import Message from "../../../components/Message/Message.component";
 
 import {
   fetchUserProductAsync,
@@ -23,6 +24,8 @@ import {
   selectUserShoesProducts,
   selectUserAccessoriesProducts,
 } from "../../../store/userProduct/userProduct.selector";
+
+import { selectHasMessage } from "../../../store/message/message.selector";
 
 const CATEGORY = {
   all: "all",
@@ -49,6 +52,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const { category } = useParams();
   const isLoading = useSelector(selectUserProductIsLoading);
+  const hasMessage = useSelector(selectHasMessage);
 
   useEffect(() => {
     dispatch(fetchUserProductAsync());
@@ -77,6 +81,7 @@ const Products = () => {
 
   return (
     <div className="products">
+      {hasMessage && <Message />}
       {isLoading && <Loading />}
       <h1 className="products__title">{category}</h1>
       <div className="products__content">

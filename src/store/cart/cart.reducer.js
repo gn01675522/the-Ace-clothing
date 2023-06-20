@@ -13,7 +13,7 @@ const {
 } = CART_ACTION_TYPES;
 
 const INITIAL_STATE = {
-  cartItems: [],
+  cartItems: {},
   loadingItems: [],
   error: null,
   isLoading: false,
