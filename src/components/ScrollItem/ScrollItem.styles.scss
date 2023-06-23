@@ -31,7 +31,7 @@
     flex-direction: column;
     margin-top: 10px;
     text-align: start;
-    justify-content: space-between;
+    gap: 5px;
     color: black;
     &-title,
     &-price {
@@ -42,6 +42,10 @@
       display: flex;
       font-weight: lighter;
       justify-content: space-between;
+      &-sale {
+        color: red;
+      }
     }
   }
 }
+

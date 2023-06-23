@@ -33,7 +33,18 @@ const ProductDetail = () => {
   const remainingQuantity = 5 - (productInCart?.qty || 0);
   //* 根據 productInCart 的數量來進行顧客購買最大數量的設定
 
-  const { imageUrl, imagesUrl, title, price, content, description } = product;
+  const {
+    imageUrl,
+    imagesUrl,
+    title,
+    origin_price,
+    price,
+    content,
+    description,
+  } = product;
+
+  const discountRate = Math.trunc((1 - price / origin_price) * 100);
+  //* 只取整數，小數點無條件捨去
 
   useEffect(() => {
     dispatch(fetchUserSingleProductAsync(id));
@@ -129,9 +140,20 @@ const ProductDetail = () => {
               the Ace Clothing
             </h3>
             <h1 className="product-detail__sale-info-content-title">{title}</h1>
-            <span className="product-detail__sale-info-content-price">
-              NT${price}
-            </span>
+            <div className="product-detail__sale-info-content-price">
+              {origin_price > price && (
+                <p className="product-detail__sale-info-content-price-sell">
+                  NT${price} {discountRate + "%off"}
+                </p>
+              )}
+              <p
+                className={`product-detail__sale-info-content-price-origin ${
+                  price < origin_price ? "product-on-sale" : ""
+                }`}
+              >
+                NT${origin_price}
+              </p>
+            </div>
           </div>
           <div className="product-detail__description">
             <div className="product-detail__description-content">{content}</div>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Home.styles.scss";
 
 import Banner from "../../../components/Banner/Banner.component";
@@ -10,10 +10,9 @@ import SplitBanner from "../../../components/Session/SplitBanner/SplitBanner.com
 import { SCROLL_TYPE } from "../../../components/ScrollList/ScrollList.component";
 
 const Home = () => {
-  console.log("Home render fire");
   const [firstBannerDetect, setFirstBannerDetect] = useState(false);
   const [thirdBannerDetect, setThirdBannerDetect] = useState(false);
-  const scrollDetectParentRef = useRef(null)
+  const scrollDetectParentRef = useRef(null);
   const firstBannerRef = useRef(null);
   const thirdBannerRef = useRef(null);
 

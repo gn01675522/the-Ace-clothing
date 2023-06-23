@@ -24,28 +24,10 @@
   }
 
   &__preview {
-    position: relative;
     width: 100%;
     height: 400px;
     overflow: hidden;
     outline: 2px solid #272727;
-  }
-  &__function {
-    position: absolute;
-    display: none;
-    width: 200px;
-    height: 50px;
-    background-color: white;
-    color: black;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0.6;
-    cursor: pointer;
-    &:hover {
-      background-color: black;
-      color: white;
-    }
   }
   &__img {
     width: 100%;
