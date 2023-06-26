@@ -23,8 +23,10 @@
 .about-us__content-left,
 .about-us__content-right {
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
   &-img {
-    width: 50%;
+    width: 100%;
     height: 300px;
     object-fit: cover;
     background-repeat: no-repeat;
@@ -34,7 +36,7 @@
   &-section {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     gap: 2rem;
     padding: 0 3rem;
     &-title {
@@ -42,6 +44,20 @@
       font-weight: bold;
       text-align: center;
     }
+  }
+  @media screen and (min-width: 768px) {
+    flex-direction: unset;
+    &-img,
+    &-section {
+      width: 50%;
+    }
+  }
+}
+
+.about-us__content-left {
+  flex-direction: column-reverse;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
   }
 }
 

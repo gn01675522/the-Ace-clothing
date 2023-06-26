@@ -1,13 +1,14 @@
 # 使用方式
 
 1.  請先於您本地安裝 `Node.js` 及 `NPM`
-2.  使用 `npm i` 安裝 package 套件
-3.  使用 `npm start` 開啟專案 (development mode)
+2.  開啟 terminal 並使用 `git clone https://github.com/gn01675522/the-Ace-clothing.git`
+3.  使用 `npm i` 安裝 package 套件
+4.  使用 `npm start` 開啟專案 (development mode)
 
 ## 專案說明
 
-專案名稱： the Ace clothing
-專案類型： 電商網站
+1. 專案名稱： the Ace clothing
+2. 專案類型： 電商網站
 
 ## 專案使用技術
 
@@ -21,3 +22,4 @@
 
 1.  API：六角學院
 2.  圖片：unsplash
+3.  icons：Flaticon

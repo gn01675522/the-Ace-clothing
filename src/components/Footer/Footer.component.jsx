@@ -24,7 +24,14 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p className="footer__copyright">
-        © 本網站為個人練習作品，無作任何商業用途使用。
+        © 本網站為個人練習作品，無作任何商業用途使用；原始碼請見{" "}
+        <Link
+          className="footer__copyright-link"
+          to="https://github.com/gn01675522/the-Ace-clothing"
+        >
+          Github
+        </Link>
+        。
       </p>
       <div className="footer__content">
         {FOOTER_DATA.map((data) => (

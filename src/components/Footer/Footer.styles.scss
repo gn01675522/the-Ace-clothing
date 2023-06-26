@@ -9,6 +9,12 @@
     padding-left: 1rem;
     background-color: black;
     color: white;
+    &-link {
+      color: black;
+      background-color: white;
+      border-radius: 4px;
+      padding: 2px 5px;
+    }
   }
   &__content {
     display: flex;

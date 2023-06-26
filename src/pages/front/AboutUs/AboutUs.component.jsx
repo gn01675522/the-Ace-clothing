@@ -1,7 +1,7 @@
 import "./AboutUs.styles.scss";
-import { aboutUsCopyWritting } from "./aboutUs.data";
+import { ABOUT_US_DATA } from "./aboutUs.data";
 
-const { first, second, third } = aboutUsCopyWritting;
+const { first, second, third } = ABOUT_US_DATA;
 
 const AboutUs = () => {
   return (

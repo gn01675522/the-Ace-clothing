@@ -16,9 +16,9 @@ const ProductCard = ({ product, urlParam }) => {
       </div>
       <div className="products-card__info">
         <h4 className="products-card__info-title">{title}</h4>
-        <p className="products-card__info-price">
+        <div className="products-card__info-price">
           <PriceTag origin_price={origin_price} price={price} />
-        </p>
+        </div>
       </div>
     </Link>
   );

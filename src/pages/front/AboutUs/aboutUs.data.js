@@ -1,4 +1,4 @@
-export const aboutUsCopyWritting = {
+export const ABOUT_US_DATA = {
   first: {
     title: "WHY WE EXIST?",
     content: `我們的品牌是由一群熱血青年所創立，希望通過自己的行動改變世界。

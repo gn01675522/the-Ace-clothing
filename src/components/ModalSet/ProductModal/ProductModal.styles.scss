@@ -142,7 +142,6 @@
   &-trigger:checked ~ &-content {
     display: flex;
   }
-  //todo 看能不能加上動畫
 
   &-trigger:checked ~ &-toggle &-triangle {
     transform: rotate(180deg);
