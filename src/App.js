@@ -13,7 +13,8 @@ import Checkout from "./pages/front/Checkout/Checkout.component";
 import Success from "./pages/front/Success/Success.component";
 import Categories from "./components/Categories/Categories.component";
 import AboutUs from "./pages/front/AboutUs/AboutUs.component";
-import InfoSource from "./components/InfoSource/InfoSource.component";
+import InfoSource from "./pages/front/InfoSource/InfoSource.component";
+import OrderDetail from "./pages/front/OrderDetail/OrderDetail.component";
 
 const App = () => {
   return (
@@ -26,8 +27,9 @@ const App = () => {
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="success/:orderId" element={<Success />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/info-source" element={<InfoSource />} />
+          <Route path="about" element={<AboutUs />} />
+          <Route path="info-source" element={<InfoSource />} />
+          <Route path="order-detail" element={<OrderDetail />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Dashboard />}>

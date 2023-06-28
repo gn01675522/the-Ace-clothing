@@ -215,3 +215,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+// todo price tag 好像忘記加上去了

@@ -11,7 +11,7 @@ const {
 } = USER_ORDER_ACTION_TYPES;
 
 const INITIAL_STATE = {
-  orderData: {},
+  orderData: null,
   orderId: null,
   error: null,
   isLoading: false,

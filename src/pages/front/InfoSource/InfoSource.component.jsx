@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import "./InfoSource.styles.scss";
 
-import { ReactComponent as AceLogo } from "../../assets/ace.svg";
-import { ReactComponent as LineIcon } from "../../assets/line.svg";
-import { ReactComponent as InstagramIcon } from "../../assets/instagram.svg";
-import { ReactComponent as FacebookIcon } from "../../assets/facebook.svg";
-import { ReactComponent as CartIcon } from "../../assets/cart.svg";
-import { ReactComponent as NoImage } from "../../assets/noImage.svg";
-import hexSchool from "../../assets/hexSchool.png";
+import { ReactComponent as AceLogo } from "../../../assets/ace.svg"
+import { ReactComponent as LineIcon } from "../../../assets/line.svg";
+import { ReactComponent as InstagramIcon } from "../../../assets/instagram.svg";
+import { ReactComponent as FacebookIcon } from "../../../assets/facebook.svg";
+import { ReactComponent as CartIcon } from "../../../assets/cart.svg";
+import { ReactComponent as NoImage } from "../../../assets/noImage.svg";
+import hexSchool from "../../../assets/hexSchool.png";
 
 import { INFO_SOURCE_DATA } from "./infoSource.data";
 

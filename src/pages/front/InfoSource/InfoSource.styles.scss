@@ -1,4 +1,4 @@
-@import "../../stylesheets/variables";
+@import "../../../stylesheets/variables";
 
 .info-source {
   display: flex;
@@ -61,6 +61,7 @@
     &-img {
       width: 100%;
       height: 100%;
+      background-color: white;
     }
   }
   @media screen and (min-width: 768px) {

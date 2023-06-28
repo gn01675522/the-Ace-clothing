@@ -8,11 +8,7 @@ export const FOOTER_DATA = [
   },
   {
     title: "服務資訊",
-    items: [
-      { title: "退換貨規則", link: "#" },
-      { title: "物流配送", link: "#" },
-      { title: "訂單查詢", link: "#" },
-    ],
+    items: [{ title: "訂單查詢", link: "/order-detail" }],
   },
   {
     title: "聯繫我們",

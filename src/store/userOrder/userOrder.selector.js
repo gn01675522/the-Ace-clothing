@@ -2,6 +2,11 @@ import { createSelector } from "@reduxjs/toolkit";
 
 const selectUserOrderReducer = (state) => state.userOrder;
 
+export const selectUserOrderData = createSelector(
+  [selectUserOrderReducer],
+  (userOrder) => userOrder.orderData
+);
+
 export const selectUserOrderIsLoading = createSelector(
   [selectUserOrderReducer],
   (userOrder) => userOrder.isLoading
@@ -10,11 +15,6 @@ export const selectUserOrderIsLoading = createSelector(
 export const selectUserOrderId = createSelector(
   [selectUserOrderReducer],
   (userOrder) => userOrder.orderId
-);
-
-export const selectUserOrderData = createSelector(
-  [selectUserOrderReducer],
-  (userOrder) => userOrder.orderData
 );
 
 export const selectUserOrderProducts = createSelector(
@@ -30,3 +30,8 @@ export const selectUserOrderTotalPrice = createSelector(
       0
     )
 );
+
+export const selectUserOrderByEmail = (email) =>
+  createSelector([selectUserOrderData], (orderData) =>
+    orderData.filter((data) => data.user.email === email)
+  );
