@@ -9,6 +9,8 @@ export const store = configureStore({
   preloadedState: undefined,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
-      [process.env.NODE_ENV !== "production" && thunk, logger].filter(Boolean)
+      [thunk, process.env.NODE_ENV !== "production" ? logger : null].filter(
+        Boolean
+      )
     ),
 });

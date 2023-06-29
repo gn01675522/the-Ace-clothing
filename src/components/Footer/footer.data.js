@@ -3,7 +3,7 @@ export const FOOTER_DATA = [
     title: "關於 ACE",
     items: [
       { title: "品牌故事", link: "/about" },
-      { title: "網站資料來源", link: "/info-source" },
+      { title: "資料來源", link: "/info-source" },
     ],
   },
   {

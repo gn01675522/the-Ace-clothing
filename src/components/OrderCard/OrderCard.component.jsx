@@ -1,3 +1,5 @@
+//* 使用方式：
+//* 直接傳入 products，資料為陣列包著的形式
 import "./OrderCard.styles.scss";
 
 const OrderCard = ({ products }) => {
