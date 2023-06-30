@@ -1,119 +1,111 @@
 @import "../../../stylesheets/variables";
 
 .order-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem 1rem;
-  background-color: #f6f5f3;
-  &__title {
-    font-size: 60px;
-    text-align: center;
-  }
-  &__search {
+  width: 100%;
+  &__list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border-bottom: 1px solid black;
-    padding: 3rem;
-  }
-  &__order-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  &__circle {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    &--paid {
-      background-color: green;
+    gap: 1rem;
+    @media screen and (min-width: 1024px) {
+      gap: 2rem;
     }
-    &--unpaid {
-      background-color: red;
-    }
-  }
-  @media screen and (min-width: 768px) {
-    padding: 2rem 8rem;
-  }
-  @media screen and (min-width: 1024px) {
-    padding: 2rem 15rem;
   }
 }
 
-.order-detail__order-content {
+.order-detail__card {
   display: flex;
-  width: 90vw;
   flex-direction: column;
+  width: 100%;
   height: min-content;
   gap: 10px;
-  background-color: white;
-  &-header,
-  &-body {
+  border: 1px solid black;
+  &-paid-state {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 10px;
-    justify-content: space-between;
-    &-title {
-      width: 100%;
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    padding: 10px;
+    justify-content: center;
+    &--paid {
+      background-color: lime;
+    }
+    &--unpaid {
+      background-color: pink;
+    }
+    @media screen and (min-width: 768px) {
+      width: 40px;
+      height: 100%;
       text-align: center;
-      margin-bottom: 15px;
-      padding: 10px 0 10px;
-      border-bottom: 1px solid black;
     }
   }
-  &-item {
+  &-content {
     display: flex;
-    font-size: 12px;
+    width: 100%;
     gap: 10px;
-    justify-content: space-between;
-    &-value {
+    flex-direction: column;
+    &-item {
       display: flex;
-      gap: 5px;
-      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid black;
+      &-title,
+      &-value {
+        padding: 5px;
+        text-align: center;
+        white-space: nowrap;
+      }
+      &-last {
+        border-bottom: transparent;
+      }
+      @media screen and (min-width: 768px) {
+        min-width: 25%;
+        max-width: max-content;
+        font-size: 14px;
+        flex-direction: column;
+        border-bottom: transparent;
+        &-title {
+          font-weight: bold;
+          border-bottom: 1px solid black;
+        }
+      }
     }
     @media screen and (min-width: 768px) {
       flex-direction: row;
+      justify-content: space-between;
       gap: 0;
     }
   }
-  &-footer {
-    &-function {
-      display: flex;
-      width: 100%;
-      height: 40px;
-      outline: 1px solid gray;
-      justify-content: center;
-      align-items: center;
+  &-function {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    background-color: pink;
+    &-buy-again,
+    &-view {
+      width: 50%;
+      height: 100%;
       cursor: pointer;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      width: 20%;
+      height: 100%;
+      flex-direction: column;
+      &-buy-again,
+      &-view {
+        display: block;
+        font-size: 12px;
+        width: 50%;
+        height: 50%;
+      }
     }
   }
   @media screen and (min-width: 768px) {
-    width: 80vw;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 300px;
+    gap: 0;
+    flex-direction: row;
   }
 }
-
-// .order-detail__card {
-//   display: flex;
-//   width: 100%;
-//   height: min-content;
-//   flex-direction: column;
-//   overflow: hidden;
-//   &-header {
-//     outline: 1px solid black;
-//     width: 100%;
-//     padding: 20px;
-//   }
-//   &-body {
-//   }
-//   &-footer {
-//     width: 100%;
-//     border-radius: 0 0 8px 8px;
-//   }
-// }
