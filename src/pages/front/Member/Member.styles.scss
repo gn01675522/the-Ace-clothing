@@ -10,6 +10,32 @@
     font-size: 60px;
     text-align: center;
   }
+  &__function {
+    display: flex;
+    width: 100%;
+    input {
+      width: calc(100% - 40px);
+    }
+    button {
+      width: 40px;
+      height: 40px;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+    @media screen and (min-width:768px) {
+      gap: 1rem;
+      justify-content: center;
+      input {
+        width: 30vw;
+        font-size: 1rem;
+      }
+      button {
+        width: 50px;
+        height: 40px;
+      }
+    }
+  }
   &__tab {
     width: 100%;
     min-height: 500px;
@@ -43,6 +69,6 @@
     padding: 2rem 1rem;
   }
   @media screen and (min-width: 1024px) {
-    padding: 2rem 17vw;
+    padding: 2rem 10vw;
   }
 }

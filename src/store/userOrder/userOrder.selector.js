@@ -30,8 +30,3 @@ export const selectUserOrderTotalPrice = createSelector(
       0
     )
 );
-
-export const selectUserOrderByEmail = (email) =>
-  createSelector([selectUserOrderData], (orderData) =>
-    orderData.filter((data) => data.user.email === email)
-  );

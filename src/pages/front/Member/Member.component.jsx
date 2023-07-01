@@ -1,21 +1,45 @@
-import { useState, useRef } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useParams } from "react-router-dom";
 
 import "./Member.styles.scss";
+
+import OrderDetail from "../OrderDetail/OrderDetail.component";
+import Wishlist from "../Wishlist/Wishlist.component";
+
+import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.actions";
 
 const options = [
   { id: 1, title: "願望清單", route: "/member/wishlist" },
   { id: 2, title: "我的訂單", route: "/member/order-detail" },
 ];
 
+const OPTION_TYPES = {
+  wishlist: "wishlist",
+  orderDetail: "order-detail",
+};
+
+const memberOption = (option) =>
+  ({
+    [OPTION_TYPES.wishlist]: Wishlist,
+    [OPTION_TYPES.orderDetail]: OrderDetail,
+  }[option]);
+
 const Member = () => {
   const [email, setEmail] = useState("");
   const userEmail = useRef();
+  const dispatch = useDispatch();
+  const routeParams = useParams();
+  const RenderOption = memberOption(routeParams.option);
 
   const onSearchOrder = (e) => {
     e.preventDefault();
     setEmail(userEmail.current.value);
   };
+
+  useEffect(() => {
+    dispatch(fetchUserOrderDataAsync());
+  }, [dispatch]);
 
   return (
     <div className="member">
@@ -39,7 +63,7 @@ const Member = () => {
           ))}
         </div>
         <div className="member__tab-content">
-          <Outlet props={email} />
+          <RenderOption userEmail={email} />
         </div>
       </div>
     </div>

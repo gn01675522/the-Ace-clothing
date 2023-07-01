@@ -31,9 +31,9 @@ const App = () => {
           <Route path="success/:orderId" element={<Success />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="info-source" element={<InfoSource />} />
-          <Route path="member" element={<Member />}>
-            <Route path="wishlist" element={<Wishlist />} />
-            <Route path="order-detail" element={<OrderDetail />} />
+          <Route path="member/:option" element={<Member />}>
+            {/* <Route path="wishlist" element={<Wishlist />} />
+            <Route path="order-detail" element={<OrderDetail />} /> */}
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />
