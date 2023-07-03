@@ -12,17 +12,15 @@ const tableContent = [
   { title: "總金額", content: "total" },
 ];
 
-const OrderDetail = ({ userEmail }) => {
+const OrderDetail = ({ data }) => {
   const [orderList, setOrderList] = useState([]);
   const orderDetail = useSelector(selectUserOrderData);
 
   useEffect(() => {
-    if (userEmail) {
-      setOrderList(
-        orderDetail.filter((order) => order.user.email === userEmail)
-      );
+    if (data) {
+      setOrderList(orderDetail.filter((order) => order.user.email === data));
     }
-  }, [userEmail]);
+  }, [data, orderDetail]);
 
   return (
     <div className="order-detail">

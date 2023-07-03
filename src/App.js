@@ -15,8 +15,6 @@ import Categories from "./components/Categories/Categories.component";
 import AboutUs from "./pages/front/AboutUs/AboutUs.component";
 import InfoSource from "./pages/front/InfoSource/InfoSource.component";
 import Member from "./pages/front/Member/Member.component";
-import OrderDetail from "./pages/front/OrderDetail/OrderDetail.component";
-import Wishlist from "./pages/front/Wishlist/Wishlist.component";
 
 const App = () => {
   return (
@@ -31,10 +29,7 @@ const App = () => {
           <Route path="success/:orderId" element={<Success />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="info-source" element={<InfoSource />} />
-          <Route path="member/:option" element={<Member />}>
-            {/* <Route path="wishlist" element={<Wishlist />} />
-            <Route path="order-detail" element={<OrderDetail />} /> */}
-          </Route>
+          <Route path="member/:option" element={<Member />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Dashboard />}>

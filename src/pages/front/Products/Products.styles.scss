@@ -14,10 +14,15 @@
   }
   &__content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(auto, 1fr);
     justify-content: space-around;
     grid-gap: 2rem;
+  }
+  @media screen and (min-width: 480px) {
+    &__content {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   @media screen and (min-width: 768px) {
     &__content {
@@ -28,7 +33,6 @@
   @media screen and (min-width: 1024px) {
     &__content {
       grid-template-columns: repeat(4, 1fr);
-
       grid-gap: 1rem;
     }
   }

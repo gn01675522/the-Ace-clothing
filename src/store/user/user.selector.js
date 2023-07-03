@@ -17,3 +17,8 @@ export const selectUserLoginMessage = createSelector(
   [selectUserReducer],
   (user) => user.message
 );
+
+export const selectUserFavorite = createSelector(
+  [selectUserReducer],
+  (user) => user.favorite
+);

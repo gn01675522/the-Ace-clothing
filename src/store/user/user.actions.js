@@ -3,13 +3,16 @@ import axios from "axios";
 import { createAction } from "../../utils/reducer/reducer.utils";
 import { USER_ACTION_TYPES } from "./user.types";
 
-const { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILED } = USER_ACTION_TYPES;
+const { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILED, SET_USER_FAVORITE } =
+  USER_ACTION_TYPES;
 
 export const setUserLoginStart = () => createAction(LOG_IN_START);
 
 export const setUserLoginSuccess = (data) => createAction(LOG_IN_SUCCESS, data);
 
 export const setUserLoginFailed = (error) => createAction(LOG_IN_FAILED, error);
+
+export const setUserFavorite = (list) => createAction(SET_USER_FAVORITE, list);
 
 //******************************** Sync **********************************************/
 //******************************** Async **********************************************/
@@ -28,5 +31,3 @@ export const setCurrentUserAsync = (data) => {
     }
   };
 };
-
-//*

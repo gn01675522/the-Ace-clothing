@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect, useRef } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 import "./Member.styles.scss";
@@ -8,6 +8,11 @@ import OrderDetail from "../OrderDetail/OrderDetail.component";
 import Wishlist from "../Wishlist/Wishlist.component";
 
 import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.actions";
+import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.actions";
+import { setUserFavorite } from "../../../store/user/user.actions";
+
+import { selectUserProducts } from "../../../store/userProduct/userProduct.selector";
+import { selectUserFavorite } from "../../../store/user/user.selector";
 
 const options = [
   { id: 1, title: "願望清單", route: "/member/wishlist" },
@@ -31,23 +36,44 @@ const Member = () => {
   const dispatch = useDispatch();
   const routeParams = useParams();
   const RenderOption = memberOption(routeParams.option);
+  const wishlistInLocalStorage = useSelector(selectUserFavorite);
+  const products = useSelector(selectUserProducts);
+  const wishlist = wishlistInLocalStorage.reduce((acc, item) => {
+    const product = products.find((product) => product.id === item);
+    if (product) {
+      acc.push(product);
+    }
+    return acc;
+  }, []);
 
   const onSearchOrder = (e) => {
     e.preventDefault();
     setEmail(userEmail.current.value);
   };
 
+  const onRemoveFavorite = (id) => {
+    const removeFavorite = wishlistInLocalStorage.filter((item) => item !== id);
+    dispatch(setUserFavorite(removeFavorite));
+  };
+
   useEffect(() => {
     dispatch(fetchUserOrderDataAsync());
+    dispatch(fetchUserProductAsync());
   }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlistInLocalStorage));
+  }, [wishlistInLocalStorage, localStorage]);
 
   return (
     <div className="member">
       <h1 className="member__title">客戶資訊</h1>
-      <form className="member__function" onSubmit={onSearchOrder}>
-        <input placeholder="請輸入電子信箱" type="search" ref={userEmail} />
-        <button type="submit">查詢</button>
-      </form>
+      {routeParams.option === "order-detail" && (
+        <form className="member__function" onSubmit={onSearchOrder}>
+          <input placeholder="請輸入電子信箱" type="search" ref={userEmail} />
+          <button type="submit">查詢</button>
+        </form>
+      )}
       <div className="member__tab">
         <div className="member__tab-nav">
           {options.map((option, i) => (
@@ -63,7 +89,10 @@ const Member = () => {
           ))}
         </div>
         <div className="member__tab-content">
-          <RenderOption userEmail={email} />
+          <RenderOption
+            data={routeParams.option === "order-detail" ? email : wishlist}
+            func={onRemoveFavorite}
+          />
         </div>
       </div>
     </div>

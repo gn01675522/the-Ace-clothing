@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import "./InfoSource.styles.scss";
 
-import { ReactComponent as AceLogo } from "../../../assets/ace.svg"
+import { ReactComponent as AceLogo } from "../../../assets/ace.svg";
 import { ReactComponent as LineIcon } from "../../../assets/line.svg";
 import { ReactComponent as InstagramIcon } from "../../../assets/instagram.svg";
 import { ReactComponent as FacebookIcon } from "../../../assets/facebook.svg";
 import { ReactComponent as CartIcon } from "../../../assets/cart.svg";
 import { ReactComponent as NoImage } from "../../../assets/noImage.svg";
+import { ReactComponent as WhiteHeart } from "../../../assets/whiteHeart.svg";
+import { ReactComponent as RedHeart } from "../../../assets/redHeart.svg";
 import hexSchool from "../../../assets/hexSchool.png";
 
 import { INFO_SOURCE_DATA } from "./infoSource.data";
@@ -35,6 +37,8 @@ const attachment = (category) =>
       <InstagramIcon className="info-source__card-view-img" />,
       <FacebookIcon className="info-source__card-view-img" />,
       <LineIcon className="info-source__card-view-img" />,
+      <RedHeart className="info-source__card-view-img" />,
+      <WhiteHeart className="info-source__card-view-img" />,
     ],
     [CATEGORY_TYPE.pictures]: [
       "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",

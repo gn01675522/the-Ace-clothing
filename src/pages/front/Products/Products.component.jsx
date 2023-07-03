@@ -15,6 +15,7 @@ import {
   fetchUserProductAsync,
   clearUserProduct,
 } from "../../../store/userProduct/userProduct.actions";
+
 import {
   selectUserProductIsLoading,
   selectUserProducts,
@@ -24,6 +25,9 @@ import {
   selectUserShoesProducts,
   selectUserAccessoriesProducts,
 } from "../../../store/userProduct/userProduct.selector";
+
+import { setUserFavorite } from "../../../store/user/user.actions";
+import { selectUserFavorite } from "../../../store/user/user.selector";
 
 import { selectHasMessage } from "../../../store/message/message.selector";
 
@@ -35,6 +39,7 @@ const CATEGORY = {
   shoes: "shoes",
   accessories: "accessories",
 };
+//* 定義 category type
 
 const categoryData = (category) =>
   ({
@@ -49,17 +54,22 @@ const categoryData = (category) =>
 
 const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const dispatch = useDispatch();
   const { category } = useParams();
+  const dispatch = useDispatch();
   const isLoading = useSelector(selectUserProductIsLoading);
   const hasMessage = useSelector(selectHasMessage);
+  const wishlist = useSelector(selectUserFavorite);
 
   useEffect(() => {
     dispatch(fetchUserProductAsync());
     return () => dispatch(clearUserProduct());
   }, [dispatch]);
+  // 結束時清空 redux，不然會有洩漏問題
 
   const products = useSelector(categoryData(category));
+
+  const pageCount = Math.ceil(products.length / 12);
+  // 一個頁面總共渲染 12 個 ProductCard，所以將所有資料除以 12 即可得到總共有幾頁
 
   const productsInPage = useMemo(() => {
     return products.slice(
@@ -67,17 +77,35 @@ const Products = () => {
       currentPage * 12
     );
   }, [products, currentPage]);
+  // 根據頁面數量來做資料切割
 
-  const pageCount = Math.ceil(products.length / 12);
-
-  const changePage = (page) => {
+  const onChangePage = (page) => {
     setCurrentPage(page);
+  };
+
+  const onAddFavorite = (e, id) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const newList = [...wishlist, id];
+    dispatch(setUserFavorite(newList));
+  };
+
+  const onRemoveFavorite = (e, id) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const removeFavorite = wishlist.filter((item) => item !== id);
+    dispatch(setUserFavorite(removeFavorite));
   };
 
   useEffect(() => {
     setCurrentPage(1);
   }, [category]);
   //* 若路由有改變則重新設定 setCurrentPage，不然切換路由時，currentPage 不會重置
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist, localStorage]);
+  // selector 變動時則將 wishlist 內容放入 localStorage 裡面
 
   return (
     <div className="products">
@@ -91,6 +119,9 @@ const Products = () => {
               product={product}
               key={product.id}
               urlParam={category}
+              isFavorite={wishlist.includes(product.id)}
+              onAddFavorite={onAddFavorite}
+              onRemoveFavorite={onRemoveFavorite}
             />
           );
         })}
@@ -98,7 +129,7 @@ const Products = () => {
       <nav className="d-flex justify-content-center">
         <Pagination
           currentPage={currentPage}
-          onChangePage={changePage}
+          onChangePage={onChangePage}
           pageCount={pageCount}
         />
       </nav>

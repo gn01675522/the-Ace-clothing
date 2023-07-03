@@ -1,10 +1,12 @@
 import { USER_ACTION_TYPES } from "./user.types";
 
-const { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILED } = USER_ACTION_TYPES;
+const { LOG_IN_START, LOG_IN_SUCCESS, LOG_IN_FAILED, SET_USER_FAVORITE } =
+  USER_ACTION_TYPES;
 
 const INITIAL_STATE = {
   isSuccess: false,
   message: "",
+  favorite: JSON.parse(localStorage.getItem("wishlist")) || [],
   isLoading: false,
 };
 
@@ -23,6 +25,12 @@ export const userReducer = (state = INITIAL_STATE, action = {}) => {
         ...state,
         message: payload,
         isLoading: false,
+      };
+
+    case SET_USER_FAVORITE:
+      return {
+        ...state,
+        favorite: payload,
       };
 
     default:

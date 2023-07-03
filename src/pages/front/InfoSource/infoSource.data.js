@@ -33,8 +33,19 @@ export const INFO_SOURCE_DATA = {
       source: { title: "Flaticon", url: "https://www.flaticon.com/" },
       createBy: "Line icons created by riajulislam - Flaticon",
     },
+    {
+      title: "white heart icons",
+      url: "https://www.flaticon.com/free-icons/heart",
+      source: { title: "Flaticon", url: "https://www.flaticon.com/" },
+      createBy: "Heart icons created by Freepik - Flaticon",
+    },
+    {
+      title: "red heart icons",
+      url: "https://www.flaticon.com/free-icons/heart",
+      source: { title: "Flaticon", url: "https://www.flaticon.com/" },
+      createBy: "Heart icons created by Kiranshastry - Flaticon",
+    },
   ],
-
   pictures: [
     {
       title: "All of the product pictures",

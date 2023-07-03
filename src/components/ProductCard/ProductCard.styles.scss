@@ -34,20 +34,34 @@
     height: 100%;
     object-fit: cover;
   }
-  &__info {
+  &__content {
     display: flex;
     width: 100%;
-    height: 50px;
-    flex-direction: column;
-    margin-top: 10px;
-    text-align: start;
-    &-title,
-    &-price {
-      font-size: 20px;
-      font-weight: bold;
+    height: min-content;
+    justify-content: space-between;
+    &-info {
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      margin-top: 10px;
+      text-align: start;
+      &-title,
+      &-price {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      &-price {
+        font-weight: lighter;
+      }
     }
-    &-price {
-      font-weight: lighter;
+    &-function {
+      &-favorite {
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+        fill: red;
+        stroke: red;
+      }
     }
   }
 }

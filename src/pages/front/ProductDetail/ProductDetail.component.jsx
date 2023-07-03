@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import "./ProductDetail.styles.scss";
 
 import Message from "../../../components/Message/Message.component";
+import { ReactComponent as WhiteHeart } from "../../../assets/whiteHeart.svg";
+import { ReactComponent as RedHeart } from "../../../assets/redHeart.svg";
 
 import { fetchUserSingleProductAsync } from "../../../store/userProduct/userProduct.actions";
 import { selectUserSingleProduct } from "../../../store/userProduct/userProduct.selector";
@@ -15,6 +17,9 @@ import {
   selectCartItems,
 } from "../../../store/cart/cart.selector";
 
+import { selectUserFavorite } from "../../../store/user/user.selector";
+import { setUserFavorite } from "../../../store/user/user.actions";
+
 const ProductDetail = () => {
   const [imgWidth, setImgWidth] = useState(0);
   const [itemQuantity, setItemQuantity] = useState(1);
@@ -24,8 +29,10 @@ const ProductDetail = () => {
   const isLoading = useSelector(selectCartIsLoading);
   const product = useSelector(selectUserSingleProduct);
   const cartItems = useSelector(selectCartItems);
+  const wishlist = useSelector(selectUserFavorite);
   const imgPreviewRef = useRef();
   const imgContainerRef = useRef();
+  const isFavorite = wishlist.includes(id);
 
   const productInCart =
     cartItems?.carts?.find((item) => item.product_id === id) || null;
@@ -55,6 +62,10 @@ const ProductDetail = () => {
     dispatch(fetchCartItemsAsync());
   }, [dispatch]);
   //* 為了要比對目前購物車內相同產品數量是否達到上限，故須 fetch cart api
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist, localStorage]);
 
   useEffect(() => {
     const detectResize = () => {
@@ -106,6 +117,20 @@ const ProductDetail = () => {
     dispatch(setAddItemToCartAsync(productData));
   };
 
+  const onAddFavorite = (e, id) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const newList = [...wishlist, id];
+    dispatch(setUserFavorite(newList));
+  };
+
+  const onRemoveFavorite = (e, id) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const removeFavorite = wishlist.filter((item) => item !== id);
+    dispatch(setUserFavorite(removeFavorite));
+  };
+
   return (
     <div className="product-detail">
       {hasMessage && <Message />}
@@ -136,23 +161,44 @@ const ProductDetail = () => {
 
         <div className="product-detail__sale-info">
           <div className="product-detail__sale-info-content">
-            <h3 className="product-detail__sale-info-content-subtitle">
-              the Ace Clothing
-            </h3>
-            <h1 className="product-detail__sale-info-content-title">{title}</h1>
-            <div className="product-detail__sale-info-content-price">
-              {origin_price > price && (
-                <p className="product-detail__sale-info-content-price-sell">
-                  NT${price} {discountRate + "%off"}
+            <div className="product-detail__sale-info-content-left">
+              <h3 className="product-detail__sale-info-content-subtitle">
+                the Ace Clothing
+              </h3>
+              <h1 className="product-detail__sale-info-content-title">
+                {title}
+              </h1>
+              <div className="product-detail__sale-info-content-price">
+                {origin_price > price && (
+                  <p className="product-detail__sale-info-content-price-sell">
+                    NT${price} {discountRate + "%off"}
+                  </p>
+                )}
+                <p
+                  className={`product-detail__sale-info-content-price-origin ${
+                    price < origin_price ? "product-on-sale" : ""
+                  }`}
+                >
+                  NT${origin_price}
                 </p>
-              )}
-              <p
-                className={`product-detail__sale-info-content-price-origin ${
-                  price < origin_price ? "product-on-sale" : ""
-                }`}
-              >
-                NT${origin_price}
-              </p>
+              </div>
+            </div>
+            <div className="product-detail__sale-info-content-right">
+              <div className="product-detail__sale-info-content-function">
+                <div
+                  type="button"
+                  className="product-detail__sale-info-content-function-wrapper"
+                  onClick={(e) =>
+                    isFavorite ? onRemoveFavorite(e, id) : onAddFavorite(e, id)
+                  }
+                >
+                  {isFavorite ? (
+                    <RedHeart className="product-detail__sale-info-content-function-favorite" />
+                  ) : (
+                    <WhiteHeart className="product-detail__sale-info-content-function-favorite" />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
           <div className="product-detail__description">
