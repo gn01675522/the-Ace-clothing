@@ -104,7 +104,7 @@ const Products = () => {
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist, localStorage]);
+  }, [wishlist]);
   // selector 變動時則將 wishlist 內容放入 localStorage 裡面
 
   return (

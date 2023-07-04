@@ -63,7 +63,7 @@ const Member = () => {
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlistInLocalStorage));
-  }, [wishlistInLocalStorage, localStorage]);
+  }, [wishlistInLocalStorage]);
 
   return (
     <div className="member">

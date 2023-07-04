@@ -38,44 +38,44 @@ const Wishlist = ({ data, func }) => {
 
   useEffect(() => {
     dispatch(fetchCartItemsAsync());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="wishlist">
       {data?.map((item) => (
         <div className="wishlist__card" key={item.id}>
           <div className="wishlist__card-content">
-            <img className="wishlist__card-content-img" src={item.imageUrl} />
+            <img
+              className="wishlist__card-content-img"
+              src={item.imageUrl}
+              alt={item.title}
+            />
             <div className="wishlist__card-content-info">
-              <div className="wishlist__card-content-info-title">
+              <div className="wishlist__card-content-info-item">
                 <div>名稱</div>
                 <div>{item.title}</div>
               </div>
-              <div className="wishlist__card-content-info-price">
+              <div className="wishlist__card-content-info-item">
                 <div>價格</div>
-                <div>{item.price}</div>
-              </div>
-              <div className="wishlist__card-content-info-category">
-                <div>種類</div>
-                <div>男上衣</div>
+                <div>NT${item.price}</div>
               </div>
             </div>
           </div>
           <div className="wishlist__card-function">
-            <div
+            <button
               type="button"
               className="wishlist__card-function-delete"
               onClick={() => func(item.id)}
             >
               刪除
-            </div>
+            </button>
             <button
               type="button"
               className="wishlist__card-function-add"
               disabled={isLimit(item.id) || isLoading}
               onClick={() => addToCart(item.id)}
             >
-              {isLimit(item.id) ? "MAX QUANTITY" : "ADD ONE TO CART"}
+              {isLimit(item.id) ? "MAX QUANTITY" : "ADD ONE"}
             </button>
           </div>
         </div>

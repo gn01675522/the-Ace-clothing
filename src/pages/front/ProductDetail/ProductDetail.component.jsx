@@ -65,7 +65,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist, localStorage]);
+  }, [wishlist]);
 
   useEffect(() => {
     const detectResize = () => {
