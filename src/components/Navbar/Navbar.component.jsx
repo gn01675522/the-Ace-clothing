@@ -60,8 +60,8 @@ const NavBar = () => {
             </NavLink>
           ))}
         </div>
-        <NavLink to="/" aria-label="home page">
-          <AceLogo className="navbar__logo" />
+        <NavLink to="/" aria-label="home page" className="navbar__home-logo">
+          <AceLogo className="navbar__home-logo-icon" />
         </NavLink>
         <div className="navbar__actions">
           <CartIcon />
