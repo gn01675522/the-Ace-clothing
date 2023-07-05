@@ -52,6 +52,7 @@ const CartItem = ({ item }) => {
           </div>
           <div className="cart-item__right-body-content-count">
             <select
+              className="cart-item__right-body-content-count-select"
               value={qty}
               disabled={loadingItems.includes(itemId)}
               onChange={(e) => {
