@@ -71,7 +71,6 @@
         font-weight: lighter;
       }
       &-count {
-        outline: 1px solid red;
         display: flex;
         width: 100%;
         height: 100%;
@@ -83,6 +82,7 @@
           height: 100%;
           text-align: center;
           background-color: white;
+          border: 1px solid black;
           border-radius: 0;
           -webkit-border-radius: 0;
         }
