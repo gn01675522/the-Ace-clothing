@@ -42,7 +42,7 @@ const Footer = () => {
               <li className="footer__content-items" key={item.title}>
                 {item.link ? (
                   <Link to={item.link}>
-                    <span>{item.title}</span>
+                    <div>{item.title}</div>
                   </Link>
                 ) : item.number ? (
                   <div>
@@ -50,15 +50,11 @@ const Footer = () => {
                     {item.number}
                   </div>
                 ) : (
-                  <Link
-                    className="footer__content-items-link"
-                    to={item.website}
-                    target="_blank"
-                  >
-                    <span>
+                  <Link to={item.website} target="_blank">
+                    <div>
                       {symbol(item.title)}
                       {item.title}
-                    </span>
+                    </div>
                   </Link>
                 )}
               </li>
