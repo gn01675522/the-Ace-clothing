@@ -21,3 +21,13 @@ export const translateCategoryToChinese = (category) => {
       return splitCategory;
   }
 };
+
+export const dateFormat = (date) => {
+  console.log(date);
+  const newDate = new Date(1696032000000);
+  const getYear = newDate.getFullYear().toString();
+  const getMonth = (newDate.getMonth() - 1).toString().padStart(2, 0);
+  const getDate = newDate.getDate().toString().padStart(2, 0);
+
+  return `${getYear}-${getMonth}-${getDate}`;
+};

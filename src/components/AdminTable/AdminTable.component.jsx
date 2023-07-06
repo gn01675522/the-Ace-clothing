@@ -1,5 +1,7 @@
 import "./AdminTable.styles.scss";
 
+import { dateFormat } from "../../utils/component/component.utils";
+
 export const ADMIN_TABLE_TYPE = {
   products: "products",
   coupons: "coupons",
@@ -49,7 +51,11 @@ const AdminTable = ({ type, items, onEdit, onDelete }) => {
                   ? item.user[productInfo[1]]
                   : item[productInfo[1]]}
               </td>
-              <td>{item[productInfo[2]]}</td>
+              <td>
+                {productInfo[2] === "due_date"
+                  ? dateFormat(item[productInfo[2]])
+                  : item[productInfo[2]]}
+              </td>
               {type === "orders" ? (
                 <td>{item[[productInfo[3]]] ? "已付款" : "未付款"}</td>
               ) : (
