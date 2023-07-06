@@ -9,6 +9,8 @@ import { ReactComponent as CartIcon } from "../../../assets/cart.svg";
 import { ReactComponent as NoImage } from "../../../assets/noImage.svg";
 import { ReactComponent as WhiteHeart } from "../../../assets/whiteHeart.svg";
 import { ReactComponent as RedHeart } from "../../../assets/redHeart.svg";
+import { ReactComponent as Check } from "../../../assets/check.svg";
+import { ReactComponent as Cross } from "../../../assets/cross.svg";
 import hexSchool from "../../../assets/hexSchool.png";
 
 import { INFO_SOURCE_DATA } from "./infoSource.data";
@@ -39,6 +41,8 @@ const attachment = (category) =>
       <LineIcon className="info-source__card-view-img" />,
       <RedHeart className="info-source__card-view-img" />,
       <WhiteHeart className="info-source__card-view-img" />,
+      <Check className="info-source__card-view-img" />,
+      <Cross className="info-source__card-view-img" />,
     ],
     [CATEGORY_TYPE.pictures]: [
       "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",

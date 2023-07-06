@@ -4,28 +4,25 @@
   display: flex;
   position: fixed;
   width: 250px;
-  height: 120px;
-  flex-direction: column;
+  height: 100px;
   top: 80px;
   right: 30px;
   outline: 1px solid black;
-  opacity: 0.8;
+  opacity: 0.6;
+  background-color: white;
   z-index: 4000;
   &__header {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    font-size: 1rem;
+    display: flex;
+    width: min-content;
+    height: 100%;
     font-weight: bold;
     color: white;
     letter-spacing: 5px;
-    text-align: center;
-    &--success {
-      background-color: #dcdcdc;
-      color: black;
-    }
-    &--danger {
-      background-color: #ff1493;
+    justify-content: flex-start;
+    align-items: center;
+    &-icon {
+      width: 50px;
+      height: 50px;
     }
   }
   &__body {
@@ -33,7 +30,7 @@
     width: 100%;
     height: 100%;
     padding: 5px;
-    background-color: white;
+    align-items: center;
     &-content {
       width: 100%;
       height: min-content;

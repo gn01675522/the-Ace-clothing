@@ -45,7 +45,20 @@ export const INFO_SOURCE_DATA = {
       source: { title: "Flaticon", url: "https://www.flaticon.com/" },
       createBy: "Heart icons created by Kiranshastry - Flaticon",
     },
+    {
+      title: "correct icons",
+      url: "https://www.flaticon.com/free-icons/correct",
+      source: { title: "Flaticon", url: "https://www.flaticon.com/" },
+      createBy: "Correct icons created by Graphics Plazza - Flaticon",
+    },
+    {
+      title: "close icons",
+      url: "https://www.flaticon.com/free-icons/close",
+      source: { title: "Flaticon", url: "https://www.flaticon.com/" },
+      createBy: "Close icons created by Ilham Fitrotul Hayat - Flaticon",
+    },
   ],
+
   pictures: [
     {
       title: "All of the product pictures",

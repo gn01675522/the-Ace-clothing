@@ -64,5 +64,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-// todo 需要針對運費做細節處理

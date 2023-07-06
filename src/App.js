@@ -44,5 +44,3 @@ const App = () => {
 };
 
 export default App;
-
-// todo message 需要改變 style，目前的樣式太醜
