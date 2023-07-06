@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "./ProductDetail.styles.scss";
 
 import Message from "../../../components/Message/Message.component";
+import PriceTag from "../../../components/UI/PriceTag/PriceTag.component";
 import { ReactComponent as WhiteHeart } from "../../../assets/whiteHeart.svg";
 import { ReactComponent as RedHeart } from "../../../assets/redHeart.svg";
 
@@ -51,7 +52,7 @@ const ProductDetail = () => {
   } = product;
 
   const discountRate = Math.trunc((1 - price / origin_price) * 100);
-  //* 只取整數，小數點無條件捨去
+  //* 折扣數字，只取整數，小數點無條件捨去
 
   useEffect(() => {
     dispatch(fetchUserSingleProductAsync(id));
@@ -169,18 +170,12 @@ const ProductDetail = () => {
                 {title}
               </h1>
               <div className="product-detail__sale-info-content-price">
+                <PriceTag origin_price={origin_price} price={price} />
                 {origin_price > price && (
                   <p className="product-detail__sale-info-content-price-sell">
-                    NT${price} {discountRate + "%off"}
+                    {discountRate + "%off"}
                   </p>
                 )}
-                <p
-                  className={`product-detail__sale-info-content-price-origin ${
-                    price < origin_price ? "product-on-sale" : ""
-                  }`}
-                >
-                  NT${origin_price}
-                </p>
               </div>
             </div>
             <div className="product-detail__sale-info-content-right">
@@ -261,4 +256,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-// todo price tag 好像忘記加上去了

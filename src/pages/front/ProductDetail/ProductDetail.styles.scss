@@ -137,6 +137,10 @@
     font-weight: lighter;
     font-family: $font-primary;
     color: #19110b;
+    &-sell {
+      margin-top: 1rem;
+      color: red;
+    }
   }
 
   &-right {
