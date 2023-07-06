@@ -9,9 +9,8 @@
   gap: 2rem;
   background-color: #f6f5f3;
   @media screen and (min-width: 768px) {
-    padding: 2rem 3rem;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -49,6 +48,7 @@
       width: 50%;
       outline: 1px solid #eae8e4;
       background-color: white;
+      color: black;
       cursor: pointer;
       &:hover {
         background-color: black;
@@ -57,10 +57,13 @@
     }
   }
   @media screen and (min-width: 768px) {
-    width: 65%;
+    width: 50vw;
     &-group {
-      padding: 2rem 3rem;
+      padding: 1rem;
     }
+  }
+  @media screen and (min-width: 1024px) {
+    width: 30vw;
   }
 }
 
