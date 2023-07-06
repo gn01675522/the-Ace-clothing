@@ -24,6 +24,8 @@ import {
   selectUserHatsProducts,
   selectUserShoesProducts,
   selectUserAccessoriesProducts,
+  selectUrbanProducts,
+  selectBohemianProducts,
 } from "../../../store/userProduct/userProduct.selector";
 
 import { setUserFavorite } from "../../../store/user/user.actions";
@@ -38,10 +40,12 @@ const CATEGORY = {
   hats: "hats",
   shoes: "shoes",
   accessories: "accessories",
+  urban: "urban",
+  bohemian: "bohemian",
 };
 //* 定義 category type
 
-const categoryData = (category) =>
+const getProducts = (category) =>
   ({
     [CATEGORY.all]: selectUserProducts,
     [CATEGORY.mens]: selectUserMensProducts,
@@ -49,6 +53,8 @@ const categoryData = (category) =>
     [CATEGORY.hats]: selectUserHatsProducts,
     [CATEGORY.shoes]: selectUserShoesProducts,
     [CATEGORY.accessories]: selectUserAccessoriesProducts,
+    [CATEGORY.urban]: selectUrbanProducts,
+    [CATEGORY.bohemian]: selectBohemianProducts,
   }[category]);
 //* 根據傳入 category 來決定 return 哪個 selector
 
@@ -59,14 +65,7 @@ const Products = () => {
   const isLoading = useSelector(selectUserProductIsLoading);
   const hasMessage = useSelector(selectHasMessage);
   const wishlist = useSelector(selectUserFavorite);
-
-  useEffect(() => {
-    dispatch(fetchUserProductAsync());
-    return () => dispatch(clearUserProduct());
-  }, [dispatch]);
-  // 結束時清空 redux，不然會有洩漏問題
-
-  const products = useSelector(categoryData(category));
+  const products = useSelector(getProducts(category));
 
   const pageCount = Math.ceil(products.length / 12);
   // 一個頁面總共渲染 12 個 ProductCard，所以將所有資料除以 12 即可得到總共有幾頁
@@ -96,6 +95,12 @@ const Products = () => {
     const removeFavorite = wishlist.filter((item) => item !== id);
     dispatch(setUserFavorite(removeFavorite));
   };
+
+  useEffect(() => {
+    dispatch(fetchUserProductAsync());
+    return () => dispatch(clearUserProduct());
+  }, [dispatch]);
+  // 結束時清空 redux，不然會有洩漏問題
 
   useEffect(() => {
     setCurrentPage(1);

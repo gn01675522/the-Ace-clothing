@@ -12,10 +12,7 @@ export const FOOTER_DATA = [
   },
   {
     title: "聯繫我們",
-    items: [
-      { title: "線上留言", link: "/" },
-      { title: "客服電話：", number: "07-7777777", symbol: "" },
-    ],
+    items: [{ title: "客服電話：", number: "07-7777777", symbol: "" }],
   },
   {
     title: "關注我們",

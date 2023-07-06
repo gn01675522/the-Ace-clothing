@@ -29,6 +29,12 @@ const classifyUserProducts = (category) =>
   );
 //* 針對 api 產品資料裡 category 來做出拆分的工廠函式
 
+const classifyProductsStyle = (style) =>
+  createSelector([selectUserProducts], (products) =>
+    products.filter((product) => product.title.split(" ")[0] === style)
+  );
+//* 針對 api 產品資料裡在名稱前面有設定風格類別的產品進行拆分
+
 //* ****************************** 以下為業務邏輯 ********************************* */
 export const selectUserMensProducts = classifyUserProducts("mens");
 //* 將產品列表裡面的男性商品取出
@@ -44,3 +50,9 @@ export const selectUserShoesProducts = classifyUserProducts("shoes");
 export const selectUserAccessoriesProducts =
   classifyUserProducts("accessories");
 //* 將產品列表裡面的飾品商品取出
+
+export const selectUrbanProducts = classifyProductsStyle("Urban");
+//* 將產品列表裡面有 Urban 的產品取出
+
+export const selectBohemianProducts = classifyProductsStyle("Bohemian");
+//* 將產品列表裡面有 Bohemian 的產品取出
