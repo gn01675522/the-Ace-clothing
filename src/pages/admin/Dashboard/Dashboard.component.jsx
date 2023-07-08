@@ -98,7 +98,12 @@ const Dashboard = () => {
             })}
           </div>
         </div>
-        <div className="dashboard-main__content">{token && <Outlet />}</div>
+        <div className="dashboard-main__content">
+          {token && <Outlet />}
+          <span className="dashboard-main__content-hint">
+            * 請使用平板或桌上型電腦查看，以確保最佳瀏覽體驗。
+          </span>
+        </div>
       </div>
     </>
   );

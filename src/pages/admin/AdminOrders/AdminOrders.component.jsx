@@ -41,7 +41,7 @@ const AdminOrders = () => {
   const onChangePageHandler = (page) => {
     dispatch(fetchAdminOrdersAsync(page));
   };
-  // todo 需要重新思考 modal 開啟方式，感覺目前的方法使用起來不太方便
+
   const onOpenOrdersModal = (_, order) => {
     setOpenWhichModal(MODAL_TYPE.order);
     dispatch(setAdminOrdersTempData(order));
