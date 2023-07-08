@@ -76,8 +76,8 @@ const Home = () => {
           <FullWidthBanner type="urban" />
         </div>
         <div className="home__session">
-          <h1 className="home__session-title">HOT</h1>
-          <ScrollList type={SCROLL_TYPE.hot} />
+          <h1 className="home__session-title">ON SALE</h1>
+          <ScrollList type={SCROLL_TYPE.onSale} />
         </div>
       </div>
     </>

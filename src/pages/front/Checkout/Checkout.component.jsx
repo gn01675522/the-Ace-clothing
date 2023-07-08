@@ -25,11 +25,10 @@ const Checkout = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onTouched" });
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   const cartItems = useSelector(selectCartItems);
   const orderId = useSelector(selectUserOrderId);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
     dispatch(setPostUserOrderAsync(data));

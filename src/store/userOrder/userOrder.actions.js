@@ -56,20 +56,6 @@ export const setPostUserOrderAsync = (data) => {
   };
 };
 
-// export const fetchUserOrderDataAsync = (orderId) => {
-//   return async (dispatch) => {
-//     dispatch(fetchUserOrderDataStart());
-//     try {
-//       const res = await axios.get(
-//         `/v2/api/${process.env.REACT_APP_API_PATH}/order/${orderId}`
-//       );
-//       dispatch(fetchUserOrderDataSuccess(res.data.order));
-//     } catch (error) {
-//       dispatch(fetchUserOrderDataFailed(error));
-//     }
-//   };
-// };
-
 export const fetchUserOrderDataAsync = (orderId) => {
   return async (dispatch) => {
     dispatch(fetchUserOrderDataStart());

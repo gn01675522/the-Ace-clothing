@@ -1,4 +1,6 @@
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./Cart.styles.scss";
 
@@ -8,10 +10,27 @@ import Categories from "../../../components/Categories/Categories.component";
 
 import { selectCartItems } from "../../../store/cart/cart.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
+import { setHandleMessage } from "../../../store/message/message.actions";
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const hasMessage = useSelector(selectHasMessage);
+  const dispatch = useDispatch();
+  const couponCode = useRef(null);
+
+  const addCoupon = async () => {
+    const code = { data: { code: couponCode.current.value } };
+    try {
+      const res = await axios.post(
+        `v2/api/${process.env.REACT_APP_API_PATH}/coupon`,
+        code
+      );
+      dispatch(setHandleMessage("success", res));
+    } catch (error) {
+      dispatch(setHandleMessage("error", error));
+    }
+  };
+  //* 由於 client coupon 只有一個 api，故不轉為 redux
 
   return (
     <div className="cart">
@@ -45,6 +64,32 @@ const Cart = () => {
             <span>NT${cartItems.final_total}</span>
           </div>
         </div>
+
+        {cartItems?.carts?.length > 0 && (
+          <div className="cart__info-discount">
+            <h2 className="cart__info-discount-title">套用折扣碼</h2>
+            <div className="cart__info-discount-area">
+              <input
+                type="text"
+                placeholder="請輸入折扣碼"
+                className="cart__info-discount-area-input"
+                ref={couponCode}
+              />
+              <button
+                type="button"
+                className="cart__info-discount-area-btn"
+                onClick={addCoupon}
+              >
+                套用
+              </button>
+            </div>
+            {cartItems?.carts[0]?.coupon && (
+              <span className="cart__info-discount-in-use">
+                已套用優惠券 {cartItems.carts[0].coupon.code}
+              </span>
+            )}
+          </div>
+        )}
 
         <div className="cart__info-checkout">
           {cartItems?.carts?.length !== 0 && (

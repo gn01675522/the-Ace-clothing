@@ -56,3 +56,19 @@ export const selectUrbanProducts = classifyProductsStyle("Urban");
 
 export const selectBohemianProducts = classifyProductsStyle("Bohemian");
 //* 將產品列表裡面有 Bohemian 的產品取出
+
+export const selectUserProductsOnSale = createSelector(
+  [selectUserProducts],
+  (products) =>
+    products.filter((product) => product.origin_price > product.price)
+);
+//* 取出原價比售價還高的產品
+
+export const selectNewUserProducts = createSelector(
+  [selectUserProducts],
+  (products) => {
+    const randomNumber = Math.floor(Math.random() * (products.length - 21));
+    return products.slice(randomNumber, randomNumber + 20);
+  }
+);
+//* 由於 api 沒有創建時間，故使用隨機 20 個產品的方式來呈現新到貨的業務邏輯
