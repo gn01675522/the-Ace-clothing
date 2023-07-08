@@ -16,6 +16,8 @@ import {
 
 import { formContent } from "./formContent.data";
 
+import { dateFormat } from "../../../utils/component/component.utils";
+
 const defaultFormData = {
   title: "",
   is_enabled: 1,
@@ -126,14 +128,7 @@ const CouponModal = ({ createOrEdit }) => {
                     className="coupon-modal__body-content-group-input"
                     value={
                       content.id === "due_date"
-                        ? `${date.getFullYear().toString()}-${(
-                            date.getMonth() + 1
-                          )
-                            .toString()
-                            .padStart(2, 0)}-${date
-                            .getDate()
-                            .toString()
-                            .padStart(2, 0)}`
+                        ? dateFormat(date)
                         : formData[content.id]
                     }
                     onChange={

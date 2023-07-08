@@ -25,7 +25,7 @@ export const translateCategoryToChinese = (category) => {
 export const dateFormat = (date) => {
   const newDate = new Date(date);
   const getYear = newDate.getFullYear().toString();
-  const getMonth = (newDate.getMonth() - 1).toString().padStart(2, 0);
+  const getMonth = (newDate.getMonth() + 1).toString().padStart(2, 0);
   const getDate = newDate.getDate().toString().padStart(2, 0);
 
   return `${getYear}-${getMonth}-${getDate}`;

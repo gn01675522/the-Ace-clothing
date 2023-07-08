@@ -55,6 +55,14 @@ const Home = () => {
     <>
       <div className="home" ref={scrollDetectParentRef}>
         <Banner />
+        <div className="home__discount">
+          <h2>Grand Opening Sale</h2>
+          <h1>EXTRA 30% OFF SALE</h1>
+          <p>
+            慶祝您我的相遇，也歡迎您加入我們的旅程，輸入 newBeginning
+            即可享全品項 7 折優惠！
+          </p>
+        </div>
         <div className="home__session">
           <h1 className="home__session-title">SHOP NOW</h1>
           <Categories />
