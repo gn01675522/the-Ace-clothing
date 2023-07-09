@@ -7,16 +7,16 @@
   height: 100px;
   bottom: 80px;
   right: 30px;
-  outline: 1px solid black;
+  outline: $line-primary-line;
   opacity: 0.6;
-  background-color: white;
+  background-color: $color-primary-bg;
   z-index: 4000;
   &__header {
     display: flex;
     width: min-content;
     height: 100%;
     font-weight: bold;
-    color: white;
+    color: $color-secondary-text;
     letter-spacing: 5px;
     justify-content: flex-start;
     align-items: center;

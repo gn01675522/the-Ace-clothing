@@ -6,12 +6,12 @@
     height: min-content;
     padding: 15px 0 15px 1rem;
     line-height: 32px;
-    background-color: black;
+    background-color: $color-secondary-bg;
     word-break: break-all;
-    color: white;
+    color: $color-secondary-text;
     &-link {
-      color: black;
-      background-color: white;
+      color: $color-primary-text;
+      background-color: $color-primary-bg;
       border-radius: 4px;
       padding: 2px 5px;
     }
@@ -31,7 +31,7 @@
         font-weight: bold;
         padding-bottom: 5px;
         margin-bottom: 1rem;
-        border-bottom: 1px solid gray;
+        border-bottom: $line-secondary-line;
       }
     }
     &-items {
@@ -40,9 +40,9 @@
       font-size: 1rem;
       div {
         margin-left: 2rem;
-        color: black;
+        color: $color-primary-text;
         &:hover {
-          color: gray;
+          color: $color-third-text;
         }
       }
     }
