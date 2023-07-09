@@ -11,9 +11,16 @@ $color-fourth-bg: #d2d2d2;
 $color-primary-text: #272727;
 $color-secondary-text: #ffffff;
 
-//* outline color
+//* outline or border color
 $line-primary-line: 1px solid #272727;
 $line-secondary-line: 1px solid #eae8e4;
+
+//* semi transparent bg
+$semi-color-primary-bg-8: rgba(255, 255, 255, 0.8);
+$semi-color-secondary-bg-5: rgba(255, 255, 255, 0.5);
+
+//* semi transparent line
+$semi-color-primary-line: solid rgba(0, 0, 0, 0.7);
 
 //* other color
 $color-primary-other: #f1f1f1;
