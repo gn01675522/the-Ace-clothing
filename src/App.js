@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login/Login.component";
 import Dashboard from "./pages/admin/Dashboard/Dashboard.component";
 import AdminProducts from "./pages/admin/AdminProducts/AdminProducts.component";
@@ -33,8 +33,9 @@ const App = () => {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Dashboard />}>
+          <Route index element={<Navigate to="products" />} />
           <Route path="products" element={<Categories />} />
-          <Route path="products/:category" element={<AdminProducts />} />
+          <Route path=":category" element={<AdminProducts />} />
           <Route path="coupons" element={<AdminCoupons />} />
           <Route path="orders" element={<AdminOrders />} />
         </Route>

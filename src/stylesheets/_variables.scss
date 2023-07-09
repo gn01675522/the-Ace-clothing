@@ -2,8 +2,10 @@
 $font-primary: "Source Code Pro", monospace;
 
 //* bg color
-$color-primary-bg: white;
+$color-primary-bg: #f1f1f1;
 $color-secondary-bg: #272727;
+$color-third-bg: gray;
+$color-fourth-bg: #d2d2d2;
 
 //* other color
 $color-primary-other: #f1f1f1;
@@ -11,6 +13,16 @@ $color-secondary-other: #272727;
 
 //* text color
 $color-primary-text: #272727;
-$color-secondary-text: white;
+$color-secondary-text: #ffffff;
+
+//* line color
+$color-primary-line: 1px solid #272727;
+$color-secondary-line: 1px solid #eae8e4;
 
 $temp-color: #efefef;
+
+$temp-bg-color: #f6f5f3;
+//* 放在 checkout 的背景顏色，感覺不錯，白略偏灰
+
+$color-primary-line: #eae8e4;
+//* 淡灰色線條，專門用來做分隔線用
