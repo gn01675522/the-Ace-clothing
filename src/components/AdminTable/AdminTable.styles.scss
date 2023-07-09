@@ -15,7 +15,7 @@
       width: 100%;
       text-align: center;
       th {
-        outline: $outline-primary-line;
+        outline: $line-primary-line;
       }
     }
   }
@@ -23,7 +23,7 @@
     &-row {
       height: 45px;
       td {
-        outline: $outline-primary-line;
+        outline: $line-primary-line;
         text-align: center;
       }
       &:nth-child(even) {
