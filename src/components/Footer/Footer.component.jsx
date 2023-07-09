@@ -27,6 +27,7 @@ const Footer = () => {
         © 本網站為個人練習作品，無作任何商業用途使用；原始碼請見{" "}
         <Link
           className="footer__copyright-link"
+          target="_blank"
           to="https://github.com/gn01675522/the-Ace-clothing"
         >
           Github
