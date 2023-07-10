@@ -78,7 +78,7 @@ const DeleteModal = ({ dataType }) => {
           aria-label="Close"
           onClick={onCloseModalHandler}
         >
-          X
+          ｘ
         </button>
       </div>
       <div className="delete-modal__body">

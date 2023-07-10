@@ -67,7 +67,7 @@ const OrderModal = () => {
           aria-label="Close"
           onClick={onCloseModalHandler}
         >
-          X
+          ｘ
         </button>
       </div>
 

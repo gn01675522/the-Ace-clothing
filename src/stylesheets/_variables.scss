@@ -6,6 +6,7 @@ $color-primary-bg: #ffffff;
 $color-secondary-bg: #272727;
 $color-third-bg: gray;
 $color-fourth-bg: #d2d2d2;
+$color-fifth-bg: #555555;
 
 //* text color
 $color-primary-text: #272727;
@@ -13,12 +14,13 @@ $color-secondary-text: #ffffff;
 $color-third-text: gray;
 
 //* outline or border color
-$line-primary-line: 1px solid #272727;
-$line-secondary-line: 1px solid #eae8e4;
+$line-primary-line: solid #272727;
+$line-secondary-line: solid #eae8e4;
 
 //* semi transparent bg
 $semi-color-primary-bg-8: rgba(255, 255, 255, 0.8);
-$semi-color-secondary-bg-5: rgba(255, 255, 255, 0.5);
+$semi-color-primary-bg-5: rgba(255, 255, 255, 0.5);
+$semi-color-secondary-bg-7: rgba(0, 0, 0, 0.75);
 
 //* semi transparent line
 $semi-color-primary-line: solid rgba(0, 0, 0, 0.7);

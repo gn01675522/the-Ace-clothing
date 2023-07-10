@@ -85,7 +85,7 @@ const CouponModal = ({ createOrEdit }) => {
             aria-label="Close"
             onClick={onCloseModalHandler}
           >
-            X
+            ｘ
           </button>
         </div>
 
