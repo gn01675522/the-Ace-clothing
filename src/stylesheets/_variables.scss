@@ -7,15 +7,19 @@ $color-secondary-bg: #272727;
 $color-third-bg: gray;
 $color-fourth-bg: #d2d2d2;
 $color-fifth-bg: #555555;
+$color-sixth-bg: #f1f1f1;
 
 //* text color
 $color-primary-text: #272727;
 $color-secondary-text: #ffffff;
 $color-third-text: gray;
+$color-fourth-text: red;
 
 //* outline or border color
 $line-primary-line: solid #272727;
 $line-secondary-line: solid #eae8e4;
+$line-thrid-line: solid #f1f1f1;
+$line-fourth-line: solid firebrick;
 
 //* semi transparent bg
 $semi-color-primary-bg-8: rgba(255, 255, 255, 0.8);
@@ -24,10 +28,6 @@ $semi-color-secondary-bg-7: rgba(0, 0, 0, 0.75);
 
 //* semi transparent line
 $semi-color-primary-line: solid rgba(0, 0, 0, 0.7);
-
-//* other color
-$color-primary-other: #f1f1f1;
-$color-secondary-other: #272727;
 
 $temp-color: #efefef;
 

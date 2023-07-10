@@ -14,8 +14,8 @@
     height: 10px;
     border-radius: 50%;
     opacity: 0.6;
-    background: $color-primary-other;
-    outline: 1px solid $color-primary-other;
+    background: $color-sixth-bg;
+    outline: 1px $line-thrid-line;
     cursor: pointer;
   }
   &__dots--active {

@@ -1,9 +1,9 @@
 @import "../../../stylesheets/variables";
 
 .price-tag__sell-price {
-  color: red;
+  color: $color-fourth-text;
 }
 
 .price-tag__origin-price {
-    color: black;
+    color: $color-primary-text;
 }

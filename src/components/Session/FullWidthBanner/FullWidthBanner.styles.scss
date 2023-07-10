@@ -33,11 +33,11 @@
       height: 40px;
       line-height: 40px;
       opacity: 0.6;
-      background-color: white;
-      outline: 1px solid black;
+      background-color: $color-primary-bg;
+      outline: 1px $line-primary-line;
       text-align: center;
       font-weight: bold;
-      color: black;
+      color: $color-primary-text;
       cursor: pointer;
       &:hover {
         opacity: 0.8;

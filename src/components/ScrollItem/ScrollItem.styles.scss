@@ -1,4 +1,5 @@
 @import "../../stylesheets/variables";
+@import "../../stylesheets/mixin";
 
 .scroll-item {
   width: 230px;
@@ -7,8 +8,7 @@
     pointer-events: none;
   }
   &:hover > &__preview > &__preview-img {
-    transform: scale(1.1);
-    transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    @include img-cubic-transition;
   }
   &__preview {
     width: 100%;
@@ -29,7 +29,7 @@
     margin-top: 10px;
     text-align: start;
     gap: 5px;
-    color: black;
+    color: $color-primary-text;
     &-title,
     &-price {
       font-size: 1rem;
@@ -40,7 +40,7 @@
       font-weight: lighter;
       justify-content: space-between;
       &-sale {
-        color: red;
+        color: $color-fourth-text;
       }
     }
   }

@@ -1,4 +1,5 @@
 @import "../../../stylesheets/variables";
+@import "../../../stylesheets/mixin";
 
 .split-banner {
   display: flex;
@@ -15,7 +16,7 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    color: black;
+    color: $color-primary-text;
     &-title {
       font-size: 2rem;
       font-weight: bold;
@@ -27,10 +28,10 @@
     &-btn {
       position: relative;
       padding: 5px;
-      background-color: white;
+      background-color: $color-primary-bg;
       opacity: 0.6;
       font-weight: bold;
-      color: black;
+      color: $color-primary-text;
       cursor: pointer;
       &::after {
         content: "";
@@ -39,7 +40,7 @@
         height: 1px;
         bottom: 0;
         left: 0;
-        background-color: black;
+        background-color: $color-secondary-bg;
         transition: width 0.3s;
       }
       &:hover::after {
@@ -54,7 +55,7 @@
     &-img-men {
       width: 100%;
       height: 700px;
-      object-fit: cover;
+      @include img-cover-center;
     }
   }
 

@@ -6,13 +6,13 @@
   padding: 1rem;
   flex-direction: column;
   gap: 1rem;
-  background-color: white;
+  background-color: $color-primary-bg;
   &__title {
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px $line-secondary-line;
   }
   &__item {
     display: flex;
