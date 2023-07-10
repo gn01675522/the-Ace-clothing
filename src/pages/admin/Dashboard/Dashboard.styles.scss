@@ -1,4 +1,5 @@
 @import "../../../stylesheets/variables";
+@import "../../../stylesheets/mixin";
 
 .dashboard-header {
   display: flex;
@@ -10,24 +11,22 @@
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  -webkit-box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.25);
+  @include shadow;
   &__title {
-    color: black;
+    color: $color-primary-text;
   }
   &__logout {
     width: 60px;
     height: 60px;
     font-size: 1rem;
     font-weight: bold;
-    background-color: white;
-    color: black;
+    background-color: $color-primary-bg;
+    color: $color-primary-text;
     cursor: pointer;
     transition: 0.3s ease-out;
     &:hover {
-      background-color: black;
-      color: white;
+      background-color: $color-secondary-bg;
+      color: $color-secondary-text;
     }
   }
 }
@@ -66,9 +65,9 @@
   height: 60px;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   transition: all 0.5s ease-in-out;
   border-radius: 8px;
+  cursor: pointer;
 
   &-line {
     width: 24px;
@@ -127,17 +126,17 @@
         height: 60px;
         line-height: 60px;
         font-weight: bold;
-        background-color: white;
-        color: black;
+        background-color: $color-primary-bg;
+        color: $color-primary-text;
         transition: 0.3s ease-out;
         &:hover {
-          background-color: black;
-          color: white;
+          background-color: $color-secondary-bg;
+          color: $color-secondary-text;
         }
       }
       .active {
-        background-color: black;
-        color: white;
+        background-color: $color-secondary-bg;
+        color: $color-secondary-text;
       }
     }
   }
@@ -156,7 +155,7 @@
       width: 150px;
       height: calc(100vh - 60px);
       justify-content: center;
-      background-color: white;
+      background-color: $color-primary-bg;
       transform: unset;
       &-list {
         height: 100%;
