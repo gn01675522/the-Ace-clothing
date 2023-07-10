@@ -11,7 +11,7 @@
     border: none;
     font-size: 1rem;
     font-weight: 900;
-    color: black;
+    color: $color-primary-text;
     cursor: pointer;
   }
   &__list {
@@ -30,11 +30,11 @@
       height: 100%;
       justify-content: center;
       align-items: center;
-      color: black;
+      color: $color-primary-text;
       &:hover,
       &--active {
-        background-color: #272727;
-        color: white;
+        background-color: $color-secondary-bg;
+        color: $color-secondary-text;
         border-radius: 8px;
       }
     }
