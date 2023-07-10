@@ -6,7 +6,7 @@
   padding: 2rem;
   flex-direction: column;
   gap: 3rem;
-  background-color: #f6f5f3;
+  background-color: $color-seventh-bg;
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
@@ -27,7 +27,7 @@
 }
 
 .success__actions {
-  outline: 1px solid black;
+  outline: 1px $line-primary-line;
   display: flex;
   justify-content: space-between;
   &-home {
@@ -37,8 +37,8 @@
     text-align: center;
     font-size: 1.5rem;
     font-weight: lighter;
-    background-color: black;
-    color: white;
+    background-color: $color-secondary-bg;
+    color: $color-secondary-text;
   }
 }
 

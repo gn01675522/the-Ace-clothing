@@ -1,4 +1,5 @@
 @import "../../../stylesheets/variables";
+@import "../../../stylesheets/mixin";
 
 .cart {
   display: flex;
@@ -6,7 +7,7 @@
   padding: 2rem;
   gap: 1rem;
   text-align: center;
-  background-color: #f6f5f3;
+  background-color: $color-seventh-bg;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
@@ -43,11 +44,9 @@
     flex-direction: column;
     padding: 10px;
     gap: 10px;
-    border: 1px solid #eae8e4;
-    background-color: white;
-    -webkit-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
-    -moz-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
-    box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
+    border: 1px $line-secondary-line;
+    background-color: $color-primary-bg;
+    @include shallow-shadow;
 
     &-items {
       display: flex;
@@ -69,27 +68,23 @@
         height: 40px;
         padding: 10px;
         border: none;
-        -webkit-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
-        -moz-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
-        box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
+        @include shallow-shadow;
       }
       &-btn {
         width: 50px;
         height: 40px;
-        background-color: white;
+        background-color: $color-primary-bg;
         cursor: pointer;
-        -webkit-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
-        -moz-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
-        box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
+        @include shallow-shadow;
         &:hover {
-          background-color: black;
-          color: white;
+          background-color: $color-secondary-bg;
+          color: $color-primary-bg;
         }
       }
     }
     &-in-use {
       font-size: 12px;
-      color: red;
+      color: $color-fourth-text;
     }
   }
   &-checkout {
@@ -102,12 +97,12 @@
       width: 100%;
       height: 40px;
       line-height: 40px;
-      background-color: black;
-      color: white;
+      background-color: $color-secondary-bg;
+      color: $color-secondary-text;
     }
     &-goShop {
       font-size: 10px;
-      color: black;
+      color: $color-primary-text;
     }
   }
   &-backShop {
