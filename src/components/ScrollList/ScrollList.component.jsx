@@ -85,6 +85,8 @@ const ScrollList = ({ type }) => {
   );
   //* 如果 isDragging 為 false，也就是 user 沒有在做拖動動作則 return；反之則開始列表移動，移動的根據為起始位置減目前位置
 
+  //todo 晚點再來評估看看 button 要不要整合
+
   return (
     <div className="scroll-list">
       <div className="scroll-list__content" ref={contentRef}>

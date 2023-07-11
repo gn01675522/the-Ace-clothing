@@ -3,6 +3,10 @@ import { useSelector } from "react-redux";
 
 import "./OrderDetail.styles.scss";
 
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
+
 import { selectUserOrderData } from "../../../store/userOrder/userOrder.selector";
 
 const tableContent = [
@@ -60,18 +64,12 @@ const OrderDetail = ({ data }) => {
                 ))}
               </div>
               <div className="order-detail__card-function">
-                <button
-                  type="button"
-                  className="order-detail__card-function-buy-again"
-                >
+                <Button type="button" buttonType={BUTTON_TYPE_CLASS.edit}>
                   BUY AGAIN
-                </button>
-                <button
-                  type="button"
-                  className="order-detail__card-function-view"
-                >
+                </Button>
+                <Button type="button" buttonType={BUTTON_TYPE_CLASS.del}>
                   DETAIL
-                </button>
+                </Button>
               </div>
             </div>
           ))

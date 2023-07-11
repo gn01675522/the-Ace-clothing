@@ -1,12 +1,16 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+
+import "./Checkout.styles.scss";
+
 import OrderCard from "../../../components/OrderCard/OrderCard.component";
 import SummaryCard from "../../../components/SummaryCard/SummaryCard.component";
 import Input from "../../../components/UI/Input/Input.component";
-
-import "./Checkout.styles.scss";
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
 
 import { selectCartItems } from "../../../store/cart/cart.selector";
 import { selectUserOrderId } from "../../../store/userOrder/userOrder.selector";
@@ -34,6 +38,10 @@ const Checkout = () => {
     dispatch(setPostUserOrderAsync(data));
   };
 
+  const onBackToCart = () => {
+    navigate("/cart");
+  };
+
   useEffect(() => {
     if (orderId !== null) {
       navigate(`/success/${orderId}`);
@@ -57,12 +65,16 @@ const Checkout = () => {
           ))}
         </div>
         <div className="checkout__form-actions">
-          <Link className="checkout__form-actions-back" to="/cart">
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASS.back}
+            onClick={onBackToCart}
+          >
             返回購物車
-          </Link>
-          <button type="submit" className="checkout__form-actions-submit">
+          </Button>
+          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.send}>
             送出訂單
-          </button>
+          </Button>
         </div>
       </form>
       <div className="checkout__info">

@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import "./CartItem.styles.scss";
+
+import Button, { BUTTON_TYPE_CLASS } from "../UI/Button/Button.component";
 
 import {
   setRemoveItemToCartAsync,
@@ -71,13 +74,13 @@ const CartItem = ({ item }) => {
           </div>
         </div>
         <div className="cart-item__right-footer">
-          <button
+          <Button
             type="button"
-            className="cart-item__right-footer-remove"
+            buttonType={BUTTON_TYPE_CLASS.removeNm}
             onClick={removeCartItem}
           >
             刪除
-          </button>
+          </Button>
         </div>
       </div>
     </div>

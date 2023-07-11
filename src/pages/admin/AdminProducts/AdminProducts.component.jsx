@@ -17,6 +17,10 @@ import AdminTable, {
 } from "../../../components/AdminTable/AdminTable.component";
 import { DELETE_MODAL_TYPE } from "../../../components/ModalSet/DeleteModal/DeleteModal.component";
 
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
+
 import Loading from "../../../components/Loading/Loading.component";
 
 import {
@@ -120,13 +124,13 @@ const AdminProducts = () => {
         產品列表-{category.toUpperCase()}
       </h3>
       <div className="admin-products__actions">
-        <button
+        <Button
           type="button"
-          className="admin-products__actions-add"
+          buttonType={BUTTON_TYPE_CLASS.add}
           onClick={() => onOpenProductModal("create")}
         >
           建立新商品
-        </button>
+        </Button>
       </div>
       <AdminTable
         type={ADMIN_TABLE_TYPE.products}

@@ -6,6 +6,9 @@ import axios from "axios";
 import "./Dashboard.styles.scss";
 
 import Message from "../../../components/Message/Message.component";
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
 
 import { selectHasMessage } from "../../../store/message/message.selector";
 
@@ -71,13 +74,13 @@ const Dashboard = () => {
         <NavLink className="dashboard-header__title" to="/admin/products">
           the Ace 後台管理系統
         </NavLink>
-        <button
+        <Button
           type="button"
-          className="dashboard-header__logout"
+          buttonType={BUTTON_TYPE_CLASS.logout}
           onClick={logout}
         >
           登出
-        </button>
+        </Button>
       </nav>
       <div className="dashboard-header__blocker" />
 

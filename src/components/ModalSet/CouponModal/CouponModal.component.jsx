@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./CouponModal.styles.scss";
 
+import Button, { BUTTON_TYPE_CLASS } from "../../UI/Button/Button.component";
+
 import { selectAdminCouponsTempData } from "../../../store/adminCoupons/adminCoupons.selector";
 import { setAdminCouponsOpen } from "../../../store/adminCoupons/adminCoupons.actions";
 
@@ -79,14 +81,14 @@ const CouponModal = ({ createOrEdit }) => {
               ? "建立新優惠券"
               : `優惠券名稱： ${formData.title}`}
           </h1>
-          <button
+          <Button
             type="button"
-            className="coupon-modal__header-button"
+            buttonType={BUTTON_TYPE_CLASS.closeSm}
             aria-label="Close"
             onClick={onCloseModalHandler}
           >
             ｘ
-          </button>
+          </Button>
         </div>
 
         <div className="coupon-modal__body">
@@ -109,7 +111,10 @@ const CouponModal = ({ createOrEdit }) => {
           <div className="coupon-modal__body-content">
             {formContent.map((content) => {
               return (
-                <div className="coupon-modal__body-content-group">
+                <div
+                  className="coupon-modal__body-content-group"
+                  key={content.id}
+                >
                   <label
                     className="coupon-modal__body-content-group-label"
                     htmlFor={content.id}
@@ -146,20 +151,20 @@ const CouponModal = ({ createOrEdit }) => {
         </div>
 
         <div className="coupon-modal__footer">
-          <button
+          <Button
             type="button"
-            className="coupon-modal__footer-close"
+            buttonType={BUTTON_TYPE_CLASS.closeNm}
             onClick={onCloseModalHandler}
           >
             關閉
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            className="coupon-modal__footer-save"
+            buttonType={BUTTON_TYPE_CLASS.save}
             onClick={onSubmitHandler}
           >
             儲存
-          </button>
+          </Button>
         </div>
       </div>
     </>

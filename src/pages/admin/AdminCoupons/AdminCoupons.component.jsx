@@ -16,6 +16,10 @@ import AdminTable, {
 
 import { DELETE_MODAL_TYPE } from "../../../components/ModalSet/DeleteModal/DeleteModal.component";
 
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
+
 import {
   fetchAdminCouponsAsync,
   setAdminCouponsOpen,
@@ -72,13 +76,13 @@ const AdminCoupons = () => {
       )}
       <h3 className="admin-coupons__title">優惠券列表</h3>
       <div className="admin-coupons__actions">
-        <button
+        <Button
           type="button"
-          className="admin-coupons__actions-add"
+          buttonType={BUTTON_TYPE_CLASS.add}
           onClick={() => openCouponModal("create", {})}
         >
           建立新優惠券
-        </button>
+        </Button>
       </div>
       <AdminTable
         type={ADMIN_TABLE_TYPE.coupons}

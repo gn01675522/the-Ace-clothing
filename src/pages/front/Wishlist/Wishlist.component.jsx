@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./Wishlist.styles.scss";
 
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
+
 import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
 import { setAddItemToCartAsync } from "../../../store/cart/cart.actions";
 import {
@@ -62,21 +66,21 @@ const Wishlist = ({ data, func }) => {
             </div>
           </div>
           <div className="wishlist__card-function">
-            <button
+            <Button
               type="button"
-              className="wishlist__card-function-delete"
+              buttonType={BUTTON_TYPE_CLASS.btnNm}
               onClick={() => func(item.id)}
             >
               刪除
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
-              className="wishlist__card-function-add"
+              buttonType={BUTTON_TYPE_CLASS.btnNm}
               disabled={isLimit(item.id) || isLoading}
               onClick={() => addToCart(item.id)}
             >
               {isLimit(item.id) ? "MAX QUANTITY" : "ADD ONE"}
-            </button>
+            </Button>
           </div>
         </div>
       ))}

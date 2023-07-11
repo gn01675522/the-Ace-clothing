@@ -18,35 +18,9 @@
   &-wrapper {
     height: min-content;
     position: relative;
-    &:hover &-prev,
-    &:hover &-next {
+    &:hover button {
       opacity: 0.6;
       transition: opacity 0.3s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-    }
-    &-prev,
-    &-next {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background-color: $color-primary-bg;
-      opacity: 0;
-      cursor: pointer;
-    }
-    &-prev {
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      &::after {
-        content: "<";
-      }
-    }
-    &-next {
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      &::after {
-        content: ">";
-      }
     }
   }
 
@@ -81,8 +55,7 @@
       position: sticky;
       width: 50%;
       top: 0;
-      &-prev,
-      &-next {
+      button {
         display: none;
       }
     }
@@ -176,39 +149,9 @@
     border-radius: 4px;
     justify-content: space-between;
   }
-  &-minor,
-  &-add {
-    width: 50px;
-    height: 50px;
-    color: black;
-    background: white;
-    border: 1px $line-fifth;
-    cursor: pointer;
-    &:hover {
-      color: $color-secondary-text;
-      background-color: rgba(35, 35, 35, 0.8);
-      transition: color 0.4s ease-out, background-color 0.4s ease-out;
-    }
-  }
   &-entry {
     border: none;
     text-align: center;
-  }
-  &-btn {
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    border: 1px $line-fifth;
-    font-family: $font-primary;
-    color: $color-primary-text;
-    background-color: $color-primary-bg;
-    cursor: pointer;
-    &:hover {
-      color: $color-secondary-text;
-      background-color: rgba(35, 35, 35, 0.8);
-      transition: color 0.4s ease-out, background-color 0.4s ease-out;
-    }
   }
 }
 

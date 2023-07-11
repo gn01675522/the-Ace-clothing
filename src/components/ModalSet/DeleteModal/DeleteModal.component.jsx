@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./DeleteModal.styles.scss";
 
+import Button, { BUTTON_TYPE_CLASS } from "../../UI/Button/Button.component";
+
 import {
   setAdminProductModalOpen,
   deleteAdminProductAsync,
@@ -72,33 +74,33 @@ const DeleteModal = ({ dataType }) => {
     <div className="delete-modal">
       <div className="delete-modal__header">
         <h1 className="delete-modal__header-title">刪除確認</h1>
-        <button
+        <Button
           type="button"
-          className="delete-modal__header-close"
+          buttonType={BUTTON_TYPE_CLASS.closeSm}
           aria-label="Close"
           onClick={onCloseModalHandler}
         >
           ｘ
-        </button>
+        </Button>
       </div>
       <div className="delete-modal__body">
         確定刪除 {dataType === "adminOrder" ? id : title}？
       </div>
       <div className="delete-modal__footer">
-        <button
+        <Button
           type="button"
-          className="delete-modal__footer-close"
+          buttonType={BUTTON_TYPE_CLASS.closeNm}
           onClick={onCloseModalHandler}
         >
           取消
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
-          className="delete-modal__footer-confirm"
+          buttonType={BUTTON_TYPE_CLASS.save}
           onClick={() => onDeleteHandler(id)}
         >
           確認刪除
-        </button>
+        </Button>
       </div>
     </div>
   );

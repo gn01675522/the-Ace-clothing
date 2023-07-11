@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./ProductModal.styles.scss";
 
 import { ReactComponent as NoImage } from "../../../assets/noImage.svg";
+import Button, { BUTTON_TYPE_CLASS } from "../../UI/Button/Button.component";
 
 import {
   updateAdminProductAsync,
@@ -120,14 +121,14 @@ const ProductModal = ({ createOrEdit }) => {
               ? "建立新商品"
               : `產品名稱：${formData.title}`}
           </h1>
-          <button
+          <Button
             type="button"
-            className="product-modal__header-close"
+            buttonType={BUTTON_TYPE_CLASS.closeSm}
             aria-label="Close"
             onClick={onCloseModal}
           >
             ｘ
-          </button>
+          </Button>
         </div>
 
         <div className="product-modal__body">
@@ -271,13 +272,13 @@ const ProductModal = ({ createOrEdit }) => {
                       htmlFor={`images${i}`}
                     >
                       圖片 - {i + 1}
-                      <button
+                      <Button
                         type="button"
-                        className="product-modal__body-lower-content-item-remove"
+                        buttonType={BUTTON_TYPE_CLASS.removeSm}
                         onClick={() => onRemoveInput(i)}
                       >
                         刪除
-                      </button>
+                      </Button>
                     </label>
 
                     <input
@@ -293,31 +294,31 @@ const ProductModal = ({ createOrEdit }) => {
                 );
               })}
             </div>
-            <button
+            <Button
               type="button"
-              className="product-modal__body-lower-add"
+              buttonType={BUTTON_TYPE_CLASS.addImg}
               onClick={onAddInput}
             >
               新增
-            </button>
+            </Button>
           </div>
         </div>
 
         <div className="product-modal__footer">
-          <button
+          <Button
             type="button"
-            className="product-modal__footer-close"
+            buttonType={BUTTON_TYPE_CLASS.closeNm}
             onClick={onCloseModal}
           >
             關閉
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            className="product-modal__footer-save"
+            buttonType={BUTTON_TYPE_CLASS.save}
             onClick={onSubmitHandler}
           >
             儲存
-          </button>
+          </Button>
         </div>
       </div>
     </>

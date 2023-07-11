@@ -1,5 +1,7 @@
 import "./AdminTable.styles.scss";
 
+import Button, { BUTTON_TYPE_CLASS } from "../UI/Button/Button.component";
+
 import { dateFormat } from "../../utils/component/component.utils";
 
 export const ADMIN_TABLE_TYPE = {
@@ -62,20 +64,20 @@ const AdminTable = ({ type, items, onEdit, onDelete }) => {
                 <td>{item[[productInfo[3]]] === 1 ? "啟用" : "未啟用"}</td>
               )}
               <td className="admin-table__body-actions">
-                <button
+                <Button
                   type="button"
-                  className="admin-table__body-actions-edit"
+                  buttonType={BUTTON_TYPE_CLASS.edit}
                   onClick={() => onEdit("edit", item)}
                 >
                   編輯
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
-                  className="admin-table__body-actions-del"
+                  buttonType={BUTTON_TYPE_CLASS.del}
                   onClick={() => onDelete(item)}
                 >
                   刪除
-                </button>
+                </Button>
               </td>
             </tr>
           );

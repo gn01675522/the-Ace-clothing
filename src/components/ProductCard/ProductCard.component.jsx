@@ -34,7 +34,6 @@ const ProductCard = ({
         </div>
         <div className="products-card__content-function">
           <div
-            type="button"
             className="products-card__content-function-wrapper"
             onClick={(e) =>
               isFavorite ? onRemoveFavorite(e, id) : onAddFavorite(e, id)

@@ -1,3 +1,5 @@
+@import "./variables";
+
 @mixin img-cover-center {
   object-fit: cover;
   object-position: center;
@@ -18,4 +20,17 @@
   -webkit-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
   -moz-box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
   box-shadow: 0px 4px 3px rgba(17, 14, 16, 0.1);
+}
+
+@mixin hover-button-effect {
+  &:hover {
+    background-color: $color-secondary-bg;
+    color: $color-secondary-text;
+  }
+}
+
+@mixin hover-button-effect-secondary {
+  &:hover {
+    background-color: $color-fifth-bg;
+  }
 }

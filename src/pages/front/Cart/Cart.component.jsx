@@ -7,6 +7,9 @@ import "./Cart.styles.scss";
 import Message from "../../../components/Message/Message.component";
 import CartItem from "../../../components/CartItem/CartItem.component";
 import Categories from "../../../components/Categories/Categories.component";
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
 
 import { selectCartItems } from "../../../store/cart/cart.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
@@ -75,13 +78,13 @@ const Cart = () => {
                 className="cart__info-discount-area-input"
                 ref={couponCode}
               />
-              <button
+              <Button
                 type="button"
-                className="cart__info-discount-area-btn"
+                buttonType={BUTTON_TYPE_CLASS.addTwo}
                 onClick={addCoupon}
               >
                 套用
-              </button>
+              </Button>
             </div>
             {cartItems?.carts[0]?.coupon && (
               <span className="cart__info-discount-in-use">

@@ -110,10 +110,7 @@
     text-decoration: none;
     text-align: center;
     transition: 0.3s ease-out;
-    &:hover {
-      color: $color-secondary-text;
-      background: $color-secondary-bg;
-    }
+    @include hover-button-effect;
   }
   .active {
     background-color: $color-secondary-bg;

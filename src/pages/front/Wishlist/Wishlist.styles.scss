@@ -53,21 +53,6 @@
     display: flex;
     width: 100%;
     height: min-content;
-    &-delete,
-    &-add {
-      display: flex;
-      width: 50%;
-      height: 40px;
-      padding: 10px;
-      outline: 1px $line-primary-line;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      &:hover {
-        background-color: $color-secondary-bg;
-        color: $color-secondary-text;
-      }
-    }
   }
   @media screen and (min-width: 768px) {
     width: 100%;

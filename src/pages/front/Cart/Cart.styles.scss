@@ -70,17 +70,6 @@
         border: none;
         @include shallow-shadow;
       }
-      &-btn {
-        width: 50px;
-        height: 40px;
-        background-color: $color-primary-bg;
-        cursor: pointer;
-        @include shallow-shadow;
-        &:hover {
-          background-color: $color-secondary-bg;
-          color: $color-primary-bg;
-        }
-      }
     }
     &-in-use {
       font-size: 12px;

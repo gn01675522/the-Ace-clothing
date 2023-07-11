@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./OrderModal.styles.scss";
 
 import OrderCard from "../../OrderCard/OrderCard.component";
+import Button, { BUTTON_TYPE_CLASS } from "../../UI/Button/Button.component";
 
 import {
   setAdminOrdersIsModalOpen,
@@ -61,14 +62,14 @@ const OrderModal = () => {
         <h1 className="order-modal__header-title">
           {`訂單編號： ${formData.id}`}
         </h1>
-        <button
+        <Button
           type="button"
-          className="order-modal__header-close"
+          buttonType={BUTTON_TYPE_CLASS.closeSm}
           aria-label="Close"
           onClick={onCloseModalHandler}
         >
           ｘ
-        </button>
+        </Button>
       </div>
 
       <div className="order-modal__body">
@@ -150,20 +151,20 @@ const OrderModal = () => {
       </div>
 
       <div className="order-modal__footer">
-        <button
+        <Button
           type="button"
-          className="order-modal__footer-close"
+          buttonType={BUTTON_TYPE_CLASS.closeNm}
           onClick={onCloseModalHandler}
         >
           關閉
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
-          className="order-modal__footer-save"
+          buttonType={BUTTON_TYPE_CLASS.save}
           onClick={submit}
         >
           儲存
-        </button>
+        </Button>
       </div>
     </div>
   );

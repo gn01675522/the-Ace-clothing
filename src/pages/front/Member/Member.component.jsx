@@ -6,6 +6,9 @@ import "./Member.styles.scss";
 
 import OrderDetail from "../OrderDetail/OrderDetail.component";
 import Wishlist from "../Wishlist/Wishlist.component";
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
 
 import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.actions";
 import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.actions";
@@ -71,7 +74,9 @@ const Member = () => {
       {routeParams.option === "order-detail" && (
         <form className="member__function" onSubmit={onSearchOrder}>
           <input placeholder="請輸入電子信箱" type="search" ref={userEmail} />
-          <button type="submit">查詢</button>
+          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.search}>
+            查詢
+          </Button>
         </form>
       )}
       <div className="member__tab">

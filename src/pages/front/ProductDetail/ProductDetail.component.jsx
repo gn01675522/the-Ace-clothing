@@ -7,6 +7,9 @@ import Message from "../../../components/Message/Message.component";
 import PriceTag from "../../../components/UI/PriceTag/PriceTag.component";
 import { ReactComponent as WhiteHeart } from "../../../assets/whiteHeart.svg";
 import { ReactComponent as RedHeart } from "../../../assets/redHeart.svg";
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../../components/UI/Button/Button.component";
 
 import { fetchUserSingleProductAsync } from "../../../store/userProduct/userProduct.actions";
 import { selectUserSingleProduct } from "../../../store/userProduct/userProduct.selector";
@@ -148,14 +151,14 @@ const ProductDetail = () => {
               </li>
             ))}
           </ul>
-          <button
+          <Button
             type="button"
-            className="product-detail__sale-wrapper-prev"
+            buttonType={BUTTON_TYPE_CLASS.prevLg}
             onClick={() => onChangeImg("prev")}
           />
-          <button
+          <Button
             type="button"
-            className="product-detail__sale-wrapper-next"
+            buttonType={BUTTON_TYPE_CLASS.nextLg}
             onClick={() => onChangeImg("next")}
           />
         </div>
@@ -181,7 +184,6 @@ const ProductDetail = () => {
             <div className="product-detail__sale-info-content-right">
               <div className="product-detail__sale-info-content-function">
                 <div
-                  type="button"
                   className="product-detail__sale-info-content-function-wrapper"
                   onClick={(e) =>
                     isFavorite ? onRemoveFavorite(e, id) : onAddFavorite(e, id)
@@ -220,34 +222,34 @@ const ProductDetail = () => {
               </span>
             )}
             <div className="product-detail__sale-function-quantity">
-              <button
-                className="product-detail__sale-function-minor"
+              <Button
+                buttonType={BUTTON_TYPE_CLASS.minor}
                 onClick={() => onChangeQuantity("minor")}
               >
                 -
-              </button>
+              </Button>
               <input
                 className="product-detail__sale-function-entry"
                 type="number"
                 value={itemQuantity}
                 readOnly
               />
-              <button
-                className="product-detail__sale-function-add"
+              <Button
+                buttonType={BUTTON_TYPE_CLASS.plus}
                 onClick={() => onChangeQuantity("add")}
               >
                 +
-              </button>
+              </Button>
             </div>
 
-            <button
+            <Button
               type="button"
-              className="product-detail__sale-function-btn"
+              buttonType={BUTTON_TYPE_CLASS.addCart}
               onClick={() => addToCart()}
               disabled={isLoading}
             >
               {remainingQuantity === 0 ? "已達購買上限" : "加入購物車"}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

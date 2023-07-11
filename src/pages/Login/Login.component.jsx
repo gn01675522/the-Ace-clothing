@@ -6,6 +6,9 @@ import "./Login.styles.scss";
 
 import { ReactComponent as AceLogo } from "../../assets/ace.svg";
 import Loading from "../../components/Loading/Loading.component";
+import Button, {
+  BUTTON_TYPE_CLASS,
+} from "../../components/UI/Button/Button.component";
 
 import { setCurrentUserAsync } from "../../store/user/user.actions";
 import {
@@ -93,14 +96,14 @@ const Login = () => {
             required={true}
           />
         </div>
-        <button
+        <Button
           type="button"
-          className="login__actions-btn"
+          buttonType={BUTTON_TYPE_CLASS.login}
           onClick={onSubmitHandler}
           onKeyDown={onSubmitHandler}
         >
           登入
-        </button>
+        </Button>
       </div>
     </div>
   );
