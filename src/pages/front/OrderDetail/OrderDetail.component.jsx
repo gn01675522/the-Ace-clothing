@@ -64,10 +64,16 @@ const OrderDetail = ({ data }) => {
                 ))}
               </div>
               <div className="order-detail__card-function">
-                <Button type="button" buttonType={BUTTON_TYPE_CLASS.edit}>
+                <Button
+                  type="button"
+                  buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}
+                >
                   BUY AGAIN
                 </Button>
-                <Button type="button" buttonType={BUTTON_TYPE_CLASS.del}>
+                <Button
+                  type="button"
+                  buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}
+                >
                   DETAIL
                 </Button>
               </div>

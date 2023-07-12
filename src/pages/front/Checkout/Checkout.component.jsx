@@ -67,12 +67,12 @@ const Checkout = () => {
         <div className="checkout__form-actions">
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.back}
+            buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}
             onClick={onBackToCart}
           >
             返回購物車
           </Button>
-          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.send}>
+          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}>
             送出訂單
           </Button>
         </div>

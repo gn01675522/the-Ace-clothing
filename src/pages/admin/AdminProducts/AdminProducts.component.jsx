@@ -126,7 +126,7 @@ const AdminProducts = () => {
       <div className="admin-products__actions">
         <Button
           type="button"
-          buttonType={BUTTON_TYPE_CLASS.add}
+          buttonType={BUTTON_TYPE_CLASS.rectBlackMe}
           onClick={() => onOpenProductModal("create")}
         >
           建立新商品

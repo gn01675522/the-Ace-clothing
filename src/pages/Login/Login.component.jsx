@@ -64,46 +64,42 @@ const Login = () => {
         >
           {message}
         </div>
+        <form className="login__form" onSubmit={onSubmitHandler}>
+          <div className="login__form-items">
+            <label htmlFor="email" className="login__form-items-label">
+              帳號
+            </label>
+            <input
+              id="email"
+              className="login__form-items-email"
+              name="username"
+              type="email"
+              placeholder="請輸入電子信箱"
+              autoComplete="username"
+              onChange={handleChange}
+              required={true}
+            />
+          </div>
 
-        <div className="login__actions-items">
-          <label htmlFor="email" className="login__actions-items-label">
-            帳號
-          </label>
-          <input
-            id="email"
-            className="login__actions-items-email"
-            name="username"
-            type="email"
-            placeholder="請輸入電子信箱"
-            autoComplete="username"
-            onChange={handleChange}
-            required={true}
-          />
-        </div>
-
-        <div className="login__actions-items">
-          <label htmlFor="password" className="login__actions-items-label">
-            密碼
-          </label>
-          <input
-            type="password"
-            className="login__actions-items-password"
-            name="password"
-            id="password"
-            placeholder="請輸入密碼"
-            autoComplete="current-password"
-            onChange={handleChange}
-            required={true}
-          />
-        </div>
-        <Button
-          type="button"
-          buttonType={BUTTON_TYPE_CLASS.login}
-          onClick={onSubmitHandler}
-          onKeyDown={onSubmitHandler}
-        >
-          登入
-        </Button>
+          <div className="login__form-items">
+            <label htmlFor="password" className="login__form-items-label">
+              密碼
+            </label>
+            <input
+              type="password"
+              className="login__form-items-password"
+              name="password"
+              id="password"
+              placeholder="請輸入密碼"
+              autoComplete="current-password"
+              onChange={handleChange}
+              required={true}
+            />
+          </div>
+          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.rectBlackNm}>
+            登入
+          </Button>
+        </form>
       </div>
     </div>
   );

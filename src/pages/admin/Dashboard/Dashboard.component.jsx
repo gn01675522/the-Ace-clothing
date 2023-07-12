@@ -76,7 +76,7 @@ const Dashboard = () => {
         </NavLink>
         <Button
           type="button"
-          buttonType={BUTTON_TYPE_CLASS.logout}
+          buttonType={BUTTON_TYPE_CLASS.squareBlackMe}
           onClick={logout}
         >
           登出

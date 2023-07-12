@@ -1,65 +1,19 @@
 @import "../../../stylesheets/variables";
 @import "../../../stylesheets/mixin";
 
-.btn-close-sm {
-  width: 40px;
+//******************** 長方形按鈕 start ********************//
+
+.btn-rect-bl-nm {
+  width: 100%;
   height: 40px;
   background-color: $color-secondary-bg;
   color: $color-secondary-text;
-  @include hover-button-effect-secondary;
-  cursor: pointer;
-}
-
-.btn-close-nm {
-  width: 100%;
-  height: 100%;
-  background-color: $color-secondary-bg;
-  color: $color-secondary-text;
   cursor: pointer;
   @include hover-button-effect-secondary;
 }
+//* 一般長方形黑底按鈕
 
-.btn-save {
-  width: 100%;
-  height: 100%;
-  background-color: $color-secondary-bg;
-  color: $color-secondary-text;
-  cursor: pointer;
-  @include hover-button-effect-secondary;
-}
-
-.btn-add-img {
-  width: 100%;
-  height: 30px;
-  padding: 0 5px;
-  border-radius: 8px;
-  background-color: $color-secondary-bg;
-  color: $color-secondary-text;
-  cursor: pointer;
-  @include hover-button-effect-secondary;
-}
-
-.btn-edit {
-  width: 100%;
-  height: 100%;
-  color: $color-primary-text;
-  background: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  @include hover-button-effect;
-}
-
-.btn-del {
-  width: 100%;
-  height: 100%;
-  color: $color-primary-text;
-  background: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  @include hover-button-effect;
-}
-
-.btn-add {
+.btn-rect-bl-me {
   height: 30px;
   padding: 4px 10px;
   background-color: $color-secondary-bg;
@@ -67,8 +21,9 @@
   cursor: pointer;
   @include hover-button-effect-secondary;
 }
+//* 中等長方形黑底按鈕
 
-.btn-remove-sm {
+.btn-rect-bl-Sm {
   width: 60px;
   height: 30px;
   padding: 0 10px;
@@ -77,8 +32,9 @@
   cursor: pointer;
   @include hover-button-effect-secondary;
 }
+//* 小型長方形黑底按鈕
 
-.btn-remove-nm {
+.btn-rect-wh-lg {
   width: 100%;
   height: 100%;
   background-color: $color-primary-bg;
@@ -88,84 +44,9 @@
   transition: background-color 0.6s ease-out, color 0.6s ease-out;
   @include hover-button-effect;
 }
+//* 大型長方形白底按鈕，帶動畫，沒 border
 
-.btn-logout {
-  width: 60px;
-  height: 60px;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: $color-primary-bg;
-  color: $color-primary-text;
-  cursor: pointer;
-  transition: 0.3s ease-out;
-  @include hover-button-effect;
-}
-
-.btn-add-two {
-  width: 50px;
-  height: 40px;
-  background-color: $color-primary-bg;
-  cursor: pointer;
-  @include shallow-shadow;
-  @include hover-button-effect;
-}
-
-.btn-send {
-  width: 100%;
-  outline: 1px $line-secondary-line;
-  background-color: $color-primary-bg;
-  color: black;
-  cursor: pointer;
-  @include hover-button-effect;
-}
-
-.btn-back {
-  width: 100%;
-  outline: 1px $line-secondary-line;
-  background-color: $color-primary-bg;
-  color: black;
-  cursor: pointer;
-  @include hover-button-effect;
-}
-
-.btn-search {
-  width: 40px;
-  height: 40px;
-  background-color: $color-secondary-bg;
-  color: $color-secondary-text;
-  cursor: pointer;
-  @include hover-button-effect-secondary;
-}
-
-.btn-plus {
-  width: 50px;
-  height: 50px;
-  color: black;
-  background: white;
-  border: 1px $line-fifth;
-  cursor: pointer;
-  &:hover {
-    color: $color-secondary-text;
-    background-color: rgba(35, 35, 35, 0.8);
-    transition: color 0.4s ease-out, background-color 0.4s ease-out;
-  }
-}
-
-.btn-minor {
-  width: 50px;
-  height: 50px;
-  color: black;
-  background: white;
-  border: 1px $line-fifth;
-  cursor: pointer;
-  &:hover {
-    color: $color-secondary-text;
-    background-color: rgba(35, 35, 35, 0.8);
-    transition: color 0.4s ease-out, background-color 0.4s ease-out;
-  }
-}
-
-.btn-add-cart {
+.btn-rect-wh-bd {
   width: 100%;
   height: 50px;
   font-size: 20px;
@@ -181,8 +62,72 @@
     transition: color 0.4s ease-out, background-color 0.4s ease-out;
   }
 }
+//* 大型長方形白底按鈕，帶動畫，有 border
 
-.btn-prev-lg {
+.btn-rect-wh-nm {
+  width: 100%;
+  height: 100%;
+  color: $color-primary-text;
+  background-color: $color-primary-bg;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  @include hover-button-effect;
+}
+//* 一般長方形白底按鈕
+
+.btn-rect-wh-sm {
+  width: 50px;
+  height: 40px;
+  background-color: $color-primary-bg;
+  cursor: pointer;
+  @include shallow-shadow;
+  @include hover-button-effect;
+}
+// 小型長方形白底按鈕，帶陰影
+
+//******************** 長方形按鈕 end ********************//
+
+//******************** 正方形按鈕 start ********************//
+
+.btn-sq-bl-me {
+  width: 60px;
+  height: 60px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: $color-primary-bg;
+  color: $color-primary-text;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  @include hover-button-effect;
+}
+//* 中型正方形黑底按鈕
+
+.btn-sq-bl-sm {
+  width: 40px;
+  height: 40px;
+  background-color: $color-secondary-bg;
+  color: $color-secondary-text;
+  @include hover-button-effect-secondary;
+  cursor: pointer;
+}
+//* 小型正方形黑底按鈕
+
+.btn-sq-wh-sm {
+  width: 50px;
+  height: 50px;
+  color: black;
+  background: white;
+  border: 1px $line-fifth;
+  cursor: pointer;
+  &:hover {
+    color: $color-secondary-text;
+    background-color: rgba(35, 35, 35, 0.8);
+    transition: color 0.4s ease-out, background-color 0.4s ease-out;
+  }
+}
+//* 小型正方形白底按鈕
+
+.btn-sq-wh-opacity-l-sm {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -196,8 +141,9 @@
     content: "<";
   }
 }
+//* 小型正方形白色半透明按鈕，位置左
 
-.btn-next-lg {
+.btn-sq-wh-opacity-r-sm {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -211,25 +157,38 @@
     content: ">";
   }
 }
+//* 小型正方形白色半透明按鈕，位置右
 
-.btn-nm {
-  display: flex;
-  width: 50%;
-  height: 40px;
-  padding: 10px;
-  outline: 1px $line-primary-line;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  @include hover-button-effect;
-}
+//******************** 正方形按鈕 end ********************//
 
-.btn-login {
-  width: 300px;
-  height: 40px;
-  margin-top: 1.5rem;
+//******************** 圓弧角按鈕 start ********************//
+.btn-arc-bl-lg {
+  width: 100%;
+  height: 30px;
+  padding: 0 5px;
+  border-radius: 8px;
   background-color: $color-secondary-bg;
   color: $color-secondary-text;
   cursor: pointer;
   @include hover-button-effect-secondary;
 }
+//* 大型圓弧角黑底按鈕
+
+.btn-arc-white-opacity-l-sm {
+  top: 50%;
+  left: -25px;
+  transform: translateY(-75%);
+  &::after {
+    content: "<";
+  }
+}
+
+.btn-arc-white-opacity-r-sm {
+  top: 50%;
+  right: -25px;
+  transform: translateY(-75%);
+  &::after {
+    content: ">";
+  }
+}
+//******************** 圓弧角按鈕 end ********************//

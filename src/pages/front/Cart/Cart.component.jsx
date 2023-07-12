@@ -80,7 +80,7 @@ const Cart = () => {
               />
               <Button
                 type="button"
-                buttonType={BUTTON_TYPE_CLASS.addTwo}
+                buttonType={BUTTON_TYPE_CLASS.rectWhiteSm}
                 onClick={addCoupon}
               >
                 套用

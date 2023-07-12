@@ -78,7 +78,7 @@ const AdminCoupons = () => {
       <div className="admin-coupons__actions">
         <Button
           type="button"
-          buttonType={BUTTON_TYPE_CLASS.add}
+          buttonType={BUTTON_TYPE_CLASS.rectBlackMe}
           onClick={() => openCouponModal("create", {})}
         >
           建立新優惠券

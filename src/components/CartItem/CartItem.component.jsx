@@ -76,7 +76,7 @@ const CartItem = ({ item }) => {
         <div className="cart-item__right-footer">
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.removeNm}
+            buttonType={BUTTON_TYPE_CLASS.rectWhiteLg}
             onClick={removeCartItem}
           >
             刪除

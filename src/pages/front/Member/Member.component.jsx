@@ -74,7 +74,7 @@ const Member = () => {
       {routeParams.option === "order-detail" && (
         <form className="member__function" onSubmit={onSearchOrder}>
           <input placeholder="請輸入電子信箱" type="search" ref={userEmail} />
-          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.search}>
+          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.squareBlackSm}>
             查詢
           </Button>
         </form>

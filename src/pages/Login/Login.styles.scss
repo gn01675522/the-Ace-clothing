@@ -45,6 +45,12 @@
     font-size: 1rem;
     font-weight: bold;
   }
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   &-items {
     display: flex;
     flex-direction: column;

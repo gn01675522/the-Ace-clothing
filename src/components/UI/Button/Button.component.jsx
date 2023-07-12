@@ -1,57 +1,45 @@
 import "./Button.styles.scss";
 
 export const BUTTON_TYPE_CLASS = {
-  closeSm: "close-sm",
-  closeNm: "close-nm",
-  save: "save",
-  edit: "edit",
-  del: "del",
-  add: "add",
-  addTwo: "add-two",
-  addImg: "add-img",
-  removeSm: "removeSm",
-  removeNm: "removeNm",
-  logout: "logout",
-  send: "send",
-  back: "back",
-  search: "search",
-  plus: "plus",
-  minor: "minor",
-  addCart: "addCart",
-  prevLg: "prevLg",
-  nextLg: "nextLg",
-  btnNm: "btnNm",
-  login: "login",
+  rectBlackNm: "rect-black-nm",
+  rectBlackMe: "rect-black-me",
+  rectBlackSm: "rect-black-sm",
+  rectWhiteLg: "rect-white-lg",
+  rectWhiteNm: "rect-white-nm",
+  rectWhiteSm: "rect-white-sm",
+  rectWhiteBdLg: "rect-white-bd-lg",
+  rectWhiteOpacityLSm: "rect-white-ppacity-l-sm",
+  rectWhiteOpacityRSm: "rect-white-opacity-r-sm",
+  squareBlackMe: "square-black-me",
+  squareBlackSm: "square-black-sm",
+  squareWhiteSm: "square-white-sm",
+  arcBlackLg: "arc-black-lg",
+  arcWhiteOpacityLSm: "arc-white-opacity-l-sm",
+  arcWhiteOpacityRSm: "arc-white-opacity-r-sm",
 };
 
 const getClass = (buttonType) =>
   ({
-    [BUTTON_TYPE_CLASS.closeSm]: "btn-close-sm",
-    [BUTTON_TYPE_CLASS.closeNm]: "btn-close-nm",
-    [BUTTON_TYPE_CLASS.save]: "btn-save",
-    [BUTTON_TYPE_CLASS.edit]: "btn-edit",
-    [BUTTON_TYPE_CLASS.del]: "btn-del",
-    [BUTTON_TYPE_CLASS.add]: "btn-add",
-    [BUTTON_TYPE_CLASS.addTwo]: "btn-add-two",
-    [BUTTON_TYPE_CLASS.addImg]: "btn-add-img",
-    [BUTTON_TYPE_CLASS.removeSm]: "btn-remove-sm",
-    [BUTTON_TYPE_CLASS.removeNm]: "btn-remove-nm",
-    [BUTTON_TYPE_CLASS.logout]: "btn-logout",
-    [BUTTON_TYPE_CLASS.send]: "btn-send",
-    [BUTTON_TYPE_CLASS.back]: "btn-back",
-    [BUTTON_TYPE_CLASS.search]: "btn-search",
-    [BUTTON_TYPE_CLASS.plus]: "btn-plus",
-    [BUTTON_TYPE_CLASS.minor]: "btn-minor",
-    [BUTTON_TYPE_CLASS.addCart]: "btn-add-cart",
-    [BUTTON_TYPE_CLASS.prevLg]: "btn-prev-lg",
-    [BUTTON_TYPE_CLASS.nextLg]: "btn-next-lg",
-    [BUTTON_TYPE_CLASS.btnNm]: "btn-nm",
-    [BUTTON_TYPE_CLASS.login]: "btn-login",
+    [BUTTON_TYPE_CLASS.rectBlackNm]: "btn-rect-bl-nm",
+    [BUTTON_TYPE_CLASS.rectBlackMe]: "btn-rect-bl-me",
+    [BUTTON_TYPE_CLASS.rectBlackSm]: "btn-rect-bl-Sm",
+    [BUTTON_TYPE_CLASS.rectWhiteLg]: "btn-rect-wh-lg",
+    [BUTTON_TYPE_CLASS.rectWhiteNm]: "btn-rect-wh-nm",
+    [BUTTON_TYPE_CLASS.rectWhiteSm]: "btn-rect-wh-sm",
+    [BUTTON_TYPE_CLASS.rectWhiteBdLg]: "btn-rect-wh-bd",
+    [BUTTON_TYPE_CLASS.rectWhiteOpacityLSm]: "btn-sq-wh-opacity-l-sm",
+    [BUTTON_TYPE_CLASS.rectWhiteOpacityRSm]: "btn-sq-wh-opacity-r-sm",
+    [BUTTON_TYPE_CLASS.squareBlackMe]: "btn-sq-bl-me",
+    [BUTTON_TYPE_CLASS.squareBlackSm]: "btn-sq-bl-sm",
+    [BUTTON_TYPE_CLASS.squareWhiteSm]: "btn-sq-wh-sm",
+    [BUTTON_TYPE_CLASS.arcBlackLg]: "btn-arc-bl-lg",
+    [BUTTON_TYPE_CLASS.arcWhiteOpacityLSm]: "btn-arc-white-opacity-l-sm",
+    [BUTTON_TYPE_CLASS.arcWhiteOpacityRSm]: "btn-arc-white-opacity-r-sm",
   }[buttonType]);
 
 const Button = ({ buttonType, children, isLoading, ...otherProps }) => {
   const buttonClass = getClass(buttonType);
-  console.log(buttonClass);
+
   return (
     <button disabled={isLoading} className={buttonClass} {...otherProps}>
       {children}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./ScrollList.styles.scss";
 
 import ScrollItem from "../ScrollItem/ScrollItem.component";
+import Button, { BUTTON_TYPE_CLASS } from "../UI/Button/Button.component";
 
 import { fetchUserProductAsync } from "../../store/userProduct/userProduct.actions";
 import {
@@ -110,16 +111,16 @@ const ScrollList = ({ type }) => {
           })}
         </div>
       </div>
-      <button
+      <Button
         type="button"
-        className="scroll-list__prev"
+        buttonType={BUTTON_TYPE_CLASS.arcWhiteOpacityLSm}
         onMouseDown={() => onScrollHandler("prev")}
         onMouseUp={onStopScroll}
         onMouseLeave={onStopScroll}
       />
-      <button
+      <Button
         type="button"
-        className="scroll-list__next"
+        buttonType={BUTTON_TYPE_CLASS.arcWhiteOpacityRSm}
         onMouseDown={() => onScrollHandler("next")}
         onMouseUp={onStopScroll}
         onMouseLeave={onStopScroll}

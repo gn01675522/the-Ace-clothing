@@ -76,7 +76,7 @@ const DeleteModal = ({ dataType }) => {
         <h1 className="delete-modal__header-title">刪除確認</h1>
         <Button
           type="button"
-          buttonType={BUTTON_TYPE_CLASS.closeSm}
+          buttonType={BUTTON_TYPE_CLASS.squareBlackSm}
           aria-label="Close"
           onClick={onCloseModalHandler}
         >
@@ -89,14 +89,14 @@ const DeleteModal = ({ dataType }) => {
       <div className="delete-modal__footer">
         <Button
           type="button"
-          buttonType={BUTTON_TYPE_CLASS.closeNm}
+          buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
           onClick={onCloseModalHandler}
         >
           取消
         </Button>
         <Button
           type="button"
-          buttonType={BUTTON_TYPE_CLASS.save}
+          buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
           onClick={() => onDeleteHandler(id)}
         >
           確認刪除

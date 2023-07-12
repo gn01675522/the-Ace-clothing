@@ -153,12 +153,12 @@ const ProductDetail = () => {
           </ul>
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.prevLg}
+            buttonType={BUTTON_TYPE_CLASS.rectWhiteOpacityLSm}
             onClick={() => onChangeImg("prev")}
           />
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.nextLg}
+            buttonType={BUTTON_TYPE_CLASS.rectWhiteOpacityRSm}
             onClick={() => onChangeImg("next")}
           />
         </div>
@@ -223,7 +223,7 @@ const ProductDetail = () => {
             )}
             <div className="product-detail__sale-function-quantity">
               <Button
-                buttonType={BUTTON_TYPE_CLASS.minor}
+                buttonType={BUTTON_TYPE_CLASS.squareWhiteSm}
                 onClick={() => onChangeQuantity("minor")}
               >
                 -
@@ -235,7 +235,7 @@ const ProductDetail = () => {
                 readOnly
               />
               <Button
-                buttonType={BUTTON_TYPE_CLASS.plus}
+                buttonType={BUTTON_TYPE_CLASS.squareWhiteSm}
                 onClick={() => onChangeQuantity("add")}
               >
                 +
@@ -244,7 +244,7 @@ const ProductDetail = () => {
 
             <Button
               type="button"
-              buttonType={BUTTON_TYPE_CLASS.addCart}
+              buttonType={BUTTON_TYPE_CLASS.rectWhiteBdLg}
               onClick={() => addToCart()}
               disabled={isLoading}
             >

@@ -68,14 +68,14 @@ const Wishlist = ({ data, func }) => {
           <div className="wishlist__card-function">
             <Button
               type="button"
-              buttonType={BUTTON_TYPE_CLASS.btnNm}
+              buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}
               onClick={() => func(item.id)}
             >
               刪除
             </Button>
             <Button
               type="button"
-              buttonType={BUTTON_TYPE_CLASS.btnNm}
+              buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}
               disabled={isLimit(item.id) || isLoading}
               onClick={() => addToCart(item.id)}
             >

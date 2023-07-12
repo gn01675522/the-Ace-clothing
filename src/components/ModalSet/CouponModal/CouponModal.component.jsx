@@ -83,7 +83,7 @@ const CouponModal = ({ createOrEdit }) => {
           </h1>
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.closeSm}
+            buttonType={BUTTON_TYPE_CLASS.squareBlackSm}
             aria-label="Close"
             onClick={onCloseModalHandler}
           >
@@ -153,14 +153,14 @@ const CouponModal = ({ createOrEdit }) => {
         <div className="coupon-modal__footer">
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.closeNm}
+            buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
             onClick={onCloseModalHandler}
           >
             關閉
           </Button>
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.save}
+            buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
             onClick={onSubmitHandler}
           >
             儲存

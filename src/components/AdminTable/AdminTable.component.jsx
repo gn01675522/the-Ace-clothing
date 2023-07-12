@@ -66,14 +66,14 @@ const AdminTable = ({ type, items, onEdit, onDelete }) => {
               <td className="admin-table__body-actions">
                 <Button
                   type="button"
-                  buttonType={BUTTON_TYPE_CLASS.edit}
+                  buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}
                   onClick={() => onEdit("edit", item)}
                 >
                   編輯
                 </Button>
                 <Button
                   type="button"
-                  buttonType={BUTTON_TYPE_CLASS.del}
+                  buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}
                   onClick={() => onDelete(item)}
                 >
                   刪除

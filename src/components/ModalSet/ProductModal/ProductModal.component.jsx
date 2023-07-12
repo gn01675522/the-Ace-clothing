@@ -123,7 +123,7 @@ const ProductModal = ({ createOrEdit }) => {
           </h1>
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.closeSm}
+            buttonType={BUTTON_TYPE_CLASS.squareBlackSm}
             aria-label="Close"
             onClick={onCloseModal}
           >
@@ -274,7 +274,7 @@ const ProductModal = ({ createOrEdit }) => {
                       圖片 - {i + 1}
                       <Button
                         type="button"
-                        buttonType={BUTTON_TYPE_CLASS.removeSm}
+                        buttonType={BUTTON_TYPE_CLASS.rectBlackSm}
                         onClick={() => onRemoveInput(i)}
                       >
                         刪除
@@ -296,7 +296,7 @@ const ProductModal = ({ createOrEdit }) => {
             </div>
             <Button
               type="button"
-              buttonType={BUTTON_TYPE_CLASS.addImg}
+              buttonType={BUTTON_TYPE_CLASS.arcBlackLg}
               onClick={onAddInput}
             >
               新增
@@ -307,14 +307,14 @@ const ProductModal = ({ createOrEdit }) => {
         <div className="product-modal__footer">
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.closeNm}
+            buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
             onClick={onCloseModal}
           >
             關閉
           </Button>
           <Button
             type="button"
-            buttonType={BUTTON_TYPE_CLASS.save}
+            buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
             onClick={onSubmitHandler}
           >
             儲存
