@@ -22,7 +22,7 @@ const SplitBanner = ({ type, inView }) => {
         </Link>
       </div>
       <div className="split-banner__right">
-        <Link to={link}>
+        <Link to={link} aria-label={`${type}'s shop`}>
           <img
             className={`split-banner__right-img${
               type === "men" ? "-men" : ""

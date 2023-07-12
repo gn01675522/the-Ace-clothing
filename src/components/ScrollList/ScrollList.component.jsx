@@ -117,6 +117,7 @@ const ScrollList = ({ type }) => {
         onMouseDown={() => onScrollHandler("prev")}
         onMouseUp={onStopScroll}
         onMouseLeave={onStopScroll}
+        title="previous"
       />
       <Button
         type="button"
@@ -124,6 +125,7 @@ const ScrollList = ({ type }) => {
         onMouseDown={() => onScrollHandler("next")}
         onMouseUp={onStopScroll}
         onMouseLeave={onStopScroll}
+        title="next"
       />
     </div>
   );

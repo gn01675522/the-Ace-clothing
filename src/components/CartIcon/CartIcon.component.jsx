@@ -29,7 +29,7 @@ const CartIcon = () => {
   }, [quantity]);
 
   return (
-    <NavLink className="cart-icon" to="/cart">
+    <NavLink className="cart-icon" to="/cart" aria-label="cart link">
       <CartLogo className={btnClasses} />
       {quantity !== 0 && <div className="cart-icon__count">{quantity}</div>}
     </NavLink>

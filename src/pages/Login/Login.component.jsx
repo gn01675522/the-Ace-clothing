@@ -64,7 +64,7 @@ const Login = () => {
         >
           {message}
         </div>
-        <form className="login__form" onSubmit={onSubmitHandler}>
+        <form className="login__form">
           <div className="login__form-items">
             <label htmlFor="email" className="login__form-items-label">
               帳號
@@ -96,7 +96,11 @@ const Login = () => {
               required={true}
             />
           </div>
-          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.rectBlackNm}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
+            onClick={onSubmitHandler}
+          >
             登入
           </Button>
         </form>

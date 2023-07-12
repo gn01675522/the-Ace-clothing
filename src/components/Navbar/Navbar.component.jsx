@@ -43,6 +43,7 @@ const NavBar = () => {
           id="nav-trigger"
           checked={isListOpen ? true : false}
           onChange={onOpenList}
+          title="check to open nav list"
         />
         <label className="navbar__burger" htmlFor="nav-trigger">
           <div className="navbar__burger-line" />
