@@ -5,6 +5,12 @@ export const translateGenderToChinese = (category) => {
       return "男";
     case "womens":
       return "女";
+    case "hats":
+      return "帽子";
+    case "shoes":
+      return "鞋";
+    case "accessories":
+      return "飾品";
     default:
       return splitCategory;
   }
@@ -17,6 +23,22 @@ export const translateCategoryToChinese = (category) => {
       return "上著";
     case "bottom":
       return "下著";
+    case "neutral":
+      return "(中性)";
+    case "mens":
+      return "(男性)";
+    case "womens":
+      return "(女性)";
+    case "belt":
+      return "(皮帶)";
+    case "bracelet":
+      return "(手鍊)";
+    case "necklace":
+      return "(項鍊)";
+    case "rings":
+      return "(戒指)";
+    case "other":
+      return "(其他)";
     default:
       return splitCategory;
   }

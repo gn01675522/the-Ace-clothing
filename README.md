@@ -14,9 +14,12 @@
 
 1.  主要技術：JavaScript、HTML、CSS
 2.  主要框架/函式庫：React.js
-3.  預處理器：SCSS
-4.  狀態管理：Redux
-5.  Axios
+3.  預處理器：SASS(SCSS)
+4.  狀態管理：Redux、Redux thunk
+5.  API 交互：Axios
+6.  環境變數：dot-env
+7.  狀態監控：Redux logger
+8.  額外套件：React hook form
 
 ## 專案使用資料來源
 

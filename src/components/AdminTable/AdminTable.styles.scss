@@ -28,6 +28,9 @@
       }
       &:nth-child(even) {
         background-color: $color-fourth-bg;
+        button {
+          background-color: transparent;
+        }
       }
     }
     &-actions {
