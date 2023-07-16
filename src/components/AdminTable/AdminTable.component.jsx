@@ -48,21 +48,27 @@ const AdminTable = ({ type, items, onEdit, onDelete }) => {
           return (
             <tr key={item.id} className="admin-table__body-row">
               <td>{item[productInfo[0]]}</td>
+
               <td>
                 {type === "orders"
                   ? item.user[productInfo[1]]
                   : item[productInfo[1]]}
               </td>
+
               <td>
                 {productInfo[2] === "due_date"
                   ? dateFormat(item[productInfo[2]])
+                  : productInfo[2] === "total"
+                  ? Math.round(item[productInfo[2]])
                   : item[productInfo[2]]}
               </td>
+
               {type === "orders" ? (
                 <td>{item[[productInfo[3]]] ? "已付款" : "未付款"}</td>
               ) : (
                 <td>{item[[productInfo[3]]] === 1 ? "啟用" : "未啟用"}</td>
               )}
+
               <td className="admin-table__body-actions">
                 <Button
                   type="button"

@@ -142,7 +142,7 @@ const OrderModal = () => {
                   總金額：
                 </div>
                 <div className="order-modal__body-order-price">
-                  ${tempOrder.total} 元
+                  ${Math.round(tempOrder.total)} 元
                 </div>
               </div>
             </>
