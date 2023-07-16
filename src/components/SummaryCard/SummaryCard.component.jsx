@@ -6,7 +6,7 @@ const SummaryCard = ({ total, userData }) => {
       <h2 className="summary-card__title">訂單資訊</h2>
       <div className="summary-card__item">
         <span>小計</span>
-        <span>NT${total}</span>
+        <span>NT${Math.round(total)}</span>
       </div>
       <div className="summary-card__item">
         <span>運費</span>
@@ -14,7 +14,7 @@ const SummaryCard = ({ total, userData }) => {
       </div>
       <div className="summary-card__item">
         <span>總金額</span>
-        <span>NT${total}</span>
+        <span>NT${Math.round(total)}</span>
       </div>
       {userData && (
         <>

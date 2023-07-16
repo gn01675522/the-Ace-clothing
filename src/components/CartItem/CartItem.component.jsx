@@ -70,7 +70,7 @@ const CartItem = ({ item }) => {
                 );
               })}
             </select>
-            <span>NT${final_total}</span>
+            <span>NT${Math.round(final_total)}</span>
           </div>
         </div>
         <div className="cart-item__right-footer">

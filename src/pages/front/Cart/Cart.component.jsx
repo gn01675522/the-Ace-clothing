@@ -21,6 +21,8 @@ const Cart = () => {
   const dispatch = useDispatch();
   const couponCode = useRef(null);
 
+  console.log("inside Cart", cartItems);
+
   const addCoupon = async () => {
     const code = { data: { code: couponCode.current.value } };
     try {
@@ -56,7 +58,7 @@ const Cart = () => {
         <div className="cart__info-price">
           <div className="cart__info-price-items">
             <span>小計</span>
-            <span>NT${cartItems.final_total}</span>
+            <span>NT${Math.round(cartItems.final_total)}</span>
           </div>
           <div className="cart__info-price-items">
             <span>運費</span>
@@ -64,7 +66,7 @@ const Cart = () => {
           </div>
           <div className="cart__info-price-items">
             <span>總計</span>
-            <span>NT${cartItems.final_total}</span>
+            <span>NT${Math.round(cartItems.final_total)}</span>
           </div>
         </div>
 

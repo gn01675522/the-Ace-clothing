@@ -58,6 +58,8 @@ const OrderDetail = ({ data }) => {
                     <div className="order-detail__card-content-item-value">
                       {item.content === "address"
                         ? order.user[item.content]
+                        : item.content === "total"
+                        ? Math.round(order[item.content])
                         : order[item.content]}
                     </div>
                   </div>

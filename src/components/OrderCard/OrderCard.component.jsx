@@ -22,7 +22,7 @@ const OrderCard = ({ products }) => {
                   </p>
                 </div>
                 <div className="d-flex justify-content-between">
-                  <p className="mb-0">NT$ {item.final_total}</p>
+                  <p className="mb-0">NT$ {Math.round(item.final_total)}</p>
                 </div>
               </div>
             </div>
