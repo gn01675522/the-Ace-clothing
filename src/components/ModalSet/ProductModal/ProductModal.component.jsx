@@ -112,6 +112,12 @@ const ProductModal = ({ createOrEdit }) => {
   };
   //* 按下儲存鍵後提交資料
 
+  const onPreventDotEntry = (e) => {
+    if (e.key === ".") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <>
       <div className="product-modal">
@@ -191,9 +197,13 @@ const ProductModal = ({ createOrEdit }) => {
                       type={content.type}
                       id={content.id}
                       name={content.id}
+                      step={content.type === "number" ? 1 : "any"}
                       placeholder={content.placeholder}
                       className="product-modal__body-upper-right-group-input"
                       onChange={onChangeHandler}
+                      onKeyDown={
+                        content.type === "number" ? onPreventDotEntry : null
+                      }
                       value={formData[content.id] || ""}
                     />
                   </div>

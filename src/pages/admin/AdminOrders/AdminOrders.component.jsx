@@ -27,7 +27,6 @@ import {
 const AdminOrders = () => {
   const [openWhichModal, setOpenWhichModal] = useState("");
   const [dataType, setDataType] = useState("");
-
   const dispatch = useDispatch();
   const orders = useSelector(selectAdminOrders);
   const pagination = useSelector(selectAdminOrdersPagination);

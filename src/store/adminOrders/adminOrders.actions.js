@@ -84,16 +84,16 @@ export const updateAdminOrdersAsync = (data) => {
 };
 //* 更新 admin orders api 中的資料
 
-export const deleteAdminOrdersAsync = (data) => {
+export const deleteAdminOrdersAsync = (id) => {
   return async (dispatch) => {
     dispatch(setAdminOrdersStart());
     try {
       const res = await axios.delete(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${data.id}`,
-        {
-          data,
-        }
+        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${id}`
       );
+      console.log("show data.id", id);
+
+      console.log("start delete orders", res);
       dispatch(setAdminOrdersSuccess());
       dispatch(setHandleMessage("success", res));
       dispatch(fetchAdminOrdersAsync());
