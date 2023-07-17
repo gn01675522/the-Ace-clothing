@@ -91,9 +91,7 @@ export const deleteAdminOrdersAsync = (id) => {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${id}`
       );
-      console.log("show data.id", id);
 
-      console.log("start delete orders", res);
       dispatch(setAdminOrdersSuccess());
       dispatch(setHandleMessage("success", res));
       dispatch(fetchAdminOrdersAsync());

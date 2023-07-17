@@ -61,7 +61,6 @@ const DeleteModal = ({ dataType }) => {
   const deleteDataAction = deleteForWhat(dataType).deleteAction;
   const deleteItem = useSelector(deleteForWhat(dataType).deleteItem);
   const { id, title } = deleteItem;
-  console.log(id);
 
   const onCloseModalHandler = () => {
     dispatch(isModalOpen(false));

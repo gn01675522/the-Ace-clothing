@@ -21,8 +21,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const couponCode = useRef(null);
 
-  console.log("inside Cart", cartItems);
-
   const addCoupon = async () => {
     const code = { data: { code: couponCode.current.value } };
     try {
