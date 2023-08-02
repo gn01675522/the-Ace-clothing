@@ -6,7 +6,6 @@
 import "./Pagination.styles.scss";
 
 const Pagination = ({ onChangePage, pageCount, currentPage }) => {
-  // todo 晚點再來看看 button 是不是要整合到 component 裡面
   return (
     <nav className="pagination" aria-label="Page navigation">
       <button

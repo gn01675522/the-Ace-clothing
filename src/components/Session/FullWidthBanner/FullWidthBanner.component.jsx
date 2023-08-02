@@ -9,7 +9,11 @@ const FullWidthBanner = ({ type }) => {
 
   return (
     <div className="full-width-banner">
-      <img className="full-width-banner__img" src={img} alt={title} />
+      <img
+        className="full-width-banner__img"
+        src={img}
+        alt={`banner: ${title}`}
+      />
       <section className="full-width-banner__content">
         <h2 className="full-width-banner__content-title">{title}</h2>
         <p className="full-width-banner__content-sentence">{sentence}</p>

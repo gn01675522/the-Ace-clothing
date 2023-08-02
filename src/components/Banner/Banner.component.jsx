@@ -26,7 +26,11 @@ const Banner = () => {
 
   return (
     <div className="banner">
-      <img className="banner__image" src={BANNER_DATA[imgNum]} alt="" />
+      <img
+        className="banner__image"
+        src={BANNER_DATA[imgNum]}
+        alt="banner images"
+      />
       <Indicator
         imgCount={BANNER_DATA.length}
         imgNum={imgNum}

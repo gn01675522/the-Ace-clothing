@@ -147,7 +147,7 @@ const ProductDetail = () => {
                 ref={imgContainerRef}
                 key={i}
               >
-                <img src={img} alt="" />
+                <img src={img} alt={`${title} ${i + 1}`} />
               </li>
             ))}
           </ul>

@@ -90,8 +90,8 @@ const InfoSource = () => {
                     {typeof AttachmentImg === "string" ? (
                       <img
                         src={AttachmentImg}
-                        alt=""
                         className="info-source__card-view-img"
+                        alt={`${data.title} from ${data.source.title}`}
                       />
                     ) : (
                       AttachmentImg

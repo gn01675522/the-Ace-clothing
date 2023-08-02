@@ -11,7 +11,11 @@ const CategoryCard = ({ category, index }) => {
       to={match ? path.admin : path.user}
       className={`category-card category-card-${cardNumber}`}
     >
-      <img src={url} alt="" className="category-card__img" />
+      <img
+        src={url}
+        className="category-card__img"
+        alt={`category card: ${title}`}
+      />
       <div className="category-card__content">
         <h2 className="category-card__content-title">{title}</h2>
       </div>

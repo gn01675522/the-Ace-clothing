@@ -28,7 +28,7 @@ const SplitBanner = ({ type, inView }) => {
               type === "men" ? "-men" : ""
             } ${inView ? "split-banner__right-img--active" : ""}`}
             src={img}
-            alt=""
+            alt={`banner: ${btnContent}`}
           />
         </Link>
       </div>

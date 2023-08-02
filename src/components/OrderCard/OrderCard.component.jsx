@@ -12,8 +12,8 @@ const OrderCard = ({ products }) => {
             <div className="order-card__item" key={item.id}>
               <img
                 src={item.product.imageUrl}
-                alt=""
                 className="order-card__item-img"
+                alt={`order product: ${item.product.title}`}
               />
               <div className="order-card__item-info">
                 <div className="d-flex justify-content-between fw-bold">

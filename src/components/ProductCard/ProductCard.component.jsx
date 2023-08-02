@@ -23,7 +23,11 @@ const ProductCard = ({
   return (
     <Link to={`/${urlParam}/${id}`} className="products-card">
       <div className="products-card__preview">
-        <img src={imageUrl} className="products-card__img" alt="..." />
+        <img
+          src={imageUrl}
+          className="products-card__img"
+          alt={`product in ${urlParam}: ${title}`}
+        />
       </div>
       <div className="products-card__content">
         <div className="products-card__content-info">
