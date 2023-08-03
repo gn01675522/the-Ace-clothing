@@ -16,9 +16,12 @@ import AboutUs from "./pages/front/AboutUs/AboutUs.component";
 import InfoSource from "./pages/front/InfoSource/InfoSource.component";
 import Member from "./pages/front/Member/Member.component";
 
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+
 const App = () => {
   return (
     <div className="App">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<FrontLayout />}>
           <Route index element={<Home />} />

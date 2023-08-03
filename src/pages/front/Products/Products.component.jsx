@@ -112,6 +112,10 @@ const Products = () => {
   }, [wishlist]);
   // selector 變動時則將 wishlist 內容放入 localStorage 裡面
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   return (
     <div className="products">
       {hasMessage && <Message />}
