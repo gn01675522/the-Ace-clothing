@@ -45,7 +45,7 @@ const CartItem = ({ item }) => {
 
       <div className="cart-item__right">
         <div className="cart-item__right-header">
-          <h1 className="cart-item__right-header-title">{title}</h1>
+          <h2 className="cart-item__right-header-title">{title}</h2>
           <p className="cart-item__right-header-category">{clotheCategory}</p>
         </div>
         <div className="cart-item__right-body">

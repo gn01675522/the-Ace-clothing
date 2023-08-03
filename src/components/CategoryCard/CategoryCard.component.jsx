@@ -17,7 +17,7 @@ const CategoryCard = ({ category, index }) => {
         alt={`category card: ${title}`}
       />
       <div className="category-card__content">
-        <h2 className="category-card__content-title">{title}</h2>
+        <h3 className="category-card__content-title">{title}</h3>
       </div>
     </NavLink>
   );
