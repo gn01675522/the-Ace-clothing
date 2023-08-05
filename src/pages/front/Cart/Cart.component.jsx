@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./Cart.styles.scss";
@@ -11,29 +11,48 @@ import Button, {
   BUTTON_TYPE_CLASS,
 } from "../../../components/UI/Button/Button.component";
 
+import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
 import { selectCartItems } from "../../../store/cart/cart.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
 import { setHandleMessage } from "../../../store/message/message.actions";
 
 const Cart = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [applyCoupon, setApplyCoupon] = useState("");
   const cartItems = useSelector(selectCartItems);
   const hasMessage = useSelector(selectHasMessage);
   const dispatch = useDispatch();
-  const couponCode = useRef(null);
 
   const addCoupon = async () => {
-    const code = { data: { code: couponCode.current.value } };
     try {
       const res = await axios.post(
         `v2/api/${process.env.REACT_APP_API_PATH}/coupon`,
-        code
+        { data: { code: inputValue } }
       );
       dispatch(setHandleMessage("success", res));
+      setApplyCoupon(inputValue);
     } catch (error) {
       dispatch(setHandleMessage("error", error));
     }
   };
   //* 由於 client coupon 只有一個 api，故不轉為 redux
+
+  const onChangeInputValue = (e) => {
+    const couponCode = e.target.value;
+    setInputValue(couponCode);
+  };
+
+  useEffect(() => {
+    if (cartItems?.carts?.[0]?.coupon) {
+      setApplyCoupon(cartItems.carts[0].coupon.code);
+    } else {
+      return;
+    }
+  }, [cartItems]);
+
+  useEffect(() => {
+    dispatch(fetchCartItemsAsync());
+  }, [dispatch, applyCoupon]);
 
   return (
     <div className="cart">
@@ -76,19 +95,21 @@ const Cart = () => {
                 type="text"
                 placeholder="請輸入折扣碼"
                 className="cart__info-discount-area-input"
-                ref={couponCode}
+                value={inputValue}
+                onChange={onChangeInputValue}
               />
               <Button
                 type="button"
                 buttonType={BUTTON_TYPE_CLASS.rectWhiteSm}
+                disabled={!inputValue}
                 onClick={addCoupon}
               >
                 套用
               </Button>
             </div>
-            {cartItems?.carts[0]?.coupon && (
+            {applyCoupon && (
               <span className="cart__info-discount-in-use">
-                已套用優惠券 {cartItems.carts[0].coupon.code}
+                已套用優惠券 {applyCoupon}
               </span>
             )}
           </div>

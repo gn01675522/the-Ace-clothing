@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 import "./Member.styles.scss";
@@ -35,7 +35,7 @@ const memberOption = (option) =>
 
 const Member = () => {
   const [email, setEmail] = useState("");
-  const userEmail = useRef();
+  const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
   const routeParams = useParams();
   const RenderOption = memberOption(routeParams.option);
@@ -51,7 +51,11 @@ const Member = () => {
 
   const onSearchOrder = (e) => {
     e.preventDefault();
-    setEmail(userEmail.current.value);
+    setEmail(inputValue);
+  };
+
+  const onChangeInputValue = (e) => {
+    setInputValue(e.target.value);
   };
 
   const onRemoveFavorite = (id) => {
@@ -73,8 +77,16 @@ const Member = () => {
       <h1 className="member__title">客戶資訊</h1>
       {routeParams.option === "order-detail" && (
         <form className="member__function" onSubmit={onSearchOrder}>
-          <input placeholder="請輸入電子信箱" type="search" ref={userEmail} />
-          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.squareBlackSm}>
+          <input
+            placeholder="請輸入電子信箱"
+            type="search"
+            onChange={onChangeInputValue}
+          />
+          <Button
+            type="submit"
+            buttonType={BUTTON_TYPE_CLASS.squareBlackSm}
+            disabled={!inputValue}
+          >
             查詢
           </Button>
         </form>

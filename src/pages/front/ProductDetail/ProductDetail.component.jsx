@@ -246,7 +246,7 @@ const ProductDetail = () => {
               type="button"
               buttonType={BUTTON_TYPE_CLASS.rectWhiteBdLg}
               onClick={() => addToCart()}
-              disabled={isLoading}
+              disabled={isLoading || remainingQuantity === 0}
             >
               {remainingQuantity === 0 ? "已達購買上限" : "加入購物車"}
             </Button>

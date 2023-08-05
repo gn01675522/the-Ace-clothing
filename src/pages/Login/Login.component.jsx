@@ -100,6 +100,7 @@ const Login = () => {
             type="button"
             buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
             onClick={onSubmitHandler}
+            disabled={data.username === "" || data.password === ""}
           >
             登入
           </Button>
