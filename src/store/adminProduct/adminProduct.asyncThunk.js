@@ -3,11 +3,13 @@ import axios from "axios";
 
 import { setHandleMessage } from "../message/message.slice";
 
+//********** Helper **********
 const cleanedDataHelper = (formData) => {
   const cleanImagesArray = formData.imagesUrl.filter((url) => url !== "");
   const cleanedData = { ...formData, imagesUrl: cleanImagesArray };
   return cleanedData;
 };
+//********** Helper **********
 
 export const fetchAdminProductAsync = createAsyncThunk(
   "adminProduct/fetchAdminProduct",

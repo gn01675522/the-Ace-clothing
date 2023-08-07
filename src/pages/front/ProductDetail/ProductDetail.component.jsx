@@ -14,8 +14,8 @@ import Button, {
 import { fetchUserSingleProductAsync } from "../../../store/userProduct/userProduct.actions";
 import { selectUserSingleProduct } from "../../../store/userProduct/userProduct.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
-import { setAddItemToCartAsync } from "../../../store/cart/cart.actions";
-import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
+import { setAddItemToCartAsync } from "../../../store/cart/cart.asyncThunk";
+import { fetchCartItemsAsync } from "../../../store/cart/cart.asyncThunk";
 import {
   selectCartIsLoading,
   selectCartItems,

@@ -5,9 +5,9 @@ import "./CartItem.styles.scss";
 import Button, { BUTTON_TYPE_CLASS } from "../UI/Button/Button.component";
 
 import {
-  setRemoveItemToCartAsync,
+  setRemoveItemFromCartAsync,
   setUpdateCartItemAsync,
-} from "../../store/cart/cart.actions";
+} from "../../store/cart/cart.asyncThunk";
 import { selectCartLoadingItems } from "../../store/cart/cart.selector";
 import {
   translateGenderToChinese,
@@ -24,12 +24,12 @@ const CartItem = ({ item }) => {
   );
 
   const removeCartItem = () => {
-    dispatch(setRemoveItemToCartAsync(itemId));
+    dispatch(setRemoveItemFromCartAsync(itemId));
   };
   //* 移除購物車單項物件
 
   const updateCartItem = (quantity) => {
-    dispatch(setUpdateCartItemAsync(item, quantity, loadingItems));
+    dispatch(setUpdateCartItemAsync({ item, quantity }));
   };
   //* 透過下拉式選單選擇數量
 

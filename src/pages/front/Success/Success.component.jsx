@@ -13,7 +13,7 @@ import {
   selectUserOrderData,
 } from "../../../store/userOrder/userOrder.selector";
 
-import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
+import { fetchCartItemsAsync } from "../../../store/cart/cart.asyncThunk";
 import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.actions";
 import { setClearUserOrderState } from "../../../store/userOrder/userOrder.actions";
 

@@ -65,7 +65,6 @@ const CouponModal = ({ createOrEdit }) => {
   };
 
   const onSubmitHandler = () => {
-    console.log("insdie couponmodal", formData);
     if (createOrEdit === "create") {
       dispatch(createAdminCouponAsync({ formData, date }));
     } else {

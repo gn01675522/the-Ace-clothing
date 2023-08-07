@@ -7,8 +7,8 @@ import Button, {
   BUTTON_TYPE_CLASS,
 } from "../../../components/UI/Button/Button.component";
 
-import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
-import { setAddItemToCartAsync } from "../../../store/cart/cart.actions";
+import { fetchCartItemsAsync } from "../../../store/cart/cart.asyncThunk";
+import { setAddItemToCartAsync } from "../../../store/cart/cart.asyncThunk";
 import {
   selectCartItems,
   selectCartIsLoading,
