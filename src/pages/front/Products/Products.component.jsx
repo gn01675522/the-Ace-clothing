@@ -28,7 +28,7 @@ import {
   selectBohemianProducts,
 } from "../../../store/userProduct/userProduct.selector";
 
-import { setUserFavorite } from "../../../store/user/user.actions";
+import { setUserFavorite } from "../../../store/user/user.slice";
 import { selectUserFavorite } from "../../../store/user/user.selector";
 
 import { selectHasMessage } from "../../../store/message/message.selector";

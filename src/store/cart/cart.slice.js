@@ -17,7 +17,6 @@ const INITIAL_STATE = {
 export const cartSlice = createSlice({
   name: "cart",
   initialState: INITIAL_STATE,
-  reducers: {},
   extraReducers: {
     [fetchCartItemsAsync.pending](state) {
       state.isLoading = true;
@@ -68,34 +67,5 @@ export const cartSlice = createSlice({
     },
   },
 });
-
-// export const cartReducer = (state = INITIAL_STATE, action = {}) => {
-//   const { type, payload } = action;
-
-//   switch (type) {
-//     case FETCH_CART_ITEMS_START:
-//     case SET_CART_ITEMS_START:
-//       return { ...state, isLoading: true };
-
-//     case FETCH_CART_ITEMS_SUCCESS:
-//       return { ...state, cartItems: payload, isLoading: false };
-
-//     case SET_CART_ITEMS_UPDATE_START:
-//       return { ...state, loadingItems: payload, isLoading: true };
-
-//     case SET_CART_ITEMS_UPDATE_SUCCESS:
-//       return { ...state, loadingItems: [], isLoading: false };
-
-//     case SET_CART_ITEMS_SUCCESS:
-//       return { ...state, isLoading: false };
-
-//     case FETCH_CART_ITEMS_FAILED:
-//     case SET_CART_ITEMS_FAILED:
-//     case SET_CART_ITEMS_UPDATE_FAILED:
-//       return { ...state, error: payload, isLoading: false };
-//     default:
-//       return state;
-//   }
-// };
 
 export const cartReducer = cartSlice.reducer;

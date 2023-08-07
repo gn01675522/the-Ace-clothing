@@ -10,7 +10,7 @@ import Button, {
   BUTTON_TYPE_CLASS,
 } from "../../components/UI/Button/Button.component";
 
-import { setCurrentUserAsync } from "../../store/user/user.actions";
+import { setCurrentUserAsync } from "../../store/user/user.asyncThunk";
 import {
   selectUserLoginIsSuccess,
   selectUserLoginIsLoading,

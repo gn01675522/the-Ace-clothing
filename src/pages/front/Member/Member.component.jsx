@@ -12,7 +12,7 @@ import Button, {
 
 import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.actions";
 import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.actions";
-import { setUserFavorite } from "../../../store/user/user.actions";
+import { setUserFavorite } from "../../../store/user/user.slice";
 
 import { selectUserProducts } from "../../../store/userProduct/userProduct.selector";
 import { selectUserFavorite } from "../../../store/user/user.selector";

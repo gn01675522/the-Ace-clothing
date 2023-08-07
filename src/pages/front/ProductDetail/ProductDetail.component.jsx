@@ -22,7 +22,7 @@ import {
 } from "../../../store/cart/cart.selector";
 
 import { selectUserFavorite } from "../../../store/user/user.selector";
-import { setUserFavorite } from "../../../store/user/user.actions";
+import { setUserFavorite } from "../../../store/user/user.slice";
 
 const ProductDetail = () => {
   const [imgWidth, setImgWidth] = useState(0);
