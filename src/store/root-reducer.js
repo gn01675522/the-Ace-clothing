@@ -2,7 +2,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 
 import { messageReducer } from "./message/message.slice";
 import { userReducer } from "./user/user.reducer";
-import { adminProductReducer } from "./adminProduct/adminProduct.reducer";
+import { adminProductReducer } from "./adminProduct/adminProduct.slice";
 import { adminCouponsReducer } from "./adminCoupons/adminCoupons.slice";
 import { adminOrdersReducer } from "./adminOrders/adminOrders.slice";
 import { userProductReducer } from "./userProduct/userProduct.reducer";

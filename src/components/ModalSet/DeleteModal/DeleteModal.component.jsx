@@ -7,10 +7,8 @@ import "./DeleteModal.styles.scss";
 
 import Button, { BUTTON_TYPE_CLASS } from "../../UI/Button/Button.component";
 
-import {
-  setAdminProductModalOpen,
-  deleteAdminProductAsync,
-} from "../../../store/adminProduct/adminProduct.actions";
+import { setAdminProductModalOpen } from "../../../store/adminProduct/adminProduct.slice";
+import { deleteAdminProductAsync } from "../../../store/adminProduct/adminProduct.asyncThunk";
 
 import { selectAdminProductTempData } from "../../../store/adminProduct/adminProduct.selector";
 

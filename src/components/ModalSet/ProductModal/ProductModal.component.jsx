@@ -12,11 +12,11 @@ import "./ProductModal.styles.scss";
 import { ReactComponent as NoImage } from "../../../assets/noImage.svg";
 import Button, { BUTTON_TYPE_CLASS } from "../../UI/Button/Button.component";
 
+import { setAdminProductModalOpen } from "../../../store/adminProduct/adminProduct.slice";
 import {
   updateAdminProductAsync,
   createAdminProductAsync,
-  setAdminProductModalOpen,
-} from "../../../store/adminProduct/adminProduct.actions";
+} from "../../../store/adminProduct/adminProduct.asyncThunk";
 
 import { selectAdminProductTempData } from "../../../store/adminProduct/adminProduct.selector";
 
@@ -107,7 +107,8 @@ const ProductModal = ({ createOrEdit }) => {
     if (createOrEdit === "create") {
       dispatch(createAdminProductAsync(formData));
     } else {
-      dispatch(updateAdminProductAsync(formData.id, formData));
+      const id = formData.id;
+      dispatch(updateAdminProductAsync({ id, formData }));
     }
   };
   //* 按下儲存鍵後提交資料

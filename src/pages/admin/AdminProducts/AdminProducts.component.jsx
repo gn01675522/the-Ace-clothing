@@ -24,10 +24,11 @@ import Button, {
 import Loading from "../../../components/Loading/Loading.component";
 
 import {
-  fetchAdminProductAsync,
   setAdminProductTempData,
   setAdminProductModalOpen,
-} from "../../../store/adminProduct/adminProduct.actions";
+} from "../../../store/adminProduct/adminProduct.slice";
+import { fetchAdminProductAsync } from "../../../store/adminProduct/adminProduct.asyncThunk";
+
 import {
   selectAdminProductIsModalOpen,
   selectAdminProductIsLoading,
