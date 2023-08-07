@@ -14,10 +14,8 @@ import {
 
 import { selectAdminProductTempData } from "../../../store/adminProduct/adminProduct.selector";
 
-import {
-  setAdminOrdersIsModalOpen,
-  deleteAdminOrdersAsync,
-} from "../../../store/adminOrders/adminOrders.actions";
+import { setAdminOrdersIsModalOpen } from "../../../store/adminOrders/adminOrders.slice";
+import { deleteAdminOrdersAsync } from "../../../store/adminOrders/adminOrders.asyncThunk";
 
 import { selectAdminOrdersTempData } from "../../../store/adminOrders/adminOrders.selector";
 

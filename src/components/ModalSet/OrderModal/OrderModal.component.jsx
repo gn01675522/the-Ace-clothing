@@ -6,10 +6,8 @@ import "./OrderModal.styles.scss";
 import OrderCard from "../../OrderCard/OrderCard.component";
 import Button, { BUTTON_TYPE_CLASS } from "../../UI/Button/Button.component";
 
-import {
-  setAdminOrdersIsModalOpen,
-  updateAdminOrdersAsync,
-} from "../../../store/adminOrders/adminOrders.actions";
+import { setAdminOrdersIsModalOpen } from "../../../store/adminOrders/adminOrders.slice";
+import { updateAdminOrdersAsync } from "../../../store/adminOrders/adminOrders.asyncThunk";
 
 import {
   selectAdminOrdersTempData,

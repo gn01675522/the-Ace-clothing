@@ -14,10 +14,10 @@ import AdminTable, {
 import { DELETE_MODAL_TYPE } from "../../../components/ModalSet/DeleteModal/DeleteModal.component";
 
 import {
-  fetchAdminOrdersAsync,
   setAdminOrdersIsModalOpen,
   setAdminOrdersTempData,
-} from "../../../store/adminOrders/adminOrders.actions";
+} from "../../../store/adminOrders/adminOrders.slice";
+import { fetchAdminOrdersAsync } from "../../../store/adminOrders/adminOrders.asyncThunk";
 import {
   selectAdminOrders,
   selectAdminOrdersPagination,

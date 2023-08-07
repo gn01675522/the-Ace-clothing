@@ -4,7 +4,7 @@ import { messageReducer } from "./message/message.slice";
 import { userReducer } from "./user/user.reducer";
 import { adminProductReducer } from "./adminProduct/adminProduct.reducer";
 import { adminCouponsReducer } from "./adminCoupons/adminCoupons.slice";
-import { adminOrdersReducer } from "./adminOrders/adminOrders.reducer";
+import { adminOrdersReducer } from "./adminOrders/adminOrders.slice";
 import { userProductReducer } from "./userProduct/userProduct.reducer";
 import { userOrderReducer } from "./userOrder/userOrder.reducer";
 import { cartReducer } from "./cart/cart.reducer";
