@@ -3,7 +3,7 @@ import axios from "axios";
 import { createAction } from "../../utils/reducer/reducer.utils";
 import { ADMIN_PRODUCT_ACTION_TYPES } from "./adminProduct.types";
 
-import { setHandleMessage } from "../message/message.actions";
+import { setHandleMessage } from "../message/message.slice";
 
 const {
   FETCH_ADMIN_PRODUCT_START,
@@ -76,12 +76,12 @@ export const deleteAdminProductAsync = (id) => {
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${id}`
       );
       dispatch(setAdminProductSuccess());
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setHandleMessage("error", error));
       dispatch(setAdminProductFailed(error.response.data));
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
 };
@@ -99,12 +99,12 @@ export const updateAdminProductAsync = (id, data) => {
         }
       );
       dispatch(setAdminProductSuccess());
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setHandleMessage("error", error));
       dispatch(setAdminProductFailed(error.response.data));
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
 };
@@ -122,12 +122,12 @@ export const createAdminProductAsync = (data) => {
         }
       );
       dispatch(setAdminProductSuccess());
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminProductAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
-      dispatch(setHandleMessage("error", error));
       dispatch(setAdminProductFailed(error.response.data));
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
 };

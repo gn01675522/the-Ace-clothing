@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAction } from "../../utils/reducer/reducer.utils";
 
-import { setHandleMessage } from "../message/message.actions";
+import { setHandleMessage } from "../message/message.slice";
 
 import { ADMIN_ORDERS_ACTION_TYPES } from "./adminOrders.types";
 
@@ -73,12 +73,12 @@ export const updateAdminOrdersAsync = (data) => {
         }
       );
       dispatch(setAdminOrdersSuccess());
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminOrdersAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
       dispatch(setAdminOrdersFailed(error.response.data));
-      dispatch(setHandleMessage("error", error));
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
 };
@@ -93,12 +93,12 @@ export const deleteAdminOrdersAsync = (id) => {
       );
 
       dispatch(setAdminOrdersSuccess());
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminOrdersAsync());
       //* 刪除完畢後重新 fetch 產品列表
     } catch (error) {
       dispatch(setAdminOrdersFailed(error.response.data));
-      dispatch(setHandleMessage("error", error));
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
 };

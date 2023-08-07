@@ -21,10 +21,8 @@ import {
 
 import { selectAdminOrdersTempData } from "../../../store/adminOrders/adminOrders.selector";
 
-import {
-  setAdminCouponsOpen,
-  deleteAdminCouponsAsync,
-} from "../../../store/adminCoupons/adminCoupons.actions";
+import { deleteAdminCouponsAsync } from "../../../store/adminCoupons/adminCoupons.asyncThunk";
+import { setAdminCouponsOpen } from "../../../store/adminCoupons/adminCoupons.slice";
 
 import { selectAdminCouponsTempData } from "../../../store/adminCoupons/adminCoupons.selector";
 

@@ -3,7 +3,7 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 
 import { CART_ACTION_TYPES } from "./cart.types";
 
-import { setHandleMessage } from "../message/message.actions";
+import { setHandleMessage } from "../message/message.slice";
 
 const {
   FETCH_CART_ITEMS_START,
@@ -67,11 +67,11 @@ export const setAddItemToCartAsync = (data) => {
         data
       );
       dispatch(setCartItemSuccess());
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchCartItemsAsync());
     } catch (error) {
       dispatch(setCartItemFailed(error.response.data));
-      setHandleMessage("error", error);
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
 };
@@ -84,11 +84,11 @@ export const setRemoveItemToCartAsync = (id) => {
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${id}`
       );
       dispatch(setCartItemSuccess());
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchCartItemsAsync());
     } catch (error) {
       dispatch(setCartItemFailed(error.response.data));
-      setHandleMessage("error", error);
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
 };
@@ -105,11 +105,11 @@ export const setUpdateCartItemAsync = (item, quantity, loadingItems) => {
         data
       );
       dispatch(setUpdateCartItemSuccess());
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchCartItemsAsync());
     } catch (error) {
       dispatch(setUpdateCartItemFailed(error.response.data));
-      setHandleMessage("error", error);
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
 };

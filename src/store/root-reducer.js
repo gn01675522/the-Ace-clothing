@@ -1,8 +1,9 @@
-import { combineReducers } from "redux";
-import { messageReducer } from "./message/message.reducer";
+import { combineReducers } from "@reduxjs/toolkit";
+
+import { messageReducer } from "./message/message.slice";
 import { userReducer } from "./user/user.reducer";
 import { adminProductReducer } from "./adminProduct/adminProduct.reducer";
-import { adminCouponsReducer } from "./adminCoupons/adminCoupons.reducer";
+import { adminCouponsReducer } from "./adminCoupons/adminCoupons.slice";
 import { adminOrdersReducer } from "./adminOrders/adminOrders.reducer";
 import { userProductReducer } from "./userProduct/userProduct.reducer";
 import { userOrderReducer } from "./userOrder/userOrder.reducer";

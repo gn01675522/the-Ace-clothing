@@ -14,7 +14,7 @@ import Button, {
 import { fetchCartItemsAsync } from "../../../store/cart/cart.actions";
 import { selectCartItems } from "../../../store/cart/cart.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
-import { setHandleMessage } from "../../../store/message/message.actions";
+import { setHandleMessage } from "../../../store/message/message.slice";
 
 const Cart = () => {
   const [inputValue, setInputValue] = useState("");
@@ -29,10 +29,10 @@ const Cart = () => {
         `v2/api/${process.env.REACT_APP_API_PATH}/coupon`,
         { data: { code: inputValue } }
       );
-      dispatch(setHandleMessage("success", res));
+      dispatch(setHandleMessage({ type: "success", res }));
       setApplyCoupon(inputValue);
     } catch (error) {
-      dispatch(setHandleMessage("error", error));
+      dispatch(setHandleMessage({ type: "error", res: error }));
     }
   };
   //* 由於 client coupon 只有一個 api，故不轉為 redux

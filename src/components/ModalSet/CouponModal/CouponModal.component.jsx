@@ -9,12 +9,12 @@ import "./CouponModal.styles.scss";
 import Button, { BUTTON_TYPE_CLASS } from "../../UI/Button/Button.component";
 
 import { selectAdminCouponsTempData } from "../../../store/adminCoupons/adminCoupons.selector";
-import { setAdminCouponsOpen } from "../../../store/adminCoupons/adminCoupons.actions";
+import { setAdminCouponsOpen } from "../../../store/adminCoupons/adminCoupons.slice";
 
 import {
   createAdminCouponAsync,
   updateAdminCouponAsync,
-} from "../../../store/adminCoupons/adminCoupons.actions";
+} from "../../../store/adminCoupons/adminCoupons.asyncThunk";
 
 import { formContent } from "./formContent.data";
 
@@ -65,10 +65,11 @@ const CouponModal = ({ createOrEdit }) => {
   };
 
   const onSubmitHandler = () => {
+    console.log("insdie couponmodal", formData);
     if (createOrEdit === "create") {
-      dispatch(createAdminCouponAsync(formData, date));
+      dispatch(createAdminCouponAsync({ formData, date }));
     } else {
-      dispatch(updateAdminCouponAsync(formData, date));
+      dispatch(updateAdminCouponAsync({ formData, date }));
     }
   };
 

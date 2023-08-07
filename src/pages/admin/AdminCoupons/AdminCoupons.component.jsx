@@ -20,11 +20,11 @@ import Button, {
   BUTTON_TYPE_CLASS,
 } from "../../../components/UI/Button/Button.component";
 
+import { fetchAdminCouponsAsync } from "../../../store/adminCoupons/adminCoupons.asyncThunk";
 import {
-  fetchAdminCouponsAsync,
   setAdminCouponsOpen,
   setAdminCouponsTempData,
-} from "../../../store/adminCoupons/adminCoupons.actions";
+} from "../../../store/adminCoupons/adminCoupons.slice";
 
 import {
   selectAdminCouponsIsModalOpen,
