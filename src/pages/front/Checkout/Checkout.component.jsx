@@ -14,7 +14,7 @@ import Button, {
 
 import { selectCartItems } from "../../../store/cart/cart.selector";
 import { selectUserOrderId } from "../../../store/userOrder/userOrder.selector";
-import { setPostUserOrderAsync } from "../../../store/userOrder/userOrder.actions";
+import { setPostUserOrderAsync } from "../../../store/userOrder/userOrder.asyncThunk";
 
 const formContent = [
   { id: "name", config: { type: "text", labelText: "姓名" } },

@@ -5,8 +5,8 @@ import { userReducer } from "./user/user.slice";
 import { adminProductReducer } from "./adminProduct/adminProduct.slice";
 import { adminCouponsReducer } from "./adminCoupons/adminCoupons.slice";
 import { adminOrdersReducer } from "./adminOrders/adminOrders.slice";
-import { userProductReducer } from "./userProduct/userProduct.reducer";
-import { userOrderReducer } from "./userOrder/userOrder.reducer";
+import { userProductReducer } from "./userProduct/userProduct.slice";
+import { userOrderReducer } from "./userOrder/userOrder.slice";
 import { cartReducer } from "./cart/cart.slice";
 
 export const rootReducer = combineReducers({

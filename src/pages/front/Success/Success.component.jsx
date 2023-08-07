@@ -14,8 +14,8 @@ import {
 } from "../../../store/userOrder/userOrder.selector";
 
 import { fetchCartItemsAsync } from "../../../store/cart/cart.asyncThunk";
-import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.actions";
-import { setClearUserOrderState } from "../../../store/userOrder/userOrder.actions";
+import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.asyncThunk";
+import { setClearUserOrderState } from "../../../store/userOrder/userOrder.slice";
 
 const Success = () => {
   const { orderId } = useParams();

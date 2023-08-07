@@ -10,8 +10,8 @@ import Button, {
   BUTTON_TYPE_CLASS,
 } from "../../../components/UI/Button/Button.component";
 
-import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.actions";
-import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.actions";
+import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.asyncThunk";
+import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.asyncThunk";
 import { setUserFavorite } from "../../../store/user/user.slice";
 
 import { selectUserProducts } from "../../../store/userProduct/userProduct.selector";

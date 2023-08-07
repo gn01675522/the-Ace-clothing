@@ -11,10 +11,8 @@ import Loading from "../../../components/Loading/Loading.component";
 import ProductCard from "../../../components/ProductCard/ProductCard.component";
 import Message from "../../../components/Message/Message.component";
 
-import {
-  fetchUserProductAsync,
-  clearUserProduct,
-} from "../../../store/userProduct/userProduct.actions";
+import { clearUserProduct } from "../../../store/userProduct/userProduct.slice";
+import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.asyncThunk";
 
 import {
   selectUserProductIsLoading,

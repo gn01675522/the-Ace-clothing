@@ -5,7 +5,7 @@ import "./ScrollList.styles.scss";
 import ScrollItem from "../ScrollItem/ScrollItem.component";
 import Button, { BUTTON_TYPE_CLASS } from "../UI/Button/Button.component";
 
-import { fetchUserProductAsync } from "../../store/userProduct/userProduct.actions";
+import { fetchUserProductAsync } from "../../store/userProduct/userProduct.asyncThunk";
 import {
   selectNewUserProducts,
   selectUserProductsOnSale,

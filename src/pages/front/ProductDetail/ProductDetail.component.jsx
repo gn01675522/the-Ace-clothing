@@ -11,7 +11,7 @@ import Button, {
   BUTTON_TYPE_CLASS,
 } from "../../../components/UI/Button/Button.component";
 
-import { fetchUserSingleProductAsync } from "../../../store/userProduct/userProduct.actions";
+import { fetchUserSingleProductAsync } from "../../../store/userProduct/userProduct.asyncThunk";
 import { selectUserSingleProduct } from "../../../store/userProduct/userProduct.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
 import { setAddItemToCartAsync } from "../../../store/cart/cart.asyncThunk";
