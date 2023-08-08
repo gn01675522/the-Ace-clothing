@@ -1,26 +1,26 @@
 export const CATEGORIES_DATA = [
   {
-    title: "womens",
+    title: "女裝",
     url: "https://i.imgur.com/4fmYMgE.jpg",
     path: { user: "/womens", admin: "/admin/womens" },
   },
   {
-    title: "mens",
+    title: "男裝",
     url: "https://i.imgur.com/2lvc2lM.jpg",
     path: { user: "/mens", admin: "/admin/mens" },
   },
   {
-    title: "shoes",
+    title: "鞋子",
     url: "https://i.imgur.com/BeNufg5.jpg",
     path: { user: "/shoes", admin: "/admin/shoes" },
   },
   {
-    title: "hats",
+    title: "帽子",
     url: "https://i.imgur.com/cN9wsTe.jpg",
     path: { user: "/hats", admin: "/admin/hats" },
   },
   {
-    title: "accessories",
+    title: "飾品",
     url: "https://i.imgur.com/Zv9isW2.jpg",
     path: {
       user: "/accessories",

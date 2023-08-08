@@ -6,7 +6,7 @@ import { SESSION_CONTENT_DATA } from "../session.data";
 const SplitBanner = ({ type, inView }) => {
   const data = SESSION_CONTENT_DATA.splitBanner[type];
   const { title, sentence, img, link } = data;
-  const btnContent = `GO ${type.toUpperCase()}'s' SHOP`;
+  const btnContent = `選購${type === "women" ? "女" : "男"}裝`;
 
   return (
     <div className={`split-banner split-banner${type === "men" ? "-men" : ""}`}>

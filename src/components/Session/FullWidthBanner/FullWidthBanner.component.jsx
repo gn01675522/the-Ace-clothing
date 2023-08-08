@@ -18,7 +18,7 @@ const FullWidthBanner = ({ type }) => {
         <h2 className="full-width-banner__content-title">{title}</h2>
         <p className="full-width-banner__content-sentence">{sentence}</p>
         <Link className="full-width-banner__content-link" to={link}>
-          SHOP NOW
+          選購
         </Link>
       </section>
     </div>

@@ -64,6 +64,16 @@ const Products = () => {
   const hasMessage = useSelector(selectHasMessage);
   const wishlist = useSelector(selectUserFavorite);
   const products = useSelector(getProducts(category));
+  const pageTitle =
+    category === "mens"
+      ? "男裝"
+      : category === "womens"
+      ? "女裝"
+      : category === "shoes"
+      ? "鞋子"
+      : category === "hats"
+      ? "帽子"
+      : "飾品";
 
   const pageCount = Math.ceil(products.length / 12);
   // 一個頁面總共渲染 12 個 ProductCard，所以將所有資料除以 12 即可得到總共有幾頁
@@ -118,7 +128,7 @@ const Products = () => {
     <div className="products">
       {hasMessage && <Message />}
       {isLoading && <Loading />}
-      <h1 className="products__title">{category}</h1>
+      <h1 className="products__title">{pageTitle}</h1>
       <div className="products__content">
         {productsInPage.map((product) => {
           return (

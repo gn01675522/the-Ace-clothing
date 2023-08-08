@@ -66,11 +66,11 @@ const Home = () => {
           </div>
         </div>
         <div className="home__session">
-          <h2 className="home__session-title">SHOP NOW</h2>
+          <h2 className="home__session-title">開始選購</h2>
           <Categories />
         </div>
         <div className="home__session">
-          <h2 className="home__session-title">NEW ARRIVALS</h2>
+          <h2 className="home__session-title">新到貨</h2>
           <ScrollList type={SCROLL_TYPE.newArrival} />
         </div>
         <div className="home__session" ref={firstBannerRef}>
@@ -86,7 +86,7 @@ const Home = () => {
           <FullWidthBanner type="urban" />
         </div>
         <div className="home__session">
-          <h1 className="home__session-title">ON SALE</h1>
+          <h1 className="home__session-title">促銷</h1>
           <ScrollList type={SCROLL_TYPE.onSale} />
         </div>
       </div>

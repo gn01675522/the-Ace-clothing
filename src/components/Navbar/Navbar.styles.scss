@@ -71,6 +71,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 0.5s ease-in-out;
+    transform: translateX(-18px);
     &::before,
     &::after {
       content: "";
@@ -88,9 +89,6 @@
     &::after {
       transform: translateY(8px);
     }
-  }
-  @media screen and (min-width: 768px) {
-    transform: translateX(-18px);
   }
   @media screen and (min-width: 1024px) {
     display: none;
