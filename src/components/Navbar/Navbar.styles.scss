@@ -34,15 +34,21 @@
     display: flex;
     height: 100%;
     align-items: center;
+    order: 2;
     &-icon {
       width: 40px;
       height: 40px;
     }
   }
+  @media screen and (min-width: 768px) {
+    padding: 0 4rem;
+  }
   @media screen and (min-width: 1024px) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
+    padding: 0 7rem;
+    &__home-logo {
+      order: 1;
+      margin-right: 1rem;
+    }
   }
 }
 
@@ -55,6 +61,7 @@
   align-items: center;
   transition: all 0.5s ease-in-out;
   border-radius: 8px;
+  order: 1;
   cursor: pointer;
 
   &-line {
@@ -81,6 +88,9 @@
     &::after {
       transform: translateY(8px);
     }
+  }
+  @media screen and (min-width: 768px) {
+    transform: translateX(-18px);
   }
   @media screen and (min-width: 1024px) {
     display: none;
@@ -120,6 +130,7 @@
     display: flex;
     width: 100%;
     gap: 5px;
+    order: 2;
     &-link {
       padding: 0 10px;
     }
@@ -129,6 +140,7 @@
 .navbar__actions {
   display: flex;
   width: min-content;
+  order: 3;
   @media screen and (min-width: 1024px) {
     width: 100%;
     justify-content: end;
