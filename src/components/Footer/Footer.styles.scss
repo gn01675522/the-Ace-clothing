@@ -1,6 +1,7 @@
 @import "../../stylesheets/variables";
 
 .footer {
+  border-top: 1px $line-primary-line;
   &__copyright {
     width: 100%;
     height: min-content;
@@ -45,6 +46,15 @@
           color: $color-third-text;
         }
       }
+      &-number {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+      }
+      &-website {
+        display: flex;
+        line-height: 1rem;
+      }
     }
     @media screen and (min-width: 526px) {
       flex-direction: row;
@@ -56,6 +66,13 @@
       &-items {
         div {
           margin-left: unset;
+        }
+      }
+    }
+    @media screen and (min-width: 800px) {
+      &-items {
+        &-number {
+          flex-direction: row;
         }
       }
     }

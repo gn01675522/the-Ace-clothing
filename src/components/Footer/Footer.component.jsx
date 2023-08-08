@@ -23,17 +23,6 @@ const symbol = (type) =>
 const Footer = () => {
   return (
     <footer className="footer">
-      <p className="footer__copyright">
-        © 本網站為個人練習作品，無作任何商業用途使用；原始碼請見{" "}
-        <Link
-          className="footer__copyright-link"
-          target="_blank"
-          to="https://github.com/gn01675522/the-Ace-clothing"
-        >
-          Github
-        </Link>
-        。
-      </p>
       <div className="footer__content">
         {FOOTER_DATA.map((data) => (
           <ul className="footer__content-ul" key={data.title}>
@@ -46,13 +35,13 @@ const Footer = () => {
                     <div>{item.title}</div>
                   </Link>
                 ) : item.number ? (
-                  <div>
-                    {item.title} <br />
-                    {item.number}
+                  <div className="footer__content-items-number">
+                    <span>{item.title}</span>
+                    <span>{item.number}</span>
                   </div>
                 ) : (
                   <Link to={item.website} target="_blank">
-                    <div>
+                    <div className="footer__content-items-website">
                       {symbol(item.title)}
                       {item.title}
                     </div>
@@ -63,6 +52,17 @@ const Footer = () => {
           </ul>
         ))}
       </div>
+      <p className="footer__copyright">
+        © 本網站為個人練習作品，無作任何商業用途使用；原始碼請見{" "}
+        <Link
+          className="footer__copyright-link"
+          target="_blank"
+          to="https://github.com/gn01675522/the-Ace-clothing"
+        >
+          Github
+        </Link>
+        。
+      </p>
     </footer>
   );
 };
