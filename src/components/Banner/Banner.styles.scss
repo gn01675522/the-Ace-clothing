@@ -13,4 +13,24 @@
       height: 700px;
     }
   }
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    &:hover {
+      opacity: 0.8;
+    }
+    &:first-of-type {
+      left: 0;
+    }
+    &:last-of-type {
+      right: 0;
+    }
+  }
+}
+
+.banner__left-arrow,
+.banner__right-arrow {
+  width: 20px;
+  height: 20px;
 }

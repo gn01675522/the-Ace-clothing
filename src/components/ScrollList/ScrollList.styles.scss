@@ -9,13 +9,16 @@
     @media screen and (min-width: 1024px) {
       display: unset;
       position: absolute;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      opacity: 0.6;
-      cursor: pointer;
+      top: 50%;
+      transform: translateY(-75%);
       &:hover {
         opacity: 0.8;
+      }
+      &:first-of-type {
+        left: -25px;
+      }
+      &:last-of-type {
+        right: -25px;
       }
     }
   }
@@ -39,5 +42,11 @@
     @media screen and (min-width: 768px) {
       padding: unset;
     }
+  }
+
+  &__left-arrow,
+  &__right-arrow {
+    width: 15px;
+    height: 15px;
   }
 }

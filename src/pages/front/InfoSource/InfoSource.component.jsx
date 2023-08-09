@@ -11,6 +11,8 @@ import { ReactComponent as WhiteHeart } from "../../../assets/whiteHeart.svg";
 import { ReactComponent as RedHeart } from "../../../assets/redHeart.svg";
 import { ReactComponent as Check } from "../../../assets/check.svg";
 import { ReactComponent as Cross } from "../../../assets/cross.svg";
+import { ReactComponent as LeftArrow } from "../../../assets/left-arrow.svg";
+import { ReactComponent as RightArrow } from "../../../assets/right-arrow.svg";
 import hexSchool from "../../../assets/hexSchool.png";
 
 import { INFO_SOURCE_DATA } from "./infoSource.data";
@@ -43,6 +45,8 @@ const attachment = (category) =>
       <WhiteHeart className="info-source__card-view-img" />,
       <Check className="info-source__card-view-img" />,
       <Cross className="info-source__card-view-img" />,
+      <LeftArrow className="info-source__card-view-img" />,
+      <RightArrow className="info-source__card-view-img" />,
     ],
     [CATEGORY_TYPE.pictures]: [
       "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",

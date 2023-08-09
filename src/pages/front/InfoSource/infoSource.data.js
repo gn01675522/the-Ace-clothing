@@ -57,6 +57,18 @@ export const INFO_SOURCE_DATA = {
       source: { title: "Flaticon", url: "https://www.flaticon.com/" },
       createBy: "Close icons created by Ilham Fitrotul Hayat - Flaticon",
     },
+    {
+      title: "left arrow icons",
+      url: "https://www.flaticon.com/free-icons/left-arrow",
+      source: { title: "Flaticon", url: "https://www.flaticon.com/" },
+      createBy: "Left arrow icons created by pictogramer - Flaticon",
+    },
+    {
+      title: "right arrow icons",
+      url: "https://www.flaticon.com/free-icons/right-chevron",
+      source: { title: "Flaticon", url: "https://www.flaticon.com/" },
+      createBy: "Right-chevron icons created by pictogramer - Flaticon",
+    },
   ],
 
   pictures: [

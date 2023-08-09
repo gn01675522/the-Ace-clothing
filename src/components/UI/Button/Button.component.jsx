@@ -14,8 +14,7 @@ export const BUTTON_TYPE_CLASS = {
   squareBlackSm: "square-black-sm",
   squareWhiteSm: "square-white-sm",
   arcBlackLg: "arc-black-lg",
-  arcWhiteOpacityLSm: "arc-white-opacity-l-sm",
-  arcWhiteOpacityRSm: "arc-white-opacity-r-sm",
+  arcWhiteOpacitySm: "arc-white-opacity-sm",
 };
 
 const getClass = (buttonType) =>
@@ -33,8 +32,7 @@ const getClass = (buttonType) =>
     [BUTTON_TYPE_CLASS.squareBlackSm]: "btn-sq-bl-sm",
     [BUTTON_TYPE_CLASS.squareWhiteSm]: "btn-sq-wh-sm",
     [BUTTON_TYPE_CLASS.arcBlackLg]: "btn-arc-bl-lg",
-    [BUTTON_TYPE_CLASS.arcWhiteOpacityLSm]: "btn-arc-white-opacity-l-sm",
-    [BUTTON_TYPE_CLASS.arcWhiteOpacityRSm]: "btn-arc-white-opacity-r-sm",
+    [BUTTON_TYPE_CLASS.arcWhiteOpacitySm]: "btn-arc-white-opacity-sm",
   }[buttonType]);
 
 const Button = ({ buttonType, children, isLoading, ...otherProps }) => {

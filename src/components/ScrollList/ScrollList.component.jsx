@@ -11,6 +11,9 @@ import {
   selectUserProductsOnSale,
 } from "../../store/userProduct/userProduct.selector";
 
+import { ReactComponent as LeftArrow } from "../../assets/left-arrow.svg";
+import { ReactComponent as RightArrow } from "../../assets/right-arrow.svg";
+
 export const SCROLL_TYPE = {
   newArrival: "newArrival",
   onSale: "onSale",
@@ -111,20 +114,24 @@ const ScrollList = ({ type }) => {
       </div>
       <Button
         type="button"
-        buttonType={BUTTON_TYPE_CLASS.arcWhiteOpacityLSm}
+        buttonType={BUTTON_TYPE_CLASS.arcWhiteOpacitySm}
         onMouseDown={() => onScrollHandler("prev")}
         onMouseUp={onStopScroll}
         onMouseLeave={onStopScroll}
         title="previous"
-      />
+      >
+        <LeftArrow className="scroll-list__left-arrow" />
+      </Button>
       <Button
         type="button"
-        buttonType={BUTTON_TYPE_CLASS.arcWhiteOpacityRSm}
+        buttonType={BUTTON_TYPE_CLASS.arcWhiteOpacitySm}
         onMouseDown={() => onScrollHandler("next")}
         onMouseUp={onStopScroll}
         onMouseLeave={onStopScroll}
         title="next"
-      />
+      >
+        <RightArrow className="scroll-list__right-arrow" />
+      </Button>
     </div>
   );
 };
