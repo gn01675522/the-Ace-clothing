@@ -75,7 +75,7 @@ const AdminCoupons = () => {
         />
       )}
       <h3 className="admin-coupons__title">優惠券列表</h3>
-      <div className="admin-coupons__actions">
+      <div className="admin-coupons__content">
         <Button
           type="button"
           buttonType={BUTTON_TYPE_CLASS.rectBlackMe}
@@ -90,11 +90,13 @@ const AdminCoupons = () => {
         onEdit={openCouponModal}
         onDelete={onOpenDeleteModal}
       />
-      <Pagination
-        currentPage={current_page}
-        onChangePage={onChangePageHandler}
-        pageCount={total_pages}
-      />
+      <div className="admin-coupons__function">
+        <Pagination
+          currentPage={current_page}
+          onChangePage={onChangePageHandler}
+          pageCount={total_pages}
+        />
+      </div>
     </div>
   );
 };

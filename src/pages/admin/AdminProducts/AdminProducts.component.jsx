@@ -139,12 +139,13 @@ const AdminProducts = () => {
         onEdit={onOpenProductModal}
         onDelete={onOpenProductDeleteModal}
       />
-
-      <Pagination
-        onChangePage={onChangePage}
-        pageCount={pageCount}
-        currentPage={currentPage}
-      />
+      <div className="admin-products__function">
+        <Pagination
+          onChangePage={onChangePage}
+          pageCount={pageCount}
+          currentPage={currentPage}
+        />
+      </div>
     </div>
   );
 };

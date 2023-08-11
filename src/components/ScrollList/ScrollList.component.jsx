@@ -14,6 +14,8 @@ import {
 import { ReactComponent as LeftArrow } from "../../assets/left-arrow.svg";
 import { ReactComponent as RightArrow } from "../../assets/right-arrow.svg";
 
+import { computedWidthByContainerHelper } from "./ScrollList.helpers";
+
 export const SCROLL_TYPE = {
   newArrival: "newArrival",
   onSale: "onSale",
@@ -29,24 +31,60 @@ const ScrollList = ({ type }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startDistance, setStartDistance] = useState(null);
   const [draggingProgress, setDraggingProgress] = useState(false);
+  const [listContainerWidth, setListContainerWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
   const dispatch = useDispatch();
   const products = useSelector(scrollList(type));
   const contentRef = useRef();
+  const listContainerRef = useRef();
+  const setWidthByListContainer = computedWidthByContainerHelper(
+    windowWidth,
+    listContainerWidth
+  );
+
   let keepTrigger = null;
 
   useEffect(() => {
     dispatch(fetchUserProductAsync());
   }, [dispatch]);
 
+  useEffect(() => {
+    const updateListContainerWidth = () => {
+      if (listContainerRef) {
+        setListContainerWidth(listContainerRef.current.offsetWidth);
+      }
+    };
+
+    updateListContainerWidth();
+
+    window.addEventListener("resize", updateListContainerWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateListContainerWidth);
+    };
+  }, []);
+
+  useEffect(() => {
+    const screenWidth = () => {
+      if (window.innerWidth) {
+        setWindowWidth(window.innerWidth);
+      }
+    };
+
+    screenWidth();
+
+    window.addEventListener("resize", screenWidth);
+  }, []);
+
   const onScrollHandler = (type) => {
-    const delay = 5;
     const container = contentRef.current;
+    const moveRange = setWidthByListContainer + 16;
+    console.log("insdie ScrollLIst", setWidthByListContainer);
     if (container) {
       container.scrollBy({
-        left: type === "prev" ? -2 : 2,
-        behavior: "auto",
+        left: type === "prev" ? -moveRange : moveRange,
+        behavior: "smooth",
       });
-      keepTrigger = setTimeout(() => onScrollHandler(type), delay);
     }
   };
   //* 使用按鈕滾動卷軸
@@ -90,7 +128,7 @@ const ScrollList = ({ type }) => {
   //* 如果 isDragging 為 false，也就是 user 沒有在做拖動動作則 return；反之則開始列表移動，移動的根據為起始位置減目前位置
 
   return (
-    <div className="scroll-list">
+    <div className="scroll-list" ref={listContainerRef}>
       <div className="scroll-list__content" ref={contentRef}>
         <div
           className="scroll-list__content-list"
@@ -107,6 +145,7 @@ const ScrollList = ({ type }) => {
                 urlParam={category}
                 key={product.id}
                 isDragging={draggingProgress}
+                style={{ width: `${setWidthByListContainer}px` }}
               />
             );
           })}

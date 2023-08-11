@@ -143,7 +143,7 @@ const Products = () => {
           );
         })}
       </div>
-      <nav className="d-flex justify-content-center">
+      <nav className="products__function">
         <Pagination
           currentPage={currentPage}
           onChangePage={onChangePage}

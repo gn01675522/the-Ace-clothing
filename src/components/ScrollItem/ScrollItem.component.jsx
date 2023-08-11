@@ -3,7 +3,7 @@ import "./ScrollItem.styles.scss";
 
 import PriceTag from "../UI/PriceTag/PriceTag.component";
 
-const ScrollItem = ({ product, urlParam, isDragging }) => {
+const ScrollItem = ({ product, urlParam, isDragging, style }) => {
   const { id, title, imageUrl, origin_price, price } = product;
 
   return (
@@ -11,6 +11,7 @@ const ScrollItem = ({ product, urlParam, isDragging }) => {
       to={`/${urlParam}/${id}`}
       className={`scroll-item scroll-item${isDragging ? "--dragging" : ""}`}
       draggable="false"
+      style={style}
     >
       <div className="scroll-item__preview">
         <img

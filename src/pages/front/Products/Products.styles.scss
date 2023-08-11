@@ -16,6 +16,10 @@
     justify-content: space-around;
     grid-gap: 2rem;
   }
+  &__function {
+    display: flex;
+    justify-content: center;
+  }
   @media screen and (min-width: 480px) {
     &__content {
       grid-template-columns: repeat(2, 1fr);

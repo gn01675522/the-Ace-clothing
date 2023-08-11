@@ -61,18 +61,21 @@ const AdminOrders = () => {
         <ModalPortal openWhichModal={openWhichModal} dataType={dataType} />
       )}
       <h3 className="admin-orders__title">訂單列表</h3>
-      <AdminTable
-        type={ADMIN_TABLE_TYPE.orders}
-        items={orders}
-        onEdit={onOpenOrdersModal}
-        onDelete={onOpenOrdersDeleteModal}
-      />
-
-      <Pagination
-        currentPage={current_page}
-        onChangePage={onChangePageHandler}
-        pageCount={total_pages}
-      />
+      <div className="admin-orders__content">
+        <AdminTable
+          type={ADMIN_TABLE_TYPE.orders}
+          items={orders}
+          onEdit={onOpenOrdersModal}
+          onDelete={onOpenOrdersDeleteModal}
+        />
+      </div>
+      <div className="admin-orders__function">
+        <Pagination
+          currentPage={current_page}
+          onChangePage={onChangePageHandler}
+          pageCount={total_pages}
+        />
+      </div>
     </div>
   );
 };
