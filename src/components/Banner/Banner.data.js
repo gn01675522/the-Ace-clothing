@@ -1,6 +1,30 @@
 export const BANNER_DATA = [
-  "https://i.imgur.com/U4y4p5r.jpg",
-  "https://i.imgur.com/mpokuhI.jpg",
-  "https://i.imgur.com/SQKewZy.jpg",
-  "https://i.imgur.com/fOe5JTZ.jpg",
+  {
+    img: "https://i.imgur.com/mpokuhI.jpg",
+    text: "關於我們",
+    sentence: "我們的出現，",
+    imgTone: "light",
+    url: "/about",
+  },
+  {
+    img: "https://i.imgur.com/U4y4p5r.jpg",
+    text: "選購飾品",
+    sentence: "開始妝點您的日常！",
+    imgTone: "dark",
+    url: "/accessories",
+  },
+  {
+    img: "https://i.imgur.com/SQKewZy.jpg",
+    text: "選購女裝",
+    sentence: "",
+    imgTone: "light",
+    url: "/womens",
+  },
+  {
+    img: "https://i.imgur.com/fOe5JTZ.jpg",
+    text: "選購帽子",
+    sentence: "帶一點品味給您的生活",
+    imgTone: "light",
+    url: "/hats",
+  },
 ];

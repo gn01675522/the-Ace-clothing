@@ -26,7 +26,6 @@ import {
   selectBohemianProducts,
 } from "../../../store/userProduct/userProduct.selector";
 
-import { setUserFavorite } from "../../../store/user/user.slice";
 import { selectUserFavorite } from "../../../store/user/user.selector";
 
 import { selectHasMessage } from "../../../store/message/message.selector";
@@ -90,20 +89,6 @@ const Products = () => {
     setCurrentPage(page);
   };
 
-  const onAddFavorite = (e, id) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const newList = [...wishlist, id];
-    dispatch(setUserFavorite(newList));
-  };
-
-  const onRemoveFavorite = (e, id) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const removeFavorite = wishlist.filter((item) => item !== id);
-    dispatch(setUserFavorite(removeFavorite));
-  };
-
   useEffect(() => {
     dispatch(fetchUserProductAsync());
     return () => dispatch(clearUserProduct());
@@ -137,8 +122,6 @@ const Products = () => {
               key={product.id}
               urlParam={category}
               isFavorite={wishlist.includes(product.id)}
-              onAddFavorite={onAddFavorite}
-              onRemoveFavorite={onRemoveFavorite}
             />
           );
         })}

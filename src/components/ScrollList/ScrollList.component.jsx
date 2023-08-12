@@ -16,6 +16,8 @@ import { ReactComponent as RightArrow } from "../../assets/right-arrow.svg";
 
 import { computedWidthByContainerHelper } from "./ScrollList.helpers";
 
+import { selectUserFavorite } from "../../store/user/user.selector";
+
 export const SCROLL_TYPE = {
   newArrival: "newArrival",
   onSale: "onSale",
@@ -41,6 +43,7 @@ const ScrollList = ({ type }) => {
     windowWidth,
     listContainerWidth
   );
+  const wishlist = useSelector(selectUserFavorite);
 
   let keepTrigger = null;
 
@@ -75,6 +78,11 @@ const ScrollList = ({ type }) => {
 
     window.addEventListener("resize", screenWidth);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
+  // selector 變動時則將 wishlist 內容放入 localStorage 裡面
 
   const onScrollHandler = (type) => {
     const container = contentRef.current;
@@ -145,6 +153,7 @@ const ScrollList = ({ type }) => {
                 urlParam={category}
                 key={product.id}
                 isDragging={draggingProgress}
+                isFavorite={wishlist.includes(product.id)}
                 style={{ width: `${setWidthByListContainer}px` }}
               />
             );

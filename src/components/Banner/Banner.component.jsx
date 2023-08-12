@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Banner.styles.scss";
 
 import Indicator from "../UI/Indicator/Indicator.component";
@@ -66,7 +67,7 @@ const Banner = () => {
       </Button>
       <img
         className="banner__image"
-        src={BANNER_DATA[imgNum]}
+        src={BANNER_DATA[imgNum].img}
         alt="banner images"
       />
       <Indicator
@@ -74,6 +75,9 @@ const Banner = () => {
         imgNum={imgNum}
         onChangeImg={onChangeImg}
       />
+      <Link className="banner__cta" to={BANNER_DATA[imgNum].url}>
+        {BANNER_DATA[imgNum].text}
+      </Link>
     </div>
   );
 };
