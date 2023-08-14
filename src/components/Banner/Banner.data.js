@@ -1,8 +1,8 @@
 export const BANNER_DATA = [
   {
     img: "https://i.imgur.com/mpokuhI.jpg",
-    text: "關於我們",
-    sentence: "我們的出現，",
+    text: "選購男裝",
+    sentence: "",
     imgTone: "light",
     url: "/about",
   },

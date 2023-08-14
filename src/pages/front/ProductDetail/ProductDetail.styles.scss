@@ -5,6 +5,7 @@
   width: 100%;
   padding: 1rem 0;
   gap: 2rem;
+  margin-bottom: 1rem;
   @media screen and (min-width: 768px) {
     min-height: 100vh;
     padding: 0;
@@ -88,46 +89,42 @@
   padding-bottom: 2rem;
   justify-content: space-between;
   border-bottom: 1px $line-secondary-line;
-  &-left {
+  &-title-set {
     display: flex;
-    flex-direction: column;
     gap: 10px;
-    align-items: flex-start;
+    justify-content: space-between;
   }
   &-subtitle {
     font-size: 10px;
   }
   &-title {
-    font-size: 1rem;
-    font-weight: lighter;
+    font-size: 2.5rem;
+    font-weight: bold;
     color: $color-fifth-text;
-    text-align: center;
+    text-align: start;
     letter-spacing: 0;
+    margin-top: 10px;
   }
   &-price {
-    width: 100%;
-    font-size: 1rem;
+    display: flex;
     font-weight: lighter;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 1rem;
     color: $color-fifth-text;
     &-sell {
       margin-top: 1rem;
       color: $color-fourth-text;
+    }
+    p {
+      font-size: 1.2rem;
+      font-weight: bold;
     }
   }
 
   &-right {
     display: flex;
     align-items: flex-start;
-  }
-  &-function {
-    &-favorite {
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      &:hover {
-        animation: bump 300ms ease-out;
-      }
-    }
   }
 }
 
@@ -137,7 +134,6 @@
   width: 100%;
   gap: 15px;
   height: min-content;
-  justify-content: space-between;
   &-alert {
     font-size: 8px;
     color: $color-fourth-text;
@@ -149,9 +145,14 @@
     border: 1px $line-fifth;
     border-radius: 4px;
     justify-content: space-between;
+    button {
+      width: 50px;
+    }
   }
   &-entry {
+    width: calc(100% - 100px);
     border: none;
+    font-size: 1.5rem;
     text-align: center;
   }
 }
@@ -161,15 +162,36 @@
   flex-direction: column;
   gap: 2rem;
   margin-top: 2rem;
+  margin-bottom: 3rem;
+  &-material {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px $line-secondary-line;
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px $line-primary-line;
+      &-title {
+        font-size: 20px;
+        line-height: 1.5rem;
+        padding-bottom: 1rem;
+      }
+      &-favorite {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        &:hover {
+          animation: bump 300ms ease-out;
+        }
+      }
+    }
+  }
   &-content {
     line-height: 1.5rem;
   }
-  &-title {
-    font-size: 20px;
-    line-height: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px $line-primary-line;
-  }
+
   &-info {
     &-item {
       line-height: 1.5rem;

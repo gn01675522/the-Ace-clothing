@@ -165,52 +165,54 @@ const ProductDetail = () => {
 
         <div className="product-detail__sale-info">
           <div className="product-detail__sale-info-content">
-            <div className="product-detail__sale-info-content-left">
+            <div className="product-detail__sale-info-conent-title-set">
               <h3 className="product-detail__sale-info-content-subtitle">
                 the Ace Clothing
               </h3>
               <h1 className="product-detail__sale-info-content-title">
                 {title}
               </h1>
-              <div className="product-detail__sale-info-content-price">
-                <PriceTag origin_price={origin_price} price={price} />
-                {origin_price > price && (
-                  <p className="product-detail__sale-info-content-price-sell">
-                    {discountRate + "%off"}
-                  </p>
-                )}
-              </div>
             </div>
-            <div className="product-detail__sale-info-content-right">
-              <div className="product-detail__sale-info-content-function">
+            <div className="product-detail__sale-info-content-price">
+              <PriceTag origin_price={origin_price} price={price} />
+              {origin_price > price && (
+                <p className="product-detail__sale-info-content-price-sell">
+                  {discountRate + "%off"}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="product-detail__description">
+            <div className="product-detail__description-material">
+              <div className="product-detail__description-material-header">
+                <h2 className="product-detail__description-material-header-title">
+                  詳細資料
+                </h2>
                 <div
-                  className="product-detail__sale-info-content-function-wrapper"
+                  className="product-detail__description-material-header-wrapper"
                   onClick={(e) =>
                     isFavorite ? onRemoveFavorite(e, id) : onAddFavorite(e, id)
                   }
                 >
                   {isFavorite ? (
-                    <RedHeart className="product-detail__sale-info-content-function-favorite" />
+                    <RedHeart className="product-detail__description-material-header-favorite" />
                   ) : (
-                    <WhiteHeart className="product-detail__sale-info-content-function-favorite" />
+                    <WhiteHeart className="product-detail__description-material-header-favorite" />
                   )}
                 </div>
               </div>
+              <ul className="product-detail__description-info">
+                {description?.split("-").map((item) => (
+                  <li
+                    key={item}
+                    className="product-detail__description-info-item"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-          <div className="product-detail__description">
             <div className="product-detail__description-content">{content}</div>
-            <h2 className="product-detail__description-title">詳細資料</h2>
-            <ul className="product-detail__description-info">
-              {description?.split("-").map((item) => (
-                <li
-                  key={item}
-                  className="product-detail__description-info-item"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
           <div className="product-detail__sale-function">
             {(itemQuantity === remainingQuantity ||
@@ -225,6 +227,7 @@ const ProductDetail = () => {
               <Button
                 buttonType={BUTTON_TYPE_CLASS.squareWhiteSm}
                 onClick={() => onChangeQuantity("minor")}
+                disabled={itemQuantity === 1}
               >
                 -
               </Button>
