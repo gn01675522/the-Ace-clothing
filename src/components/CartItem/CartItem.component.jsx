@@ -5,9 +5,10 @@ import "./CartItem.styles.scss";
 import Button, { BUTTON_TYPE_CLASS } from "../UI/Button/Button.component";
 
 import {
-  setRemoveItemFromCartAsync,
-  setUpdateCartItemAsync,
-} from "../../store/cart/cart.asyncThunk";
+  setCartIsModalOpen,
+  setCartTempData,
+} from "../../store/cart/cart.slice";
+import { setUpdateCartItemAsync } from "../../store/cart/cart.asyncThunk";
 import { selectCartLoadingItems } from "../../store/cart/cart.selector";
 import {
   translateGenderToChinese,
@@ -23,15 +24,16 @@ const CartItem = ({ item }) => {
     translateCategoryToChinese(category)
   );
 
-  const removeCartItem = () => {
-    dispatch(setRemoveItemFromCartAsync(itemId));
-  };
-  //* 移除購物車單項物件
-
-  const updateCartItem = (quantity) => {
+  const updateCartItem = (type) => {
+    const quantity = type === "add" ? qty + 1 : qty - 1;
     dispatch(setUpdateCartItemAsync({ item, quantity }));
   };
-  //* 透過下拉式選單選擇數量
+  // 每當變更數量的時候，就直接更新購物車資訊
+
+  const checkedToRemoveItemFromCart = () => {
+    dispatch(setCartTempData(itemId));
+    dispatch(setCartIsModalOpen(true));
+  };
 
   return (
     <div className="cart-item">
@@ -50,40 +52,49 @@ const CartItem = ({ item }) => {
         </div>
         <div className="cart-item__right-body">
           <div className="cart-item__right-body-content">
-            <span>Color</span>
-            <span>預設</span>
+            <span className="cart-item__right-body-content-item">
+              Color： 預設
+            </span>
           </div>
           <div className="cart-item__right-body-content">
-            <span>Size</span>
-            <span>預設</span>
+            <span className="cart-item__right-body-content-item">
+              Size： 預設
+            </span>
           </div>
-          <div className="cart-item__right-body-content-count">
-            <select
-              className="cart-item__right-body-content-count-select"
-              value={qty}
-              disabled={loadingItems.includes(itemId)}
-              onChange={(e) => {
-                updateCartItem(e.target.value * 1);
-              }}
+          <div className="cart-item__right-body-content">
+            <button
+              type="button"
+              className="cart-item__right-body-content-remove"
+              onClick={checkedToRemoveItemFromCart}
             >
-              {[...new Array(5)].map((_, num) => {
-                return (
-                  <option value={num + 1} key={num}>
-                    {num + 1}
-                  </option>
-                );
-              })}
-            </select>
-            <span>NT${Math.round(final_total)}</span>
+              刪除
+            </button>
+            <div className="cart-item__right-body-content-count">
+              <span>總金額</span>
+              <span>NT${Math.round(final_total)}</span>
+            </div>
           </div>
         </div>
         <div className="cart-item__right-footer">
           <Button
-            type="button"
-            buttonType={BUTTON_TYPE_CLASS.rectWhiteLg}
-            onClick={removeCartItem}
+            buttonType={BUTTON_TYPE_CLASS.squareWhiteSm}
+            onClick={() => updateCartItem("minor")}
+            disabled={qty === 1 || loadingItems.includes(itemId)}
           >
-            刪除
+            -
+          </Button>
+          <input
+            className="cart-item__right-footer-entry"
+            type="number"
+            value={qty}
+            readOnly
+          />
+          <Button
+            buttonType={BUTTON_TYPE_CLASS.squareWhiteSm}
+            onClick={() => updateCartItem("add")}
+            disabled={qty >= 5 || loadingItems.includes(itemId)}
+          >
+            +
           </Button>
         </div>
       </div>

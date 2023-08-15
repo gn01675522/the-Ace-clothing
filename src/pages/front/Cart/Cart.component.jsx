@@ -7,12 +7,21 @@ import "./Cart.styles.scss";
 import Message from "../../../components/Message/Message.component";
 import CartItem from "../../../components/CartItem/CartItem.component";
 import Categories from "../../../components/Categories/Categories.component";
+import Loading from "../../../components/Loading/Loading.component";
+import ModalPortal, {
+  MODAL_TYPE,
+} from "../../../components/ModalSet/ModalPortal.component";
 import Button, {
   BUTTON_TYPE_CLASS,
 } from "../../../components/UI/Button/Button.component";
 
+import { setCartIsModalOpen } from "../../../store/cart/cart.slice";
 import { fetchCartItemsAsync } from "../../../store/cart/cart.asyncThunk";
-import { selectCartItems } from "../../../store/cart/cart.selector";
+import {
+  selectCartItems,
+  selectCartModalOpen,
+  selectCartIsLoading,
+} from "../../../store/cart/cart.selector";
 import { selectHasMessage } from "../../../store/message/message.selector";
 import { setHandleMessage } from "../../../store/message/message.slice";
 
@@ -21,6 +30,8 @@ const Cart = () => {
   const [applyCoupon, setApplyCoupon] = useState("");
   const cartItems = useSelector(selectCartItems);
   const hasMessage = useSelector(selectHasMessage);
+  const isModalOpen = useSelector(selectCartModalOpen);
+  const isLoading = useSelector(selectCartIsLoading);
   const dispatch = useDispatch();
 
   const addCoupon = async () => {
@@ -42,6 +53,11 @@ const Cart = () => {
     setInputValue(couponCode);
   };
 
+  const onClickToCloseModalInBackdrop = () => {
+    dispatch(setCartIsModalOpen(false));
+  };
+  // 讓 user 可以再開啟是否刪除的 modal 時，不小心按到旁邊的 backdrop 可以直接關閉
+
   useEffect(() => {
     if (cartItems?.carts?.[0]?.coupon) {
       setApplyCoupon(cartItems.carts[0].coupon.code);
@@ -56,7 +72,14 @@ const Cart = () => {
 
   return (
     <div className="cart">
+      {isLoading && <Loading />}
       {hasMessage && <Message />}
+      {isModalOpen && (
+        <ModalPortal
+          openWhichModal={MODAL_TYPE.deleteInCart}
+          backdropClose={onClickToCloseModalInBackdrop}
+        />
+      )}
       <div className="cart__content">
         <h1 className="cart__content-title">
           {cartItems?.carts?.length > 0
@@ -75,15 +98,15 @@ const Cart = () => {
         <div className="cart__info-price">
           <div className="cart__info-price-items">
             <span>小計</span>
-            <span>NT${Math.round(cartItems.final_total)}</span>
+            <span>NT$ {Math.round(cartItems.final_total)}</span>
           </div>
           <div className="cart__info-price-items">
             <span>運費</span>
-            <span>NT$免費</span>
+            <span>免費</span>
           </div>
           <div className="cart__info-price-items">
             <span>總計</span>
-            <span>NT${Math.round(cartItems.final_total)}</span>
+            <span>NT$ {Math.round(cartItems.final_total)}</span>
           </div>
         </div>
 
@@ -121,7 +144,7 @@ const Cart = () => {
               <NavLink to="/checkout" className="cart__info-checkout-link">
                 前往付款
               </NavLink>
-              <NavLink to="/" className="cart__info-checkout-goShop">
+              <NavLink to="/" className="cart__info-checkout-go-shop">
                 繼續購物
               </NavLink>
             </>

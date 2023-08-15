@@ -5,6 +5,7 @@ import ProductModal from "./ProductModal/ProductModal.component";
 import DeleteModal from "./DeleteModal/DeleteModal.component";
 import CouponModal from "./CouponModal/CouponModal.component";
 import OrderModal from "./OrderModal/OrderModal.component";
+import DeleteInCartModal from "./DeleteInCartModal/DeleteInCartModal.component";
 
 const portalElement = document.getElementById("overlays");
 
@@ -13,6 +14,7 @@ export const MODAL_TYPE = {
   coupon: "coupon",
   order: "order",
   delete: "delete",
+  deleteInCart: "deleteInCart",
 };
 
 const modalSwitch = (modalType) =>
@@ -21,14 +23,16 @@ const modalSwitch = (modalType) =>
     [MODAL_TYPE.coupon]: CouponModal,
     [MODAL_TYPE.order]: OrderModal,
     [MODAL_TYPE.delete]: DeleteModal,
+    [MODAL_TYPE.deleteInCart]: DeleteInCartModal,
   }[modalType]);
 
-const ModalPortal = ({ openWhichModal, ...otherProps }) => {
+const ModalPortal = ({ openWhichModal, backdropClose, ...otherProps }) => {
   const Modal = modalSwitch(openWhichModal);
+
   return (
     <>
       {createPortal(
-        <ModalBackdrop>
+        <ModalBackdrop backdropClose={backdropClose}>
           <Modal {...otherProps} />
         </ModalBackdrop>,
         portalElement

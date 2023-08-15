@@ -10,13 +10,23 @@ import {
 const INITIAL_STATE = {
   cartItems: {},
   loadingItems: [],
+  tempData: null,
   error: null,
   isLoading: false,
+  isModalOpen: false,
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState: INITIAL_STATE,
+  reducers: {
+    setCartIsModalOpen(state, action) {
+      state.isModalOpen = action.payload;
+    },
+    setCartTempData(state, action) {
+      state.tempData = action.payload;
+    },
+  },
   extraReducers: {
     [fetchCartItemsAsync.pending](state) {
       state.isLoading = true;
@@ -68,4 +78,5 @@ export const cartSlice = createSlice({
   },
 });
 
+export const { setCartIsModalOpen, setCartTempData } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

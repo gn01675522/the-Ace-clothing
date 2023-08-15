@@ -3,10 +3,10 @@
 
 import "./ModalBackdrop.styles.scss";
 
-const ModalBackdrop = ({ children }) => {
+const ModalBackdrop = ({ children, backdropClose }) => {
   return (
     <>
-      <div className="modal__backdrop">
+      <div className="modal__backdrop" onClick={backdropClose}>
         <div className="modal">{children}</div>
       </div>
     </>

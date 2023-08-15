@@ -240,6 +240,7 @@ const ProductDetail = () => {
               <Button
                 buttonType={BUTTON_TYPE_CLASS.squareWhiteSm}
                 onClick={() => onChangeQuantity("add")}
+                disabled={itemQuantity === 5 || remainingQuantity === 0}
               >
                 +
               </Button>

@@ -17,6 +17,16 @@ export const selectCartLoadingItems = createSelector(
   (cart) => cart.loadingItems
 );
 
+export const selectCartModalOpen = createSelector(
+  [selectCartReducer],
+  (cart) => cart.isModalOpen
+);
+
+export const selectCartTempData = createSelector(
+  [selectCartReducer],
+  (cart) => cart.tempData
+);
+
 export const selectCartItemsQuantity = createSelector(
   [selectCartItems],
   (cartItems) => cartItems?.carts?.length

@@ -3,8 +3,9 @@
 
 .cart {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  padding: 2rem;
+  padding: 3rem;
   gap: 1rem;
   text-align: center;
   background-color: $color-seventh-bg;
@@ -14,7 +15,10 @@
   }
   @media screen and (min-width: 1024px) {
     gap: 2rem;
-    padding: 2rem 8rem;
+    padding: 2rem 5rem;
+  }
+  @media screen and (min-width: 1300px) {
+    padding: 2rem 15vw;
   }
 }
 
@@ -58,6 +62,7 @@
     flex-direction: column;
     gap: 1rem;
     &-title {
+      text-align: start;
       font-weight: bold;
     }
     &-area {
@@ -89,13 +94,11 @@
       background-color: $color-secondary-bg;
       color: $color-secondary-text;
     }
-    &-goShop {
+    &-go-shop {
       font-size: 10px;
+      line-height: 40px;
       color: $color-primary-text;
     }
-  }
-  &-backShop {
-    width: 100%;
   }
   @media screen and (min-width: 768px) {
     width: 30%;
