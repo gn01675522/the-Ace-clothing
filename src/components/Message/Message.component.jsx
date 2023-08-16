@@ -25,11 +25,11 @@ const Message = () => {
   return (
     <>
       <div className="message">
-        <div className="message__header">
-          <MessageIcon className="message__header-icon" />
+        <div className="message__left">
+          <MessageIcon className="message__left-icon" />
         </div>
-        <div className="message__body">
-          <div className="message__body-content">
+        <div className="message__right">
+          <div className="message__right-content">
             <span>{text}</span>
           </div>
         </div>
