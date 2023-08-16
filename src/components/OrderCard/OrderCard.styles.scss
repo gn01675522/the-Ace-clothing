@@ -5,14 +5,43 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  &__title {
-    font-size: 1.5rem;
-    font-weight: lighter;
-    text-align: center;
-    margin-bottom: 1rem;
+  gap: 1rem;
+  &__input {
+    display: none;
   }
-  &__content {
+  &__input:checked ~ &__content {
     display: flex;
+  }
+  &__input:checked ~ &__toggle &__toggle-triangle {
+    border-width: 0 8px 12px 8px;
+    border-color: transparent transparent $color-primary-bg transparent;
+  }
+  &__toggle {
+    display: flex;
+    position: relative;
+    background-color: $color-secondary-bg;
+    gap: 1rem;
+    padding: 12px;
+    justify-content: center;
+    cursor: pointer;
+    &-triangle {
+      position: absolute;
+      border-style: solid;
+      border-width: 12px 8px 0 8px;
+      border-color: $color-primary-bg transparent transparent transparent;
+      top: 14px;
+      left: 12px;
+    }
+    &-title {
+      font-size: 1rem;
+      color: $color-secondary-text;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    display: none;
     flex-direction: column;
     gap: 10px;
     width: 100%;

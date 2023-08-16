@@ -5,7 +5,15 @@ import "./OrderCard.styles.scss";
 const OrderCard = ({ products }) => {
   return (
     <div className="order-card">
-      <h2 className="order-card__title">訂單內容</h2>
+      <input
+        className="order-card__input"
+        id="order-card__trigger"
+        type="checkbox"
+      />
+      <label htmlFor="order-card__trigger" className="order-card__toggle">
+        <div className="order-card__toggle-triangle"></div>
+        <h2 className="order-card__toggle-title">訂單內容</h2>
+      </label>
       <div className="order-card__content">
         {products?.map((item) => {
           return (

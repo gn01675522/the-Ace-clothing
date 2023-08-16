@@ -72,7 +72,7 @@ const Checkout = () => {
           >
             返回購物車
           </Button>
-          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.rectWhiteNm}>
+          <Button type="submit" buttonType={BUTTON_TYPE_CLASS.rectBlackNm}>
             送出訂單
           </Button>
         </div>

@@ -72,3 +72,12 @@ export const selectNewUserProducts = createSelector(
   }
 );
 //* 由於 api 沒有創建時間，故使用隨機 20 個產品的方式來呈現新到貨的業務邏輯
+
+export const selectRecommendProducts = createSelector(
+  [selectUserProducts],
+  (products) => {
+    const randomNumber = Math.floor(Math.random() * (products.length - 4));
+    return products.slice(randomNumber, randomNumber + 4);
+  }
+);
+//* 於付款成功後，隨機推薦 4 個商品在頁面上

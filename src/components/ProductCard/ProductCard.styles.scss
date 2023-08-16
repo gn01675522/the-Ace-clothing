@@ -6,6 +6,7 @@
   height: min-content;
   padding: 10px;
   color: $color-primary-text;
+  background-color: $color-primary-bg;
   text-decoration: none;
   cursor: pointer;
   &:hover {
@@ -68,8 +69,6 @@
       font-weight: lighter;
       font-size: 20px;
       font-weight: bold;
-    }
-    &-function {
     }
   }
 }
