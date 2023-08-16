@@ -17,6 +17,7 @@ import {
 import { clearUserProduct } from "../../../store/userProduct/userProduct.slice";
 import { fetchUserProductAsync } from "../../../store/userProduct/userProduct.asyncThunk";
 import { selectRecommendProducts } from "../../../store/userProduct/userProduct.selector";
+import { selectUserFavorite } from "../../../store/user/user.selector";
 
 import { fetchCartItemsAsync } from "../../../store/cart/cart.asyncThunk";
 import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.asyncThunk";
@@ -29,6 +30,7 @@ const Success = () => {
   const products = useSelector(selectUserOrderProducts);
   const totalPrice = useSelector(selectUserOrderTotalPrice);
   const userData = useSelector(selectUserOrderData);
+  const wishlist = useSelector(selectUserFavorite);
   const recommendProducts = useSelector(selectRecommendProducts);
 
   const clearOrderState = () => {
@@ -41,6 +43,11 @@ const Success = () => {
     dispatch(fetchUserProductAsync());
     return () => dispatch(clearUserProduct());
   }, [orderId, dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
+  // selector 變動時則將 wishlist 內容放入 localStorage 裡面
 
   return (
     <div className="success">
@@ -68,6 +75,7 @@ const Success = () => {
               <ProductCard
                 product={product}
                 urlParam={productCategory}
+                isFavorite={wishlist.includes(product.id)}
                 key={product.id}
               />
             );

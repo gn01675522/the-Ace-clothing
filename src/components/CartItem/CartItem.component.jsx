@@ -15,6 +15,8 @@ import {
   translateCategoryToChinese,
 } from "../../utils/component/component.utils";
 
+import { formatNumberWithCommas } from "../../utils/common/common.utils";
+
 const CartItem = ({ item }) => {
   const { id: itemId, qty, final_total } = item;
   const { category, title, imageUrl } = item.product;
@@ -71,7 +73,7 @@ const CartItem = ({ item }) => {
             </button>
             <div className="cart-item__right-body-content-count">
               <span>總金額</span>
-              <span>NT${Math.round(final_total)}</span>
+              <span>NT$ {formatNumberWithCommas(Math.round(final_total))}</span>
             </div>
           </div>
         </div>

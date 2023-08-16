@@ -2,6 +2,8 @@
 //* 直接傳入 products，資料為陣列包著的形式
 import "./OrderCard.styles.scss";
 
+import { formatNumberWithCommas } from "../../utils/common/common.utils";
+
 const OrderCard = ({ products }) => {
   return (
     <div className="order-card">
@@ -30,7 +32,9 @@ const OrderCard = ({ products }) => {
                   </p>
                 </div>
                 <div className="d-flex justify-content-between">
-                  <p className="mb-0">NT$ {Math.round(item.final_total)}</p>
+                  <p className="mb-0">
+                    NT$ {formatNumberWithCommas(Math.round(item.final_total))}
+                  </p>
                 </div>
               </div>
             </div>

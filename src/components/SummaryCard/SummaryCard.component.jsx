@@ -1,20 +1,22 @@
 import "./SummaryCard.styles.scss";
 
+import { formatNumberWithCommas } from "../../utils/common/common.utils";
+
 const SummaryCard = ({ total, userData }) => {
   return (
     <div className="summary-card">
       <h2 className="summary-card__title">訂單資訊</h2>
       <div className="summary-card__item">
         <span>小計</span>
-        <span>NT${Math.round(total)}</span>
+        <span>NT$ {formatNumberWithCommas(Math.round(total))}</span>
       </div>
       <div className="summary-card__item">
         <span>運費</span>
-        <span>NT$免費</span>
+        <span>免費</span>
       </div>
       <div className="summary-card__item">
         <span>總金額</span>
-        <span>NT${Math.round(total)}</span>
+        <span>NT$ {formatNumberWithCommas(Math.round(total))}</span>
       </div>
       {userData && (
         <>

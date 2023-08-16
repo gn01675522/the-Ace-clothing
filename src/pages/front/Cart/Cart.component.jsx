@@ -25,6 +25,8 @@ import {
 import { selectHasMessage } from "../../../store/message/message.selector";
 import { setHandleMessage } from "../../../store/message/message.slice";
 
+import { formatNumberWithCommas } from "../../../utils/common/common.utils";
+
 const Cart = () => {
   const [inputValue, setInputValue] = useState("");
   const [applyCoupon, setApplyCoupon] = useState("");
@@ -98,7 +100,9 @@ const Cart = () => {
         <div className="cart__info-price">
           <div className="cart__info-price-items">
             <span>小計</span>
-            <span>NT$ {Math.round(cartItems.final_total)}</span>
+            <span>
+              NT$ {formatNumberWithCommas(Math.round(cartItems.final_total))}
+            </span>
           </div>
           <div className="cart__info-price-items">
             <span>運費</span>
@@ -106,7 +110,9 @@ const Cart = () => {
           </div>
           <div className="cart__info-price-items">
             <span>總計</span>
-            <span>NT$ {Math.round(cartItems.final_total)}</span>
+            <span>
+              NT$ {formatNumberWithCommas(Math.round(cartItems.final_total))}
+            </span>
           </div>
         </div>
 

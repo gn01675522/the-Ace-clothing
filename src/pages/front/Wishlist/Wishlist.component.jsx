@@ -14,6 +14,8 @@ import {
   selectCartIsLoading,
 } from "../../../store/cart/cart.selector";
 
+import { formatNumberWithCommas } from "../../../utils/common/common.utils";
+
 const Wishlist = ({ data, func }) => {
   const cartItems = useSelector(selectCartItems);
   const isLoading = useSelector(selectCartIsLoading);
@@ -61,7 +63,7 @@ const Wishlist = ({ data, func }) => {
               </div>
               <div className="wishlist__card-content-info-item">
                 <div>價格</div>
-                <div>NT${item.price}</div>
+                <div>NT$ {formatNumberWithCommas(item.price)}</div>
               </div>
             </div>
           </div>
