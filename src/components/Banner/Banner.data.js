@@ -4,7 +4,7 @@ export const BANNER_DATA = [
     text: "選購男裝",
     sentence: "Welcome to The Ace Clothing",
     imgTone: "light",
-    url: "/about",
+    url: "/mens",
   },
   {
     img: "https://i.imgur.com/U4y4p5r.jpg",
