@@ -65,6 +65,13 @@ const Banner = () => {
       >
         <RightArrow className="banner__right-arrow" />
       </Button>
+      <div className="banner__content">
+        <h1 className="banner__content-title">
+          {BANNER_DATA[imgNum].sentence}
+        </h1>
+        <h2 className="banner__content-text">讓我們為您的生活</h2>
+        <h2 className="banner__content-text">注入一些品味及獨特</h2>
+      </div>
       <img
         className="banner__image"
         src={BANNER_DATA[imgNum].img}

@@ -86,7 +86,7 @@ const Home = () => {
           <FullWidthBanner type="urban" />
         </div>
         <div className="home__session">
-          <h1 className="home__session-title">促銷</h1>
+          <h2 className="home__session-title">促銷</h2>
           <ScrollList type={SCROLL_TYPE.onSale} />
         </div>
       </div>

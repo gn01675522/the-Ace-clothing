@@ -24,7 +24,6 @@ import { fetchUserOrderDataAsync } from "../../../store/userOrder/userOrder.asyn
 import { setClearUserOrderState } from "../../../store/userOrder/userOrder.slice";
 
 const Success = () => {
-  console.log("inside Success component re-render***********");
   const { orderId } = useParams();
   const dispatch = useDispatch();
   const products = useSelector(selectUserOrderProducts);

@@ -87,7 +87,7 @@ const ScrollList = ({ type }) => {
   const onScrollHandler = (type) => {
     const container = contentRef.current;
     const moveRange = setWidthByListContainer + 16;
-    console.log("insdie ScrollLIst", setWidthByListContainer);
+
     if (container) {
       container.scrollBy({
         left: type === "prev" ? -moveRange : moveRange,
