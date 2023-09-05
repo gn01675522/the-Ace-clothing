@@ -2,7 +2,7 @@ import "./AdminTable.styles.scss";
 
 import Button, { BUTTON_TYPE_CLASS } from "../UI/Button/Button.component";
 
-import { dateFormat } from "../../utils/component/component.utils";
+import { formatTimestampInSeconds } from "../../utils/component/component.utils";
 
 export const ADMIN_TABLE_TYPE = {
   products: "products",
@@ -57,7 +57,7 @@ const AdminTable = ({ type, items, onEdit, onDelete }) => {
 
               <td>
                 {productInfo[2] === "due_date"
-                  ? dateFormat(item[productInfo[2]])
+                  ? formatTimestampInSeconds(item[productInfo[2]])
                   : productInfo[2] === "total"
                   ? Math.round(item[productInfo[2]])
                   : item[productInfo[2]]}

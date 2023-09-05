@@ -20,6 +20,7 @@ export const fetchAdminCouponsAsync = createAsyncThunk(
       const res = await axios.get(
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupons?page=${page}`
       );
+      console.log("inside adminCoupons", res.data.coupons)
       return { coupons: res.data.coupons, pagination: res.data.pagination };
     } catch (error) {
       return error.response.data;

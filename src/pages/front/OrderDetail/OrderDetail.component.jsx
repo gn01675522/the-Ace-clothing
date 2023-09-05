@@ -9,6 +9,8 @@ import Button, {
 
 import { selectUserOrderData } from "../../../store/userOrder/userOrder.selector";
 
+import { formatTimestampInMilliSeconds } from "../../../utils/component/component.utils";
+
 const tableContent = [
   { title: "訂單編號", content: "id" },
   { title: "訂單日期", content: "create_at" },
@@ -60,6 +62,8 @@ const OrderDetail = ({ data }) => {
                         ? order.user[item.content]
                         : item.content === "total"
                         ? Math.round(order[item.content])
+                        : item.content === "create_at"
+                        ? formatTimestampInMilliSeconds(order[item.content])
                         : order[item.content]}
                     </div>
                   </div>
