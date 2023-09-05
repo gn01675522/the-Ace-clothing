@@ -19,20 +19,43 @@
     height: min-content;
     top: 30%;
     right: 50%;
-
     color: white;
     letter-spacing: 2px;
     transform: translateX(50%);
     text-shadow: 2px 2px 2px black;
     &-title {
-      font-size: 50px;
+      font-size: 24px;
       font-weight: 900;
-      margin-bottom: 6rem;
+      margin-bottom: 3rem;
     }
     &-text {
-      font-size: 35px;
+      font-size: 18px;
       font-weight: 600;
       margin-bottom: 1rem;
+    }
+    @media screen and (min-width: 768px) {
+      &-title {
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: 3rem;
+      }
+      &-text {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      &-title {
+        font-size: 50px;
+        font-weight: 900;
+        margin-bottom: 6rem;
+      }
+      &-text {
+        font-size: 35px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
     }
   }
   button {
@@ -43,10 +66,26 @@
       opacity: 0.8;
     }
     &:nth-of-type(1) {
-      left: 0;
+      left: 16px;
     }
     &:nth-of-type(2) {
-      right: 0;
+      right: 16px;
+    }
+    @media screen and (min-width: 768px) {
+      &:nth-of-type(1) {
+        left: 24px;
+      }
+      &:nth-of-type(2) {
+        right: 24px;
+      }
+    }
+    @media screen and (min-width: 1024px) {
+      &:nth-of-type(1) {
+        left: 32px;
+      }
+      &:nth-of-type(2) {
+        right: 32px;
+      }
     }
   }
   &__cta {

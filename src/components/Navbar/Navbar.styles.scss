@@ -55,8 +55,8 @@
 .navbar__burger {
   display: flex;
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   justify-content: center;
   align-items: center;
   transition: all 0.5s ease-in-out;
@@ -71,7 +71,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 0.5s ease-in-out;
-    transform: translateX(-18px);
+    // transform: translateX(-18px);
     &::before,
     &::after {
       content: "";
