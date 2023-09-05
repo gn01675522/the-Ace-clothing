@@ -9,7 +9,9 @@ import Loading from "../../components/Loading/Loading.component";
 import Button, {
   BUTTON_TYPE_CLASS,
 } from "../../components/UI/Button/Button.component";
+import Message from "../../components/Message/Message.component";
 
+import { selectHasMessage } from "../../store/message/message.selector";
 import { setCurrentUserAsync } from "../../store/user/user.asyncThunk";
 import {
   selectUserLoginIsSuccess,
@@ -27,6 +29,7 @@ const Login = () => {
 
   const isSuccess = useSelector(selectUserLoginIsSuccess);
   const isLoading = useSelector(selectUserLoginIsLoading);
+  const hasMessage = useSelector(selectHasMessage);
   const message = useSelector(selectUserLoginMessage);
   // 透過 selector 取得目前 user redux 資訊
 
@@ -50,63 +53,66 @@ const Login = () => {
   // 如果 user 登入成功，那麼就轉址去 products
 
   return (
-    <div className="login">
-      {isLoading && <Loading />}
-      <div className="login__info">
-        <AceLogo className="login__info-logo" />
-        <h1 className="login__info-title">the ACE</h1>
-      </div>
-      <div className="login__actions">
-        <h2 className="login__actions-title">登入資訊</h2>
-        <div
-          className={`login__alert ${message ? "login__alert--error" : ""}`}
-          role="alert"
-        >
-          {message}
+    <>
+      {hasMessage && <Message />}
+      <div className="login">
+        {isLoading && <Loading />}
+        <div className="login__info">
+          <AceLogo className="login__info-logo" />
+          <h1 className="login__info-title">the ACE</h1>
         </div>
-        <form className="login__form">
-          <div className="login__form-items">
-            <label htmlFor="email" className="login__form-items-label">
-              帳號
-            </label>
-            <input
-              id="email"
-              className="login__form-items-email"
-              name="username"
-              type="email"
-              placeholder="請輸入電子信箱"
-              autoComplete="username"
-              onChange={handleChange}
-              required={true}
-            />
-          </div>
-
-          <div className="login__form-items">
-            <label htmlFor="password" className="login__form-items-label">
-              密碼
-            </label>
-            <input
-              type="password"
-              className="login__form-items-password"
-              name="password"
-              id="password"
-              placeholder="請輸入密碼"
-              autoComplete="current-password"
-              onChange={handleChange}
-              required={true}
-            />
-          </div>
-          <Button
-            type="button"
-            buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
-            onClick={onSubmitHandler}
-            disabled={data.username === "" || data.password === ""}
+        <div className="login__actions">
+          <h2 className="login__actions-title">登入資訊</h2>
+          <div
+            className={`login__alert ${message ? "login__alert--error" : ""}`}
+            role="alert"
           >
-            登入
-          </Button>
-        </form>
+            {message}
+          </div>
+          <form className="login__form">
+            <div className="login__form-items">
+              <label htmlFor="email" className="login__form-items-label">
+                帳號
+              </label>
+              <input
+                id="email"
+                className="login__form-items-email"
+                name="username"
+                type="email"
+                placeholder="請輸入電子信箱"
+                autoComplete="username"
+                onChange={handleChange}
+                required={true}
+              />
+            </div>
+
+            <div className="login__form-items">
+              <label htmlFor="password" className="login__form-items-label">
+                密碼
+              </label>
+              <input
+                type="password"
+                className="login__form-items-password"
+                name="password"
+                id="password"
+                placeholder="請輸入密碼"
+                autoComplete="current-password"
+                onChange={handleChange}
+                required={true}
+              />
+            </div>
+            <Button
+              type="button"
+              buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
+              onClick={onSubmitHandler}
+              disabled={data.username === "" || data.password === ""}
+            >
+              登入
+            </Button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
