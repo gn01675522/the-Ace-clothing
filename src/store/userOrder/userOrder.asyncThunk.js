@@ -15,7 +15,6 @@ export const setPostUserOrderAsync = createAsyncThunk(
         `/v2/api/${process.env.REACT_APP_API_PATH}/order`,
         form
       );
-      console.log("inside orderOrder", res);
       return res.data.orderId;
     } catch (error) {
       return error.response.data;

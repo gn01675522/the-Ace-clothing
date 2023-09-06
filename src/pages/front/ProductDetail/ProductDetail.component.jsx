@@ -174,32 +174,23 @@ const ProductDetail = () => {
               </h1>
             </div>
             <div className="product-detail__sale-info-content-price">
-              <PriceTag origin_price={origin_price} price={price} />
               {origin_price > price && (
                 <p className="product-detail__sale-info-content-price-sell">
-                  {discountRate + "%off"}
+                  {discountRate + "% off"}
                 </p>
               )}
+              <div className="product-detail__sale-info-content-price-area">
+                <PriceTag origin_price={origin_price} price={price} />
+              </div>
             </div>
           </div>
           <div className="product-detail__description">
+            <div className="product-detail__description-content">{content}</div>
             <div className="product-detail__description-material">
               <div className="product-detail__description-material-header">
                 <h2 className="product-detail__description-material-header-title">
                   詳細資料
                 </h2>
-                <div
-                  className="product-detail__description-material-header-wrapper"
-                  onClick={(e) =>
-                    isFavorite ? onRemoveFavorite(e, id) : onAddFavorite(e, id)
-                  }
-                >
-                  {isFavorite ? (
-                    <RedHeart className="product-detail__description-material-header-favorite" />
-                  ) : (
-                    <WhiteHeart className="product-detail__description-material-header-favorite" />
-                  )}
-                </div>
               </div>
               <ul className="product-detail__description-info">
                 {description?.split("-").map((item) => (
@@ -212,7 +203,6 @@ const ProductDetail = () => {
                 ))}
               </ul>
             </div>
-            <div className="product-detail__description-content">{content}</div>
           </div>
           <div className="product-detail__sale-function">
             {(itemQuantity === remainingQuantity ||
@@ -254,6 +244,19 @@ const ProductDetail = () => {
             >
               {remainingQuantity === 0 ? "已達購買上限" : "加入購物車"}
             </Button>
+            <div
+              className="product-detail__sale-function-wrapper"
+              onClick={(e) =>
+                isFavorite ? onRemoveFavorite(e, id) : onAddFavorite(e, id)
+              }
+            >
+              {isFavorite ? (
+                <RedHeart className="product-detail__sale-function-favorite" />
+              ) : (
+                <WhiteHeart className="product-detail__sale-function-favorite" />
+              )}
+              <p>加入收藏清單</p>
+            </div>
           </div>
         </div>
       </div>
