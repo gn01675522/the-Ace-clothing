@@ -30,12 +30,13 @@ const CartItem = ({ item }) => {
     const quantity = type === "add" ? qty + 1 : qty - 1;
     dispatch(setUpdateCartItemAsync({ item, quantity }));
   };
-  // 每當變更數量的時候，就直接更新購物車資訊
+  //* 每當變更數量的時候，就直接更新購物車資訊
 
   const checkedToRemoveItemFromCart = () => {
     dispatch(setCartTempData(itemId));
     dispatch(setCartIsModalOpen(true));
   };
+  //* 刪除購物車元件
 
   return (
     <div className="cart-item">
@@ -80,8 +81,12 @@ const CartItem = ({ item }) => {
         <div className="cart-item__right-footer">
           <Button
             buttonType={BUTTON_TYPE_CLASS.squareWhiteSm}
-            onClick={() => updateCartItem("minor")}
-            disabled={qty === 1 || loadingItems.includes(itemId)}
+            onClick={
+              qty === 1
+                ? checkedToRemoveItemFromCart
+                : () => updateCartItem("minor")
+            }
+            // 如果數量等於 1 那麼按下減號鍵就讓它變成刪除功能
           >
             -
           </Button>

@@ -58,7 +58,7 @@ const Cart = () => {
   const onClickToCloseModalInBackdrop = () => {
     dispatch(setCartIsModalOpen(false));
   };
-  // 讓 user 可以再開啟是否刪除的 modal 時，不小心按到旁邊的 backdrop 可以直接關閉
+  //* 讓 user 可以再開啟是否刪除的 modal 時，不小心按到旁邊的 backdrop 可以直接關閉
 
   useEffect(() => {
     if (cartItems?.carts?.[0]?.coupon) {
