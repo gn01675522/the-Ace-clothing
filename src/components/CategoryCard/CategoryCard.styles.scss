@@ -9,18 +9,17 @@
   color: $color-primary-text;
   border: 3px $semi-color-primary-line;
   overflow: hidden;
+  &:hover > &__img {
+    @include img-cubic-transition;
+  }
+  &:hover > &__content {
+    background-color: $semi-color-primary-bg-8;
+  }
 
   &__img {
     width: 100%;
     height: 100%;
     @include img-cover-center;
-
-    &:hover {
-      @include img-cubic-transition;
-    }
-    &:hover ~ .category-card__content {
-      background-color: $semi-color-primary-bg-8;
-    }
   }
   &-5 {
     grid-column: 1/3;
