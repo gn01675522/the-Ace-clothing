@@ -172,9 +172,10 @@
   &-favorite {
     width: 20px;
     height: 20px;
+    color: black;
     cursor: pointer;
     &:hover {
-      animation: bump 300ms ease-out;
+      color: red;
     }
   }
 }

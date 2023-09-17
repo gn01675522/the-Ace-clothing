@@ -57,8 +57,9 @@
       &-favorite {
         width: 25px;
         height: 25px;
+        color: black;
         &:hover {
-          animation: bump 300ms ease-out;
+          color: red;
         }
       }
     }
