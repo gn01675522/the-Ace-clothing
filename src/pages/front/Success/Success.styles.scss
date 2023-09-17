@@ -3,20 +3,20 @@
 .success {
   display: flex;
   width: 100%;
-  padding: 2rem;
+  padding: 6rem 2rem;
   flex-direction: column;
   gap: 5rem;
   justify-content: space-between;
   background-color: $color-seventh-bg;
   @media screen and (min-width: 768px) {
     flex-direction: row;
-    padding: 2rem 5vw;
+    padding: 6rem 5vw;
   }
   @media screen and (min-width: 1024px) {
-    padding: 2rem 8vw;
+    padding: 6rem 8vw;
   }
   @media screen and (min-width: 1300px) {
-    padding: 2rem 15vw;
+    padding: 6rem 15vw;
   }
 }
 
