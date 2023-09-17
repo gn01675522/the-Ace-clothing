@@ -45,9 +45,9 @@ const NavBar = () => {
           onChange={onOpenList}
           title="check to open nav list"
         />
-        <label className="navbar__burger" htmlFor="nav-trigger">
-          <div className="navbar__burger-line" />
-        </label>
+        <NavLink to="/" aria-label="home page" className="navbar__home-logo">
+          <AceLogo className="navbar__home-logo-icon" />
+        </NavLink>
         <div className="navbar__list">
           {navOption.map((option) => (
             <NavLink
@@ -61,12 +61,12 @@ const NavBar = () => {
             </NavLink>
           ))}
         </div>
-        <NavLink to="/" aria-label="home page" className="navbar__home-logo">
-          <AceLogo className="navbar__home-logo-icon" />
-        </NavLink>
         <div className="navbar__actions">
           <CartIcon />
         </div>
+        <label className="navbar__burger" htmlFor="nav-trigger">
+          <div className="navbar__burger-line" />
+        </label>
       </nav>
       <div className="block" />
     </>
