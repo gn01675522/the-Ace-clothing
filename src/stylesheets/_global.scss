@@ -1,4 +1,7 @@
+@import "./variables";
+
 body {
+  background-color: $color-primary-bg;
   font-family: "Ubuntu", "Noto Sans TC";
 }
 
