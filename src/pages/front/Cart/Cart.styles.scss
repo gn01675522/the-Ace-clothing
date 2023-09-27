@@ -97,6 +97,6 @@
   }
   @include normalBreakPoint(medium) {
     width: 30%;
-    margin-top: 2rem;
+    margin-top: calc(1rem + 24px);
   }
 }
