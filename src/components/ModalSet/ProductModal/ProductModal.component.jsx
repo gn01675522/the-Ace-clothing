@@ -118,6 +118,7 @@ const ProductModal = ({ createOrEdit }) => {
       e.preventDefault();
     }
   };
+  // 避免 user 新增到小數點
 
   return (
     <>

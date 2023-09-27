@@ -2,8 +2,12 @@
 
 .price-tag__sell-price {
   color: $color-fourth-text;
+  font-weight: bold;
 }
 
 .price-tag__origin-price {
-    color: $color-primary-text;
+  color: $color-primary-text;
+  .product-on-sale {
+    font-weight: light;
+  }
 }

@@ -13,6 +13,10 @@
     font-weight: 900;
     color: $color-primary-text;
     cursor: pointer;
+    &:disabled {
+      color: $color-sixth-text;
+      cursor: unset;
+    }
   }
   &__list {
     display: flex;
