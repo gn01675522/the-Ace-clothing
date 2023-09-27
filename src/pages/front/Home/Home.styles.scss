@@ -1,4 +1,5 @@
 @import "../../../stylesheets/variables";
+@import "../../../stylesheets/mixin";
 
 .home {
   display: flex;
@@ -41,8 +42,7 @@
       font-weight: bold;
     }
   }
-
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     &__discount {
       padding: 0 4rem;
     }
@@ -50,7 +50,7 @@
       padding: 0 4rem;
     }
   }
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     &__discount {
       padding: 0 7rem;
       &-content {

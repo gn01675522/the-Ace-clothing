@@ -1,3 +1,5 @@
+@import "../../../stylesheets/mixin";
+
 .products {
   display: flex;
   flex-direction: column;
@@ -21,18 +23,17 @@
     display: flex;
     justify-content: center;
   }
-  @media screen and (min-width: 480px) {
+  @include normalBreakPoint(small) {
     &__content {
       grid-template-columns: repeat(2, 1fr);
     }
   }
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     &__content {
       grid-template-columns: repeat(3, 1fr);
     }
   }
-
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     &__content {
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 1rem;

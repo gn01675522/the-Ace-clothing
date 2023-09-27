@@ -42,8 +42,7 @@
       }
     }
   }
-
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     flex-direction: row;
     justify-content: space-between;
     &-wrapper {
@@ -69,14 +68,14 @@
   flex-direction: column;
   justify-content: center;
 
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     position: sticky;
     width: 50%;
     height: min-content;
     top: 0;
     padding: 6vh 4vw;
   }
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     padding: 6vh 10vw;
   }
 }
@@ -216,7 +215,7 @@
       list-style-position: outside;
     }
   }
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     &-info {
       display: grid;
       grid-template-columns: repeat(2, 1fr);

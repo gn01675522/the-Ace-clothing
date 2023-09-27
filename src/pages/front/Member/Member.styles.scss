@@ -1,4 +1,5 @@
 @import "../../../stylesheets/variables";
+@import "../../../stylesheets/mixin";
 
 .member {
   display: flex;
@@ -16,7 +17,7 @@
     input {
       width: calc(100% - 40px);
     }
-    @media screen and (min-width: 768px) {
+    @include normalBreakPoint(medium) {
       gap: 1rem;
       justify-content: center;
       input {
@@ -60,10 +61,10 @@
       padding: 1rem;
     }
   }
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     padding: 6rem 1rem;
   }
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     padding: 6rem 10vw;
   }
 }

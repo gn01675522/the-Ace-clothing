@@ -40,10 +40,10 @@
       height: 40px;
     }
   }
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     padding: 0 4rem;
   }
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     padding: 0 7rem;
     &__home-logo {
       margin-right: 1rem;
@@ -87,7 +87,7 @@
       transform: translateY(8px);
     }
   }
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     display: none;
   }
 }
@@ -120,7 +120,7 @@
     background-color: $color-secondary-bg;
     color: $color-secondary-text;
   }
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     all: unset;
     display: flex;
     width: 100%;
@@ -135,7 +135,7 @@
   display: flex;
   width: min-content;
   margin-right: 1rem;
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     width: 100%;
     justify-content: end;
     margin-right: unset;

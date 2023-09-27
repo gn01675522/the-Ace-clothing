@@ -59,8 +59,7 @@
       @include img-cover-center;
     }
   }
-
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     flex-direction: row;
     &-men {
       flex-direction: row-reverse;

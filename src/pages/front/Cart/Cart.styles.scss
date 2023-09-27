@@ -9,11 +9,11 @@
   gap: 1rem;
   text-align: center;
   background-color: $color-seventh-bg;
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     flex-direction: row;
     justify-content: space-between;
   }
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     gap: 2rem;
     padding: 6rem 5rem;
   }
@@ -31,7 +31,7 @@
     font-size: 1.5rem;
     font-weight: bold;
   }
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     width: 70%;
   }
 }
@@ -95,7 +95,7 @@
       color: $color-primary-text;
     }
   }
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     width: 30%;
     margin-top: 2rem;
   }

@@ -20,7 +20,7 @@
     height: 120px;
     @include img-cover-center;
   }
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     position: unset;
     width: 300px;
     height: 300px;
@@ -108,7 +108,7 @@
       text-align: center;
     }
   }
-  @media screen and (min-width: 768px) {
+  @include normalBreakPoint(medium) {
     &-header {
       padding: 10px;
       &-title {
@@ -124,7 +124,7 @@
       }
     }
   }
-  @media screen and (min-width: 1024px) {
+  @include normalBreakPoint(large) {
     &-header {
       &-title {
         font-size: 1.5rem;
