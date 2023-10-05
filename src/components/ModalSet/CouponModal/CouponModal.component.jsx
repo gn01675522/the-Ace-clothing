@@ -162,6 +162,7 @@ const CouponModal = ({ createOrEdit }) => {
             type="button"
             buttonType={BUTTON_TYPE_CLASS.rectBlackNm}
             onClick={onSubmitHandler}
+            disabled={formData.title.length === 0}
           >
             儲存
           </Button>
