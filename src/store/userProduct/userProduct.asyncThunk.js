@@ -1,13 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import {
+  GET_USER_PRODUCT,
+  GET_USER_PRODUCT_WITH_ID,
+} from "../../config/api_userProduct";
+
 export const fetchUserProductAsync = createAsyncThunk(
   "userProduct/fetchUserProduct",
   async () => {
     try {
-      const res = await axios.get(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/products/all`
-      );
+      const res = await axios.get(GET_USER_PRODUCT());
       return res.data.products;
     } catch (error) {
       return error.response.data;
@@ -20,9 +23,7 @@ export const fetchUserSingleProductAsync = createAsyncThunk(
   "userProduct/fetchUserSingleProduct",
   async (id) => {
     try {
-      const productRes = await axios.get(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/product/${id}`
-      );
+      const productRes = await axios.get(GET_USER_PRODUCT_WITH_ID(id));
       return productRes.data.product;
     } catch (error) {
       return error.response.data;

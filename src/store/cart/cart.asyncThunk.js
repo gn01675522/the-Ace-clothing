@@ -3,13 +3,18 @@ import axios from "axios";
 
 import { setHandleMessage } from "../message/message.slice";
 
+import {
+  GET_CART_ITEM,
+  POST_CART_ITEM,
+  DELETE_CART_ITEM,
+  PUT_CART_ITEM,
+} from "../../config/api_cart";
+
 export const fetchCartItemsAsync = createAsyncThunk(
   "cart/fetchCartItems",
   async () => {
     try {
-      const res = await axios.get(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/cart`
-      );
+      const res = await axios.get(GET_CART_ITEM());
       return res.data.data;
     } catch (error) {
       return error.response.data;
@@ -22,10 +27,7 @@ export const setAddItemToCartAsync = createAsyncThunk(
   "cart/setAddItemToCart",
   async (data, { dispatch }) => {
     try {
-      const res = await axios.post(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/cart`,
-        data
-      );
+      const res = await axios.post(POST_CART_ITEM(), data);
       dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchCartItemsAsync());
     } catch (error) {
@@ -40,9 +42,7 @@ export const setRemoveItemFromCartAsync = createAsyncThunk(
   "cart/setRemoveItemfromCart",
   async (id, { dispatch }) => {
     try {
-      const res = await axios.delete(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${id}`
-      );
+      const res = await axios.delete(DELETE_CART_ITEM(id));
       dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchCartItemsAsync());
     } catch (error) {
@@ -60,10 +60,7 @@ export const setUpdateCartItemAsync = createAsyncThunk(
       data: { product_id: item.product_id, qty: quantity },
     };
     try {
-      const res = await axios.put(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/cart/${item.id}`,
-        data
-      );
+      const res = await axios.put(PUT_CART_ITEM(item.id), data);
       dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchCartItemsAsync());
     } catch (error) {

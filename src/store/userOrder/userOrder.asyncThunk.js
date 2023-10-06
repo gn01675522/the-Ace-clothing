@@ -1,6 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import {
+  POST_USER_ORDER,
+  GET_USER_ORDER,
+  GET_USER_ORDER_WITH_ID,
+} from "../../config/api_userOrder";
+
 export const setPostUserOrderAsync = createAsyncThunk(
   "userOrder/setPostUserOrder",
   async (data) => {
@@ -11,10 +17,7 @@ export const setPostUserOrderAsync = createAsyncThunk(
       },
     };
     try {
-      const res = await axios.post(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/order`,
-        form
-      );
+      const res = await axios.post(POST_USER_ORDER(), form);
       return res.data.orderId;
     } catch (error) {
       return error.response.data;
@@ -26,9 +29,7 @@ export const setPostUserOrderAsync = createAsyncThunk(
 export const fetchUserOrderDataAsync = createAsyncThunk(
   "userOrder/fetchUserOrderData",
   async (orderId) => {
-    const api = orderId
-      ? `/v2/api/${process.env.REACT_APP_API_PATH}/order/${orderId}`
-      : `/v2/api/${process.env.REACT_APP_API_PATH}/orders`;
+    const api = orderId ? GET_USER_ORDER_WITH_ID(orderId) : GET_USER_ORDER();
 
     try {
       const res = await axios.get(api);

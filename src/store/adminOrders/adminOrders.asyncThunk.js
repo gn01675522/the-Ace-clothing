@@ -3,13 +3,17 @@ import axios from "axios";
 
 import { setHandleMessage } from "../message/message.slice";
 
+import {
+  GET_ADMIN_ORDERS,
+  PUT_ADMIN_ORDERS,
+  DELETE_ADMIN_ORDERS,
+} from "../../config/api_adminOrders";
+
 export const fetchAdminOrdersAsync = createAsyncThunk(
   "adminOrders/fetchAdminOrders",
   async (page = 1) => {
     try {
-      const res = await axios.get(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/orders?page=${page}`
-      );
+      const res = await axios.get(GET_ADMIN_ORDERS(page));
       return {
         orders: res.data.orders,
         pagination: res.data.pagination,
@@ -25,12 +29,9 @@ export const updateAdminOrdersAsync = createAsyncThunk(
   "adminOrders/updateAdminOrders",
   async (data, { dispatch }) => {
     try {
-      const res = await axios.put(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${data.id}`,
-        {
-          data,
-        }
-      );
+      const res = await axios.put(PUT_ADMIN_ORDERS(data.id), {
+        data,
+      });
       dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminOrdersAsync());
       //* 刪除完畢後重新 fetch 產品列表
@@ -46,9 +47,7 @@ export const deleteAdminOrdersAsync = createAsyncThunk(
   "adminOrders/deleteAdminOrders",
   async (id, { dispatch }) => {
     try {
-      const res = await axios.delete(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/order/${id}`
-      );
+      const res = await axios.delete(DELETE_ADMIN_ORDERS(id));
 
       dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminOrdersAsync());

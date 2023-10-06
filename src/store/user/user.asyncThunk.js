@@ -3,11 +3,13 @@ import axios from "axios";
 
 import { setHandleMessage } from "../message/message.slice";
 
+import { POST_USER } from "../../config/api_user";
+
 export const setCurrentUserAsync = createAsyncThunk(
   "user/setCurrentUser",
   async (data, { dispatch }) => {
     try {
-      const res = await axios.post(`/v2/admin/signin`, data);
+      const res = await axios.post(POST_USER(), data);
       const { token, expired } = res.data;
       document.cookie = `hexToken=${token}; expires=${new Date(expired)};`;
       dispatch(setHandleMessage({ type: "success", res }));

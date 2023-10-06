@@ -3,6 +3,13 @@ import axios from "axios";
 
 import { setHandleMessage } from "../message/message.slice";
 
+import {
+  GET_ADMIN_COUPONS,
+  DELETE_ADMIN_COUPONS,
+  POST_ADMIN_COUPONS,
+  PUT_ADMIN_COUPONS,
+} from "../../config/api_adminCoupons";
+
 //********** Helper **********
 const formatDataHelper = (formData, date) => {
   const time = date.getTime();
@@ -17,9 +24,7 @@ export const fetchAdminCouponsAsync = createAsyncThunk(
   "adminCoupons/fetchAdminCoupons",
   async (page = 1) => {
     try {
-      const res = await axios.get(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupons?page=${page}`
-      );
+      const res = await axios.get(GET_ADMIN_COUPONS(page));
       return { coupons: res.data.coupons, pagination: res.data.pagination };
     } catch (error) {
       return error.response.data;
@@ -32,9 +37,7 @@ export const deleteAdminCouponsAsync = createAsyncThunk(
   "adminCoupons/deleteAdminCoupons",
   async (id, { dispatch }) => {
     try {
-      const res = await axios.delete(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon/${id}`
-      );
+      const res = await axios.delete(DELETE_ADMIN_COUPONS(id));
       dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminCouponsAsync());
     } catch (error) {
@@ -50,12 +53,9 @@ export const createAdminCouponAsync = createAsyncThunk(
   async ({ formData, date }, { dispatch }) => {
     const newFormData = formatDataHelper(formData, date);
     try {
-      const res = await axios.post(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon`,
-        {
-          data: newFormData,
-        }
-      );
+      const res = await axios.post(POST_ADMIN_COUPONS(), {
+        data: newFormData,
+      });
       dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminCouponsAsync());
     } catch (error) {
@@ -71,12 +71,9 @@ export const updateAdminCouponAsync = createAsyncThunk(
   async ({ formData, date }, { dispatch }) => {
     const newFormData = formatDataHelper(formData, date);
     try {
-      const res = await axios.put(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/coupon/${newFormData.id}`,
-        {
-          data: newFormData,
-        }
-      );
+      const res = await axios.put(PUT_ADMIN_COUPONS(newFormData.id), {
+        data: newFormData,
+      });
       dispatch(setHandleMessage({ type: "success", res }));
       dispatch(fetchAdminCouponsAsync());
     } catch (error) {
