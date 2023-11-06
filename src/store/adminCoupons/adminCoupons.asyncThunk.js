@@ -25,6 +25,7 @@ export const fetchAdminCouponsAsync = createAsyncThunk(
   async (page = 1) => {
     try {
       const res = await axios.get(GET_ADMIN_COUPONS(page));
+      console.log(res);
       return { coupons: res.data.coupons, pagination: res.data.pagination };
     } catch (error) {
       return error.response.data;
