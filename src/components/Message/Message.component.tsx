@@ -11,7 +11,7 @@ const MESSAGE_TYPE = {
   danger: "danger",
 };
 
-const getIcon = (type) =>
+const getIcon = (type: string) =>
   ({
     [MESSAGE_TYPE.success]: Check,
     [MESSAGE_TYPE.danger]: Cross,
