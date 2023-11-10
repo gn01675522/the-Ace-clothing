@@ -33,7 +33,9 @@ const CATEGORY_TYPE = {
   apis: "apis",
 };
 
-const attachment = (category) =>
+const attachment = (
+  category: string
+): (JSX.Element | string)[] | string[] | undefined =>
   ({
     [CATEGORY_TYPE.logos]: [<AceLogo className="info-source__card-view-img" />],
     [CATEGORY_TYPE.icons]: [
@@ -64,7 +66,7 @@ const InfoSource = () => {
           <h2 className="info-source__content-title">{item.category} 出處</h2>
           <div className="info-source__content-main">
             {item.data.map((data, i) => {
-              const AttachmentImg = attachment(item.category)[i];
+              const AttachmentImg = attachment(item.category)?.[i];
               return (
                 <div className="info-source__card" key={data.title}>
                   <div className="info-source__card-content">
