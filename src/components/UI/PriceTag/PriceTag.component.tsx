@@ -1,8 +1,14 @@
+import { FC } from "react";
 import "./PriceTag.styles.scss";
 
 import { formatNumberWithCommas } from "../../../utils/common/common.utils";
 
-const PriceTag = ({ origin_price, price }) => {
+type PriceTagProps = {
+  origin_price: number;
+  price: number;
+};
+
+const PriceTag: FC<PriceTagProps> = ({ origin_price, price }) => {
   return (
     <>
       {origin_price > price && (
