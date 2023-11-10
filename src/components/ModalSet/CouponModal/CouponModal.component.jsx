@@ -18,7 +18,7 @@ import {
 
 import { formContent } from "./formContent.data";
 
-import { formatTimestampInSeconds } from "../../../utils/component/component.utils";
+import { formatTimestampInMilliSeconds } from "../../../utils/component/component.utils";
 
 const defaultFormData = {
   title: "",
@@ -133,7 +133,7 @@ const CouponModal = ({ createOrEdit }) => {
                     className="coupon-modal__body-content-group-input"
                     value={
                       content.id === "due_date"
-                        ? formatTimestampInSeconds(date)
+                        ? formatTimestampInMilliSeconds(date)
                         : formData[content.id]
                     }
                     onChange={

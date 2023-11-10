@@ -1,4 +1,4 @@
-export const formatNumberWithCommas = (number) => {
+export const formatNumberWithCommas = (number: number): string => {
   const formatNumber = String(number)
     .split("")
     .reverse()
