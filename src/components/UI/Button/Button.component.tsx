@@ -1,23 +1,27 @@
+import { FC, ButtonHTMLAttributes } from "react";
+
 import "./Button.styles.scss";
 
-export const BUTTON_TYPE_CLASS = {
-  rectBlackNm: "rect-black-nm",
-  rectBlackMe: "rect-black-me",
-  rectBlackSm: "rect-black-sm",
-  rectWhiteLg: "rect-white-lg",
-  rectWhiteNm: "rect-white-nm",
-  rectWhiteSm: "rect-white-sm",
-  rectWhiteBdLg: "rect-white-bd-lg",
-  rectWhiteOpacityLSm: "rect-white-ppacity-l-sm",
-  rectWhiteOpacityRSm: "rect-white-opacity-r-sm",
-  squareBlackMe: "square-black-me",
-  squareBlackSm: "square-black-sm",
-  squareWhiteSm: "square-white-sm",
-  arcBlackLg: "arc-black-lg",
-  arcWhiteOpacitySm: "arc-white-opacity-sm",
-};
+export enum BUTTON_TYPE_CLASS {
+  rectBlackNm = "rect-black-nm",
+  rectBlackMe = "rect-black-me",
+  rectBlackSm = "rect-black-sm",
+  rectWhiteLg = "rect-white-lg",
+  rectWhiteNm = "rect-white-nm",
+  rectWhiteSm = "rect-white-sm",
+  rectWhiteBdLg = "rect-white-bd-lg",
+  rectWhiteOpacityLSm = "rect-white-opacity-l-sm",
+  rectWhiteOpacityRSm = "rect-white-opacity-r-sm",
+  squareBlackMe = "square-black-me",
+  squareBlackSm = "square-black-sm",
+  squareWhiteSm = "square-white-sm",
+  arcBlackLg = "arc-black-lg",
+  arcWhiteOpacitySm = "arc-white-opacity-sm",
+}
 
-const getClass = (buttonType) =>
+const getClass = (
+  buttonType: BUTTON_TYPE_CLASS | undefined = BUTTON_TYPE_CLASS.rectBlackNm
+): string =>
   ({
     [BUTTON_TYPE_CLASS.rectBlackNm]: "btn-rect-bl-nm",
     [BUTTON_TYPE_CLASS.rectBlackMe]: "btn-rect-bl-me",
@@ -35,7 +39,17 @@ const getClass = (buttonType) =>
     [BUTTON_TYPE_CLASS.arcWhiteOpacitySm]: "btn-arc-white-opacity-sm",
   }[buttonType]);
 
-const Button = ({ buttonType, children, isLoading, ...otherProps }) => {
+export type ButtonProps = {
+  buttonType?: BUTTON_TYPE_CLASS;
+  isLoading?: boolean;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: FC<ButtonProps> = ({
+  children,
+  buttonType,
+  isLoading,
+  ...otherProps
+}) => {
   const buttonClass = getClass(buttonType);
 
   return (

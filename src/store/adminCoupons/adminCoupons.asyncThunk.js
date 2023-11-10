@@ -23,8 +23,10 @@ const formatDataHelper = (formData, date) => {
 export const fetchAdminCouponsAsync = createAsyncThunk(
   "adminCoupons/fetchAdminCoupons",
   async (page = 1) => {
+    // number
     try {
       const res = await axios.get(GET_ADMIN_COUPONS(page));
+      // res === object
       return { coupons: res.data.coupons, pagination: res.data.pagination };
     } catch (error) {
       return error.response.data;
