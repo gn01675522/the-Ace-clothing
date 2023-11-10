@@ -1,7 +1,24 @@
+import { FC } from "react";
 import { NavLink, useMatch } from "react-router-dom";
 import "./CategoryCard.styles.scss";
 
-const CategoryCard = ({ category, index }) => {
+type PathTypeInCategory = {
+  admin: string;
+  user: string;
+};
+
+type CategoryType = {
+  title: string;
+  url: string;
+  path: PathTypeInCategory;
+};
+
+type CategoryCardProps = {
+  category: CategoryType;
+  index: number;
+};
+
+const CategoryCard: FC<CategoryCardProps> = ({ category, index }) => {
   const { title, url, path } = category;
   const cardNumber = index + 1;
   const match = useMatch("admin/products");
