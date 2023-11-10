@@ -20,7 +20,7 @@ export enum BUTTON_TYPE_CLASS {
 }
 
 const getClass = (
-  buttonType: BUTTON_TYPE_CLASS | undefined = BUTTON_TYPE_CLASS.rectBlackNm
+  buttonType: BUTTON_TYPE_CLASS = BUTTON_TYPE_CLASS.rectBlackNm
 ): string =>
   ({
     [BUTTON_TYPE_CLASS.rectBlackNm]: "btn-rect-bl-nm",
