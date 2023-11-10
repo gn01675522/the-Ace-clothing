@@ -72,6 +72,10 @@ const Products = () => {
       ? "鞋子"
       : category === "hats"
       ? "帽子"
+      : category === "bohemian"
+      ? "bohemian"
+      : category === "urban"
+      ? "urban"
       : "飾品";
 
   const pageCount = Math.ceil(products.length / 12);
