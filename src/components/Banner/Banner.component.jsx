@@ -5,7 +5,7 @@ import "./Banner.styles.scss";
 import Indicator from "../UI/Indicator/Indicator.component";
 import Button, { BUTTON_TYPE_CLASS } from "../UI/Button/Button.component";
 
-import { BANNER_DATA } from "./Banner.data.js";
+import { BANNER_DATA } from "./Banner.data.ts";
 
 import { ReactComponent as LeftArrow } from "../../assets/left-arrow.svg";
 import { ReactComponent as RightArrow } from "../../assets/right-arrow.svg";
