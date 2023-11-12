@@ -28,87 +28,61 @@ export const adminProductSlice = createSlice({
       state.isModalOpen = action.payload;
     },
   },
-  extraReducers: {
-    [fetchAdminProductAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [fetchAdminProductAsync.fulfilled](state, action) {
-      state.isLoading = false;
-      state.products = action.payload.products;
-    },
-    [fetchAdminProductAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAdminProductAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAdminProductAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.products = action.payload.products;
+      })
+      .addCase(fetchAdminProductAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //* 取得 API 內的 Admin Products 資料 ****************************************
 
-    [deleteAdminProductAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [deleteAdminProductAsync.fulfilled](state) {
-      state.isLoading = false;
-      state.isModalOpen = false;
-    },
-    [deleteAdminProductAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(deleteAdminProductAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteAdminProductAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isModalOpen = false;
+      })
+      .addCase(deleteAdminProductAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //* 刪除 API 內的 Admin Products 資料 ****************************************
 
-    [updateAdminProductAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [updateAdminProductAsync.fulfilled](state) {
-      state.isLoading = false;
-      state.isModalOpen = false;
-    },
-    [updateAdminProductAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(updateAdminProductAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateAdminProductAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isModalOpen = false;
+      })
+      .addCase(updateAdminProductAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //* 更新 API 內的 Admin Products 資料 ****************************************
 
-    [createAdminProductAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [createAdminProductAsync.fulfilled](state) {
-      state.isLoading = false;
-      state.isModalOpen = false;
-    },
-    [createAdminProductAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(createAdminProductAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createAdminProductAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isModalOpen = false;
+      })
+      .addCase(createAdminProductAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+    //* 於 API 內創造 Admin Products 資料 ****************************************
   },
 });
-
-// export const adminProductReducer = (state = INITIAL_STATE, action = {}) => {
-//   const { type, payload } = action;
-
-//   switch (type) {
-//     case FETCH_ADMIN_PRODUCT_START:
-//     case SET_ADMIN_PRODUCT_START:
-//       return { ...state, isLoading: true };
-
-//     case FETCH_ADMIN_PRODUCT_SUCCESS:
-//       return { ...state, products: payload.products, isLoading: false };
-
-//     case FETCH_ADMIN_PRODUCT_FAILED:
-//       return { ...state, isLoading: false, error: payload };
-
-//     case SET_ADMIN_PRODUCT_SUCCESS:
-//       return { ...state, isLoading: false, isModalOpen: false };
-
-//     case SET_ADMIN_PRODUCT_FAILED:
-//       return { ...state, isLoading: false, error: payload };
-
-//     case SET_ADMIN_PRODUCT_TEMP_DATA:
-//       return { ...state, tempData: payload };
-
-//     case SET_ADMIN_PRODUCT_IS_OPEN:
-//       return { ...state, isModalOpen: payload };
-
-//     default:
-//       return state;
-//   }
-// };
 
 export const { setAdminProductModalOpen, setAdminProductTempData } =
   adminProductSlice.actions;

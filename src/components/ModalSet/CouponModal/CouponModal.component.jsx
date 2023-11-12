@@ -1,7 +1,7 @@
 //* parent component：
 //* 1. ModalPortal.component.jsx
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./CouponModal.styles.scss";
@@ -19,6 +19,23 @@ import {
 import { formContent } from "./formContent.data";
 
 import { formatTimestampInMilliSeconds } from "../../../utils/component/component.utils";
+
+// type FormData = {
+//   [key: string]: string | number;
+//   title: string;
+//   is_enabled: number;
+//   percent: number;
+//   due_date: number;
+//   code: string;
+// };
+
+// const defaultFormData: FormData = {
+//   title: "",
+//   is_enabled: 1,
+//   percent: 80,
+//   due_date: 1555459200,
+//   code: "testCode",
+// };
 
 const defaultFormData = {
   title: "",
@@ -65,10 +82,11 @@ const CouponModal = ({ createOrEdit }) => {
   };
 
   const onSubmitHandler = () => {
+    const data = { formData, date };
     if (createOrEdit === "create") {
-      dispatch(createAdminCouponAsync({ formData, date }));
+      dispatch(createAdminCouponAsync(data));
     } else {
-      dispatch(updateAdminCouponAsync({ formData, date }));
+      dispatch(updateAdminCouponAsync(data));
     }
   };
 

@@ -20,29 +20,30 @@ export const userOrderSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  extraReducers: {
-    [setPostUserOrderAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [setPostUserOrderAsync.fulfilled](state, action) {
-      state.isLoading = false;
-      state.orderId = action.payload;
-    },
-    [setPostUserOrderAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    [fetchUserOrderDataAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [fetchUserOrderDataAsync.fulfilled](state, action) {
-      state.isLoading = false;
-      state.orderData = action.payload;
-    },
-    [fetchUserOrderDataAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(setPostUserOrderAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(setPostUserOrderAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.orderId = action.payload;
+      })
+      .addCase(setPostUserOrderAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchUserOrderDataAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUserOrderDataAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.orderData = action.payload;
+      })
+      .addCase(fetchUserOrderDataAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 

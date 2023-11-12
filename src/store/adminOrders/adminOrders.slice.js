@@ -26,43 +26,47 @@ export const adminOrdersSlice = createSlice({
       state.tempData = action.payload;
     },
   },
-  extraReducers: {
-    [fetchAdminOrdersAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [fetchAdminOrdersAsync.fulfilled](state, action) {
-      state.isLoading = false;
-      state.orders = action.payload.orders;
-      state.pagination = action.payload.pagination;
-    },
-    [fetchAdminOrdersAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAdminOrdersAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAdminOrdersAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.orders = action.payload.orders;
+        state.pagination = action.payload.pagination;
+      })
+      .addCase(fetchAdminOrdersAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //* 取得 API 內的 Admin Orders 資料 ****************************************
 
-    [updateAdminOrdersAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [updateAdminOrdersAsync.fulfilled](state) {
-      state.isLoading = false;
-      state.isModalOpen = false;
-    },
-    [updateAdminOrdersAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(updateAdminOrdersAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateAdminOrdersAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isModalOpen = false;
+      })
+      .addCase(updateAdminOrdersAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //* 更新 API 內的 Admin Orders 資料 ****************************************
 
-    [deleteAdminOrdersAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [deleteAdminOrdersAsync.fulfilled](state) {
-      state.isLoading = false;
-      state.isModalOpen = false;
-    },
-    [deleteAdminOrdersAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(deleteAdminOrdersAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteAdminOrdersAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isModalOpen = false;
+      })
+      .addCase(deleteAdminOrdersAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+    //*  刪除 API 內的 Admin Orders 資料 ****************************************
   },
 });
 

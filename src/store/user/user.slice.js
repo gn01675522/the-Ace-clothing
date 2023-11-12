@@ -17,18 +17,19 @@ export const userSlice = createSlice({
       state.favorite = action.payload;
     },
   },
-  extraReducers: {
-    [setCurrentUserAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [setCurrentUserAsync.fulfilled](state, action) {
-      state.isSuccess = action.payload;
-      state.isLoading = false;
-    },
-    [setCurrentUserAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.message = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(setCurrentUserAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(setCurrentUserAsync.fulfilled, (state, action) => {
+        state.isSuccess = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(setCurrentUserAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.message = action.payload;
+      });
   },
 });
 

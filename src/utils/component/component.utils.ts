@@ -31,8 +31,7 @@ export const translateCategoryToChinese = (category: string): string => {
 };
 // 將傳入值做分類
 
-export const formatTimestampInMilliSeconds = (date: number): string => {
-  console.log("formatTimestampInSeconds", date);
+export const formatTimestampInMilliSeconds = (date: number | Date): string => {
   const newDate = new Date(date);
   const getYear = newDate.getFullYear().toString();
   const getMonth = (newDate.getMonth() + 1).toString().padStart(2, "0");
@@ -43,7 +42,6 @@ export const formatTimestampInMilliSeconds = (date: number): string => {
 // 將傳入值做格式處理，這邊進來的是 timestamp 以毫秒計算。
 
 export const formatTimestampInSeconds = (date: number): string => {
-  console.log("formatTimestampInMilliSeconds", date);
   const newDate = new Date(date * 1000);
   const getYear = newDate.getFullYear().toString();
   const getMonth = (newDate.getMonth() + 1).toString().padStart(2, "0");

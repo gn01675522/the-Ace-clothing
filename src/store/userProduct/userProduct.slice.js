@@ -21,30 +21,31 @@ export const userProductSlice = createSlice({
       return INITIAL_STATE;
     },
   },
-  extraReducers: {
-    [fetchUserProductAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [fetchUserProductAsync.fulfilled](state, action) {
-      state.isLoading = false;
-      state.products = action.payload;
-    },
-    [fetchUserProductAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserProductAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUserProductAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.products = action.payload;
+      })
+      .addCase(fetchUserProductAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
 
-    [fetchUserSingleProductAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [fetchUserSingleProductAsync.fulfilled](state, action) {
-      state.isLoading = false;
-      state.product = action.payload;
-    },
-    [fetchUserSingleProductAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(fetchUserSingleProductAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUserSingleProductAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.product = action.payload;
+      })
+      .addCase(fetchUserSingleProductAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 

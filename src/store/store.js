@@ -6,6 +6,7 @@ import { rootReducer } from "./root-reducer";
 const middlewares = [process.env.NODE_ENV === "development" && logger].filter(
   Boolean
 );
+// middlewares 設定處
 
 export const store = configureStore({
   reducer: rootReducer,

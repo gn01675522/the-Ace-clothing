@@ -27,55 +27,60 @@ export const adminCouponsSlice = createSlice({
       state.tempData = action.payload;
     },
   },
-  extraReducers: {
-    [fetchAdminCouponsAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [fetchAdminCouponsAsync.fulfilled](state, action) {
-      state.isLoading = false;
-      state.coupons = action.payload.coupons;
-      state.pagination = action.payload.pagination;
-    },
-    [fetchAdminCouponsAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAdminCouponsAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAdminCouponsAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.coupons = action.payload.coupons;
+        state.pagination = action.payload.pagination;
+      })
+      .addCase(fetchAdminCouponsAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //* 取得 API 內的 Admin Coupons 資料 ****************************************
 
-    [deleteAdminCouponsAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [deleteAdminCouponsAsync.fulfilled](state) {
-      state.isLoading = false;
-      state.isModalOpen = false;
-    },
-    [deleteAdminCouponsAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(deleteAdminCouponsAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteAdminCouponsAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isModalOpen = false;
+      })
+      .addCase(deleteAdminCouponsAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //* 刪除 API 內的 Admin Coupons 資料 ****************************************
 
-    [createAdminCouponAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [createAdminCouponAsync.fulfilled](state) {
-      state.isLoading = false;
-      state.isModalOpen = false;
-    },
-    [createAdminCouponAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(createAdminCouponAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createAdminCouponAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isModalOpen = false;
+      })
+      .addCase(createAdminCouponAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //* 於 API 內創建 Admin Coupons 資料 ****************************************
 
-    [updateAdminCouponAsync.pending](state) {
-      state.isLoading = true;
-    },
-    [updateAdminCouponAsync.fulfilled](state) {
-      state.isLoading = false;
-      state.isModalOpen = false;
-    },
-    [updateAdminCouponAsync.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+      .addCase(updateAdminCouponAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateAdminCouponAsync.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isModalOpen = false;
+      })
+      .addCase(updateAdminCouponAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+    //* 更新 API 內的 Admin Coupons 資料 ****************************************
   },
 });
 
