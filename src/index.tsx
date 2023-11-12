@@ -13,7 +13,10 @@ import "./stylesheets/main.scss";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+
 root.render(
   <React.StrictMode>
     <HashRouter>
@@ -23,4 +26,5 @@ root.render(
     </HashRouter>
   </React.StrictMode>
 );
+
 reportWebVitals();
